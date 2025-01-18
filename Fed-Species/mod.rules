@@ -1,0 +1,150 @@
+ID = "st-afa.100_federation"
+Name = "ST-AFA - Federation"
+Version = 0.1.6
+Author = "ST-AFA Mod-Team"
+CompatibleGameVersions = ["0.27.0e"]
+ModifiesMultiplayer = true
+Logo = logo.png
+Description = "Adds STAR TREK stuff to the game \n\n"\
+              "<red>WARNING: This mod is a WIP and a development mod. Some things might be unbalanced or broken!</red> \n\n"\
+			  "- adds Weapons\n"\
+			  "- adds Engines\n"\
+			  "- adds Rooms\n"\
+			  "- adds Energy (WarpCore)\n"\
+			  "- adds shields\n"\
+			  "Requires STAR TREK - A FINAL ASSAULT RESOURCE MOD and STAR TREK - A FINAL ASSAULT BASE MOD"
+StringsFolder = "strings"
+
+
+Actions:
+&<adaptations.rules>/Adaptations
+
+[
+	//******************** FUNCTIONS ********************
+
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/priorities.rules>"
+		Overrides
+		{
+			CaptainsRoom_Supply = 10
+			CaptainsRoom_Crew = 10
+		}
+	}
+	{
+		Action = Replace
+		Replace = "<gui/menus.rules>/LogoShip"
+		With = &<gui/menus.rules>/LogoShip
+	}
+
+	//******************** TECHS ********************
+	{
+		Action = AddMany
+		AddTo = "<modes/career/techs.rules>/Techs"
+		ManyToAdd = &<fed_tech.rules>/Techs
+	}
+	
+	//******************** PARTS ********************
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.rules>/terran/parts"
+		ManyToAdd = &<parts/federation.rules>/Parts
+	}
+	//******************** SOUNDS ********************
+
+	//******************** RESOURCES ********************
+	//******************** UI ********************
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
+		ManyToAdd = &<gui/game/parts/part_toggles.rules>/PartToggles
+	}
+
+	{
+		Action = Add
+		AddTo = "<./Data/ships/base_ship.rules>/Blueprints/DrawProhibitedZoneCategories"
+		ToAdd = phaserbank
+	}
+
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/gui/game/indicators/indicators.rules>"
+		Overrides = &<gui/game/indicators/indicators.rules>
+	}
+	//******************** BUFFS ********************
+    {
+		Action = Overrides
+		OverrideIn = "<./Data/buffs/buffs.rules>"
+		Overrides = &<buffs/buffs.rules>
+	}
+	//Ships
+	{
+		Action = AddMany
+		AddTo = "<builtin_ships/builtins.rules>/Ships"
+		ManyToAdd
+		[
+			//Civilian
+			{ File="ships/STAFA/Civilian/Kaplan F17 Speed Freighter.ship.png"; Tags=[trade, empty_storage] Tier=3; Difficulty=2; }
+
+			//Combat
+			{ File="ships/STAFA/Combat/Miranda Class.ship.png";	Tags=[combat] Tier=1;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Akira Class.ship.png";	Tags=[combat] Tier=9;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Ambassador Class .ship.png";	Tags=[combat] Tier=8;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/California Class.ship.png";	Tags=[combat] Tier=8;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Centaur Class.ship.png";	Tags=[combat] Tier=5;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Cheyenne Class.ship.png";	Tags=[combat] Tier=6;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Constitution Class {TNG}.ship.png";	Tags=[combat] Tier=1;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Defiant Class.ship.png";	Tags=[combat] Tier=5;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Excelsior Class.ship.png";	Tags=[combat] Tier=5;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Excelsior Class {Lakota}.ship.png";	Tags=[combat] Tier=5;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Galaxy Class.ship.png";	Tags=[combat] Tier=9;  Difficulty=2; }
+			//{ File="ships/STAFA/Combat/Galaxy X.ship.png";	Tags=[combat] Tier=12;  Difficulty=3; }
+			{ File="ships/STAFA/Combat/Inquiry Class.ship.png";	Tags=[combat] Tier=18;  Difficulty=3; }
+			{ File="ships/STAFA/Combat/Intrepid Class.ship.png"; Tags=[combat] Tier=5;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Intrepid Class {TT}.ship.png";	Tags=[combat] Tier=10;  Difficulty=3; }
+			{ File="ships/STAFA/Combat/Luna Class.ship.png"; Tags=[combat] Tier=8;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Nebula Class .ship.png";	Tags=[combat] Tier=7;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Nebula Class Heavy Cruiser.ship.png";	Tags=[combat] Tier=7;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/New Orleans Class.ship.png";	Tags=[combat] Tier=9;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Norway Class.ship.png";	Tags=[combat] Tier=8;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Nova Class.ship.png"; Tags=[combat] Tier=4;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Obena Class.ship.png";	Tags=[combat] Tier=9;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Odyssey Class.ship.png";	Tags=[combat] Tier=18;  Difficulty=3; }
+			{ File="ships/STAFA/Combat/Parliament Class.ship.png";	Tags=[combat] Tier=7;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Prometheus Class.ship.png";	Tags=[combat] Tier=9;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Prometheus Class {QT}.ship.png";	Tier=9;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Ross Class.ship.png";	Tags=[combat] Tier=11;  Difficulty=2; }
+			{ File="ships/STAFA/Combat/Saber Class.ship.png";	Tags=[combat] Tier=6;  Difficulty=1; }
+			{ File="ships/STAFA/Combat/Sovereign Class.ship.png";	Tags=[combat] Tier=13;  Difficulty=3; }
+			{ File="ships/STAFA/Combat/Steamrunner Class.ship.png";	Tier=14;  Difficulty=3; }
+
+			//Extended {i.e. uses nacelle extensions
+			{ File="ships/STAFA/Extended/Odyssey Class {Ex.}.ship.png";	Tags=[combat] Tier=18;  Difficulty=4; }
+			{ File="ships/STAFA/Extended/Ambassador Class {Ex.}.ship.png";	Tags=[combat] Tier=8;  Difficulty=3; }
+			{ File="ships/STAFA/Extended/Galaxy X {Ex.}.ship.png";	Tags=[combat] Tier=12;  Difficulty=5; }
+
+			//Other.Misc {Goofy mistake ships or other temp/wip ships. bit of fun behind the scenes
+			{ File="ships/STAFA/Other.Misc/Constitution Class {Type-1}.ship.png";	Tags=[combat] Tier=1;  Difficulty=1; }
+			{ File="ships/STAFA/Other.Misc/Constitution Class {Type-2}.ship.png";	Tags=[combat] Tier=1;  Difficulty=1; }
+			{ File="ships/STAFA/Other.Misc/Goofy Const Excel.ship.png";	Tags=[combat] Tier=4;  Difficulty=1; }
+			{ File="ships/STAFA/Other.Misc/Sovereign Class {LWC}.ship.png";	Tags=[combat] Tier=13;  Difficulty=2; }
+			{ File="ships/STAFA/Other.Misc/TempLogo.ship.png"; }
+			{ File="ships/STAFA/Other.Misc/Giga Galaxy X.ship.png";	Tags=[combat] Tier=18;  Difficulty=6; }
+
+			//Starter
+			{ File="ships/STAFA/Starter/Oberth Class {Starter}.ship.png"; }
+
+			//W.I.P
+			{ File="ships/STAFA/W.I.P/Dominion Battleship.ship.png"; }
+			{ File="ships/STAFA/W.I.P/Starbase Med.ship.png"; }
+		]
+	}
+]
+ShipLibraries
+[
+	{
+		Folder = "Ships"
+		NameKey = "STAFAShips"
+		TooltipKey = "STAFAShipsTT"
+	}
+]	

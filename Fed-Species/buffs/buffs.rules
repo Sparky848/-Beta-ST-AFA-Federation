@@ -1,0 +1,220 @@
+AntimatterPower
+{
+	CombineMode = Max
+	BaseValue = 100%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_antimatter_energy.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	//IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	//IconTextMultiply = 100
+	//IconTextAdd = -100
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+CaptainsRoomBuff
+{
+	CombineMode = Max
+	BaseValue = 100%
+	
+	Icon
+	{
+		Texture
+		{
+			File = "buff_captains.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	//IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	//IconTextMultiply = 100
+	//IconTextAdd = -100
+	
+	RectBorderColor = [0, 255, 84, 160]
+	RectFillColor = [0, 255, 84, 64]
+}
+Phaser
+{
+	CombineMode = Max
+	BaseValue = 0%
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+PhaserShot
+{
+	CombineMode = Max
+	BaseValue = 0%
+
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
+}
+PhaserPoweringStorage
+{
+	CombineMode = Max
+	BaseValue = 0%
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+PhaserOperation
+{
+	CombineMode = Add
+	RectBorderColor = [10, 100, 100, 100]
+	RectFillColor = [10, 100, 100, 100]
+}
+PhaserReverseOperation
+{
+	CombineMode = Add
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+Nacelle
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+NacelleThrust
+{
+	CombineMode = Add
+	Exponent = 1.0
+	BaseValue = 0%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_engine.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	IconPriority = 1 // Override engine room buff icon.
+	ShowIconTextForZeroValue = false
+}
+Engine
+{
+	CombineMode = Max
+	BaseValue = 100%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_engine.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+NacelleRampUp
+{
+	CombineMode = Add
+	Exponent = 0.5
+	BaseValue = 0%
+}
+NacelleRampUpFinal
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+
+NacelleOperation
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+NacelleBatteryConnection // Only used to show connection in blueprints.
+{
+	Icon
+	{
+		Texture
+		{
+			File = "buff_antimatter_energy.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+WarpcoreBuffSmall
+{
+	CombineMode = Add
+	BaseValue = 0.075
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+WarpcoreBuffLarge
+{
+	CombineMode = Add
+	BaseValue = 0.075
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+WarpcoreSendBuffLarge
+{
+	CombineMode = Add
+	BaseValue = 200%
+}
+WarpcoreBuffQuantityLarge
+{
+	CombineMode = Add
+	BaseValue = 25
+}
+WarpcoreSubstationBuffLarge
+{
+	CombineMode = Add
+	BaseValue = 0.01
+}
+WarpcoreSubstationBuffMed
+{
+	CombineMode = Add
+	BaseValue = 0.009
+}
+WarpcoreSubstationBuffSmall
+{
+	CombineMode = Add
+	BaseValue = 0.0075
+}
+LargeInjector
+{
+	CombineMode = Add
+}
+//WarpcoreStorageBuffSmall
+//{
+//	CombineMode = Max
+//	BaseValue = 12000
+//}

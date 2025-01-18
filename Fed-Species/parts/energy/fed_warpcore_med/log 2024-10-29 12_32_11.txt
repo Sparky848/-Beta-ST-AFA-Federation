@@ -1,0 +1,381 @@
+10/29/2024 12:32:11  |  Logging successful initialized.
+10/29/2024 12:32:11  |  .NET Runtime Version: 7.0.20
+10/29/2024 12:32:11  |  Running as a 64-bit process.
+10/29/2024 12:32:11  |  Locale: en-GB
+10/29/2024 12:32:11  |  Language: en-GB
+10/29/2024 12:32:11  |  Executable path: C:\Program Files (x86)\Steam\steamapps\common\Cosmoteer\Bin\Cosmoteer.exe
+10/29/2024 12:32:11  |  Cosmoteer version 0.27.2a build 0.27.2a_steam
+10/29/2024 12:32:11  |  Build Date: 16/10/2024 22:12:33
+10/29/2024 12:32:11  |  Build Commit: 6415b9a4eba6a2430b79e2d8684a664e752b510d
+10/29/2024 12:32:11  |  Developer mode enabled.
+10/29/2024 12:32:11  |  Steam API successfully initialized.
+10/29/2024 12:32:14  |  Microsoft Windows 11 Home 64-bit 10.0.22631
+10/29/2024 12:32:14  |  Intel(R) Core(TM) i7-10870H CPU @ 2.20GHz (16 logical / 8 physical cores)
+10/29/2024 12:32:14  |  16204.8 MB RAM
+10/29/2024 12:32:14  |  NVIDIA GeForce RTX 3070 Laptop GPU (32.0.15.6109) (05/09/2024)
+10/29/2024 12:32:14  |  4095.0 MB VRAM
+10/29/2024 12:32:14  |  
+10/29/2024 12:32:14  |  Loaded app settings.
+10/29/2024 12:32:15  |  Set application DPI mode: PerMonitor
+10/29/2024 12:32:15  |  Setup default cursor.
+10/29/2024 12:32:15  |  Using display adapter 0
+10/29/2024 12:32:15  |  Created DXGI factory.
+10/29/2024 12:32:15  |  Adapter #0: NVIDIA GeForce RTX 3070 Laptop GPU
+10/29/2024 12:32:15  |  	Output #0: Generic PnP Monitor  (1920x1080)
+10/29/2024 12:32:15  |  Adapter #1: Intel(R) UHD Graphics
+10/29/2024 12:32:15  |  Adapter #2: Microsoft Basic Render Driver
+10/29/2024 12:32:15  |  Updated Windows form configuration for borderless window.
+10/29/2024 12:32:15  |  Created Windows form.
+10/29/2024 12:32:15  |  Direct3D Feature Level: Level_11_0
+10/29/2024 12:32:15  |  Created Direct3D 11 Device.
+10/29/2024 12:32:15  |  Created swap chain: 1920x1080.
+10/29/2024 12:32:15  |  Created window.
+10/29/2024 12:32:15  |  Created clock.
+10/29/2024 12:32:15  |  Created graphics manager.
+10/29/2024 12:32:15  |  Max Texture Size: {X=16384 ,Y=16384}
+10/29/2024 12:32:15  |  Created XAudio2 device.
+10/29/2024 12:32:15  |  Created audio manager.
+10/29/2024 12:32:15  |  Created input manager.
+10/29/2024 12:32:15  |  Created default font.
+10/29/2024 12:32:15  |  Initial app state is 'MainMenu'
+10/29/2024 12:32:15  |  Initial application settings:
+10/29/2024 12:32:15  |  	LastGameVersion: 
+10/29/2024 12:32:15  |  	IsFirstBoot: True
+10/29/2024 12:32:15  |  	InitState: MainMenu
+10/29/2024 12:32:15  |  	Language: 
+10/29/2024 12:32:15  |  	LockCursor: False
+10/29/2024 12:32:15  |  	EdgePanMode: Analog
+10/29/2024 12:32:15  |  	EdgePanSpeed: 15
+10/29/2024 12:32:15  |  	KeyboardPanSpeed: 15
+10/29/2024 12:32:15  |  	KeyboardZoomSpeed: 10
+10/29/2024 12:32:15  |  	KeyboardRotSpeed: 90°
+10/29/2024 12:32:15  |  	EnableMouseWheelZoom: True
+10/29/2024 12:32:15  |  	InvertMouseWheelZoom: False
+10/29/2024 12:32:15  |  	MouseWheelZoomSpeed: 1.12
+10/29/2024 12:32:15  |  	MouseWheelZoomAtCursor: True
+10/29/2024 12:32:15  |  	AutoTrackOnScreenShips: True
+10/29/2024 12:32:15  |  	StickyFocus: True
+10/29/2024 12:32:15  |  	DpiScaleMode: Dpi125
+10/29/2024 12:32:15  |  	AnimateBackgrounds: True
+10/29/2024 12:32:15  |  	BackgroundGridStyle: Crosses
+10/29/2024 12:32:15  |  	FancyLighting: True
+10/29/2024 12:32:15  |  	FancyParticles: True
+10/29/2024 12:32:15  |  	FancyUIEffects: True
+10/29/2024 12:32:15  |  	FancyNebulas: True
+10/29/2024 12:32:15  |  	UncompressedTextures: False
+10/29/2024 12:32:15  |  	ResolutionScale: 1.25
+10/29/2024 12:32:15  |  	PlanetResolutionScale: 1
+10/29/2024 12:32:15  |  	TargetFps: FpsTarget30
+10/29/2024 12:32:15  |  	PostShaderIndex: 0
+10/29/2024 12:32:15  |  	AllowShipDeselection: False
+10/29/2024 12:32:15  |  	CtrlSelectsParts: True
+10/29/2024 12:32:15  |  	EnableCollisionAvoidance: True
+10/29/2024 12:32:15  |  	EnableHazardAvoidance: True
+10/29/2024 12:32:15  |  	EnableArrivalMatching: True
+10/29/2024 12:32:15  |  	AutoRecallCrew: True
+10/29/2024 12:32:15  |  	PreferBlueprintMode: False
+10/29/2024 12:32:15  |  	BlueprintAutoPause: True
+10/29/2024 12:32:15  |  	ShowInvalidBlueprints: True
+10/29/2024 12:32:15  |  	ShowMissingPartsWarning: True
+10/29/2024 12:32:15  |  	ShowAutoRemovedParts: True
+10/29/2024 12:32:15  |  	ShowAutoRemovedDecals: True
+10/29/2024 12:32:15  |  	BuildAutoRotate: True
+10/29/2024 12:32:15  |  	BuildAutoInteriors: True
+10/29/2024 12:32:15  |  	PaintAutoRotate: True
+10/29/2024 12:32:15  |  	PaintAllowOverwrite: True
+10/29/2024 12:32:15  |  	BuildAllowOverwrite: True
+10/29/2024 12:32:15  |  	BuildAutoDoors: True
+10/29/2024 12:32:15  |  	RequirePartialRefundConfirmation: True
+10/29/2024 12:32:15  |  	BuildShowNearestPaths: True
+10/29/2024 12:32:15  |  	BuildAllowInsufficientCommand: False
+10/29/2024 12:32:15  |  	ShowStatBars: True
+10/29/2024 12:32:15  |  	ConstructExitsBuild: False
+10/29/2024 12:32:15  |  	CrewAutoRotate: True
+10/29/2024 12:32:15  |  	ShowCrewPaths: True
+10/29/2024 12:32:15  |  	ShowCrewHomes: True
+10/29/2024 12:32:15  |  	ShowUnselectedCrewAssignment: True
+10/29/2024 12:32:15  |  	DefaultRoles: 
+10/29/2024 12:32:15  |  	ResourcesAutoRotate: True
+10/29/2024 12:32:15  |  	ShowResourceCounts: True
+10/29/2024 12:32:15  |  	ShowResourceTransfers: True
+10/29/2024 12:32:15  |  	ShowConstructionResourceDeliveries: True
+10/29/2024 12:32:15  |  	ShowAllResourceTypes: False
+10/29/2024 12:32:15  |  	ShowUnselectedResourceAssignment: True
+10/29/2024 12:32:15  |  	RowsOfParts: 1
+10/29/2024 12:32:15  |  	GrabLeavesCorridors: True
+10/29/2024 12:32:15  |  	RepairAutoDoors: True
+10/29/2024 12:32:15  |  	DiscardBlueprintsWhenCanceling: True
+10/29/2024 12:32:15  |  	PartToolTips: True
+10/29/2024 12:32:15  |  	PartToolTipsDefaultToStats: False
+10/29/2024 12:32:15  |  	AutoSave: True
+10/29/2024 12:32:15  |  	AutoSavesToKeep: 25
+10/29/2024 12:32:15  |  	QuickSavesToKeep: 25
+10/29/2024 12:32:15  |  	AutoSaveInterval: 600
+10/29/2024 12:32:15  |  	SaveLostShips: True
+10/29/2024 12:32:15  |  	LostShipsToKeep: 25
+10/29/2024 12:32:15  |  	FtlAutoSave: True
+10/29/2024 12:32:15  |  	ResourceDisplayMode: Context
+10/29/2024 12:32:15  |  	ShowOnShipIndicators: True
+10/29/2024 12:32:15  |  	ShowZoomedOutBlips: True
+10/29/2024 12:32:15  |  	ShowOffScreenBlips: True
+10/29/2024 12:32:15  |  	ShowBreadcrumbTrails: True
+10/29/2024 12:32:15  |  	AutoPauseOnLostFocus: True
+10/29/2024 12:32:15  |  	AutoSlowWhenEnemySpotted: 1
+10/29/2024 12:32:15  |  	ScreenShake: True
+10/29/2024 12:32:15  |  	UIAnimations: True
+10/29/2024 12:32:15  |  	ShowMidpointFocusWidget: True
+10/29/2024 12:32:15  |  	DefaultScreenshotFormat: Jpeg
+10/29/2024 12:32:15  |  	PreferBorderlessWindowToggle: False
+10/29/2024 12:32:15  |  	MasterVolume: 0.5
+10/29/2024 12:32:15  |  	EffectsVolume: 1
+10/29/2024 12:32:15  |  	MusicVolume: 1
+10/29/2024 12:32:15  |  	InterfaceVolume: 1
+10/29/2024 12:32:15  |  	MuteWhenUnfocused: False
+10/29/2024 12:32:15  |  	PlayFriendlyPings: True
+10/29/2024 12:32:15  |  	PlayEnemyPings: True
+10/29/2024 12:32:15  |  	ShowTutorials: True
+10/29/2024 12:32:15  |  	AutoCollectNuggets: True
+10/29/2024 12:32:15  |  	DefaultPaintScheme: 
+10/29/2024 12:32:15  |  	PaintSchemes: System.Collections.Generic.List`1[Cosmoteer.Ships.Paint.PaintScheme]
+10/29/2024 12:32:15  |  	DefaultBuildTool: Grab
+10/29/2024 12:32:15  |  	DefaultDecalTool: Grab
+10/29/2024 12:32:15  |  	CodexPageStates: System.Collections.Generic.Dictionary`2[System.String,Cosmoteer.Codex.CodexPageState]
+10/29/2024 12:32:15  |  	DontDimDialogBackgrounds: False
+10/29/2024 12:32:15  |  	DontFlickerBlueprints: False
+10/29/2024 12:32:15  |  	PlayerColor: 
+10/29/2024 12:32:15  |  	EnemyColor: 
+10/29/2024 12:32:15  |  	AllyColor: 
+10/29/2024 12:32:15  |  	NeutralColor: 
+10/29/2024 12:32:15  |  	RotateMinimap: True
+10/29/2024 12:32:15  |  	MiniviewInCombatMode: Auto
+10/29/2024 12:32:15  |  	MiniviewNotInCombatMode: Auto
+10/29/2024 12:32:15  |  	MiniviewLockRotation: False
+10/29/2024 12:32:15  |  	MiniviewSize: 
+10/29/2024 12:32:15  |  	ShowInteriors: False
+10/29/2024 12:32:15  |  	ShowAllCommands: False
+10/29/2024 12:32:15  |  	AlwaysShowCommandWidgets: False
+10/29/2024 12:32:15  |  	ShowSelectedPartStatusBars: True
+10/29/2024 12:32:15  |  	ShowSpaceCrewLines: True
+10/29/2024 12:32:15  |  	ShowResourcePickupLines: True
+10/29/2024 12:32:15  |  	PauseOnOpenDialogueWithEnemy: True
+10/29/2024 12:32:15  |  	PauseWhenHailedByEnemy: False
+10/29/2024 12:32:15  |  	PreferWorldRelativeAttackAngle: False
+10/29/2024 12:32:15  |  	PreferWorldRelativeFollowAngle: False
+10/29/2024 12:32:15  |  	DirectControlEnableWeapons: True
+10/29/2024 12:32:15  |  	DirectControlAimAssist: True
+10/29/2024 12:32:15  |  	DirectControlAutoBrake: True
+10/29/2024 12:32:15  |  	DirectControlAutoFaceCursor: False
+10/29/2024 12:32:15  |  	DirectControlViewFollowsCursor: False
+10/29/2024 12:32:15  |  	DirectControlAutoRotateView: False
+10/29/2024 12:32:15  |  	DirectControlLockCameraToShip: False
+10/29/2024 12:32:15  |  	DirectControlAutoZoomView: False
+10/29/2024 12:32:15  |  	DirectControlShowWeaponCoverage: False
+10/29/2024 12:32:15  |  	ShipLibraryLargeIcons: False
+10/29/2024 12:32:15  |  	BreakFormationToAttack: True
+10/29/2024 12:32:15  |  	DisplayAllShips: False
+10/29/2024 12:32:15  |  	ShowAdvancedCommands: False
+10/29/2024 12:32:15  |  	EnabledMods: System.Collections.Generic.HashSet`1[Halfling.IO.AbsolutePath]
+10/29/2024 12:32:15  |  	AutoDisableMods: True
+10/29/2024 12:32:15  |  	DeleteFileOnStartup: 
+10/29/2024 12:32:15  |  	DefaultCreativeModeMapSize: 0
+10/29/2024 12:32:15  |  	DefaultCreativeModeSimGenFlags: None
+10/29/2024 12:32:15  |  	DefaultCareerModeCombatDifficulty: -1
+10/29/2024 12:32:15  |  	DefaultCareerModeEconDifficulty: -1
+10/29/2024 12:32:15  |  	DefaultCareerModeMapSize: 0
+10/29/2024 12:32:15  |  	DefaultCareerModeCrewScarcity: -1
+10/29/2024 12:32:15  |  	DefaultCareerModeDisableCrewConstruction: False
+10/29/2024 12:32:15  |  	DefaultCareerModeDisableExploration: False
+10/29/2024 12:32:15  |  	DefaultCareerModeDisableSalvaging: False
+10/29/2024 12:32:15  |  	DefaultCareerModeDisableNebulas: False
+10/29/2024 12:32:15  |  	DefaultCareerModeStarterShip: 0
+10/29/2024 12:32:15  |  	MPBlipColorMode: FriendAndFoe
+10/29/2024 12:32:15  |  	MPShowDamagePoints: True
+10/29/2024 12:32:15  |  	EnableDesyncDebugging: False
+10/29/2024 12:32:15  |  	MaxSendRate: 1000
+10/29/2024 12:32:15  |  	CustomRulesets: System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.List`1[Cosmoteer.CustomRuleset]]
+10/29/2024 12:32:15  |  	PreferLAN: False
+10/29/2024 12:32:15  |  	PreferredLobbyType: CoOp
+10/29/2024 12:32:15  |  	ShowNewsOnStartup: True
+10/29/2024 12:32:15  |  	ShowTipsOnStartup: True
+10/29/2024 12:32:15  |  	ReadNewsArticles: System.Collections.Generic.HashSet`1[System.String]
+10/29/2024 12:32:15  |  	ShowNewsAlerts: True
+10/29/2024 12:32:15  |  	HiddenNewsAlerts: System.Collections.Generic.HashSet`1[System.String]
+10/29/2024 12:32:15  |  	MainMenuBackgroundIndex: 0
+10/29/2024 12:32:15  |  	CycleMainMenuBackground: True
+10/29/2024 12:32:15  |  	DefaultAuthorName: 
+10/29/2024 12:32:15  |  	EnableGifRecorder: False
+10/29/2024 12:32:15  |  	GifRecorderSeconds: 10
+10/29/2024 12:32:15  |  	GifRecorderFramerate: 20
+10/29/2024 12:32:15  |  	GifRecorderResolution: 480
+10/29/2024 12:32:15  |  	ShowNearbyMissionsCount: 3
+10/29/2024 12:32:15  |  	DevModeSPRecording: False
+10/29/2024 12:32:15  |  	DevModeSPRecordingAutoLoad: False
+10/29/2024 12:32:15  |  	KeepLogFiles: 10
+10/29/2024 12:32:15  |  	KeepRecFiles: 10
+10/29/2024 12:32:15  |  	RestoreZoomOnToolboxExit: True
+10/29/2024 12:32:15  |  	ZoomOutOnFtl: True
+10/29/2024 12:32:15  |  	LoadBlueprintPaint: False
+10/29/2024 12:32:15  |  	LoadBlueprintRoles: False
+10/29/2024 12:32:15  |  	LoadBlueprintReplaceInsteadOfAdd: False
+10/29/2024 12:32:15  |  	LoadBlueprintCrew: False
+10/29/2024 12:32:15  |  	LoadBlueprintResources: False
+10/29/2024 12:32:15  |  	LoadBlueprintsFlightInfo: False
+10/29/2024 12:32:15  |  	LoadBlueprintTextInfo: False
+10/29/2024 12:32:16  |  Multicore helper thread count: 7
+10/29/2024 12:32:16  |  Starting main game loop...
+10/29/2024 12:32:16  |  Enabled mods:
+10/29/2024 12:32:22  |  	[Workshop ID 2911126638] - BrutaTralb.bitofextra (0.0.56)
+10/29/2024 12:32:23  |  	[Workshop ID 2884771836] - FooPhoenix.MoreStorageSize (2.0.0)
+10/29/2024 12:32:23  |  	[Workshop ID 2882082274] - Sewayn.awt (0.3.1a)
+10/29/2024 12:32:23  |  	[Workshop ID 2889610562] - Spectra.colored_resources_square (1.0.6)
+10/29/2024 12:32:23  |  	[Workshop ID 2903708331] - asklepiades.!colorable_parts_mod (1.0.2)
+10/29/2024 12:32:23  |  	[Workshop ID 3046125111] - bonible.generalmunitions2 (1.2.6)
+10/29/2024 12:32:23  |  	[Workshop ID 2891110298] - braste.power_storage (0.25.0a.1)
+10/29/2024 12:32:23  |  	[Workshop ID 2888035272] - charlatan_.thruster_burner_dorsal_large (1.1.1)
+10/29/2024 12:32:23  |  	[Built-in] - cosmoteer.huge_crews (1.0.0)
+10/29/2024 12:32:23  |  	[Built-in] - cosmoteer.huge_ships (1.0.0)
+10/29/2024 12:32:23  |  	[Workshop ID 2884747698] - danger.autocannon (1.1.2)
+10/29/2024 12:32:23  |  	[User Folder] - djkiller.more_prisms ()
+10/29/2024 12:32:23  |  	[Workshop ID 2879432704] - doctorjaska.bulkheads (1.0.2)
+10/29/2024 12:32:23  |  	[Workshop ID 2995534359] - fariel.sunflowercorp (1.8.1)
+10/29/2024 12:32:23  |  	[Workshop ID 2891902536] - gd119.Dreadnought_Shield (1.4)
+10/29/2024 12:32:23  |  	[Workshop ID 2886230923] - grasmann.hyperdrive_medium (1.1.0)
+10/29/2024 12:32:23  |  	[Workshop ID 2880017812] - janiTNT.TechMod (Modern 1.21.1)
+10/29/2024 12:32:23  |  	[Workshop ID 2883970407] - jfjohnny5.laser_point_defense (1.0.2)
+10/29/2024 12:32:23  |  	[Workshop ID 2879483102] - kwhwwymwn.4D (3.0.1)
+10/29/2024 12:32:23  |  	[Workshop ID 2893380270] - piratesee.paintedprisms (1.0.2)
+10/29/2024 12:32:23  |  	[Workshop ID 2899284847] - rustydios.NewShieldEnergyColors (3.0.25)
+10/29/2024 12:32:23  |  	[User Folder] - sparky.doodads ()
+10/29/2024 12:32:23  |  	[User Folder] - st-afa.001_coremod (0.2.2)
+10/29/2024 12:32:23  |  	[User Folder] - st-afa.004_starfleet_music (0.1)
+10/29/2024 12:32:23  |  	[User Folder] - st-afa.100_federation (0.1.6)
+10/29/2024 12:32:23  |  	[User Folder] - st-afa.199_federation (0.2.3)
+10/29/2024 12:32:23  |  	[Workshop ID 2899538859] - swefpifh.BestThrusters (v0.31b)
+10/29/2024 12:32:23  |  	[Workshop ID 2902503029] - swefpifh.LaserBeamTurrets (v2.27a)
+10/29/2024 12:32:23  |  	[Workshop ID 2890601784] - swefpifh.LaserBoltTurrets (v2.11a)
+10/29/2024 12:32:23  |  	[Workshop ID 2882914000] - swefpifh.NewStructureParts (v0.92c)
+10/29/2024 12:32:24  |  	[Workshop ID 2907845781] - swefpifh.SpecialShield (0.62b)
+10/29/2024 12:32:24  |  	[Workshop ID 2967175199] - syy1125.ion_energy_converter (1.0.5)
+10/29/2024 12:32:24  |  	[Workshop ID 2886141879] - syy1125.modular_missile (1.7.2)
+10/29/2024 12:32:24  |  	[Workshop ID 2920508482] - syy1125.rotary_cannon (1.1.7)
+10/29/2024 12:32:24  |  	[Workshop ID 2879478059] - ultranova.galactic_allegiance (BLUE v0.1.14)
+10/29/2024 12:32:24  |  	[Workshop ID 2897727906] - zig158.viable_deck_cannons (1.01)
+10/29/2024 12:32:24  |  	[Workshop ID 3202252013] - zzHailstorm46.DorsalThrusterPatch (1.0.0)
+10/29/2024 12:32:24  |  	[Workshop ID 2898309135] - 电_Natascha.main_gun_b_mod01 (4.0final)
+10/29/2024 12:32:24  |  Loaded language 'en'.
+10/29/2024 12:32:39  |  Memory usage at time of crash: 3,952,648,192
+10/29/2024 12:32:39  |  Application state stack at time of crash:
+10/29/2024 12:32:39  |  	Cosmoteer.Data.Assets
+10/29/2024 12:32:39  |  FPS at time of crash: 30.1555
+10/29/2024 12:32:39  |  Running processes at time of crash: AggregatorHost, armsvc, audiodg, backgroundTaskHost, Code, conhost, Cosmoteer, crashpad_handler, csrss, ctfmon, dasHost, DCv2, Discord, dllhost, dwm, esif_uf, explorer, fontdrvhost, GameBar, GameBarFTServer, GameOverlayUI, gamingservices, gamingservicesnet, GitHubDesktop, Idle, igfxCUIService, igfxEM, IntelCpHDCPSvc, IntelCpHeciSvc, jhi_service, lghub_agent, lghub_software_manager, lghub_system_tray, lghub_updater, LightKeeperService, LMS, logi_lamparray_service, LogiRegistryService, lsass, Memory Compression, MoUsoCoreWorker, MpDefenderCoreService, msedgewebview2, MSI_Central_Service, MSI_Companion_Service, MSI.CentralServer, MSIAPService, MSIService, MsMpEng, Mystic_Light_Service, nahimicNotifSys, NahimicService, NahimicSvc32, NahimicSvc64, NisSrv, NordUpdateService, nordvpn-service, nvcontainer, NVDisplay.Container, NVIDIA Share, NVIDIA Web Helper, nvsphelper64, OfficeClickToRun, OmApSvcBroker, OneApp.IGCC.WinService, OVRRedir, OVRServer_x64, OVRServiceLauncher, PhoneExperienceHost, PresentationFontCache, Registry, RtkAudUService64, RuntimeBroker, SDXHelper, SearchHost, SearchIndexer, SearchProtocolHost, SecurityHealthService, SecurityHealthSystray, services, ShellExperienceHost, sihost, smartscreen, smss, spoolsv, StartMenuExperienceHost, steam, SteamService, steamwebhelper, SteelSeriesCaptureSvc, SteelSeriesEngine, SteelSeriesGG, SteelSeriesPrism, SteelSeriesSvcLauncher, svchost, System, SystemSettingsBroker, taskhostw, TeamViewer_Service, TextInputHost, unsecapp, UserOOBEBroker, VoiceControl_Service, VoiceControlEngine, Widgets, WidgetService, wininit, winlogon, wlanext, WmiPrvSE, WUDFHost, 
+10/29/2024 12:32:39  |  Halfling.Serialization.DeserializeException: Deserialization from source "<C:\Program Files (x86)\Steam\steamapps\common\Cosmoteer\Data\cosmoteer.rules>" failed.
+10/29/2024 12:32:39  |   ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+10/29/2024 12:32:39  |   ---> Halfling.Serialization.DeserializeException: Deserialization from source "<C:\Program Files (x86)\Steam\steamapps\common\Cosmoteer\Data\cosmoteer.rules>/Ships" failed.
+10/29/2024 12:32:39  |   ---> System.AggregateException: One or more errors occurred. (Deserialization from source "<C:\Program Files (x86)\Steam\steamapps\common\Cosmoteer\Data\ships\terran\terran.rules>/Terran" failed.)
+10/29/2024 12:32:39  |   ---> Halfling.Serialization.DeserializeException: Deserialization from source "<C:\Program Files (x86)\Steam\steamapps\common\Cosmoteer\Data\ships\terran\terran.rules>/Terran" failed.
+10/29/2024 12:32:39  |   ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+10/29/2024 12:32:39  |   ---> Halfling.Serialization.DeserializeException: Deserialization from source "<C:\Program Files (x86)\Steam\steamapps\common\Cosmoteer\Data\ships\terran\terran.rules>/Terran/Parts" failed.
+10/29/2024 12:32:39  |   ---> System.AggregateException: One or more errors occurred. (Deserialization from source "<[user's home folder]\Saved Games\Cosmoteer\76561199055888138\Mods\Fed-Species\parts\energy\fed_warpcore_small\fed_warpcore_small.rules>/Part" failed.)
+10/29/2024 12:32:39  |   ---> Halfling.Serialization.DeserializeException: Deserialization from source "<[user's home folder]\Saved Games\Cosmoteer\76561199055888138\Mods\Fed-Species\parts\energy\fed_warpcore_small\fed_warpcore_small.rules>/Part" failed.
+10/29/2024 12:32:39  |   ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+10/29/2024 12:32:39  |   ---> Halfling.Serialization.DeserializeException: Deserialization from source "<[user's home folder]\Saved Games\Cosmoteer\76561199055888138\Mods\Fed-Species\parts\energy\fed_warpcore_small\fed_warpcore_small.rules>/Part/Components/BatteryStorage" failed.
+10/29/2024 12:32:39  |   ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+10/29/2024 12:32:39  |   ---> Halfling.Serialization.DeserializeException: Cannot read int from non-Field node at path "<[user's home folder]\Saved Games\Cosmoteer\76561199055888138\Mods\Fed-Species\parts\energy\fed_warpcore_small\fed_warpcore_small.rules>/Part/Components/BatteryStorage/MaxResources".
+10/29/2024 12:32:39  |     at Halfling.Serialization.DefaultSerializers.Int32Serializer.Read(ObjectTextSerializer s, IOTNode node, Type type, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\DefaultSerializers\Int32Serializer.cs:line 66
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.SpecificDeserializerDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2167
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.ReflectiveRead(TSource source, Object target, DeserializationReflectionInfo dri, Boolean forceNoOption, ProgressTracker pt, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 840
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.ReflectiveRead(TSource source, Object target, Boolean forceNoOption, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 227
+10/29/2024 12:32:39  |     at Cosmoteer.Ships.Parts.Resources.ResourceStorageRules..ctor(GenericSerialReader reader) in C:\Users\walt\Documents\Code\Cosmoteer\Source\Ships\Parts\Resources\ResourceStorageRules.cs:line 28
+10/29/2024 12:32:39  |     at InvokeStub_ResourceStorageRules..ctor(Object, Object, IntPtr*)
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.GenericConstructorDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2466
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 178
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.DerivedTypeDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2255
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Cosmoteer.Ships.Parts.PartRules..ctor(ObjectTextSerializer s, IOTNode node, ProgressTracker pt) in C:\Users\walt\Documents\Code\Cosmoteer\Source\Ships\Parts\PartRules.cs:line 539
+10/29/2024 12:32:39  |     at InvokeStub_PartRules..ctor(Object, Object, IntPtr*)
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.SpecificConstructorDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2377
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Halfling.Serialization.DefaultSerializers.ArraySerializer.<>c__DisplayClass16_0.<FillArrayRanks>b__0() in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\DefaultSerializers\ArraySerializer.cs:line 456
+10/29/2024 12:32:39  |     at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+10/29/2024 12:32:39  |  --- End of stack trace from previous location ---
+10/29/2024 12:32:39  |     at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+10/29/2024 12:32:39  |     at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at System.Threading.Tasks.Task.WaitAllCore(Task[] tasks, Int32 millisecondsTimeout, CancellationToken cancellationToken)
+10/29/2024 12:32:39  |     at Halfling.Serialization.DefaultSerializers.ArraySerializer.Read(ObjectTextSerializer s, IOTNode node, Type type, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\DefaultSerializers\ArraySerializer.cs:line 135
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.SpecificDeserializerDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2167
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.ReflectiveRead(TSource source, Object target, DeserializationReflectionInfo dri, Boolean forceNoOption, ProgressTracker pt, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 840
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.ReflectiveRead(TSource source, Object target, Boolean forceNoOption, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 227
+10/29/2024 12:32:39  |     at Halfling.Serialization.Generic.GenericSerialReader.ReflectiveRead(Object target, Boolean forceNoOption, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Generic\GenericSerialReader.cs:line 148
+10/29/2024 12:32:39  |     at Cosmoteer.Ships.ShipRules..ctor(GenericSerialReader reader, ProgressTracker pt) in C:\Users\walt\Documents\Code\Cosmoteer\Source\Ships\ShipRules.cs:line 191
+10/29/2024 12:32:39  |     at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.GenericConstructorDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2466
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 178
+10/29/2024 12:32:39  |     at Halfling.Serialization.DefaultSerializers.ArraySerializer.<>c__DisplayClass16_0.<FillArrayRanks>b__0() in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\DefaultSerializers\ArraySerializer.cs:line 450
+10/29/2024 12:32:39  |     at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+10/29/2024 12:32:39  |  --- End of stack trace from previous location ---
+10/29/2024 12:32:39  |     at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+10/29/2024 12:32:39  |     at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+10/29/2024 12:32:39  |     at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+10/29/2024 12:32:39  |     at Halfling.Serialization.DefaultSerializers.ArraySerializer.Read(ObjectTextSerializer s, IOTNode node, Type type, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\DefaultSerializers\ArraySerializer.cs:line 135
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.SpecificDeserializerDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2167
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.ReflectiveRead(TSource source, Object target, DeserializationReflectionInfo dri, Boolean forceNoOption, ProgressTracker pt, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 840
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.ReflectiveRead(TSource source, Object target, Boolean forceNoOption, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 227
+10/29/2024 12:32:39  |     at Halfling.Serialization.Generic.GenericSerialReader.ReflectiveRead(Object target, Boolean forceNoOption, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Generic\GenericSerialReader.cs:line 148
+10/29/2024 12:32:39  |     at Cosmoteer.Data.Rules..ctor(GenericSerialReader reader, ProgressTracker pt) in C:\Users\walt\Documents\Code\Cosmoteer\Source\Data\Rules.cs:line 132
+10/29/2024 12:32:39  |     at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at System.Reflection.ConstructorInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+10/29/2024 12:32:39  |     at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.GenericConstructorDeserializationMethod.TryDeserialize(TSerializer s, TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member, Object& obj) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 2466
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     --- End of inner exception stack trace ---
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker pt, MemberInfo member, Single weight, String sliceName, TIBaseDeserializer overrideSpecificDeserializer, IGenericDeserializer overrideGenericDeserializer, TIBaseContentDeserializer overrideSpecificContentDeserializer, IGenericContentDeserializer overrideGenericContentDeserializer) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 629
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read(TSource source, Type type, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 178
+10/29/2024 12:32:39  |     at Halfling.Serialization.Base.BaseSerializer`10.Read[T](TSource source, ReadFlags flags, ProgressTracker progressTracker, MemberInfo member) in C:\Users\walt\Documents\Code\Cosmoteer\Halfling\HalflingCore\Source\Serialization\Base\BaseSerializer.cs:line 190
+10/29/2024 12:32:39  |     at Cosmoteer.Data.Assets.LoaderThread() in C:\Users\walt\Documents\Code\Cosmoteer\Source\Data\Assets.cs:line 419
+10/29/2024 12:32:39  |  Director received exit call.
+10/29/2024 12:32:39  |  Disposed default font.
+10/29/2024 12:32:39  |  Disposed XA2AudioManager device.
+10/29/2024 12:32:39  |  Disposed audio manager.
+10/29/2024 12:32:39  |  Disposed clock.
+10/29/2024 12:32:39  |  Disposed input manager.
+10/29/2024 12:32:39  |  Disposed graphics manager.
+10/29/2024 12:32:39  |  Disposed swap chain.
+10/29/2024 12:32:39  |  Disposed Direct3D device.
+10/29/2024 12:32:39  |  Disposed DXGI factory.
+10/29/2024 12:32:39  |  Closed Windows form.
+10/29/2024 12:32:39  |  Director received exit call.
+10/29/2024 12:32:39  |  Disposed window.
+10/29/2024 12:32:39  |  Disposed platform interface.
+10/29/2024 12:32:39  |  Closing log output file...

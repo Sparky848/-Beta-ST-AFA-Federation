@@ -1,0 +1,14 @@
+Part : <fed_dual_phaser_cannon.rules>/Part
+{
+	ID = "stafa.dual_phaser_cannon_station"
+	OtherIDs = []
+	Resources
+	[
+		[steel, 124]
+		[coil, 36]
+		[coil2, 12]
+		[tristeel, 24]
+	]
+	IsRotateable = true
+	IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
+}

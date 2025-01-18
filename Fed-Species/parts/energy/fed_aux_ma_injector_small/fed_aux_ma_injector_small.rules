@@ -1,0 +1,550 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Aux_MA_Injector_Small"
+	IconNameKey = "Parts/Aux_MA_Injector_SmallIcon"
+	ID = "stafa.aux_ma_injector_small"
+	OtherIDs = [aux_ma_injector_small]
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Aux_MA_Injector_SmallDesc"
+	Resources
+	[
+		[steel, 56]
+		[coil, 24]
+		[coil2, 16]
+		[processor, 2]
+		[antimatter, 5]
+	]
+	Size = [1, 4]
+	MaxHealth = 3500
+	TypeCategories = [storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	//IgnoreRotationForMirroredSelection = true
+	AllowedDoorLocations
+	[
+		[1, 1]
+		[0, -1]
+		[1, 2]
+		[0, 4]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [20, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 1000
+			MinFromQuantityForConversion = 1000
+			Interval = 1 
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = WarpcoreBuffSmall
+			BuffAmount = 100%
+			GridDistance = 1
+			BuffArea = [1, 0, 0, 4]
+			PartCriteria
+			{
+				IDs = [stafa.fed_warpcore_small]
+			}
+			OperationalToggle = CanBuff
+		}
+		BuffProvider2
+		{
+			Type = GridBuffProvider
+			BuffType = WarpcoreSubstationBuffSmall
+			BuffAmount = 100%
+			GridDistance = 1
+			BuffArea = [1, 0, 0, 4]
+			PartCriteria
+			{
+				IDs = [stafa.fed_warpcore_small]
+			}
+			OperationalToggle = CanBuff
+		}
+		CanBuff
+		{
+			Type = MultiToggle
+			Toggles = [IsConnected, IsOperational]
+			Mode = All
+		}
+		IsConnected
+		{
+			Type = MultiToggle
+			Toggles = [Connectedtosmallcoreleft, Connectedtosmallcoreright, Connectedtosmallcoretop, Connectedtosmallcorebottom]
+			Mode = Any
+		}
+
+		Connectedtosmallcoreleft
+		{
+			Type = ToggleProxy
+			PartLocation = [1, 0]
+			ProxyableComponents
+			[
+				{
+					
+					ComponentID = IsConnected
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_small]
+						Rot = 3
+						Left = 1
+					}
+				}
+			]
+		}
+		Connectedtosmallcoretop
+		{
+			Type = ToggleProxy
+			PartLocation = [1, 3]
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_small]
+						//Rot = 1
+						Right = 3
+						Top = 1
+					}
+					ComponentID = IsConnected
+					//PartLocation = [1, 3]
+				}
+			]
+		}
+		Connectedtosmallcoreright
+		{
+			Type = ToggleProxy
+			//	PartLocation = [4, 3]
+			//	ProxyableComponents
+			//	[
+			//		{
+			//			PartCriteria
+			//			{
+			//				IDs = [stafa.fed_warpcore_small]
+			//				//Rot = 1
+			//				Right = 4
+			//				Bottom = 3
+			//			}
+			//			ComponentID = IsConnected
+			//			//PartLocation = [4, 3]
+			//		}
+			//	]
+			//}
+			//Celeste Code!
+			PartLocation = [4, 1]
+			ProxyableComponents
+			[
+				{
+					ComponentID = IsConnected
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_small]
+						// Relative to part's top-left corner. The unrotated top of the other part should be at a y-offset of 1
+						Top = 1
+						// The other part's bottom should be at a y-offset of 2
+						Bottom = 2
+						// The other part's rotation relative to our rotation should be 2, so it's facing us
+						Rot = 2
+						FlipX = false
+					}
+				}
+				// To allow flipping, you need a second similar criteria IIRC
+				{
+					ComponentID = IsConnected
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_small]
+						Top = 1
+						Bottom = 2
+						Rot = 0
+						FlipX = true
+					}
+				}
+			]
+		}
+		Connectedtosmallcorebottom
+		{
+			Type = ToggleProxy
+			//PartLocation = [0, 4]
+			//ProxyableComponents
+			//[
+			//	{
+			//		PartCriteria
+			//		{
+			//			IDs = [stafa.fed_warpcore_small]
+			//			//Rot = 1
+			//			Bottom = 4
+			//		}
+			//		ComponentID = IsConnected
+			//		//PartLocation = [4, 0]
+			//	}
+			//]
+			// Proxy downwards
+			PartLocation = [1, 4]
+			ProxyableComponents
+			[
+				{
+					ComponentID = IsConnected
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_small]
+						// Relative to part's top-left corner. The unrotated left of the other part should be at an x-offset of 1
+						Left = 1
+						// The other part's right should be at an x-offset of 2
+						Right = 2
+						// The other part's rotation relative to our rotation should be 3, so it's facing us
+						Rot = 3
+						FlipX = false
+					}
+				}
+				// Allows flipping
+				{
+					ComponentID = IsConnected
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_small]
+						Left = 1
+						Right = 2
+						Rot = 1
+						FlipX = true
+					}
+				}
+			]
+		}
+		//IsConnectedProxy
+		//{
+		//	Type = ToggleProxy
+		//	ComponentID = IsConnected
+		//	PartLocation = [1, 0]
+		//}
+		//IsConnectedProxy2
+		//{
+		//	Type = ToggleProxy
+		//	ComponentID = IsConnected
+		//	PartLocation = [1, 3]
+		//}
+		
+			//IsConnectedProxy
+			//{
+			//	Type = ToggleProxy
+			///	PartLocations = [[1, 0], [1, 3], [4, 3], [4, 0]]
+			//	ComponentID = IsConnected
+			//	PartCriteria
+			//	{
+			//		IDs = [stafa.fed_warpcore_small]
+			//		Right = 3
+			//		Top = 1
+			//	}
+			//}
+			//IsConnectedProxy
+			//{
+//				Type = ToggleProxy
+//				PartLocations = [[1, 0], [1, 3], [4, 3], [4, 0]]
+//				ComponentID = IsConnected
+//				PartCriteria
+//				{
+//					IDs = [stafa.fed_warpcore_small]
+//					Right = 4
+//					Bottom = 3
+//				}
+//			}
+//			IsConnectedProxy
+//			{
+//				Type = ToggleProxy
+//				PartLocations = [[1, 0], [1, 3], [4, 3], [4, 0]]
+//				ComponentID = IsConnected
+//				PartCriteria
+//				{
+//					IDs = [stafa.fed_warpcore_small]
+//					Bottom = 4
+//				}
+//			}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 6000
+			StartingResources = 0
+			SuppliesResourcesToggle = PowerToggle
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Storage_Supply
+			ResupplyThreshold = 500
+			Interval = 1
+			OperationalToggle = PowerToggle
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 2]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "turrets"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 4]
+					}
+				]
+			}
+			//NonOperationalDoodad
+			//{
+			//	Layer = "structure"
+			//	DamageLevels
+			//	[
+			//		{
+			//			File = "tubes.png"
+			//			Size = [1, 4]
+			//		}
+			//		{
+			//			File = "tubes_33.png"
+			//			Size = [1, 4]
+			//		}
+			//		{
+			//			File = "tubes_66.png"
+			//			Size = [1, 4]
+			//		}
+			//	]
+			//}
+			//OperationalDoodad
+			//{
+			//	Layer = "floors"
+			//	DamageLevels
+			//	[
+			//		{
+			//			AnimationFiles
+			//			[
+			//				"doodads_on1.png"
+			//				"doodads_on2.png"
+			//				"doodads_on3.png"
+			//				"doodads_on4.png"
+			//				"doodads_on5.png"
+			//				"doodads_on6.png"
+			//				"doodads_on7.png"
+			//				"doodads_on8.png"
+			//				"doodads_on9.png"
+			//				"doodads_on10.png"
+			//				"doodads_on11.png"
+			//				"doodads_on12.png"
+			//				"doodads_on13.png"
+			//				"doodads_on14.png"
+			//				"doodads_on15.png"
+			//				"doodads_on1.png"
+			//			]
+			//			Size = [1, 4]
+			//			AnimationInterval = 1/20
+			//		}
+			//	]
+			//}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 4]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 4]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 2.0]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 4]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 4]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 4]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 4]
+				}
+				{
+					File = "batteries5.png"
+					Size = [1, 4]
+				}
+				{
+					File = "batteries6.png"
+					Size = [1, 4]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [0.5, 2.0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 1000
+					Radius = 2
+					Delay = .05
+					ExpandDuration = .35
+					ExpandStartRadius = 2
+					ExpandLoss = 50%
+					FireChancePerNDamage = 80%
+					ImpulsePerNDamage = 40
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 2.0]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				//Not Connected
+				{
+					Toggle = IsConnected
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+				
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 4]
+		}
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	}
+}

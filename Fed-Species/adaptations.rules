@@ -1,0 +1,123 @@
+//Stolen Borg technology allows for basic adaptation abilities to specific parts
+// All code credit to Jani.TNT, check out Jani's Workshop on the steam workshop!
+Adaptations
+[
+    	{//Sunflower Corp
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0"
+		Name = "Filter"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = {}
+	}
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0/Filter"
+		Name = "ExcludePartCategories"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{
+		Action = AddMany
+		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ManyToAdd = [adapted]
+	}
+	//Heindall Lasers Small
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	//Heindall Lasers Med
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	//Heindall Lasers L
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	//Heindall Lasers XL
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+]

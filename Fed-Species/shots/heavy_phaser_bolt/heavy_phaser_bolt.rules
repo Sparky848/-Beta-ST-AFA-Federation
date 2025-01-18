@@ -1,0 +1,202 @@
+ID = "stafa.fed_heavy_phaser_bolt"
+OtherIDs = ["heavy_phaser_bolt"]
+Range = { BaseValue=360; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+IdealRange
+[
+	{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=160; }
+	{ BaseValue=340; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=420; }
+]
+IdealRadius = [5, 50]
+Speed = { BaseValue=150; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=200; }
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 1
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 8
+		HasTarget = true
+	}
+
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+		// Distance auto-computed from range.
+		HasTarget = false
+	}
+
+	//Death
+	//{
+	//	Type = DeathByLifetime
+	//	// Lifetime will be auto-calculated based on range and speed.
+	//}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 1100
+		TargetCategory = "bullet"
+	}
+
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue=50000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = { BaseValue=5; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=7; }
+		PenetrationSpeed = &~/Speed
+		FactorEffectsWith = Targetable
+		SourceShipLowCollisions = false
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield
+		{
+			HitEffects
+			[
+				: ../../HitOperational/HitEffects/0
+				{
+					Amount = 7000
+					TreatShieldAsPart = true
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 50000
+					DamagePool = DamagePool
+					Radius = 5
+				}
+				{
+					Type = Impulse;
+					Impulse = 50;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/phaser_bolt_small_hit.rules>
+				&<particles/phaser_bolt_small_flash.rules>
+				&<particles/phaser_bolt_small_sparks.rules>
+				&<particles/phaser_bolt_small_spikes.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "heavy_phaser_bolt.wav"
+					Volume = .3
+					SpeedVariation = 0
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .1
+					Duration = .6
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=25000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=3000; }
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/phaser_bolt_small_hit_struct.rules>
+				&<particles/phaser_bolt_small_flash.rules>
+				&<particles/phaser_bolt_small_sparks_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "heavy_phaser_bolt.wav"
+					Volume = .3
+					SpeedVariation = 0
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.2
+		Sprite
+		{
+			Texture
+			{
+				File = "heavy_phaser_bolt.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [6, 6]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4, 4]
+			VertexColor = [255, 147, 15]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

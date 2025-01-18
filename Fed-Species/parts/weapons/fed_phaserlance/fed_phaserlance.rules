@@ -1,0 +1,482 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Phaser_Lance_Giga"
+	IconNameKey = "Parts/Phaser_Lance_Giga_Icon"
+	ID = "stafa.phaserlance_floor"
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Phaser_Lance_Giga_Desc"
+	Resources
+	[
+		[steel, 240]
+		[coil2, 62]
+		[tristeel, 52]
+		[diamond, 14]
+	]
+	Size = [4, 14]
+	MaxHealth = 30000
+	TypeCategories = [weapon, Weapon, uses_power, phaserbank, phaserbank_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff]
+	IsRotateable = true
+	IsFlippable = true
+	CrewSpeedFactor = 0.5
+	CrewCongestedSpeedFactor = .5	
+	SelectionPriority = 1
+	InitialPenetrationResistance = 3
+	PenetrationRectType = Normal
+	//IsBuildable = false
+	ProhibitedBy : ^/0/ProhibitedBy [phaserbank]
+	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [phaserbank]
+	// ProhibitRects
+    // [
+	// 	[phaserbank, [0, -1, 1, 1]]
+	// 	[phaserbank, [-1, -1, 1, 3]]
+	// 	[phaserbank, [-1, 4, 1, 3]]
+	// 	[phaserbank, [-2, 2, 1, 2]]
+    //     [phaserbank, [1, -1, 1, 3]]
+	// 	[phaserbank, [1, 4, 1, 3]]
+	// 	[phaserbank, [0, 6, 1, 1]]
+	// 	[phaserbank, [2, 2, 1, 2]]
+    // ]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [10.66, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 20
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		// PhaserMode
+		// {
+		// 	Type = UIToggle
+		// 	ToggleID = "phaser_bank_arc"
+		// 	Default = 0
+		// 	AlwaysAllowInBuildMode = true
+		// }
+
+		// FireAlternatingToggle
+		// {
+		// 	Type = UIToggle
+		// 	ToggleID = "fire_alternating"
+		// 	Default = 0
+		// }
+
+		// PhaserToggle180
+		// {
+		// 	Type = ModeToggle
+		// 	Mode = PhaserMode
+		// 	OnMode = 0
+		// }
+
+		// PhaserToggle90
+		// {
+		// 	Type = ModeToggle
+		// 	Mode = PhaserMode
+		// 	OnMode = 1
+		// }
+
+		// PhaserToggle45
+		// {
+		// 	Type = ModeToggle
+		// 	Mode = PhaserMode
+		// 	OnMode = 2
+		// }
+
+		// deg180
+		// {
+		// 	Type = ToggledComponents
+		// 	Toggle = PhaserToggle180
+		// 	IncludeInBlueprints = true
+		// 	Components = &<fed_phaserbank_180.rules>/Components
+		// }
+
+		// deg90
+		// {
+		// 	Type = ToggledComponents
+		// 	Toggle = PhaserToggle90
+		// 	IncludeInBlueprints = true
+		// 	Components = &<fed_phaserbank_90.rules>/Components
+		// }
+
+		// deg45
+		// {
+		// 	Type = ToggledComponents
+		// 	Toggle = PhaserToggle45
+		// 	IncludeInBlueprints = true
+		// 	Components = &<fed_phaserbank_45.rules>/Components
+		// }
+
+		ReverseOperationLeft
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserReverseOperation
+			BuffArea = [-1, -1, 6, 16]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Category = phaserbank_controller
+			}
+		}
+		ReverseOperationRight
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserReverseOperation
+			BuffArea = [-1, -1, 6, 16]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Category = phaserbank_controller
+			}
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 1000000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 0
+			OperationalToggle = PowerToggle
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 7]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 14]
+					}
+					{
+						File = "floor_33.png"
+						Size = [4, 14]
+					}
+					{
+						File = "floor_66.png"
+						Size = [4, 14]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 14]
+					}
+					{
+						File = "walls_33.png"
+						Size = [4, 14]
+					}
+					{
+						File = "walls_66.png"
+						Size = [4, 14]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Location = [1, 1]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [4, 14]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [4, 14]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [4, 14]
+					}
+				]
+			}
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, 3]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 14]
+		}
+
+		Weapon
+		{
+			Type = FixedWeapon
+			Location = [2, 3]
+			Rotation =-90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			//FireInterval = 2/30
+			FireInterval = 30
+			AIFirepowerRating = 1500
+			FirePermissionToggle = FireModeToggle
+			// AutoTargetCrewSafetyDist = 8
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			Emitter = BeamEmitter
+			// AlwaysShowCoverage = true
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
+			}
+		}
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Weapon
+			Invert = false
+		}
+
+		BeamEmitter : &<../../../shots/phaser_lance/phaser_lance.rules>
+		{
+			Type = BeamEmitter
+			// Location = [0.45, 0]
+			ChainedTo = Weapon
+			FireTrigger = Weapon
+			GetTargetFrom = Weapon
+			OperationalToggle = IsOperational
+			FireDelay = 0.5
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 500000
+			MinResourcesUsed = 500000
+		}
+
+		ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Weapon
+			Trigger = Weapon
+			Location = [0.5, 3]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "charge.wav"
+					Volume = .25
+					Speed = 1.5
+				}
+			]
+		}
+
+		WeaponSprite
+		{
+			Type = Sprite
+			//ChainedTo = Weapon
+			OperationalToggle = IsOperational
+			Location = [2, 7	]
+			Rotation = 0d
+			Layer = "roof_doodads"
+			ResetAnimationTrigger = Weapon
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"animation/weapon01.png"
+					"animation/weapon02.png"
+					"animation/weapon03.png"
+					"animation/weapon04.png"
+					"animation/weapon05.png"
+					"animation/weapon06.png"
+					"animation/weapon07.png"
+					"animation/weapon08.png"
+					"animation/weapon09.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon11.png"
+					"animation/weapon11.png"
+					"animation/weaponX.png"
+				]
+				Size = [4, 14]
+				AnimationInterval = 0.035
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+
+		
+	}
+
+Indicators
+{
+	Type = IndicatorSprites
+	Location = [.5, 3]
+	Layer = "indicators"
+	Indicators
+	[
+		// Turned off.
+		{
+			Toggle = PowerToggle
+			AtlasSprite
+			{
+				File = &/INDICATORS/PowerOff
+				Size = [.5, .5]
+			}
+		}
+
+		// Out of power.
+		{
+			Toggle = BatteryStorage
+			Delay = &~/Part/Components/Weapon/FireInterval
+			//Delay = 0.49
+			AtlasSprite
+			{
+				File = &/INDICATORS/NoPower
+				Size = [.5, .5]
+			}
+		}
+		
+	]
+}
+
+Stats
+{
+	PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	MinPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) / 2
+	RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
+	RecCrew = (&RecPower) * 4
+}
+
+
+StatsByCategory
+[
+	{
+		NameKey = "StatCategories/GigaPhaserLance"
+		Stats
+		{
+			// ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
+			// ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
+			// ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
+			DamagePerShot = &<../../../shots/phaser_lance/phaser_lance.rules>/HitOperational/HitEffects/0/TotalDamage
+			HitInterval = &~/Part/Components/BeamEmitter/HitInterval
+			// BurstDuration = &~/Part/Components/BeamEmitter/Duration
+			// BurstDamage = (&DamagePerShot) * ((&BurstDuration) / (&HitInterval))
+			ROF = 1 / (&~/Part/Components/Weapon/FireInterval)
+			DamagePerSecond = (&DamagePerShot) * (&ROF)
+			Damage = [&../DamagePerShot, &../DamagePerSecond]
+			RangeLimited = [&~/Part/Components/BeamEmitter/Range/BaseValue, &~/Part/Components/BeamEmitter/Range/MaxValue]
+			Arc = 0
+			ShotSpeed = Infinity
+			PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
+			PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Weapon/FireInterval)
+		}
+	}
+]
+}
+
+
+
+

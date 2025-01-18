@@ -1,0 +1,4 @@
+// This is a "fake" type of resource used to track the energy stored inside the phaser network.
+ID = phaser_energy
+NameKey = "Resource/PhaserEnergy"
+ReturnToStorage = false

@@ -1,0 +1,103 @@
+Part : <./Data/ships/terran/airlock/airlock.rules>/Part
+{
+	ID = "stafa.ai_airlock"
+	EditorGroup = "Starfleet"
+	Resources
+	[
+		[antimatter, 1]
+	]
+	IsBuildable = &<../ai_control.rules>/IsBuildable
+	
+	Components : ^/0/Components
+	{
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		AntimatterStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = antimatter
+			GridRect = [0, 0, 1, 1]
+			Layer = "doodads_low"
+			SpriteInset = [2/64, 6/64, 8/64, 9/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			RandomSpriteRotation = true
+			InitToMaxResources = 0
+		}
+
+		AntimatterCreator
+		{
+			Type = ResourceConverter
+			OperationalToggle = PowerToggle
+			From
+			[
+			    {
+			        Storage = BatteryStorage
+			        Quantity = 40
+			        MinQuantityForConversion = 41
+			    }
+			]
+			ToStorage = AntimatterStorage
+			ToQuantity = 1
+			Interval = 20
+		}
+		
+		DetonateEffects
+		{
+			Type = TriggeredEffects
+			Trigger = AntimatterCreator
+			DelayAfterTrigger = 19
+			Delay = 19
+			
+			HitOperational
+			{
+				MediaEffects
+				[
+					&<./Data/common_effects/particles/explosions/med_part_explode.rules>
+					&<./Data/common_effects/particles/explosions/big_part_explode_flash.rules>
+					&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+				]
+				
+				HitEffects
+				[
+					{
+						Type = Damage
+						Damage = 999999
+						//Delay = 19
+						Filter
+						{
+							OperationalHealth = true
+							Friendlies = false
+							IgnoreInvulnerability = true
+						}
+					}
+				]
+			}
+			HitStructural = &HitOperational
+			
+			HitFriendly
+			{
+				MediaEffects
+				[
+					&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+				]
+			}
+		}
+	}
+}

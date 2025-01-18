@@ -1,0 +1,514 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Aux_MA_Injector_Large"
+	IconNameKey = "Parts/Aux_MA_Injector_LargeIcon"
+	ID = "stafa.aux_ma_injector_large"
+	OtherIDs = [aux_ma_injector_large]
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Aux_MA_Injector_LargeDesc"
+	Resources
+	[
+		[steel, 112]
+		[coil, 48]
+		[coil2, 32]
+		[processor, 4]
+		[antimatter, 10]
+	]
+	Size = [1, 8]
+	MaxHealth = 6750
+	TypeCategories = [storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs [LargeInjector]
+	//IgnoreRotationForMirroredSelection = true
+	AllowedDoorLocations
+	[
+		[1, 0]
+		[-1, 0]
+		[0, -1]
+		[0, 8]
+		[1, 7]
+		[-1, 7] 
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [20, 72]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+		HealthToggle
+		{
+			Type = HealthToggle
+			MinHealthFraction = 0%
+			MaxHealthFraction = 33%
+		}
+		FireTimer
+		{
+			Type = Timer
+			OperationalToggle = HealthToggle
+			Repeats = true
+			Duration = 1
+			AutoStart = true
+		}
+		RandomFireChance
+		{
+			Type = TriggeredEffects
+			Trigger = FireTimer
+			HitEffects
+			[
+		    	{
+					Type = Random
+					RandomOptions
+					[
+						{
+							RandomWeight = 1
+							HitEffects
+							[
+								{
+									Type = Fire
+									FireChance = 1
+									Filter
+									{
+										Friendlies = true
+										IgnoreInvulnerability = true
+									}
+								}
+							]
+						}
+						{
+							RandomWeight = 10
+							HitEffects
+							[]
+						}
+					]
+				}
+			]
+		}
+		
+	
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 1500
+			MinFromQuantityForConversion = 1500
+			Interval = 3
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		BuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreBufflarge
+			ChainsFromBuffType = LargeInjector
+			BuffAmount = 100%
+			GridDistance = 1
+			BuffArea = [1, 0, 0, 8]
+			PartCriteria
+			{
+				IDs = [stafa.fed_warpcore_large]
+				Rot = 0
+				Left = 0
+				Right = 0
+				Bottom = 0
+			}
+			OperationalToggle = LargeInjectorBuff
+		}
+		BuffProvider2
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreSubstationBuffLarge
+			ChainsFromBuffType = LargeInjector
+			BuffAmount = 100%
+			GridDistance = 1
+			BuffArea = [1, 0, 0, 8]
+			PartCriteria
+			{
+				IDs = [stafa.fed_warpcore_large]
+				Rot = 0
+				Left = 0
+				Right = 0
+				Bottom = 0
+			}
+			OperationalToggle = LargeInjectorBuff
+		}
+		BuffProvider3
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreBuffQuantityLarge
+			BuffAmount = 100%
+			GridDistance = 1
+			BuffArea = [1, 0, 0, 8]
+			ChainsFromBuffType = LargeInjector
+			PartCriteria
+			{
+				IDs = [stafa.fed_warpcore_large]
+				Rot = 0
+				Left = 0
+				Right = 0
+				Bottom = 0
+			}
+			OperationalToggle = LargeInjectorBuff
+		}
+		//CanBuff
+		//{
+		//	Type = MultiToggle
+		//	Toggles = [IsConnected, IsOperational]
+		//	Mode = All
+		//}
+		LargeInjectorBuff
+		{
+			Type = BuffToggle
+			BuffType = LargeInjector
+		}
+
+//		Connectedtolargecoreleft
+//		{
+//			Type = ToggleProxy
+//			PartLocation = [-1, -1]
+//			ProxyableComponents
+//			[
+//				{
+//					ComponentID = IsConnected
+//					PartCriteria
+//					{
+//						IDs = [stafa.fed_warpcore_large]
+//						Rot = 0
+//						Top = 1
+//						Bottom = 6
+//						//FlipX = false
+//					}
+//				}
+//				//{
+//				//	ComponentID = IsConnected
+//				//	PartCriteria
+//				//	{
+//				//		IDs = [stafa.fed_warpcore_large]
+//				//		Top = 0
+//				//		Bottom = 7
+//				//		Rot = 0
+//				//		FlipX = true
+//				//	}
+//				//}
+//			]
+//		}
+//		Connectedtolargecoretop
+//		{
+//			Type = ToggleProxy
+//			PartLocation = [1, -1]
+//			ProxyableComponents
+//			[
+//				{
+//					PartCriteria
+//					{
+//						IDs = [stafa.fed_warpcore_large]
+//						Rot = 1
+//						Right = 6
+//						Left = 1
+//					}
+//					ComponentID = IsConnected
+//					//PartLocation = [1, 3]
+//				}
+//			]
+//		}
+//		Connectedtolargecoreright
+//		{
+//			Type = ToggleProxy
+//			PartLocation = [8, 1]
+//			ProxyableComponents
+//			[
+//				{
+//					PartCriteria
+//					{
+//						IDs = [stafa.fed_warpcore_large]
+//						Rot = 2
+//						Top = 1
+//						Bottom = 6
+//						//Left = 1
+//					}
+//					ComponentID = IsConnected
+//					//PartLocation = [4, 3]
+//				}
+//			]
+//		}
+//		Connectedtolargecorebottom
+//		{
+//			Type = ToggleProxy
+//			PartLocation = [1, 8]
+//			ProxyableComponents
+//			[
+//				{
+//					PartCriteria
+//					{
+//						IDs = [stafa.fed_warpcore_large]
+//						Rot = 3
+//						Left = 1
+//						Right = 6
+//					}
+//					ComponentID = IsConnected
+//					//PartLocation = [4, 0]
+//				}
+//			]
+//		}
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 14000
+			StartingResources = 0
+			SuppliesResourcesToggle = PowerToggle
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Storage_Supply
+			ResupplyThreshold = 500
+			Interval = 1
+			OperationalToggle = PowerToggle
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 4]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "turrets"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 8]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 8]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 8]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 8]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 8]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 8]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 8]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 8]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 8]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 8]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 4.0]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries5.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries6.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries7.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries8.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries9.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries10.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries11.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries12.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries13.png"
+					Size = [1, 8]
+				}
+				{
+					File = "batteries14.png"
+					Size = [1, 8]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [0.5, 4]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 2000
+					Radius = 4
+					Delay = .05
+					ExpandDuration = .35
+					ExpandStartRadius = 2
+					ExpandLoss = 50%
+					FireChancePerNDamage = 80%
+					ImpulsePerNDamage = 40
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 4]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				//Not Connected
+				{
+					Toggle = LargeInjectorBuff
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+				
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 8]
+		}
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	}
+}
