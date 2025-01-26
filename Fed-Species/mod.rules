@@ -1,18 +1,18 @@
-ID = "st-afa.100_federation"
-Name = "ST-AFA - Federation"
+ID = "st-afa.beta_federation"
+Name = "[Beta] ST-AFA - Federation"
 Version = 0.1.6
 Author = "ST-AFA Mod-Team"
-CompatibleGameVersions = ["0.27.0e"]
+CompatibleGameVersions = ["0.28.0f"]
 ModifiesMultiplayer = true
 Logo = logo.png
 Description = "Adds STAR TREK stuff to the game \n\n"\
-              "<red>WARNING: This mod is a WIP and a development mod. Some things might be unbalanced or broken!</red> \n\n"\
+              "<red>WARNING: This mod is a WIP and a development mod. Some things might be really unbalanced or broken!</red> \n\n"\
 			  "- adds Weapons\n"\
 			  "- adds Engines\n"\
 			  "- adds Rooms\n"\
 			  "- adds Energy (WarpCore)\n"\
 			  "- adds shields\n"\
-			  "Requires STAR TREK - A FINAL ASSAULT RESOURCE MOD and STAR TREK - A FINAL ASSAULT BASE MOD"
+			  "Requires [Beta] ST-AFA-Core"
 StringsFolder = "strings"
 
 
