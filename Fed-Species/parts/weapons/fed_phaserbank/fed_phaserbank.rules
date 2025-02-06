@@ -50,8 +50,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle]
+			Toggles = [PowerToggle, BatteryStorage, HasBuff]
 			Mode = All
+		}
+		HasBuff
+		{
+			Type = BuffToggle
+			BuffType = Phaser
 		}
 
 		PowerToggle

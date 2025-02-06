@@ -21,7 +21,6 @@ Actions:
 
 [
 	//******************** FUNCTIONS ********************
-
 	{
 		Action = Overrides
 		OverrideIn = "<./Data/ships/priorities.rules>"

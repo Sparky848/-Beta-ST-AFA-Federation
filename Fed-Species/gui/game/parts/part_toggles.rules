@@ -266,7 +266,7 @@ PartToggles
 			}
 		]
 	}
-	// Phaser Bank Arc
+	// Standard Phaser Bank Arc
 	{
 		ToggleID = "phaser_bank_arc"
 		Style = Popout
@@ -313,6 +313,61 @@ PartToggles
 					Texture
 					{
 						File = "phaser_45.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+
+	}
+	// Medium Phaser Bank Arc
+	{
+		ToggleID = "phaser_bank_med_arc"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// 120°
+			{
+				ChoiceID = "phaser_arc_120"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/Phaser_arc_120_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_120.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// 80°
+			{
+				ChoiceID = "phaser_arc_80"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/Phaser_arc_80_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_80.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// 35°
+			{
+				ChoiceID = "phaser_arc_35"
+				Mode = 2
+				ButtonToolTipKey = "PartToggles/Phaser_arc_35_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_35.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

@@ -8,11 +8,11 @@ Components
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoFireToggle
 		//FireInterval = 2/30
-		FireInterval = 2.0
+		FireInterval = 4.0
 		FiringArc = 45d
 		RotateSpeed = 360d
 		FireThresholdAngle = 0.25d
-		AIFirepowerRating = 400
+		AIFirepowerRating = 600
 		FirePermissionToggle = FireModeToggle
 		AutoTargetCrewSafetyDist = 8
 		IgnoreSourceShipLowLOSChecks = true
@@ -63,7 +63,7 @@ Components
 		OperationalToggle = IsOperational
 		FireDelay = 0.49
 		ResourceStorage = BatteryStorage
-		ResourcesUsed = 500
+		ResourcesUsed = 1250
 		MinResourcesUsed = 1
 	}
 

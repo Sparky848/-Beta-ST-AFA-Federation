@@ -16,7 +16,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
 	ProhibitRects
 	[
-		[tall, [0, 0, 2, 2]]
+		[tall, [-2, -2, 2, 6]]
+		[tall, [0, -2, 2, 2]]
+		[tall, [2, -2, 2, 6]]
+		[tall, [0, 2, 2, 2]]
 	]
 	Size = [2, 2]
 	SelectionPriority = 1

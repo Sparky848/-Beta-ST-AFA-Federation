@@ -10,9 +10,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[steel, 30]
 		[coil2, 8]
 	]
-	IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
+	//IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
 	TypeCategories = [thruster, uses_power, impulse, is_crewed]
-	Size = [1, 2]
+	Size = [1, 1]
 	PhysicalRect = [0, 0, 1, 1]
 	SaveRect = &PhysicalRect
 	BoundingRectType = Physical
@@ -20,10 +20,35 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	SelectionTypeID = "impulse"
 	MaxHealth = 2000
-	ThrusterForce = 1250
+	ThrusterForce = 625  //625 per tile with a 30% increase for the first thickness increase, then 5% per thickness and 2.5% per width, i.e 3x1 has 5% increase per tile, 6x2 has a 42.5% increase.
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 175
+	ProhibitedBy : ^/0/ProhibitedBy [default]
+	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [default]
+	ProhibitedRects
+	[
+		[default, [0, 1, 0, 1]]
+	]
+	//ProhibitedBy : ^/0/ProhibitedBy [armor, uses_power, uses_ammo, weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed, airlock, tall, reactor, provides_power]
+	//Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [armor, uses_power, uses_ammo, weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed, airlock, tall, reactor, provides_power]
+	//ProhibitRects
+   // [
+//		[armor, [0, 1, 0, 5]]
+//		[uses_power, [0, 1, 0, 5]]
+//		[uses_ammo, [0, 1, 0, 5]]
+//		[weapon, [0, 1, 0, 5]]
+//		[uses_missiles, [0, 1, 0, 5]]
+//		[uses_emps, [0, 1, 0, 5]]
+//		[uses_nukes, [0, 1, 0, 5]]
+//		[uses_mines, [0, 1, 0, 5]]
+//		[uses_launcher_parts, [0, 1, 0, 5]]
+//		[is_crewed, [0, 1, 0, 5]]
+//		[airlock, [0, 1, 0, 5]]
+//		[tall, [0, 1, 0, 5]]
+//		[reactor, [0, 1, 0, 5]]
+//		[provides_power, [0, 1, 0, 5]]
+ //   ]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, AntimatterPower, EnginePowerDistribution]
 	AllowedDoorLocations
 	[
@@ -348,7 +373,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [1, 2]
+			Size = [1, 1]
 		}
 	}
 

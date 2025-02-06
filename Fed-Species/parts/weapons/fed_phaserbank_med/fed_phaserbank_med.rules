@@ -1,0 +1,257 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Phaser_Bank_Med"
+	IconNameKey = "Parts/Phaser_Bank_Icon_Med"
+	ID = "stafa.phaserbank_med"
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Phaser_Bank_Desc_Med"
+	Resources
+	[
+		[steel, 32]
+		[coil2, 5]
+		[tristeel, 16]
+		[diamond, 5]
+	]
+	Size = [2, 8]
+	MaxHealth = 8000
+	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff]
+	IsRotateable = true
+	IsFlippable = true
+	CrewSpeedFactor = 0.75
+	CrewCongestedSpeedFactor = .4	
+	SelectionPriority = 1
+	InitialPenetrationResistance = 3
+	PenetrationRectType = Normal
+	ProhibitedBy : ^/0/ProhibitedBy [phaserbank]
+	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [phaserbank]
+	ProhibitRects
+    [
+		[phaserbank, [-2, -2, 2, 12]]
+		[phaserbank, [2, -2, 2, 12]]
+		[phaserbank, [0, -2, 2, 2]]
+		[phaserbank, [0, 8, 2, 2]]
+    ]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [21.32, 72]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, HasBuff]
+			Mode = All
+		}
+		HasBuff
+		{
+			Type = BuffToggle
+			BuffType = Phaser
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 0]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		PhaserMode
+		{
+			Type = UIToggle
+			ToggleID = "phaser_bank_med_arc"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+
+		PhaserToggle120
+		{
+			Type = ModeToggle
+			Mode = PhaserMode
+			OnMode = 0
+		}
+
+		PhaserToggle80
+		{
+			Type = ModeToggle
+			Mode = PhaserMode
+			OnMode = 1
+		}
+
+		PhaserToggle35
+		{
+			Type = ModeToggle
+			Mode = PhaserMode
+			OnMode = 2
+		}
+
+		deg120
+		{
+			Type = ToggledComponents
+			Toggle = PhaserToggle120
+			IncludeInBlueprints = true
+			Components = &<fed_phaserbank_med_120.rules>/Components
+		}
+
+		deg80
+		{
+			Type = ToggledComponents
+			Toggle = PhaserToggle80
+			IncludeInBlueprints = true
+			Components = &<fed_phaserbank_med_80.rules>/Components
+		}
+
+		deg35
+		{
+			Type = ToggledComponents
+			Toggle = PhaserToggle35
+			IncludeInBlueprints = true
+			Components = &<fed_phaserbank_med_35.rules>/Components
+		}
+
+		ReverseOperation
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserReverseOperation
+			BuffArea = [-1, -1, 4, 10]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Category = phaserbank_controller
+			}
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 10000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 4]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 8]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 8]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 8]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 8]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 8]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 8]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Location = [1, 1]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 8]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 8]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 8]
+					}
+				]
+			}
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, 3]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 8]
+		}
+	}
+}

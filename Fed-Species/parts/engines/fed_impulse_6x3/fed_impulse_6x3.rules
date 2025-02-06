@@ -12,7 +12,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 10]
 	]
 	TypeCategories = [thruster, uses_power, impulse, is_crewed]
-	Size = [6, 3]
+	Size = [6, 2]
 	PhysicalRect = [0, 0, 6, 2]
 	SaveRect = &PhysicalRect
 	BoundingRectType = Physical
@@ -20,10 +20,35 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	SelectionTypeID = "impulse"
 	MaxHealth = 5000
-	ThrusterForce = 8000
+	ThrusterForce = 13500
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 500
+	ProhibitedBy : ^/0/ProhibitedBy [default]
+	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [default]
+	ProhibitedRects
+	[
+		[default, [0, 2, 6, 1]]
+	]
+//	ProhibitedBy : ^/0/ProhibitedBy [armor, uses_power, uses_ammo, weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed, airlock, tall, reactor, provides_power]
+//	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [armor, uses_power, uses_ammo, weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed, airlock, tall, reactor, provides_power]
+//	ProhibitRects
+ //   [
+//		[armor, [0, 2, 6, 8]]
+//		[uses_power, [0, 2, 6, 8]]
+//		[uses_ammo, [0, 2, 6, 8]]
+//		[weapon, [0, 2, 6, 8]]
+//		[uses_missiles, [0, 2, 6, 8]]
+//		[uses_emps, [0, 2, 6, 8]]
+//		[uses_nukes, [0, 2, 6, 8]]
+//		[uses_mines, [0, 2, 6, 8]]
+//		[uses_launcher_parts, [0, 2, 6, 8]]
+//		[is_crewed, [0, 2, 6, 8]]
+//		[airlock, [0, 2, 6, 8]]
+//		[tall, [0, 2, 6, 8]]
+//		[reactor, [0, 2, 6, 8]]
+//		[provides_power, [0, 2, 6, 8]]
+//    ]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, AntimatterPower, EnginePowerDistribution]
 	ForceManhattanPathInPart = true
 	BlockedTravelCells
@@ -467,7 +492,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [6, 3]
+			Size = [6, 2]
 		}
 	}
 

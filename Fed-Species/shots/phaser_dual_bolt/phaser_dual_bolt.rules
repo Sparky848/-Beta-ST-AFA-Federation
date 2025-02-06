@@ -34,7 +34,7 @@ Components
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = { BaseValue=3000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=5000; }
+		Damage = { BaseValue=800; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1600; }
 	}
 
 	Hit
@@ -53,8 +53,17 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 600
+					Amount = 100
 					TreatShieldAsPart = true
+				}
+				{
+					Type = ResourceDrain
+					ResourceType = battery
+					Amount = 200
+					Filter
+					{
+						IgnoreInvulnerability = true
+					}
 				}
 			]
 
@@ -104,7 +113,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=1800; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=3600; }
+					Damage = { BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
 				}
 				{
 					Type = Impulse;

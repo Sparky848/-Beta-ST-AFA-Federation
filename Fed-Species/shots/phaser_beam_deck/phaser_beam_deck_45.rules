@@ -2,11 +2,12 @@ ID = "stafa.fed_phaser_beam_deck_45"
 Range = { BaseValue=180; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=220; }
 IdealRange
 [
-	{ BaseValue=20; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=20; }
-	{ BaseValue=165; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=210; }
+	{ BaseValue=160; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=200; }
+	{ BaseValue=180; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=200; }
 ]
 Duration = 1
 HitInterval = .1
+Width = 1.5
 SourceShipLowCollisions = false
 CrewCollisions = {Enemies=true; Junk=true}
 ClipRangeToTarget = true
@@ -123,7 +124,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = 1600
+			Damage = 600
 		}
 	]
 
@@ -150,7 +151,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 1200
+			Damage = 450
 		}
 		{
 			Type = Impulse;

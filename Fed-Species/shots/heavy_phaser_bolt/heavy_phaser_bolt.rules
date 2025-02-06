@@ -42,7 +42,7 @@ Components
 	{
 		Type = Targetable
 		Health = 1100
-		TargetCategory = "bullet"
+		TargetCategory = "laser"
 	}
 
 	DamagePool
