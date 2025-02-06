@@ -24,16 +24,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 175
-	ProhibitedBy : ^/0/ProhibitedBy [default]
-	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [default]
-	ProhibitedRects
-	[
-		[default, [0, 1, 0, 1]]
-	]
+	//Prohibits = [armor, uses_power, uses_ammo, weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed, airlock, tall, reactor, provides_power]
+	ProhibitBelow = 1
 	//ProhibitedBy : ^/0/ProhibitedBy [armor, uses_power, uses_ammo, weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed, airlock, tall, reactor, provides_power]
 	//Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [armor, uses_power, uses_ammo, weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed, airlock, tall, reactor, provides_power]
-	//ProhibitRects
-   // [
+//	ProhibitRects
+ //   [
 //		[armor, [0, 1, 0, 5]]
 //		[uses_power, [0, 1, 0, 5]]
 //		[uses_ammo, [0, 1, 0, 5]]
