@@ -23,7 +23,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionPriority = 1
 	InitialPenetrationResistance = 3
 	PenetrationRectType = Normal
-	//IsBuildable = false
+	IsBuildable = false
 	ProhibitedBy : ^/0/ProhibitedBy [phaserbank]
 	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [phaserbank]
 	// ProhibitRects

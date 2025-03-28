@@ -12,10 +12,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 16]
 		[diamond, 5]
 	]
+	PhaserCount = { BaseValue=0; BuffType=PhaserCounter; BuffMode=Add; }
+	PhaserDebuff = { BaseValue=0; BuffType=PhaserExpoDebuff; BuffMode=Add; }
+	PhaserMedDebuff = { BaseValue=0; BuffType=PhaserMedExpoDebuff; BuffMode=Add; }
+	PhaserLargeDebuff = { BaseValue=0; BuffType=PhaserLargeExpoDebuff; BuffMode=Add; }
+	PhaserExpoBuffCombinedNumber = (&PhaserDebuff) + (&PhaserMedDebuff) + (&PhaserLargeDebuff)
 	Size = [2, 8]
 	MaxHealth = 8000
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff, MedPhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff]
 	IsRotateable = true
 	IsFlippable = true
 	CrewSpeedFactor = 0.75
@@ -153,7 +158,80 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Category = phaserbank_controller
 			}
 		}
-
+		ExpoDebuff
+		{
+			Type = GridBuffProvider
+			BuffType = PhaserExpoDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+		}
+		MedExpoDebuff
+		{
+			Type = GridBuffProvider
+			BuffType = MedPhaserExpoDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+		}
+		PhaserCounterBuff
+		{
+			Type = GridBuffProvider
+			BuffType = PhaserCounter
+			GridDistance = 500
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+//		PhaserMedExpoDebuff
+//		{
+//			Type = GridBuffProvider
+//			BuffType = PhaserMedExpoDebuff
+//			GridDistance = 500
+//			AllowDiagonals = true
+//			OperationalToggle = PhaserDebuffTrigger1
+//		}
+//		PhaserLargeExpoDebuff
+//		{
+//			Type = GridBuffProvider
+//			BuffType = PhaserLargeExpoDebuff
+//			GridDistance = 500
+//			AllowDiagonals = true
+//			OperationalToggle = PhaserDebuffTrigger2
+//		}
+//		TestMultiValue
+//		{
+//			Type = MultiValue
+//			Mode = Add
+//			Values = [PhaserDebuff, PhaserMedDebuff, PhaserLargeDebuff]
+//			Abs = true
+//
+//		}
+//		TestPhaserCount
+//		{
+//			Type = MultiValue
+//			Mode = Add
+//			Values = [PhaserCount]
+//			Abs = true
+//
+//		}
+//		PhaserDebuffTrigger1
+//		{
+//			Type = ThresholdTrigger
+//			AmountFrom = TestPhaserCount
+//			MinAmount = 20
+//		}
+//		PhaserDebuffTrigger2
+//		{
+//			Type = ThresholdTrigger
+//			AmountFrom = PhaserCount
+//			MinAmount = 35
+//		}
+		
+//		PhaserExpoCombinedBuffProvider
+//		{
+//			Type = GridBuffProvider
+//			BuffType = PhaserExpoBuffCombined
+//			GridDistance = 500
+//			BaseValue = (&PhaserExpoBuffCombinedNumber)
+//		}
 		BatteryStorage
 		{
 			Type = ResourceStorage

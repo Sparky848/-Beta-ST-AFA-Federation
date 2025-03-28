@@ -3,9 +3,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Def_Warpnacelle_1x4"
 	IconNameKey = "Parts/Def_Warpnacelle_1x4_Icon"
 	ID = "stafa.fed_def_warpnacelle_1x4"
-	//EditorGroup = ""
+	EditorGroup = "Starfleet"
 	DescriptionKey = "Parts/Def_Warpnacelle_1x4_Desc"
-	//IsBuildable = false
+	IsBuildable = false
 	Resources
 	[
 		[steel, 240]

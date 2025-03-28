@@ -18,13 +18,15 @@ Parts
 	TorpedolauncherDeck_Desc = "Launches different torpedo types in a burst that is capable of dealing devastating damage to an enemy."
 	Phaser_Cannon_Deck = "Impulse Phaser Cannons"
 	Phaser_Cannon_Deck_Icon = "Impulse Phaser Cannons"
-	Phaser_Cannon_Deck_Desc = "Impulse Phaser Cannons use a rapid succession of phaser pulses instead of a continuous phaser beam. This is the deck version, which fires only single volleys."
+	Phaser_Cannon_Deck_Desc = "Impulse Phaser Cannons use a rapid succession of phaser pulses instead of a continuous phaser beam. This is the deck version, which fires only single volleys."\
+							  "\n<s20><red>Cannot be placed within 2 tiles of other 'tall' parts</red></s20>"
 	Phaser_Bank_Controller = "Phaser Bank Controller"
     Phaser_Bank_Controller_Icon = "Phaser Bank Controller"
     Phaser_Bank_Controller_Desc = "Phaser Bank Control room, which will control adjacent Phaserbanks."
     Phaser_Bank = "Standard Phaser Bank"
     Phaser_Bank_Icon = "Standard Phaser Bank"
-    Phaser_Bank_Desc = "The Standard Phaser Bank is a beam weapon with numerous emitters that allows it to fire in a selectable 180°-45° arc. Each phaser bank needs an adjacent control room to work."
+    Phaser_Bank_Desc = "The Standard Phaser Bank is a beam weapon with numerous emitters that allows it to fire in a selectable 180°-45° arc. Each phaser bank needs an adjacent control room to work."\
+					   "\n<s20><red>Due to the strain impacted on ship systems having multiple phaserbanks (excl. point defence) will exponentially reduce performance</red></s20>"
     Phaser_Bank_Modular = "Phaser Bank"
     Phaser_Bank_Modular_Icon = "Phaser Bank"
     Phaser_Bank_Modular_Desc = "Phaser Bank beam weapon with numerous emitters that allows it to fire in a 180°-45° arc. IN DEVELOPMENT"
@@ -33,7 +35,8 @@ Parts
 	Burst_Phaser_Bank_PD_Desc = "Burst PD Phaser Bank for eliminating fast moving projectiles such as HE."
 	Burst_Phaser_Bank_COM = "Multi-Emitter Combat Phaser Bank"
 	Burst_Phaser_Bank_COM_Icon = "Multi-Emitter Combat Phaser Bank"
-	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat"
+	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat"\
+								 "\n<s20><red>Will exponentially lose strength with more phaserbanks</red></s20>"
 	Phaser_Lance = "Phaser Lance"
 	Phaser_Lance_Icon = "Phaser Lance"
 	Phaser_Lance_Desc = "The Ultimate Phaser"
@@ -55,6 +58,7 @@ Parts
 	Phaser_Bank_Med = "Medium Phaser Bank"
     Phaser_Bank_Icon_Med = "Medium Phaser Bank"
     Phaser_Bank_Desc_Med = "A medium sized phaser bank with higher output but reduced firing angle"\
+						   "\n<s20><red>Will exponentially lose strength with more phaserbanks</red></s20>"\
 					       "\n<s18><green>See Standard Size for more details</green></s18>"
     // Rooms
 	Captains_Room = "Captain's Ready Room"

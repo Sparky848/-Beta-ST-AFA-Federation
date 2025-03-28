@@ -12,10 +12,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 6]
 		[diamond, 2]
 	]
+	PhaserCount = { BaseValue=0; BuffType=PhaserCounter; BuffMode=Add; }
+	PhaserDebuff = { BaseValue=0; BuffType=PhaserExpoDebuff; BuffMode=Add; }
+	PhaserMedDebuff = { BaseValue=0; BuffType=PhaserMedExpoDebuff; BuffMode=Add; }
+	PhaserLargeDebuff = { BaseValue=0; BuffType=PhaserLargeExpoDebuff; BuffMode=Add; }
+	PhaserExpoBuffCombinedNumber = (&PhaserDebuff) + (&PhaserMedDebuff) + (&PhaserLargeDebuff)
 	Size = [1, 6]
 	MaxHealth = 5000
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff, PhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff]
 	IsRotateable = true
 	IsFlippable = true
 	CrewSpeedFactor = 1
@@ -64,7 +69,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = UIToggle
 			ToggleID = "on_off"
 			Default = 1
-			RequiresCommand = false
+			RequiresCommand = true
 		}
 
 		CommandConsumer
@@ -169,7 +174,73 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Category = phaserbank_controller
 			}
 		}
-
+		ExpoDebuff
+		{
+			Type = GridBuffProvider
+			BuffType = PhaserExpoDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		MedExpoDebuff
+		{
+			Type = GridBuffProvider
+			BuffType = MedPhaserExpoDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+		}
+		PhaserCounterBuff
+		{
+			Type = GridBuffProvider
+			BuffType = PhaserCounter
+			GridDistance = 500
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+	//		PhaserMedExpoDebuff
+	//		{
+	//			Type = GridBuffProvider
+	//			BuffType = PhaserMedExpoDebuff
+	//			GridDistance = 500
+	//			AllowDiagonals = true
+	//			OperationalToggle = PhaserDebuffTrigger1
+	//		}
+	//		PhaserLargeExpoDebuff
+	//		{
+	//			Type = GridBuffProvider
+	//			BuffType = PhaserLargeExpoDebuff
+	//			GridDistance = 500
+	//			AllowDiagonals = true
+	//			OperationalToggle = PhaserDebuffTrigger2
+	//		}
+	//		TestMultiValue
+	//		{
+	//			Type = MultiValue
+	//			Mode = Add
+	//			Values = [PhaserDebuff, PhaserMedDebuff, PhaserLargeDebuff]
+	//			Abs = true
+	//
+	//		}
+	//		TestPhaserCount
+	//		{
+	//			Type = MultiValue
+	//			Mode = Add
+	//			Values = [PhaserCount]
+	//			Abs = true
+	//
+	//		}
+	//		PhaserDebuffTrigger1
+	//		{
+	//			Type = ThresholdTrigger
+	//			AmountFrom = TestPhaserCount
+	//			MinAmount = 20
+	//		}
+	//		PhaserDebuffTrigger2
+	//		{
+	//			Type = ThresholdTrigger
+	//			AmountFrom = PhaserCount
+	//			MinAmount = 35
+	//		}
 		BatteryStorage
 		{
 			Type = ResourceStorage
@@ -177,7 +248,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 6000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
 		Graphics
 		{
 			Type = Graphics

@@ -20,6 +20,28 @@ AntimatterPower
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
 }
+PhaserPower
+{
+	CombineMode = Max
+	BaseValue = 50%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_antimatter_energy.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	//IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	//IconTextMultiply = 100
+	//IconTextAdd = -100
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
 CaptainsRoomBuff
 {
 	CombineMode = Max
@@ -212,6 +234,87 @@ WarpcoreSubstationBuffSmall
 LargeInjector
 {
 	CombineMode = Add
+}
+PhaserExpoDebuff
+{
+	CombineMode = Add
+	Exponent = -1
+	BaseValue = 1
+
+	Icon
+	{
+		Texture
+		{
+			File = "debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+	IconPriority = 1 
+}
+MedPhaserExpoDebuff
+{
+	CombineMode = Add
+	Exponent = -0.5	
+	BaseValue = 1
+
+	Icon
+	{
+		Texture
+		{
+			File = "debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+		IconPriority = 1 
+}
+PhaserMedExpoDebuff
+{
+	CombineMode = Add
+	Exponent = -10
+	BaseValue = 1
+
+	Icon
+	{
+		Texture
+		{
+			File = "med_debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+	IconPriority = 2 
+}
+PhaserLargeExpoDebuff
+{
+	CombineMode = Add
+	Exponent = -20
+	BaseValue = 2
+
+	Icon
+	{
+		Texture
+		{
+			File = "large_debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+	IconPriority = 3 
+}
+PhaserExpoBuffCombined
+{
+    CombineMode = Add
+}
+PhaserCounter
+{
+	CombineMode = Add
+	BaseValue = 1
 }
 //WarpcoreStorageBuffSmall
 //{

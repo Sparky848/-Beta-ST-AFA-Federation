@@ -124,7 +124,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = 350
+			Damage = { BaseValue=1050; BuffType=MedPhaserExpoDebuff; BuffMode=Divide; MinValue=400; }
 		}
 	]
 
@@ -152,7 +152,8 @@ HitOperational
 		{
 			Type = ExplosiveDamage
 			Radius = 1.5
-			TotalDamage = 800//300
+			TotalDamage = { BaseValue=4800; BuffType=MedPhaserExpoDebuff; BuffMode=Divide; MinValue=400; }
+			Slices = 1
 		}
 		{
 			Type = Impulse;
@@ -188,7 +189,7 @@ HitStructural
 	[
 		{
 			Type = Damage;
-			Damage = (&../../../HitOperational/HitEffects/0/TotalDamage) /2 ;
+			Damage = (&../../../HitOperational/HitEffects/0/TotalDamage/BaseValue) /2 ;
 		}
 		{
 			Type = Impulse;

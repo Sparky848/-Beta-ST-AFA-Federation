@@ -14,6 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	Cost = 5000
 	AIValue = 5
+
 	TypeCategories = [weapon, uses_power, is_crewed, turret]
 	Size = [1, 3]
 	PhysicalRect = [0, 1, 1, 2]
@@ -53,6 +54,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = UIToggle
 			ToggleID = "on_off"
 			Default = 1
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
 		}
 		
 		FireModeToggle

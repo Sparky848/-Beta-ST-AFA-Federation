@@ -124,7 +124,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = 200
+			Damage = { BaseValue=1000; BuffType=PhaserExpoDebuff; BuffMode=Divide; MinValue=200; }
 		}
 	]
 
@@ -151,7 +151,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 150
+			Damage = { BaseValue=750; BuffType=PhaserExpoDebuff; BuffMode=Divide; MinValue=200; }
 		}
 		{
 			Type = Impulse;
@@ -187,7 +187,7 @@ HitStructural
 	[
 		{
 			Type = Damage;
-			Damage = (&../../../HitOperational/HitEffects/0/Damage) /2 ;
+			Damage = (&../../../HitOperational/HitEffects/0/Damage/BaseValue) /2 ;
 		}
 		{
 			Type = Impulse;

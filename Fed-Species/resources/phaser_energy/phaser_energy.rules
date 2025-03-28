@@ -2,3 +2,4 @@
 ID = phaser_energy
 NameKey = "Resource/PhaserEnergy"
 ReturnToStorage = false
+QuantityDisplayDivisor = 1000

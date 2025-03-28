@@ -8,7 +8,7 @@ Components
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoFireToggle
 		//FireInterval = 2/30
-		FireInterval = 3.0
+		FireInterval = { BaseValue=3.0; BuffType=PhaserExpoDebuff; BuffMode=Add; MaxValue=24; }
 		FiringArc = 90d
 		RotateSpeed = 360d
 		FireThresholdAngle = 0.25d
