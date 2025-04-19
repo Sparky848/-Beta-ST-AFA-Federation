@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/Aux_MA_Injector_LargeIcon"
 	ID = "stafa.aux_ma_injector_large"
 	OtherIDs = [aux_ma_injector_large]
-	EditorGroup = "Starfleet"
+	EditorGroup = "StarfleetPower"
 	DescriptionKey = "Parts/Aux_MA_Injector_LargeDesc"
 	Resources
 	[

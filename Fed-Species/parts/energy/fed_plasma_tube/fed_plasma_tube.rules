@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/Plasma_Tube_Icon"
 	ID = "stafa.plasma_tube"
 	OtherIDs = [plasma_tube]
-	EditorGroup = "Starfleet"
+	EditorGroup = "StarfleetPower"
 	DescriptionKey = "Parts/Plasma_Tube_Desc"
 	Resources
 	[

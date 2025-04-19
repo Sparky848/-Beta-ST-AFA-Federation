@@ -35,7 +35,7 @@ Parts
 	Burst_Phaser_Bank_PD_Desc = "Burst PD Phaser Bank for eliminating fast moving projectiles such as HE."
 	Burst_Phaser_Bank_COM = "Multi-Emitter Combat Phaser Bank"
 	Burst_Phaser_Bank_COM_Icon = "Multi-Emitter Combat Phaser Bank"
-	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat"\
+	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat, Fires multiple untargetable beams"\
 								 "\n<s20><red>Will exponentially lose strength with more phaserbanks</red></s20>"
 	Phaser_Lance = "Phaser Lance"
 	Phaser_Lance_Icon = "Phaser Lance"
@@ -63,7 +63,8 @@ Parts
     // Rooms
 	Captains_Room = "Captain's Ready Room"
 	Captains_Room_Icon = "Ready Room"
-	Captains_Room_Desc = "The captain's ready room was a personal office reserved for the commanding officer of a starship and was typically accessed from the bridge."
+	Captains_Room_Desc = "Room used to buff engine power on a starship"\
+						"\n<s14>The captain's ready room was a personal office reserved for the commanding officer of a starship and was typically accessed from the bridge.</s14>"
 	// Energy
 	Warpcore_small = "Small Warpcore"
 	Warpcore_small_Icon = "Small Warpcore"
@@ -79,10 +80,12 @@ Parts
 	Plasma_Tube_Desc = "Plasmatubes work as a power storage and distributor to the crew. They can only be charged by a running warpcore."
 	Aux_MA_Injector_Small = "Small Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_SmallIcon = "Small Auxiliary Matter/Antimatter Injector"
-	Aux_MA_Injector_SmallDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"
+	Aux_MA_Injector_SmallDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"\
+								"\n<red>Currently Non-Functional</red>"
 	Aux_MA_Injector_Large = "Large Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_LargeIcon = "Large Auxiliary Matter/Antimatter Injector"
-	Aux_MA_Injector_LargeDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"
+	Aux_MA_Injector_LargeDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"\
+								"\n<red>Currently Non-Functional</red>"
 	// Engines
 	Warpnacelle_3x6 = "Wide Warpnacelle"
 	Warpnacelle_3x6_Icon = "Warpnacelle 3x6"

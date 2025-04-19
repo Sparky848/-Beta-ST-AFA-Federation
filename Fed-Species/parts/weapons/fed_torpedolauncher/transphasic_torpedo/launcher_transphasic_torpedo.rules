@@ -275,8 +275,8 @@ Components
 		[
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 30000000
-				Radius = 40
+				TotalDamage = 40000
+				Radius = 10
 				Delay = .1
 				FireChancePerNDamage = 50%
 				NDamage = 1000
@@ -290,8 +290,8 @@ Components
 			}
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 20000000
-				Radius = 40
+				TotalDamage = 25000
+				Radius = 7
 				Delay = .1
 				Filter
 				{

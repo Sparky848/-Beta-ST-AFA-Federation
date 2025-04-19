@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Def_Dual_Phaser_Cannon"
 	IconNameKey = "Parts/Def_Dual_Phaser_Cannon_Icon"
 	ID = "stafa.def_dual_phaser_cannon"
-	EditorGroups = ["Starfleet"]
+	EditorGroups = ["StarfleetWeapons"]
 	DescriptionKey = "Parts/Def_Dual_Phaser_Cannon_Desc"
 	Resources
 	[
@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[coil2, 6]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower,CaptainsRoomBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
 	Size = [2, 2]
 	// PhysicalRect = [0, 1, 3, 3]
 	// SaveRect = &PhysicalRect

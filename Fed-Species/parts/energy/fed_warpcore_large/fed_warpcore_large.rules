@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Warpcore_large"
 	IconNameKey = "Parts/Warpcore_large_Icon"
 	ID = "stafa.fed_warpcore_large"
-	EditorGroup = "Starfleet"
+	EditorGroup = "StarfleetPower"
 	DescriptionKey = "Parts/Warpcore_large_Desc"
 	Resources
 	[

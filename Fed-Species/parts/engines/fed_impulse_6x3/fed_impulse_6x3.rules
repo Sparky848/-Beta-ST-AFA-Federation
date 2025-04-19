@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Impulse_6x3"
 	IconNameKey = "Parts/Impulse_6x3_Icon"
 	ID = "stafa.fed_impulse_6x3"
-	EditorGroup = "Starfleet"
+	EditorGroup = "StarfleetFlight"
 	DescriptionKey = "Parts/Impulse_6x3_Desc"
 	Resources
 	[

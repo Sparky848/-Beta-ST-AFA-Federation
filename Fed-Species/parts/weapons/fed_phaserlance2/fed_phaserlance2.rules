@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Phaser_Lance2"
 	IconNameKey = "Parts/Phaser_Lance2_Icon"
 	ID = "stafa.phaserlance2_floor"
-	EditorGroups = ["Starfleet"]
+	EditorGroups = ["StarfleetWeapons"]
 	DescriptionKey = "Parts/Phaser_Lance2_Desc"
 	Resources
 	[
@@ -15,7 +15,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [4, 14]
 	MaxHealth = 30000
 	TypeCategories = [weapon, Weapon, uses_power, phaserbank, phaserbank_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser]
 	IsRotateable = true
 	IsFlippable = true
 	CrewSpeedFactor = 0.5

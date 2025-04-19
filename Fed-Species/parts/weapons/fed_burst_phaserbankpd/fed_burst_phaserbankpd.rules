@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Burst_Phaser_Bank_PD"
 	IconNameKey = "Parts/Burst_Phaser_Bank_PD_Icon"
 	ID = "sparky.burstphaserbankpd_floor"
-	EditorGroup = "Starfleet"
+	EditorGroups = ["StarfleetWeapons", "StarfleetDefences"]
 	DescriptionKey = "Parts/Burst_Phaser_Bank_PD_Desc"
 	Resources
 	[
@@ -15,7 +15,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 6]
 	MaxHealth = 5000
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, CaptainsRoomBuff, AntimatterPower]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, AntimatterPower]
 	IsRotateable = true
 	IsFlippable = true
 	CrewSpeedFactor = 1

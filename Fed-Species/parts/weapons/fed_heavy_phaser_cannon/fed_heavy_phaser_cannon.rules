@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Heavy_Phaser_Cannon"
 	IconNameKey = "Parts/Heavy_Phaser_Cannon_Icon"
 	ID = "stafa.heavy_phaser_cannon"
-	EditorGroups = ["Starfleet"]
+	EditorGroups = ["StarfleetWeapons"]
 	DescriptionKey = "Parts/Heavy_Phaser_Cannon_Desc"
 	Resources
 	[
@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 48]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff, AntimatterPower]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
 	Size = [2, 2]
 	// PhysicalRect = [0, 1, 2, 2]
 	// SaveRect = &PhysicalRect

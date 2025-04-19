@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/RCS_2x4"
 	IconNameKey = "Parts/RCS_2x4_Icon"
 	ID = "stafa.fed_rcs_2x4"
-	EditorGroup = "Starfleet"
+	EditorGroup = "StarfleetFlight"
 	DescriptionKey = "Parts/RCS_2x4_Desc"
 	Resources
 	[

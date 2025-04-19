@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Phaser_Bank_Controller"
 	IconNameKey = "Parts/Phaser_Bank_Controller_Icon"
 	ID = "stafa.phaserbank_controller"
-	EditorGroup = "Starfleet"
+	EditorGroup = "StarfleetWeapons"
 	DescriptionKey = "Parts/Phaser_Bank_Controller_Desc"
 	Resources
 	[

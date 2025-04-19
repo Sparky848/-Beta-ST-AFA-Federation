@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/Warpnacelle_Extension_3x3_Icon"
 	DescriptionKey = "Parts/Warpnacelle_Extension_3x3_Desc"
 	ID = "stafa.fed_warpnacelle_extension_3x3" // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Starfleet"
+	EditorGroup = "StarfleetFlight"
 	Resources
 	[
 		[steel, 320]
