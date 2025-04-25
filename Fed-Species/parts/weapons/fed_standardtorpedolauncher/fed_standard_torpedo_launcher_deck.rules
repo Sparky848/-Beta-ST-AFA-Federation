@@ -51,17 +51,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Value = [Left]
 		}
 	]
-	ExternalWallsByCell
-	[
-		{
-			Key = [0, 1]
-			Value = [TopLeft, Bottom, BottomLeft, Left]
-		}
-		{
-			Key = [1, 1]
-			Value = [TopRight, Right, BottomRight, Bottom]
-		}
-	]
+//	ExternalWallsByCell
+//	[
+//		{
+//			Key = [0, 1]
+//			Value = [TopLeft, Bottom, BottomLeft, Left]
+//		}
+//		{
+//			Key = [1, 1]
+//			Value = [TopRight, Right, BottomRight, Bottom]
+///		}
+//	]
 	InternalWallsByCell
 	[
 		{
