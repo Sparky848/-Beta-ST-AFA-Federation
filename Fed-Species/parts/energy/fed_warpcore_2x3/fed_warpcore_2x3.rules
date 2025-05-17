@@ -1,61 +1,75 @@
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/Warpcore_small"
-	IconNameKey = "Parts/Warpcore_small_Icon"
-	ID = "stafa.fed_warpcore_small"
+	NameKey = "Parts/Warpcore_2x3"
+	IconNameKey = "Parts/Warpcore_2x3_Icon"
+	ID = "stafa.fed_warpcore_2x3"
 	EditorGroup = "StarfleetPower"
-	DescriptionKey = "Parts/Warpcore_small_Desc"
+	DescriptionKey = "Parts/Warpcore_2x3_Desc"
 	Resources
 	[
-		[steel, 120]
-		[coil2, 80]
-		[tristeel, 40]
-		[processor, 5]
+		[steel, 90]
+		[coil2, 60]
+		[tristeel, 30]
+		[processor, 3]
 		[antimatter, 5]
-		[dilithium, 3]
+		[dilithium, 2]
 	]
-	AIValueFactor = 10
-	Size = [4, 4]
-	IsRotateable = false
+	AIValueFactor = 8
+	Size = [2, 3]
+	//IsRotateable = true
 	SelectionPriority = 0
 	SelectionTypeID = "reactors"
-	MaxHealth = 4000 // Deliberately not increasing this for med/large reactors to make them extra-fragile.
+	MaxHealth = 4000 // Not changing, makes these slightly more usefull on smaller ships
 	AutoDoorMaxPathLength = 5
 	TypeCategories = [reactor, ftl, is_crewed, uses_antimatter, warpcore]
 	ReceivableBuffs : ^/0/ReceivableBuffs [WarpcoreBuffSmall, WarpcoreSubstationBuffSmall]
 	CreatePartPerTileWhenDestroyed = ""
 	IgnoreRotationForMirroredSelection = true
+	
 	BlockedTravelCells
 	[
-		[0, 2]
-		[1, 2]
-		[2, 2]
-		[3, 2]
-		[0, 3]
-		[1, 3]
-		[2, 3]
-		[3, 3]
+
 	]
 	BlockedTravelCellDirections
 	[
 		{
-			Key = [1, 1]
+			Key = [0, 0]
 			Value = [Right]
 		}
 		{
-			Key = [2, 1]
+			Key = [0, 1]
+			Value = [Right]
+		}
+		{
+			Key = [0, 2]
+			Value = [Right]
+		}
+		{
+			Key = [1, 0]
+			Value = [Left]
+		}
+		{
+			Key = [1, 1]
+			Value = [Left]
+		}
+		{
+			Key = [1, 2]
 			Value = [Left]
 		}
 	]
 	AllowedDoorLocations
 	[
+		[0, -1]
 		[1, -1]
-		[2, -1]
-		[0, 8]
-		[-1, 1]
-		[4, 1]
+		[-1, 0]
+		[2, 0]
+		[-1, 2]
+		[2, 2]
+		[0, 3]
+		[1, 3]
 	]
 	ForceManhattanPathInPart = true
+	HasNonContiguousPathing = true
 	EditorIcon
 	{
 		Texture
@@ -63,7 +77,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [72, 72]
+		Size = [42.66, 64]
 	}
 	Components : ^/0/Components
 	{
@@ -81,7 +95,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			CommandPoints = 30
+			CommandPoints = 15
 		}
 
 		PowerToggle
@@ -96,8 +110,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceConverter
 			ToStorage = BatteryStorage
-			ToQuantity = 50
-			Interval = { BaseValue=0.5; BuffType=WarpcoreBuffSmall; BuffMode=Subtract; MinValue=0.20; }
+			ToQuantity = 25
+			Interval = { BaseValue=0.5; BuffType=WarpcoreBuffVSmall; BuffMode=Subtract; MinValue=0.20; }
 		}
 		//BatteryProducer2
 		//{
@@ -117,8 +131,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 16000
-			StartingResources = 16000
+			MaxResources = 10000
+			StartingResources = 10000
 		}
 	//	ExtendedBatteryActive
 	//	{
@@ -167,9 +181,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = TypedResourceGrid
 			ResourceType = antimatter
-			MaxResources = 2
+			MaxResources = 5
 			StartingResources = 0
-            GridRect = [3,1,1,1]
+            GridRect = [1, 2, 1, 1]
             Layer = "structure"
             SpriteInset = [12/64, 4/64, 6/64, 11/64]
 		}
@@ -179,7 +193,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = antimatter
 			FromStorage = AntimatterStorage
 			FromQuantity = 1
-			ToQuantity = 10000
+			ToQuantity = 5000
 		}
 		AntimatterConsumer
 		{
@@ -203,7 +217,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 			ToStorage = BatteryStorage
 			ToQuantity = 375
-			Interval = .075
+			Interval = .1
 		}
 		ConvertEffects
 		{
@@ -281,14 +295,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				MinQuantityForConversion = 375
 				}
 			]
-			Interval = { BaseValue=0.075; BuffType=WarpcoreSubstationBuffSmall; BuffMode=Subtract; MinValue=0.03; }
+			Interval = { BaseValue=0.075; BuffType=WarpcoreSubstationBuffVSmall; BuffMode=Subtract; MinValue=0.03; }
 		}
 		// Hyperdrive
 		HyperiumStorage
 		{
 			Type = ResourceStorage
 			ResourceType = hyperium
-			MaxResources = 100
+			MaxResources = 30
 			UITileRect = [0, 0, 1, 1]
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
 			DropResourcesWhenDestroyed = true
@@ -306,7 +320,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 8000
+			MaxResources = 4000
 			StartingResources = &MaxResources
 			//InitToMaxResources = 0
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
@@ -341,8 +355,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = MultiResourceStorage
 			ResourceType = battery
 			ResourceStorages = [FtlBatteryStorage]
-			ToggleOnResources = 8000
-			ToggleOffResource = 7999
+			ToggleOnResources = 4000
+			ToggleOffResource = 3999
 		}
 
 		FtlDrive
@@ -351,9 +365,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = PowerToggle
 			PowerStorage = FtlBatteryStorage
 			FuelStorage = HyperiumStorage
-			SpinDownDuration = 5
-			JumpEfficiency = 80%
-			JumpEfficiencyDistanceRange = [10, 45]
+			SpinDownDuration = 8
+			JumpEfficiency = 70%
+			JumpEfficiencyDistanceRange = [5, 35]
 
 			JumpOutMediaEffects
 			[
@@ -402,7 +416,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Graphics
 		{
 			Type = Graphics
-			Location = [2, 2]
+			Location = [1, 1.5]
 			OperationalToggle = IsOperational
 			Floor
 			{
@@ -410,61 +424,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						AnimationFiles
-						[
-							"floor_on.png"
-						]
-						Size = [4, 4]
-						AnimationInterval = 0.095
+						File = "floor.png"
+						Size = [2, 3]
 					}
-				]
-			}
-			OperationalDoodad
-			{
-				Layer = "doodads_high"
-				DamageLevels
-				[
 					{
-						AnimationFiles
-						[
-							"reactor_on_1.png"
-							"reactor_on_2.png"
-							"reactor_on_3.png"
-						]
-						Size = [4, 4]
-						AnimationInterval = 0.3
+						File = "floor_33.png"
+						Size = [2, 3]
 					}
-					// {
-						// AnimationFiles
-						// [
-							// "reactor_on_33_1.png"
-							// "reactor_on_33_2.png"
-							// "reactor_on_33_3.png"
-						// ]
-						// Size = [4, 4]
-						// AnimationInterval = 0.3
-					// }
-					// {
-						// AnimationFiles
-						// [
-							// "reactor_on_66_1.png"
-							// "reactor_on_66_2.png"
-							// "reactor_on_66_3.png"
-						// ]
-						// Size = [4, 4]
-						// AnimationInterval = 0.3
-					// }
-				]
-			}
-			//NonOperationalDoodad = &OperationalDoodad
-			OperationalLighting
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
 					{
-						File = "lights.png"
-						Size = [4, 4]
+						File = "floor_66.png"
+						Size = [2, 3]
 					}
 				]
 			}
@@ -475,7 +444,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "walls.png"
-						Size = [4, 4]
+						Size = [2, 3]
 					}
 					//{
 					//	File = "walls_33.png"
@@ -495,17 +464,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = "roof.png"
 						NormalsFile = "roof_normals.png"
-						Size = [4, 4]
+						Size = [2, 3]
 					}
 					{
-						File = "roof.png"
-						NormalsFile = "roof_normals.png"
-						Size = [4, 4]
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 3]
 					}
 					{
-						File = "roof.png"
-						NormalsFile = "roof_normals.png"
-						Size = [4, 4]
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 3]
 					}
 				]
 			}
@@ -520,16 +489,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					// }
 				// ]
 			// }
-			OperationalRoofLighting
+			NonOperationalDoodad
 			{
-				Layer = "roof_lights_fancy"
+				Layer = "doodads_high"
+				//Offset = [0, -0.515]
 				DamageLevels
 				[
 					{
-						File = "./Data/ships/common/light_blob.png"
-						Size = [12, 12]
-						Z = 5.0 // Controls the "height" of the light for the purposes of normal mapping.
-						VertexColor = [77, 136, 255] //[180*1.0, 255*1.0, 77*1.0]
+						File = "floor_off.png"
+						Size = [2, 3]
 					}
 				]
 			}
@@ -554,73 +522,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
-
-		BatterySprites
-		{
-			Type = ResourceSprites
-			Location = [2, 2]
-			ResourceStorage = BatteryStorage
-			Layer = "doors"
-			Round = Down
-			ResourceLevels
-			[
-				{
-					File = "batteries1.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries2.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries3.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries4.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries4.png"	// this is to avoid flickering of fourth battery
-					Size = [4, 4]
-				}
-			]
-		}
 		
-		AntimatterSprites
-		{
-			Type = ResourceSprites
-			Location = [2, 2]
-			ResourceStorage = AntimatterStorage
-			Layer = "doodads_low"
-			HasZeroResourceSprite = true
-			ResourceLevels
-			[
-				{
-					AnimationFiles
-					[
-						"antimatter0.png"
-					]
-					Size = [4, 4]
-					AnimationInterval = 0.1
-					ClampAnimation = true
-				}
-				{
-					AnimationFiles
-					[
-						"antimatter0.png"
-					]
-					Size = [4, 4]
-					AnimationInterval = 0.1
-					ClampAnimation = true
-				}
-			]
-		}
 
 		DestroyedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 3]
+			Location = [1.5, 1]
 
 			MediaEffects
 			[
@@ -649,8 +556,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 3250000
-					Radius = 62
+					TotalDamage = 750000
+					Radius = 25
 					Delay = .05
 					ExpandDuration = .08
 					ExpandStartRadius = 6
@@ -667,8 +574,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 225000
-					Radius = 52
+					TotalDamage = 75000
+					Radius = 16
 					Delay = .05
 					ExpandDuration = .07
 					ExpandStartRadius = 4
@@ -688,48 +595,23 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CrewLocation1
 		{
 			Type = CrewLocation
-			Location = [0.6, 0.6]
-			Rotation = 315d
-		}
-		CrewLocation2
-		{
-			Type = CrewLocation
-			Location = [3.4, 0.6]
-			Rotation = 45d
-		}
-		CrewLocation3
-		{
-			Type = CrewLocation
-			Location = [1.4, 1.5]
-			Rotation = 90d
-		}
-		CrewLocation4
-		{
-			Type = CrewLocation
-			Location = [2.6, 1.5]
-			Rotation = 270d
+			Location = [1.609375, 0.859375]
+			Rotation = 225d
 		}
 		PartCrew
 		{
 			Type = PartCrew
-			Crew = 2
+			Crew = 1
 			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
 			PrerequisitesBeforeCrewing = [PowerToggle]
 			CrewDestinations
 			[
-				[0.7, 0.7]
-				[3.2, 0.6]
-				[1.3, 1.5]
-				[2.7, 1.5]
+				[1.609375, 0.859375]
 			]
 			CrewLocations
 			[
 				CrewLocation1
-				CrewLocation2
-				CrewLocation3
-				CrewLocation4
 			]
-			SwitchLocationInterval = [5, 10]
 		}
 
 		OperationEffects
@@ -744,7 +626,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [2, 2]
+			Location = [1, 1.5]
 			Layer = "indicators"
 			Indicators
 			[
@@ -783,7 +665,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [4, 4]
+			Size = [2, 3]
 		}
 	}
 

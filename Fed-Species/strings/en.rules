@@ -126,6 +126,9 @@ Parts
 	Warpnacelle_Extension_3x3 = "Nacelle Extension 3"
 	Warpnacelle_Extension_3x3_Icon = "Nacelle Extension 3"
 	Warpnacelle_Extension_3x3_Desc = "Nacelle extension that provides additional thrust to large nacelles"
+	Warpcore_2x3 = "Fighter Warpcore"
+	Warpcore_2x3_Icon = "Fighter Warpcore"
+	Warpcore_2x3_Desc = "A small warpcore useful for fighters"
 							  
 	// Shields
 	ShieldCore = "Shieldcore"

@@ -192,6 +192,13 @@ NacelleBatteryConnection // Only used to show connection in blueprints.
 	RectFillColor = [10, 212, 98, 64]
 }
 
+WarpcoreBuffVSmall
+{
+	CombineMode = Add
+	BaseValue = 0.075
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
 WarpcoreBuffSmall
 {
 	CombineMode = Add
@@ -230,6 +237,11 @@ WarpcoreSubstationBuffSmall
 {
 	CombineMode = Add
 	BaseValue = 0.0075
+}
+WarpcoreSubstationBuffVSmall
+{
+	CombineMode = Add
+	BaseValue = 0.005
 }
 LargeInjector
 {

@@ -18,7 +18,7 @@ Components
 		// AddMode = PrioritizeLeastEmptyCapacity
 		// RemoveMode = PrioritizeMostEmptyCapacity
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
-		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+		UITileRect = [7/64, 2 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
 
 	Consumer
