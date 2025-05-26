@@ -9,7 +9,18 @@ Techs
 		Icon = &<parts/energy/fed_warpcore_small/fed_warpcore_small.rules>/Part/EditorIcon
 		EditorGroup = &<parts/energy/fed_warpcore_small/fed_warpcore_small.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/energy/fed_warpcore_small/fed_warpcore_small.rules>/Part/ID, &<parts/energy/fed_plasma_tube/fed_plasma_tube.rules>/Part/ID]
-		Cost = 20000
+		Cost = 40000
+		Prerequisites = [stafa.fed_warpcore_2x3]
+	}
+	{
+		Name = fed_warpcore_2x3
+		ID = stafa.fed_warpcore_2x3
+		NameKey = &<parts/energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part/NameKey
+		DescriptionKey = &<parts/energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part/DescriptionKey
+		Icon = &<parts/energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part/EditorIcon
+		EditorGroup = &<parts/energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part/ID]
+		Cost = 10000
 	}
 	{
 		Name = fed_ready_room
@@ -64,7 +75,7 @@ Techs
 		EditorGroup = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/ID]
 		Cost = 3000
-		Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
+		Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6, stafa.fed_impulse_1x2]
 	}
 	{
 		Name = fed_impulse_engines_small
@@ -139,7 +150,7 @@ Techs
 		DescriptionKey = &<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/DescriptionKey
 		Icon = &<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/EditorIcon
 		EditorGroup = &<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/EditorGroup
-		PartsUnlocked = [&<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/ID]
+		PartsUnlocked = [&<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/ID, &<parts/engines/fed_warpnacelle_extension_3x3/fed_warpnacelle_extension_3x3.rules>/Part/ID]
 		Cost = 48000
 		Prerequisites = [stafa.fed_warpcore_large, stafa.fed_warpnacelle_3x6]
 	}
@@ -185,19 +196,19 @@ Techs
 		EditorGroups = &<parts/weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part/ID]
 		Cost = 6000
-		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_dual_phaser_cannon]
+		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_def_dual_phaser_cannon]
 	}
-	{
-		Name = fed_dual_phaser_cannon
-		ID = stafa.fed_dual_phaser_cannon
-		NameKey = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/NameKey
-		DescriptionKey = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/DescriptionKey
-		Icon = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/EditorIcon
-		EditorGroups = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/EditorGroups
-		PartsUnlocked = [&<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/ID]
-		Cost = 6000
-		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_phaser_point_defense]
-	}
+//	{
+//		Name = fed_dual_phaser_cannon
+//		ID = stafa.fed_dual_phaser_cannon
+//		NameKey = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/NameKey
+//		DescriptionKey = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/DescriptionKey
+//		Icon = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/EditorIcon
+//		EditorGroups = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/EditorGroups
+//		PartsUnlocked = [&<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/ID]
+//		Cost = 6000
+//		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_phaser_point_defense]
+//	}
 	{
 		Name = fed_torpedolauncher
 		ID = stafa.fed_torpedolauncher_2x4
@@ -207,7 +218,7 @@ Techs
 		EditorGroups = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher.rules>/Part/ID]
 		Cost = 15000
-		Prerequisites = [stafa.fed_warpcore_large]
+		Prerequisites = [stafa.fed_warpcore_med, stafa.standardtorpedolauncher_deck_1x4]
 	}
 	{
 		Name = fed_decktorpedolauncher
@@ -218,6 +229,93 @@ Techs
 		EditorGroups = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part/ID]
 		Cost = 30000
-		Prerequisites = [stafa.fed_torpedolauncher_2x4]
+		Prerequisites = [stafa.fed_torpedolauncher_2x4, stafa.fed_warpcore_large]
+	}
+	{
+		Name = fed_burstphaserbankpd
+		ID = sparky.burstphaserbankpd_floor
+		NameKey = &<parts/weapons/fed_burst_phaserbankpd/fed_burst_phaserbankpd.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_burst_phaserbankpd/fed_burst_phaserbankpd.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_burst_phaserbankpd/fed_burst_phaserbankpd.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_burst_phaserbankpd/fed_burst_phaserbankpd.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_burst_phaserbankpd/fed_burst_phaserbankpd.rules>/Part/ID]
+		Cost = 7500
+		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_phaser_point_defense]
+	}
+	{
+		Name = fed_burst_phaserbank_combat
+		ID = sparky.burstphaserbankcom_floor
+		NameKey = &<parts/weapons/fed_burst_phaserbank_combat/fed_burst_phaserbank_combat.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_burst_phaserbank_combat/fed_burst_phaserbank_combat.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_burst_phaserbank_combat/fed_burst_phaserbank_combat.rules>/Part/EditorIcon
+		EditorGroup = &<parts/weapons/fed_burst_phaserbank_combat/fed_burst_phaserbank_combat.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/weapons/fed_burst_phaserbank_combat/fed_burst_phaserbank_combat.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [stafa.fed_warpcore_large, stafa.phaserbank_floor]
+	}
+	{
+		Name = fed_phaserlance
+		ID = stafa.phaserlance_nerfed
+		NameKey = &<parts/weapons/fed_phaserlance_nerfed/fed_phaserlance_nerfed.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_phaserlance_nerfed/fed_phaserlance_nerfed.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_phaserlance_nerfed/fed_phaserlance_nerfed.rules>/Part/EditorIcon
+		EditorGroup = &<parts/weapons/fed_phaserlance_nerfed/fed_phaserlance_nerfed.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/weapons/fed_phaserlance_nerfed/fed_phaserlance_nerfed.rules>/Part/ID]
+		Cost = 1000000
+		Prerequisites = [sparky.burstphaserbankcom_floor, stafa.phaserbank_med]
+	}
+	{
+		Name = fed_phaserbank_med
+		ID = stafa.phaserbank_med
+		NameKey = &<parts/weapons/fed_phaserbank_med/fed_phaserbank_med.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_phaserbank_med/fed_phaserbank_med.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_phaserbank_med/fed_phaserbank_med.rules>/Part/EditorIcon
+		EditorGroup = &<parts/weapons/fed_phaserbank_med/fed_phaserbank_med.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/weapons/fed_phaserbank_med/fed_phaserbank_med.rules>/Part/ID]
+		Cost = 15000
+		Prerequisites = [stafa.fed_warpcore_med, stafa.phaserbank_floor]
+	}
+	{
+		Name = fed_standardtorpedolauncher
+		ID = stafa.standardtorpedolauncher_deck_1x4
+		NameKey = &<parts/weapons/fed_standardtorpedolauncher/fed_standard_torpedo_launcher_deck.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_standardtorpedolauncher/fed_standard_torpedo_launcher_deck.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_standardtorpedolauncher/fed_standard_torpedo_launcher_deck.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_standardtorpedolauncher/fed_standard_torpedo_launcher_deck.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_standardtorpedolauncher/fed_standard_torpedo_launcher_deck.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [stafa.fed_warpcore_2x3]
+	}
+	{
+		Name = fed_def_dual_phaser_cannon
+		ID = stafa.fed_def_dual_phaser_cannon
+		NameKey = &<parts/weapons/fed_def_dual_phaser_cannon/fed_def_dual_phaser_cannon.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_def_dual_phaser_cannon/fed_def_dual_phaser_cannon.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_def_dual_phaser_cannon/fed_def_dual_phaser_cannon.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_def_dual_phaser_cannon/fed_def_dual_phaser_cannon.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_def_dual_phaser_cannon/fed_def_dual_phaser_cannon.rules>/Part/ID]
+		Cost = 6000
+		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_phaser_point_defense]
+	}
+	{
+		Name = fed_heavy_phaser_cannon
+		ID = stafa.fed_heavy_phaser_cannon
+		NameKey = &<parts/weapons/fed_heavy_phaser_cannon/fed_heavy_phaser_cannon.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_heavy_phaser_cannon/fed_heavy_phaser_cannon.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_heavy_phaser_cannon/fed_heavy_phaser_cannon.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_heavy_phaser_cannon/fed_heavy_phaser_cannon.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_heavy_phaser_cannon/fed_heavy_phaser_cannon.rules>/Part/ID]
+		Cost = 20000
+		Prerequisites = [stafa.fed_def_dual_phaser_cannon]
+	}
+	{
+		Name = fed_impulse_engines_1x1
+		ID = stafa.fed_impulse_1x2
+		NameKey = &<parts/engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part/NameKey
+		DescriptionKey = &<parts/engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part/DescriptionKey
+		Icon = &<parts/engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part/EditorIcon
+		EditorGroup = &<parts/engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part/ID]
+		Cost = 1500
 	}
 ]

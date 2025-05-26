@@ -1,0 +1,449 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Tiny_Phaser_Bank_2x1"
+	IconNameKey = "Parts/Tiny_Phaser_Bank_2x1_Icon"
+	ID = "stafa.tiny_phaserbank_2x1"
+	EditorGroup = "StarfleetWeapons"
+	DescriptionKey = "Parts/Tiny_Phaser_Bank_2x1_Desc"
+	Resources
+	[
+		[steel, 10]
+		[coil, 4]
+		[coil2, 2]
+		[diamond, 1]
+	]
+	Size = [2, 1]
+	MaxHealth = 2000
+	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, PhaserTinyExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff, AntimatterPower]
+	IsRotateable = true
+	IsFlippable = true
+	CrewSpeedFactor = 0.4
+	CrewCongestedSpeedFactor = .5	
+	SelectionPriority = 1
+	InitialPenetrationResistance = 1
+	PenetrationRectType = Normal
+	ProhibitedBy : ^/0/ProhibitedBy [phaserbank]
+	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [phaserbank]
+	ProhibitRects
+    [
+		[phaserbank, [-10, -10, 22, 10]]
+		[phaserbank, [-10, -10, 10, 22]]
+		[phaserbank, [2, -10, 10, 22]]
+		[phaserbank, [-1, 1, 13, 10]]
+    ]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [2, 1]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		TinyExpoDebuff
+		{
+			Type = GridBuffProvider
+			BuffType = PhaserTinyExpoDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+		}
+		ExpoDebuff
+		{
+			Type = GridBuffProvider
+			BuffType = PhaserExpoDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		MedExpoDebuff
+		{
+			Type = GridBuffProvider
+			BuffType = MedPhaserExpoDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+		}
+		PhaserCounterBuff
+		{
+			Type = GridBuffProvider
+			BuffType = PhaserCounter
+			GridDistance = 500
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+	//		PhaserMedExpoDebuff
+	//		{
+	//			Type = GridBuffProvider
+	//			BuffType = PhaserMedExpoDebuff
+	//			GridDistance = 500
+	//			AllowDiagonals = true
+	//			OperationalToggle = PhaserDebuffTrigger1
+	//		}
+	//		PhaserLargeExpoDebuff
+	//		{
+	//			Type = GridBuffProvider
+	//			BuffType = PhaserLargeExpoDebuff
+	//			GridDistance = 500
+	//			AllowDiagonals = true
+	//			OperationalToggle = PhaserDebuffTrigger2
+	//		}
+	//		TestMultiValue
+	//		{
+	//			Type = MultiValue
+	//			Mode = Add
+	//			Values = [PhaserDebuff, PhaserMedDebuff, PhaserLargeDebuff]
+	//			Abs = true
+	//
+	//		}
+	//		TestPhaserCount
+	//		{
+	//			Type = MultiValue
+	//			Mode = Add
+	//			Values = [PhaserCount]
+	//			Abs = true
+	//
+	//		}
+	//		PhaserDebuffTrigger1
+	//		{
+	//			Type = ThresholdTrigger
+	//			AmountFrom = TestPhaserCount
+	//			MinAmount = 20
+	//		}
+	//		PhaserDebuffTrigger2
+	//		{
+	//			Type = ThresholdTrigger
+	//			AmountFrom = PhaserCount
+	//			MinAmount = 35
+	//		}
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [1, 0.5]
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			//FireInterval = 2/30
+			FireInterval = { BaseValue=3.0; BuffType=PhaserExpoDebuff; BuffMode=Add; MaxValue=24; }
+			FiringArc = 360d
+			RotateSpeed = 360d
+			FireThresholdAngle = 0.25d
+			AIFirepowerRating = 400
+			FirePermissionToggle = FireModeToggle
+			AutoTargetCrewSafetyDist = 8
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			//HoldTargetWhileFiring = 0.5
+			Emitter = BeamEmitter
+			AlwaysShowCoverage = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Turret
+			Invert = false
+		}
+
+		BeamEmitter : &<../../../shots/phaser_beam_tiny/phaser_beam_tiny.rules>
+		{
+			Type = BeamEmitter
+			Location = [0.25, 0]
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = IsOperational
+			FireDelay = 0.1
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 500
+			MinResourcesUsed = 1
+		}
+
+		ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Turret
+			Location = [1, 0.5]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "charge.wav"
+					Volume = .25
+					Speed = 1.5
+				}
+			]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 0.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Location = [1, 0]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [1, 0.671875]
+			Rotation = 0d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			CrewDestinations
+			[
+				&../../CrewLocation/Location
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 0.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [1, 0.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 1]
+		}
+	}
+	Indicators
+	{
+		Type = IndicatorSprites
+		Location = [1, 3]
+		Layer = "indicators"
+		Indicators
+		[
+			// Turned off.
+			{
+				Toggle = PowerToggle
+				AtlasSprite
+				{
+					File = &/INDICATORS/PowerOff
+					Size = [.75, .75]
+				}
+			}
+
+			// Out of power.
+			{
+				Toggle = BatteryStorage
+				Delay = &~/Part/Components/Turret/FireInterval
+				//Delay = 0.49
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoPower
+					Size = [.75, .75]
+				}
+			}
+			// No crew.
+			{
+				Toggle = PartCrew
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoCrew
+					Size = [2, 1]
+				}
+			}
+		]
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		MinPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) / 2
+		RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/PDShot"
+			Stats
+			{
+				ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
+				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
+				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
+				DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue
+				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
+				BurstDuration = &~/Part/Components/BeamEmitter/Duration
+				BurstDamage = (&DamagePerShot) * ((&BurstDuration) / (&HitInterval))
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval/BaseValue)
+				DamagePerSecond = (&BurstDamage) * (&ROF)
+				Damage = [&../BurstDamage, &../DamagePerSecond]
+				Range = [&~/Part/Components/BeamEmitter/Range]
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = Infinity
+				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
+				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval/BaseValue)
+			}
+		}
+	]
+}

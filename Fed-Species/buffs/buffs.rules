@@ -247,6 +247,24 @@ LargeInjector
 {
 	CombineMode = Add
 }
+PhaserTinyExpoDebuff
+{
+	CombineMode = Add
+	Exponent = -1
+	BaseValue = 1
+
+	Icon
+	{
+		Texture
+		{
+			File = "debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [0.5, 0.5]
+	}
+	IconPriority = 1 
+}
 PhaserExpoDebuff
 {
 	CombineMode = Add

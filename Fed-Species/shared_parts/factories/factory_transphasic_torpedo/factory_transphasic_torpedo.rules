@@ -14,7 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[diamond, 12]
 	]
 	Size = [3, 4]
-	IsFlippable = true
+	IsFlippable = false
 	SelectionPriority = 1
 	MaxHealth = 4000
 	Density = 14

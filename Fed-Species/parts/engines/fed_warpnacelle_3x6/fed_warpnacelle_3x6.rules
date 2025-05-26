@@ -31,7 +31,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		// [default, [-2, -3, 1, 3]]	// top left
 		[default, [4, 4, 1, 5]]		// bottom right
 		[default, [-2, 4, 1, 5]]	// bottom left
-		[default, [-1, 9, 5, 1]]	// bottom
+		[default, [-1, 9, 5, 200]]	// bottom
 	]
 	ThrusterForce = 27000
 	ThrustIncreaseTime = 5

@@ -6,6 +6,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	OtherIDs = [aux_ma_injector_large]
 	EditorGroup = "StarfleetPower"
 	DescriptionKey = "Parts/Aux_MA_Injector_LargeDesc"
+	IsBuildable = false
 	Resources
 	[
 		[steel, 112]
