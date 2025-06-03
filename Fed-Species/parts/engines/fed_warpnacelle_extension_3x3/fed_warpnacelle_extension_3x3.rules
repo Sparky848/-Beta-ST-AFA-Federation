@@ -147,7 +147,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ComponentID = IsConnected
 			PartCriteria
 			{
-				IDs = [stafa.fed_warpnacelle_extension_3x3, stafa.fed_warpnacelle_3x9, stafa.fed_warpnacelle_3x6]
+				IDs = [stafa.fed_warpnacelle_extension_3x3, stafa.fed_warpnacelle_3x9, stafa.fed_warpnacelle_3x6, stafa.fed_neb_warpnacelle_3x9]
 				Top = 3
 			}
 		}

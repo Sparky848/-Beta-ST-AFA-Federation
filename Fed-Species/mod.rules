@@ -172,11 +172,11 @@ Actions:
 //		]
 //	}
 ]
-ShipLibraries
-[
-	{
-		Folder = "Ships"
-		NameKey = "STAFAShips"
-		TooltipKey = "STAFAShipsTT"
-	}
-]	
+//ShipLibraries
+//[
+//	{
+//		Folder = "Ships"
+//		NameKey = "STAFAShips"
+//		TooltipKey = "STAFAShipsTT"
+//	}
+//]	
