@@ -931,39 +931,39 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 	    }
 		
-
-		Indicators
+	}
+Indicators
+{
+	Type = IndicatorSprites
+	Location = [.5, 3]
+	Layer = "indicators"
+	Indicators
+	[
+		// Turned off.
 		{
-			Type = IndicatorSprites
-			Location = [.5, 3]
-			Layer = "indicators"
-			Indicators
-			[
-				// Turned off.
-				{
-					Toggle = PowerToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/PowerOff
-						Size = [.5, .5]
-					}
-				}
-
-				// Out of power.
-				{
-					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
-					//Delay = 0.49
-					AtlasSprite
-					{
-						File = &/INDICATORS/NoPower
-						Size = [.5, .5]
-					}
-				}
-				
-			]
+			Toggle = PowerToggle
+			AtlasSprite
+			{
+				File = &/INDICATORS/PowerOff
+				Size = [.5, .5]
+			}
 		}
-    }	
+
+		// Out of power.
+		{
+			Toggle = BatteryStorage
+			Delay = &~/Part/Components/Turret/FireInterval
+			//Delay = 0.49
+			AtlasSprite
+			{
+				File = &/INDICATORS/NoPower
+				Size = [.5, .5]
+			}
+		}
+		
+	]
+}
+	
 Stats
 {
 	PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
@@ -976,7 +976,7 @@ Stats
 StatsByCategory
 [
 	{
-		NameKey = "StatCategories/PDShot"
+		NameKey = "StatCategories/Phaser"
 		Stats
 		{
 			ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))

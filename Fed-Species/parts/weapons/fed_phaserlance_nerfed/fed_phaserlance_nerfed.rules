@@ -188,7 +188,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResupplyThreshold = 0
 			OperationalToggle = PowerToggle
 		}
-
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 5
+		}
 		Graphics
 		{
 			Type = Graphics
@@ -271,7 +281,65 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
-			Location = [.5, 3]
+			Location = [.5, 5]
+			FactorHitEffectsWith = BatteryStorage
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 100000
+					Radius = 16
+					Delay = .1
+					FireChancePerNDamage = 50%
+					NDamage = 1000
+					CrewKillChance = 50%
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 75000
+					Radius = 12
+					Delay = .1
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Crew = false
+					}
+				}
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = battery
+					TotalDrain = 100000
+					Radius = 25
+						Slices = 1
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+					MediaEffectsOnDrainFactor = .0005
+					MediaEffectsOnDrain
+					[
+						&<particles2/ship_drain.rules>
+						&<particles2/disruptor_bolt_hit_center_bounce.rules>
+						&<particles2/disruptor_bolt_hit_center_bounce2.rules>
+						&<particles2/disruptor_bolt_hit_sizzle.rules>
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+			]
 		}
 
 		Blueprints

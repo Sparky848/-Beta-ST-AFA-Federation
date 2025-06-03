@@ -10,7 +10,7 @@ HitInterval = .1
 SourceShipLowCollisions = false
 CrewCollisions = {Enemies=true; Junk=true}
 ClipRangeToTarget = true
-
+ReceivableBuffs = [PhaserExpoDebuff, CaptainsRoomBuff]
 BeamMediaEffects
 [
 	// The beam itself.

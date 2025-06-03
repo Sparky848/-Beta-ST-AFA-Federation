@@ -48,7 +48,7 @@ Components
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = CommonReloadTimerKindaShort
+		ShowProgressFor = CommonReloadTimerSomewhatShort
 		Invert = true
 	}
 
@@ -106,7 +106,7 @@ Components
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerVeryShort, FireModeToggle]
+		Toggles = [CommonReloadTimerSomewhatShort, FireModeToggle]
 		Mode = All
 	}
 
@@ -273,7 +273,7 @@ Components
 			// Out of missiles.
 			{
 				Toggle = MissilesPrereq
-				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerVeryShort/Duration
+				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerSomewhatShort/Duration
 				AtlasSprite
 				{
 					File =  &/INDICATORS/NoPhoton
@@ -368,7 +368,7 @@ MissileStats
 		DamagePerSecond = (&DamagePerShot) * (&ROF)
 		Damage = [&../DamagePerShot, &../DamagePerSecond]
 		DamageArea = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
-		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerVeryShort/Duration)
+		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerSomewhatShort/Duration)
 		RangeLimited = [&~/Part/Components/Bullet/Range/BaseValue, &~/Part/Components/Bullet/Range/MaxValue]
 		Arc = deg(&~/WeaponBase/ValidArc)
 		ShotLaunchSpeed = &~/EmitterBase/Bullet/Speed/BaseValue

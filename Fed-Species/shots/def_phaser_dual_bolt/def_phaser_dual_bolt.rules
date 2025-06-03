@@ -40,10 +40,11 @@ Components
 	Hit
 	{
 		Type = PenetratingHit
+		SourcePartCollisionDelay = 0.1/30
 		Penetration = { BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
-		SourceShipLowCollisions = false
+		SourceShipLowCollisions = true
 		CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational
 

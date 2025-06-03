@@ -48,7 +48,7 @@ Components
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime =30 
+		Lifetime = 30 
 		HasTarget = true
 	}
 

@@ -1,9 +1,9 @@
 ID = "stafa.fed_tricobalt_torpedo_shot"  // originals by kurim
-Range = { BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+Range = { BaseValue=280; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
 IdealRange
 [
 	{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
-	{ BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+	{ BaseValue=280; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
 ]
 IdealRadius = [5, 50]
 Speed = { BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
@@ -20,7 +20,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 240d
+		TurnVelocity = 140d
 		Delay = .1
 		AvoidanceRaycastDistance = 250
 		VelocityCompensation = 60%
@@ -34,7 +34,7 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 65
+		Acceleration = 45
 	}
 
 	NegativeAcceleration

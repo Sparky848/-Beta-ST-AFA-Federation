@@ -36,7 +36,7 @@ Parts
 	Burst_Phaser_Bank_COM = "Multi-Emitter Combat Phaser Bank"
 	Burst_Phaser_Bank_COM_Icon = "Multi-Emitter Combat Phaser Bank"
 	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat, Fires multiple untargetable beams"\
-								 "\n<s20><red>Will exponentially lose strength with more phaserbanks</red></s20>"
+								 "\n<s16><red>Will exponentially lose damage and fire rate the more banks are placed</red></s16>"
 
 	Tiny_Phaser_Bank_1x1 = "Shuttle Phaser Emitter"
 	Tiny_Phaser_Bank_1x1_Icon = "Shuttle Phaser Emitter"
@@ -46,7 +46,8 @@ Parts
 	Tiny_Phaser_Bank_2x1_Desc = "Phaser emitter designed solely for the emergency defence of small craft"
 	Phaser_Lance = "Phaser Lance"
 	Phaser_Lance_Icon = "Phaser Lance"
-	Phaser_Lance_Desc = "The Ultimate Phaser"
+	Phaser_Lance_Desc = "The Ultimate Phaser"\
+						"\nTakes a tremendous amount of power to fire,and can be manually powered"
 	Phaser_Lance_Giga = "Giga Lance"
 	Phaser_Lance_Giga_Icon = "Giga Lance"
 	Phaser_Lance_Giga_Desc = "A Truly Ridiculous Phaser"
@@ -65,23 +66,26 @@ Parts
 	Phaser_Bank_Med = "Medium Phaser Bank"
     Phaser_Bank_Icon_Med = "Medium Phaser Bank"
     Phaser_Bank_Desc_Med = "A medium sized phaser bank with higher output but reduced firing angle"\
-						   "\n<s20><red>Will exponentially lose strength with more phaserbanks</red></s20>"\
+						   "\n<s16><red>Will exponentially lose damage and fire rate the more banks are placed</red></s16>"\
 					       "\n<s18><green>See Standard Size for more details</green></s18>"
     // Rooms
 	Captains_Room = "Captain's Ready Room"
 	Captains_Room_Icon = "Ready Room"
-	Captains_Room_Desc = "Room used to buff engine power on a starship"\
+	Captains_Room_Desc = "Room used to buff engine power and weapon range on a starship"\
 						"\n<s14>The captain's ready room was a personal office reserved for the commanding officer of a starship and was typically accessed from the bridge.</s14>"
 	// Energy
 	Warpcore_small = "Small Warpcore"
 	Warpcore_small_Icon = "Small Warpcore"
-	Warpcore_small_Desc = "Provides enough energy to compatible systems in a huge radius for small ships and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
+	Warpcore_small_Desc = "Provides enough energy to compatible systems in a huge radius for small ships and is able to provide warp speed."\
+						  "\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	Warpcore_med = "Medium Warpcore"
 	Warpcore_med_Icon = "Medium Warpcore"
-	Warpcore_med_Desc = "Provides enough energy to compatible systems in a huge radius for medium ships and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
+	Warpcore_med_Desc = "Provides enough energy to compatible systems in a huge radius for medium ships and is able to provide warp speed."\
+						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	Warpcore_large = "Large Warpcore"
 	Warpcore_large_Icon = "Large Warpcore"
-	Warpcore_large_Desc = "Provides enough energy to compatible systems in a huge radius for huge ships and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
+	Warpcore_large_Desc = "Provides enough energy to compatible systems in a huge radius for huge ships and is able to provide warp speed."\
+						  "\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	Plasma_Tube = "Plasmatube"
 	Plasma_Tube_Icon = "Plasmatube"
 	Plasma_Tube_Desc = "Plasmatubes work as a power storage and distributor to the crew. They can only be charged by a running warpcore."
@@ -93,6 +97,11 @@ Parts
 	Aux_MA_Injector_LargeIcon = "Large Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_LargeDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"\
 								"\n<red>Currently Non-Functional</red>"
+	Warpcore_2x3 = "Fighter Warpcore"
+	Warpcore_2x3_Icon = "Fighter Warpcore"
+	Warpcore_2x3_Desc = "A small warpcore useful for fighters"\
+						"\n<color r='165' g='223' b='255' a='255'><s18>Crew cannot pass across the warpcore to the other side of the part</s18></color>"\
+						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	// Engines
 	Warpnacelle_3x6 = "Wide Warpnacelle"
 	Warpnacelle_3x6_Icon = "Warpnacelle 3x6"
@@ -137,9 +146,7 @@ Parts
 	Warpnacelle_Extension_3x3 = "Nacelle Extension 3"
 	Warpnacelle_Extension_3x3_Icon = "Nacelle Extension 3"
 	Warpnacelle_Extension_3x3_Desc = "Nacelle extension that provides additional thrust to large nacelles"
-	Warpcore_2x3 = "Fighter Warpcore"
-	Warpcore_2x3_Icon = "Fighter Warpcore"
-	Warpcore_2x3_Desc = "A small warpcore useful for fighters"
+	
 							  
 	// Shields
 	ShieldCore = "Shieldcore"
@@ -188,24 +195,120 @@ Inputs
 
 PartToggles
 {
-	TorpedoType_Photon = "Photon Torpedo Launcher"
-	TorpedoType_Quantum = "Quantum Torpedo Launcher"
-	TorpedoType_Tricobalt = "Tricobalt Torpedo Launcher"
-	TorpedoType_Transphasic = "Transphasic Torpedo Launcher"
-	TorpedoType_Mine = "Cloaked Mine Launcher"
+	TorpedoType_Photon = "Simple, low cost torpedo\n\n"\
+						"<b>Photon Torpedo Launcher</b>\n\n"\
+						"<white>Max Damage:</white> <good>12,000</good><gray>/shot</gray>\n"\
+						"<white>Damage Area:</white> <good>2</good><gray>metre radius</gray>\n"\
+						"<white>Shield Damage:</white> <good>5,000</good><gray>/shot</gray>\n"\
+						"<white>Range:</white> <good>320</good><gray>metres</gray>\n"\
+						"<white>Rate of Fire:</white> <good>0.5</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>40</good><gray>metres/sec</gray>\n"\
+						"<white>Turn Velocity:</white> <good>240</good><gray>degrees/sec</gray>\n"\
+						"<white>Acceleration:</white> <good>65</good><gray>metres/sec²</gray>\n"\
+						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
+						"<white>Health:</white> <good>125</good>\n"\
+						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
+	TorpedoType_Quantum = "Highly penetrative torpedo\n\n"\
+						"<b>Quantum Torpedo Launcher</b>\n\n"\
+						"<white>Damage Pool:</white> <good>15,000</good><gray>/shot</gray>\n"\
+						"<white>Max Damage:</white> <good>16,000</good><gray>/shot</gray>\n"\
+						"<white>Damage Area:</white> <good>5</good><gray>metre radius</gray>\n"\
+						"<white>Max Shield Damage:</white> <good>25,000</good><gray>/shot</gray>\n"\
+						"<white>Penetration:</white> <good>15</good><gray>metres</gray>\n"\
+						"<white>Range:</white> <good>320</good><gray>metres</gray>\n"\
+						"<white>Rate of Fire:</white> <good>4.5</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>100</good><gray>metres/sec</gray>\n"\
+						"<white>Turn Velocity:</white> <good>50</good><gray>degrees/sec</gray>\n"\
+						"<white>Acceleration:</white> <good>90</good><gray>metres/sec²</gray>\n"\
+						"<white>Lifetime:</white> <good>10</good><gray>seconds</gray>\n"\
+						"<white>Health:</white> <good>125</good>\n"\
+						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
+	TorpedoType_Tricobalt = "Slow, High impact torpedo\n\n"\
+						"<b>Tricobalt Torpedo Launcher</b>\n\n"\
+						"<white>Max Damage:</white> <good>150,000</good><gray>/shot</gray>\n"\
+						"<white>Damage Area:</white> <good>10</good><gray>metre radius</gray>\n"\
+						"<white>Shield Damage:</white> <good>900</good><gray>/shot</gray>\n"\
+						"<white>Range:</white> <good>280</good><gray>metres</gray>\n"\
+						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>40</good><gray>metres/sec</gray>\n"\
+						"<white>Turn Velocity:</white> <good>140</good><gray>degrees/sec</gray>\n"\
+						"<white>Acceleration:</white> <good>45</good><gray>metres/sec²</gray>\n"\
+						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
+						"<white>Health:</white> <good>125</good>\n"\
+						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
+	TorpedoType_Transphasic = "The ultimate torpedo, but is it worth the risk?\n\n"\
+						"<b>Transphasic Torpedo Launcher</b>\n\n"\
+						"<white>Max Damage:</white> <good>1,003,000</good><gray>/shot</gray>\n"\
+						"<white>Damage Area:</white> <good>20</good><gray>metre radius</gray>\n"\
+						"<white>Range:</white> <good>200</good><gray>metres</gray>\n"\
+						"<white>Rate of Fire:</white> <good>35.0</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>25</good><gray>metres/sec</gray>\n"\
+						"<white>Turn Velocity:</white> <good>145</good><gray>degrees/sec</gray>\n"\
+						"<white>Acceleration:</white> <good>65</good><gray>metres/sec²</gray>\n"\
+						"<white>Lifetime:</white> <good>30</good><gray>seconds</gray>\n"\
+						"<white>Health:</white> <good>1000</good>\n"\
+						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+	TorpedoType_Mine = "Cloaked Mine Launcher"//I really need to do this at some point
 	
 	btt_CoreShield_XS = "Small shield that is best suited for ships such as Defiant classes"
 	btt_CoreShield_S = "Small shield that is best suited for ships such as Intrepid classes"
 	btt_CoreShield_M = "Medium shield that is best suited for ships such as Prometheus classes"
 	btt_CoreShield_L = "Big shield that is best suited for ships such as Galaxy classes"
 	btt_CoreShield_XL = "Huge shield that is best suited for ships such as Sovereign classes"
+//yet again thanks for your knowledge and big brain ideas Jani ^-^
+	Phaser_arc_180_Tooltip	= "The most versatile phaser option out there\n\n"\
+							  "<b>Standard 180° Phaser</b>\n"\
+							  "<white>Damage:</white> <good>7,500</good><gray>/shot</gray>\n"\
+							  "<white>Shield Damage:</white> <good>10,000</good><gray>/shot</gray>\n"\
+							  "<white>Range:</white> <good>220</good><gray>metres</gray>\n"\
+							  "<white>Rate of Fire:</white> <good>2.0</good><gray>seconds</gray>\n"\
+							  "<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
-	Phaser_arc_180_Tooltip	= "180° Firearc | Normal damage"
-	Phaser_arc_120_Tooltip	= "120° Firearc | Normal damage"
-	Phaser_arc_90_Tooltip	= "90° Firearc | High damage"
-	Phaser_arc_80_Tooltip	= "80° Firearc | High damage"
-	Phaser_arc_45_Tooltip	= "45° Firearc | Highest damage"
-	Phaser_arc_35_Tooltip	= "35° Firearc | Highest damage"
+	Phaser_arc_120_Tooltip	= "While less versatile than its standard counterpart, the increase in damage far outways the negatives\n\n"\
+							  "<b>Medium 120° Phaser</b>\n"\
+							  "<white>Max Damage:</white> <good>72,000</good><gray>/shot</gray>\n"\
+							  "<white>Damage Area:</white> <good>1.5</good><gray>metre radius</gray>\n"\
+							  "<white>Shield Damage:</white> <good>15,750</good><gray>/shot</gray>\n"\
+							  "<white>Range:</white> <good>260</good><gray>metres</gray>\n"\
+							  "<white>Rate of Fire:</white> <good>3.5</good><gray>seconds</gray>\n"\
+							  "<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
+	Phaser_arc_90_Tooltip	= "Allows for higher damage in a pinch while still leaving some leeway in aiming\n\n"\
+							"<b>Standard 90° Phaser</b>\n"\
+							"<white>Damage:</white> <good>11,000</good><gray>/shot</gray>\n"\
+							"<white>Shield Damage:</white> <good>14,500</good><gray>/shot</gray>\n"\
+							"<white>Range:</white> <good>200</good><gray>metres</gray>\n"\
+							"<white>Rate of Fire:</white> <good>3.0</good><gray>seconds</gray>\n"\
+							"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
+	Phaser_arc_80_Tooltip	= "An excellent middle-ground for tougher engagements\n\n"\
+							  "<b>Medium 80° Phaser</b>\n"\
+							  "<white>Max Damage:</white> <good>99,000</good><gray>/shot</gray>\n"\
+							  "<white>Damage Area:</white> <good>1.65</good><gray>metre radius</gray>\n"\
+							  "<white>Shield Damage:</white> <good>24,750</good><gray>/shot</gray>\n"\
+							  "<white>Range:</white> <good>220</good><gray>metres</gray>\n"\
+							  "<white>Rate of Fire:</white> <good>4.5</good><gray>seconds</gray>\n"\
+							  "<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
+	Phaser_arc_45_Tooltip	= "Sacrifices most its utility for massive damage\n\n"\
+							  "<b>Standard 45° Phaser</b>\n"\
+							  "<white>Damage:</white> <good>18,000</good><gray>/shot</gray>\n"\
+							  "<white>Shield Damage:</white> <good>20,000</good><gray>/shot</gray>\n"\
+							  "<white>Range:</white> <good>180</good><gray>metres</gray>\n"\
+							  "<white>Rate of Fire:</white> <good>4.0</good><gray>seconds</gray>\n"\
+							  "<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
+	Phaser_arc_35_Tooltip	= "Nigh unparalled damage, watch them melt\n\n"\
+							  "<b>Medium 35° Phaser</b>\n"\
+							  "<white>Max Damage:</white> <good>136,125</good><gray>/shot</gray>\n"\
+							  "<white>Damage Area:</white> <good>1.75</good><gray>metre radius</gray>\n"\
+							  "<white>Shield Damage:</white> <good>33,750</good><gray>/shot</gray>\n"\
+							  "<white>Range:</white> <good>200</good><gray>metres</gray>\n"\
+							  "<white>Rate of Fire:</white> <good>5.0</good><gray>seconds</gray>\n"\
+							  "<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	Fire_Left_Tooltip	= "Fire to the left (Based on Part direction)"
 	Fire_Right_Tooltip	= "Fire to the right (Based on Part direction)"
@@ -222,6 +325,9 @@ STAFAShipsTT = "Federation Vessels"
 Stats
 {
 	WeaponBuffFmt = "<white>Weapon-Buff:</white> <good>+{0:0} %</good>"
+	BasePowerGenFmt = "<white>Base Power Generation:</white> <good>{0}</good>"
+	AntimatterPowerGenFmt = "<white>Antimatter Power Generation:</white> <good>{0}</good>"
+	TransferRateFmt = "<white>Energy Transfer Rate:</white> <good>{0}</good>"
 }
 
 StatCategories
@@ -234,4 +340,6 @@ StatCategories
 	Weapon = "Weapon"
 	GigaPhaserLance = "Giga Lance"
 	PhaserLance = "Phaser Lance"
+	ShuttlePhaser = "Shuttle Phaser"
+	Phaser = "Phaser Beam"
 }

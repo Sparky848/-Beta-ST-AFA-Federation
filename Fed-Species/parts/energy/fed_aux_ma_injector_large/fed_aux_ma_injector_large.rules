@@ -128,7 +128,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Right = 0
 				Bottom = 0
 			}
-			OperationalToggle = LargeInjectorBuff
+			OperationalToggle = AnyConnectionToggle
 		}
 		BuffProvider2
 		{
@@ -146,7 +146,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Right = 0
 				Bottom = 0
 			}
-			OperationalToggle = LargeInjectorBuff
+			OperationalToggle = AnyConnectionToggle
 		}
 		BuffProvider3
 		{
@@ -164,7 +164,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Right = 0
 				Bottom = 0
 			}
-			OperationalToggle = LargeInjectorBuff
+			OperationalToggle = AnyConnectionToggle
 		}
 		//CanBuff
 		//{
@@ -177,95 +177,126 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffToggle
 			BuffType = LargeInjector
 		}
-
-//		Connectedtolargecoreleft
-//		{
-//			Type = ToggleProxy
-//			PartLocation = [-1, -1]
-//			ProxyableComponents
-//			[
-//				{
-//					ComponentID = IsConnected
-//					PartCriteria
-//					{
-//						IDs = [stafa.fed_warpcore_large]
-//						Rot = 0
-//						Top = 1
-//						Bottom = 6
-//						//FlipX = false
-//					}
-//				}
-//				//{
-//				//	ComponentID = IsConnected
-//				//	PartCriteria
-//				//	{
-//				//		IDs = [stafa.fed_warpcore_large]
-//				//		Top = 0
-//				//		Bottom = 7
-//				//		Rot = 0
-//				//		FlipX = true
-//				//	}
-//				//}
-//			]
-//		}
-//		Connectedtolargecoretop
-//		{
-//			Type = ToggleProxy
-//			PartLocation = [1, -1]
-//			ProxyableComponents
-//			[
-//				{
-//					PartCriteria
-//					{
-//						IDs = [stafa.fed_warpcore_large]
-//						Rot = 1
-//						Right = 6
-//						Left = 1
-//					}
-//					ComponentID = IsConnected
-//					//PartLocation = [1, 3]
-//				}
-//			]
-//		}
-//		Connectedtolargecoreright
-//		{
-//			Type = ToggleProxy
-//			PartLocation = [8, 1]
-//			ProxyableComponents
-//			[
-//				{
-//					PartCriteria
-//					{
-//						IDs = [stafa.fed_warpcore_large]
-//						Rot = 2
-//						Top = 1
-//						Bottom = 6
-//						//Left = 1
-//					}
-//					ComponentID = IsConnected
-//					//PartLocation = [4, 3]
-//				}
-//			]
-//		}
-//		Connectedtolargecorebottom
-//		{
-//			Type = ToggleProxy
-//			PartLocation = [1, 8]
-//			ProxyableComponents
-//			[
-//				{
-//					PartCriteria
-//					{
-//						IDs = [stafa.fed_warpcore_large]
-//						Rot = 3
-//						Left = 1
-//						Right = 6
-//					}
-//					ComponentID = IsConnected
-//					//PartLocation = [4, 0]
-//				}
-//			]
-//		}
+		AnyConnectionToggle
+		{
+			Type = MultiToggle
+			Toggles = [LeftConnectionToggle, RightConnectionToggle, TopConnectionToggle, BottomConnectionToggle]
+			Mode = Any
+		}
+		LeftConnectionToggle
+		{
+			Type = MultiToggle
+			Toggles = [Connectedtolargecoreleft, LargeInjectorBuff]
+			Mode = All
+		}
+		RightConnectionToggle
+		{
+			Type = MultiToggle
+			Toggles = [Connectedtolargecoreright, LargeInjectorBuff]
+			Mode = All
+		}
+		TopConnectionToggle
+		{
+			Type = MultiToggle
+			Toggles = [Connectedtolargecoretop, LargeInjectorBuff]
+			Mode = All
+		}
+		BottomConnectionToggle
+		{
+			Type = MultiToggle
+			Toggles = [Connectedtolargecorebottom, LargeInjectorBuff]
+			Mode = All
+		}
+		
+		Connectedtolargecoreleft
+		{
+			Type = ToggleProxy
+			PartLocation = [1, 0]
+			ProxyableComponents
+			[
+				{
+					ComponentID = IsConnected
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_large]
+						Rot = 0
+						//Top = 1
+						//Bottom = 6
+						Left = 1
+						//FlipX = false
+					}
+				}
+				//{
+				//	ComponentID = IsConnected
+				//	PartCriteria
+				//	{
+				//		IDs = [stafa.fed_warpcore_large]
+				//		Top = 0
+				//		Bottom = 7
+				//		Rot = 0
+				//		FlipX = true
+				//	}
+				//}
+			]
+		}
+		Connectedtolargecoretop // GOOD, DO NOT CHANGE
+		{
+			Type = ToggleProxy
+			PartLocation = [-7, 1]
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_large]
+						Rot = 1
+						Right = 7
+						Top = 1
+					}
+					ComponentID = IsConnected
+					//PartLocation = [1, 3]
+				}
+			]
+		}
+		Connectedtolargecoreright
+		{
+			Type = ToggleProxy
+			PartLocation = [8, 8]
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_large]
+						Rot = 2
+						Right = 8
+						Bottom = 7
+						//Left = 1
+					}
+					ComponentID = IsConnected
+					//PartLocation = [4, 3]
+				}
+			]
+		}
+		Connectedtolargecorebottom
+		{
+			Type = ToggleProxy
+			PartLocation = [8, 0]
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						IDs = [stafa.fed_warpcore_large]
+						Rot = 3
+						Bottom = 8
+						//Right = 6
+					}
+					ComponentID = IsConnected
+					//PartLocation = [4, 0]
+				}
+			]
+		}
 		BatteryStorage
 		{
 			Type = ResourceStorage
@@ -488,7 +519,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				//Not Connected
 				{
-					Toggle = LargeInjectorBuff
+					Toggle = AnyConnectionToggle
 					ShowInBuildMode = true
 					AtlasSprite
 					{

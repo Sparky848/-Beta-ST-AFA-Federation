@@ -70,6 +70,39 @@ Actions:
 		OverrideIn = "<./Data/gui/game/indicators/indicators.rules>"
 		Overrides = &<gui/game/indicators/indicators.rules>
 	}
+	{
+		Action = AddMany
+		AddTo = "<./Data/gui/game/parts/part_stats.rules>/PartStats"
+		ManyToAdd
+		[
+			{
+				ID = AntimatterPowerGen
+				FormatKey = "Stats/AntimatterPowerGenFmt"
+			}
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./Data/gui/game/parts/part_stats.rules>/PartStats"
+		ManyToAdd
+		[
+			{
+				ID = BasePowerGen
+				FormatKey = "Stats/BasePowerGenFmt"
+			}
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./Data/gui/game/parts/part_stats.rules>/PartStats"
+		ManyToAdd
+		[
+			{
+				ID = TransferRate
+				FormatKey = "Stats/TransferRateFmt"
+			}
+		]
+	}
 	//******************** BUFFS ********************
     {
 		Action = Overrides

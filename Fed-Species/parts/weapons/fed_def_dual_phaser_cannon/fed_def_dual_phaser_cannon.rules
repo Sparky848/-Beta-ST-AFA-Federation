@@ -252,7 +252,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [1, 0.5]
+			Location = [1, 0.25]
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
@@ -264,7 +264,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AIFirepowerRating = 350
 			FirePermissionToggle = FireModeToggle
 			AutoTargetCrewSafetyDist = 8
-			IgnoreSourceShipLowLOSChecks = true
+			IgnoreSourceShipLowLOSChecks = false
 			IgnoreJunkLOSChecks = true
 			HoldTargetWhileFiring = 0.5
 			Emitter = BulletEmitter
@@ -308,7 +308,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1, 0]
+			Location = [1.5, 0]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 0.01
@@ -326,7 +326,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1, 0]
+			Location = [1.5, 0]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 1.2
@@ -344,7 +344,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1, 0]
+			Location = [1.5, 0]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 2.4
@@ -361,7 +361,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter
 			Trigger = BulletEmitter
-			Location = [1, 0]
+			Location = [0.5, 0]
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -383,7 +383,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter2
 			Trigger = BulletEmitter2
-			Location = [1, 0]
+			Location = [0.5, 0]
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -404,7 +404,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter3
 			Trigger = BulletEmitter3
-			Location = [1, 0]
+			Location = [0.5, 0]
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -436,20 +436,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = "turret_on.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2]
-						Offset = [0, -0.5]
+						Size = [1, 2.25]
+						Offset = [0, -0.75]
 					}
 					{
 						File = "turret_on.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2]
-						Offset = [0, -0.5]
+						Size = [1, 2.25]
+						Offset = [0, -0.75]
 					}
 					{
 						File = "turret_on.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2]
-						Offset = [0, -0.5]
+						Size = [1, 2.25]
+						Offset = [0, -0.75]
 					}
 				]
 			}
@@ -461,20 +461,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = "turret_off.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2]
-						Offset = [0, -0.5]
+						Size = [1, 2.25]
+						Offset = [0, -0.75]
 					}
 					{
 						File = "turret_off.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2]
-						Offset = [0, -0.5]
+						Size = [1, 2.25]
+						Offset = [0, -0.75]
 					}
 					{
 						File = "turret_off.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2]
-						Offset = [0, -0.5]
+						Size = [1, 2.25]
+						Offset = [0, -0.75]
 					}
 				]
 			}

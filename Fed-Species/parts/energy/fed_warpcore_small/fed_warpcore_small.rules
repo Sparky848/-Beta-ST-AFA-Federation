@@ -117,8 +117,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 16000
-			StartingResources = 16000
+			MaxResources = 25000
+			StartingResources = 25000
 		}
 	//	ExtendedBatteryActive
 	//	{
@@ -163,6 +163,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 			ExpectedResourceGenerationRate = { BaseValue = (&../../BatteryProducer/ToQuantity) / (&../../BatteryProducer/Interval/BaseValue); BuffType=WarpcoreBuffSmall; BuffMode=Multiply; }
 		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = CombinedBatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 5
+		}
+		InternalAntimatterCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = AntimatterSplitter
+			Invert = false
+			LowColor = [0, 25, 166]
+			HighColor = [0, 34, 227]
+			FullColor = [0, 34, 227]
+			Height = 4
+		}
 		AntimatterStorage
 		{
 			Type = TypedResourceGrid
@@ -202,7 +224,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 			ToStorage = BatteryStorage
-			ToQuantity = 375
+			ToQuantity = 473
 			Interval = .075
 		}
 		ConvertEffects
@@ -269,19 +291,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 				Storage = BatteryStorage
-				Quantity = 375
-				MinQuantityForConversion = 375
+				Quantity = 473
+				MinQuantityForConversion = 473
 				}
 			]
 			To
 			[
 				{
 				Storage = CombinedBatteryStorage
-				Quantity = 375
-				MinQuantityForConversion = 375
+				Quantity = 473
+				MinQuantityForConversion = 473
 				}
 			]
-			Interval = { BaseValue=0.075; BuffType=WarpcoreSubstationBuffSmall; BuffMode=Subtract; MinValue=0.03; }
+			Interval = { BaseValue=0.075; BuffType=WarpcoreSubstationBuffSmall; BuffMode=Subtract; MinValue=0.05; }
 		}
 		// Hyperdrive
 		HyperiumStorage
@@ -772,7 +794,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Toggle = AntimatterStorage
 					AtlasSprite
 					{
-						File = &/INDICATORS/NoResource
+						File = "../../../images/no_antimatter.png"
+						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}
@@ -789,9 +820,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		//PowerGeneration = (&~/Part/Components/CombinedBatteryStorage/ExpectedResourceGenerationRate) / (&~/Part/Components/BatteryProducer/Interval) / 1000
+		BasePowerGen = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
+		AntimatterPowerGen = (&BasePowerGen) + ((&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval) / 1000)
 		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
+		TransferRate = ((&~/Part/Components/EnergySubstation/From/0/MinQuantityForConversion) / (&~/Part/Components/EnergySubstation/Interval/BaseValue)) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 	}
 }

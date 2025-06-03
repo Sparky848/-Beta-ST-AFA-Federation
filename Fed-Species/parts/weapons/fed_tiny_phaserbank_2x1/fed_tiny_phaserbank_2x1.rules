@@ -424,7 +424,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	StatsByCategory
 	[
 		{
-			NameKey = "StatCategories/PDShot"
+			NameKey = "StatCategories/ShuttlePhaser"
 			Stats
 			{
 				ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))

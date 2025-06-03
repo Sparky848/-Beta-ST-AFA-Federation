@@ -2,7 +2,8 @@
 // All code credit to Jani.TNT, check out Jani's Workshop on the steam workshop!
 Adaptations
 [
-    	{//Sunflower Corp
+	//Sunflower Corp
+    {
 		Action = Add
 		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0"
 		Name = "Filter"
