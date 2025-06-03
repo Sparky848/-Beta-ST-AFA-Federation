@@ -100,14 +100,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResupplyThreshold = 0
 			OperationalToggle = PowerToggle
 		}
-		Collider
-		{
-			Type = CircleCollider
-			Location = [1, 2.5]
-			Radius = .25
-			ChainedTo = Turret2
-			IncludeWhenUnderConstruction = false 
-		}
+//		Collider
+//		{
+//			Type = CircleCollider
+//			Location = [1, 2.5]
+//			Radius = .25
+//			ChainedTo = Turret2
+//			IncludeWhenUnderConstruction = false 
+//		}
 
 		CrewLocation1
 		{
