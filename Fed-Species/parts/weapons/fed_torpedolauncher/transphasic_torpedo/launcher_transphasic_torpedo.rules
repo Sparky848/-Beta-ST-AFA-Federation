@@ -29,6 +29,17 @@ Components
 		MaxResources = 20000
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}
+	InternalCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = BatteryStorage
+		Invert = false
+		LowColor = [170, 183, 0]
+		HighColor = [238, 255, 0]
+		FullColor = [238, 255, 0]
+		Height = 5
+	}
 	BatteryConsumer
 	{
 		Type = ResourceConsumer
@@ -275,8 +286,8 @@ Components
 		[
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 85000
-				Radius = 12
+				TotalDamage = 150000
+				Radius = 20
 				Delay = .1
 				FireChancePerNDamage = 50%
 				NDamage = 1000
@@ -290,8 +301,8 @@ Components
 			}
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 55000
-				Radius = 9
+				TotalDamage = 100000
+				Radius = 15
 				Delay = .1
 				Filter
 				{
@@ -339,6 +350,16 @@ Components
 				{
 					File = &/INDICATORS/NoCrew
 					Size = [1, 1]
+				}
+			}
+			// Out of power.
+			{
+				Toggle = BatteryStorage
+				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerQuiteLong/Duration
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoPower
+					Size = [.5, .5]
 				}
 			}
 		]

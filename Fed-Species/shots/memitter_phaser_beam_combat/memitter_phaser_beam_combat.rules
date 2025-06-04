@@ -95,7 +95,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=350; BuffType=PhaserExpoDebuff; BuffMode=Divide; MinValue=50; }
+			Damage = { BaseValue=350; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=50; }
 		}
 		{
 			Type = Impulse

@@ -11,7 +11,7 @@ Width = 2
 SourceShipLowCollisions = false
 CrewCollisions = {Enemies=true; Junk=true}
 ClipRangeToTarget = true
-ReceivableBuffs = [PhaserExpoDebuff, CaptainsRoomBuff]
+ReceivableBuffs = [PhaserMainDebuff, CaptainsRoomBuff]
 BeamMediaEffects
 [
 	// The beam itself.
@@ -124,7 +124,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=2250; BuffType=PhaserExpoDebuff; BuffMode=Divide; MinValue=400; }
+			Damage = { BaseValue=2250; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 		}
 	]
 
@@ -152,7 +152,7 @@ HitOperational
 		{
 			Type = ExplosiveDamage
 			Radius = 1.75
-			TotalDamage = { BaseValue=9075; BuffType=PhaserExpoDebuff; BuffMode=Divide; MinValue=400; }
+			TotalDamage = { BaseValue=9075; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 			Slices = 1
 		}
 		{
@@ -189,7 +189,7 @@ HitStructural
 	[
 		{
 			Type = Damage;
-			Damage = { BaseValue=4500; BuffType=PhaserExpoDebuff; BuffMode=Divide; MinValue=400; }
+			Damage = { BaseValue=4500; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 		}
 		{
 			Type = Impulse;

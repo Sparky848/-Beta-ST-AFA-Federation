@@ -100,6 +100,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResupplyThreshold = 0
 			OperationalToggle = PowerToggle
 		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 5
+		}
 //		Collider
 //		{
 //			Type = CircleCollider

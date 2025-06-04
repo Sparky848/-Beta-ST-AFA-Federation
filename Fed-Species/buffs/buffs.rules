@@ -283,6 +283,40 @@ PhaserExpoDebuff
 	}
 	IconPriority = 1 
 }
+PhaserMainDebuff
+{
+	CombineMode = Add
+	BaseValue = 0.8
+
+	Icon
+	{
+		Texture
+		{
+			File = "debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+	IconPriority = 1 
+}
+PhaserMidDebuff
+{
+	CombineMode = Add
+	BaseValue = 0.3
+
+	Icon
+	{
+		Texture
+		{
+			File = "debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+	IconPriority = 1 
+}
 MedPhaserExpoDebuff
 {
 	CombineMode = Add

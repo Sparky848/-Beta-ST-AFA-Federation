@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 6]
 	MaxHealth = 5500
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, AntimatterPower, PhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, AntimatterPower, PhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff, PhaserMainDebuff]
 	IsRotateable = true
 	IsFlippable = true
 	CrewSpeedFactor = 0.8

@@ -22,11 +22,12 @@ Parts
 							  "\n<s20><red>Cannot be placed within 2 tiles of other 'tall' parts</red></s20>"
 	Phaser_Bank_Controller = "Phaser Bank Controller"
     Phaser_Bank_Controller_Icon = "Phaser Bank Controller"
-    Phaser_Bank_Controller_Desc = "Phaser Bank Control room, which will control adjacent Phaserbanks."
+    Phaser_Bank_Controller_Desc = "Phaser Bank Control room, which will control adjacent Phaserbanks."\
+								"<s20><red>Must be placed horizontally to an adjacent phaserbank.</red></s20>"
     Phaser_Bank = "Standard Phaser Bank"
     Phaser_Bank_Icon = "Standard Phaser Bank"
     Phaser_Bank_Desc = "The Standard Phaser Bank is a beam weapon with numerous emitters that allows it to fire in a selectable 180°-45° arc. Each phaser bank needs an adjacent control room to work."\
-					   "\n<s20><red>Due to the strain impacted on ship systems having multiple phaserbanks (excl. point defence) will exponentially reduce performance</red></s20>"
+					   "\n<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
     Phaser_Bank_Modular = "Phaser Bank"
     Phaser_Bank_Modular_Icon = "Phaser Bank"
     Phaser_Bank_Modular_Desc = "Phaser Bank beam weapon with numerous emitters that allows it to fire in a 180°-45° arc. IN DEVELOPMENT"
@@ -36,7 +37,7 @@ Parts
 	Burst_Phaser_Bank_COM = "Multi-Emitter Combat Phaser Bank"
 	Burst_Phaser_Bank_COM_Icon = "Multi-Emitter Combat Phaser Bank"
 	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat, Fires multiple untargetable beams"\
-								 "\n<s16><red>Will exponentially lose damage and fire rate the more banks are placed</red></s16>"
+								 "\n<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
 
 	Tiny_Phaser_Bank_1x1 = "Shuttle Phaser Emitter"
 	Tiny_Phaser_Bank_1x1_Icon = "Shuttle Phaser Emitter"
@@ -65,9 +66,9 @@ Parts
 	Phaser_Lance2_Desc = "The Ultimate Phaser {2}"
 	Phaser_Bank_Med = "Medium Phaser Bank"
     Phaser_Bank_Icon_Med = "Medium Phaser Bank"
-    Phaser_Bank_Desc_Med = "A medium sized phaser bank with higher output but reduced firing angle"\
-						   "\n<s16><red>Will exponentially lose damage and fire rate the more banks are placed</red></s16>"\
-					       "\n<s18><green>See Standard Size for more details</green></s18>"
+    Phaser_Bank_Desc_Med = "A medium sized phaser bank with higher output but reduced firing angle, Each phaser bank needs an adjacent control room to work"\
+						   "\n<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
+					       //"\n<s18><green>See Standard Size for more details</green></s18>"
     // Rooms
 	Captains_Room = "Captain's Ready Room"
 	Captains_Room_Icon = "Ready Room"
@@ -241,6 +242,7 @@ PartToggles
 
 	TorpedoType_Transphasic = "The ultimate torpedo, but is it worth the risk?\n\n"\
 						"<b>Transphasic Torpedo Launcher</b>\n\n"\
+						"<white>Build Cost:</white> <good>20</good><image name='transphasic_torpedo_part'/><gray>Parts</gray>, <good>20</good><image name='battery'/>"\
 						"<white>Max Damage:</white> <good>1,003,000</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>20</good><gray>metre radius</gray>\n"\
 						"<white>Range:</white> <good>200</good><gray>metres</gray>\n"\
