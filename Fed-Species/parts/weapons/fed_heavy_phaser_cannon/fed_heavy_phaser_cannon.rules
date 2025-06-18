@@ -413,7 +413,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "structure_construction"
 				DamageLevels
 				[
 					{
@@ -438,7 +438,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			NonOperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "structure_construction"
 				DamageLevels
 				[
 					{
