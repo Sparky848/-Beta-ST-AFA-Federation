@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
 	TypeCategories = [defense, uses_power, shieldcore, adapted]
-	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
 	PenetrationRectType = Normal
 	Radius_XS = 15
 	Radius_S = 25

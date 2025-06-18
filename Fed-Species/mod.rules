@@ -103,6 +103,43 @@ Actions:
 			}
 		]
 	}
+	//Text Sprites
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/gui/text_sprites.rules>"
+		Overrides
+		{
+			transphasic_torpedo_part
+			{
+				Texture
+				{
+					File = "images/transphasic_torpedo_part.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [1, 1]
+				ProportionalSize = true
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/gui/text_sprites.rules>"
+		Overrides
+		{
+			battery
+			{
+				Texture
+				{
+					File = "./Data/resources/battery/battery_small.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [1, 1]
+				ProportionalSize = true
+			}
+		}
+	}
 	//******************** BUFFS ********************
     {
 		Action = Overrides

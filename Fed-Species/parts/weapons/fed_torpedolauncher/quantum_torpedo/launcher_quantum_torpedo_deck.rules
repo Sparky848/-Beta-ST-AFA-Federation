@@ -52,9 +52,11 @@ Components
 		Location = [.75, 1]
 		ShowExplicitTarget = false
 		Emitter = EmitterA
+		BlueprintArcSprite
+		
 	}
 
-	EmitterA : ~/EmitterBase
+	EmitterA : ~/EmitterBase	
 	{
 		ChainedTo = WeaponA
 		FireTrigger = WeaponA
@@ -66,7 +68,15 @@ Components
 	{
 		Location = [1.25, 1]
 		Emitter = EmitterB
-
+		BlueprintArcSprite
+		{
+			Texture = &/INDICATORS/WeaponArc
+			Size = [0, 1.5]
+			Color = [255, 0, 0, 63]
+		}
+		BlueprintArcRadius = 10
+		BlueprintArcSpriteSegments = 64
+			
 		CoverageSectorArc
 		{
 			Texture = &/INDICATORS/VerticalGradient

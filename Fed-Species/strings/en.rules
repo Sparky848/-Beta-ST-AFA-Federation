@@ -41,10 +41,12 @@ Parts
 
 	Tiny_Phaser_Bank_1x1 = "Shuttle Phaser Emitter"
 	Tiny_Phaser_Bank_1x1_Icon = "Shuttle Phaser Emitter"
-	Tiny_Phaser_Bank_1x1_Desc = "Phaser emitter designed solely for the emergency defence of small craft"
+	Tiny_Phaser_Bank_1x1_Desc = "Phaser emitter designed solely for the emergency defence of small craft\n"\
+								"<red><s18>Due to complex power requirements it is unable to be placed within 10 tiles of another phaser</s18></red>\n"
 	Tiny_Phaser_Bank_2x1 = "Shuttle Phaser Emitter 2x1"
 	Tiny_Phaser_Bank_2x1_Icon = "Shuttle Phaser Emitter 2x1"
-	Tiny_Phaser_Bank_2x1_Desc = "Phaser emitter designed solely for the emergency defence of small craft"
+	Tiny_Phaser_Bank_2x1_Desc = "Phaser emitter designed solely for the emergency defence of small craft, functionally identical to the 1x1 variant\n"\
+								"<red><s18>Due to complex power requirements it is unable to be placed within 10 tiles of another phaser</s18></red>\n"
 	Phaser_Lance = "Phaser Lance"
 	Phaser_Lance_Icon = "Phaser Lance"
 	Phaser_Lance_Desc = "The Ultimate Phaser"\
@@ -139,7 +141,7 @@ Parts
 	Def_Warpnacelle_1x4_Desc = "Delivers thrust and maneuverability to defiant class starships, You shouldn't have this"
 	TSix_Warpnacelle_1x4 = "Warpnacelle 1x4"
 	TSix_Warpnacelle_1x4_Icon = "Warpnacelle 1x4"
-	TSix_Warpnacelle_1x4_Desc = "A really small nacelle"\
+	TSix_Warpnacelle_1x4_Desc = "A really small nacelle intended for use on the side of a ship"\
 								"\n<red><s16>Temporarily able to be rotated, this will(should) not last!</s16></red>"
 	NebWarpnacelle_3x9 = "Wide Warpnacelle, Long" 
 	NebWarpnacelle_3x9_Icon = "Warpnacelle 3x9"
@@ -187,6 +189,8 @@ Inputs
 		fire_right	= "Fire to the right"
 		Shield_Visibility_On = "Visible"
 		Shield_Visibility_Off = "Hidden"
+		orange_phaser = "Orange Phaser"
+		red_phaser = "Red Phaser"
 		// cid_Sparky_test_fire_mode2_faw = "Fire At Will"
 		// cid_Sparky_test_fire_mode2_hold = "Hold Fire"
 		// cid_Sparky_test_fire_mode2_auto = "Auto Fire"
@@ -253,6 +257,7 @@ PartToggles
 						"<white>Lifetime:</white> <good>30</good><gray>seconds</gray>\n"\
 						"<white>Health:</white> <good>1000</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+						
 	TorpedoType_Mine = "Cloaked Mine Launcher"//I really need to do this at some point
 	
 	btt_CoreShield_XS = "Small shield that is best suited for ships such as Defiant classes"
@@ -321,6 +326,10 @@ PartToggles
 	// btt_Sparky_test_fire_mode2_hold = "Hold Fire"
 	// btt_Sparky_test_fire_mode2_auto = "Auto Fire"
 	// btt_Sparky_test_fire_mode2_FaTarg = "Fire At Target"
+
+	//Colourable Parts Dependancy
+	OrangePhaser = "Orange Phaser"
+	RedPhaser = "Red Phaser"
 }
 STAFAShips = "ST-AFA Ships"
 STAFAShipsTT = "Federation Vessels"

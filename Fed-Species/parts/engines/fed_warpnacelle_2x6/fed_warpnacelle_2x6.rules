@@ -33,7 +33,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[default, [-2, 4, 1, 4]]	// bottom left
 		[default, [-1, 8, 4, 200]]	// bottom
 	]
-	ThrusterForce = 1500
+	ThrusterForce = 15000
 	ThrustIncreaseTime = 4
 	ThrustRecoveryTime = 2
 	FuelUsage = 200

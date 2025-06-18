@@ -62,8 +62,9 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 125
-		TargetCategory = "laser"
+		Health = 900
+		TargetCategory = "stafa_torpedo"
+		OnDeath = &../Hit/HitOperational
 	}
 	
 	DamagePool

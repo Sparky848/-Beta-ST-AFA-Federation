@@ -62,8 +62,9 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 175
-		TargetCategory = "laser"
+		Health = 1500
+		TargetCategory = "stafa_torpedo"
+		OnDeath = &../Hit/HitOperational
 	}
 
 	Hit

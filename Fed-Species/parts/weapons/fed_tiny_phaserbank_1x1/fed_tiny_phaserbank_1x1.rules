@@ -28,9 +28,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ProhibitRects
     [
 		[phaserbank, [-10, -10, 21, 10]]
-		[phaserbank, [-10, -10, 10, 21]]
-		[phaserbank, [1, -10, 10, 21]]
-		[phaserbank, [-1, 1, 12, 10]]
+		[phaserbank, [-10, 0, 10, 11]]
+		[phaserbank, [1, 0, 10, 11]]
+		[phaserbank, [0, 1, 1, 10]]
     ]
 	AllowedDoorLocations
 	[

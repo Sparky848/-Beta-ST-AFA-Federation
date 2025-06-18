@@ -28,9 +28,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ProhibitRects
     [
 		[phaserbank, [-10, -10, 22, 10]]
-		[phaserbank, [-10, -10, 10, 22]]
-		[phaserbank, [2, -10, 10, 22]]
-		[phaserbank, [-1, 1, 13, 10]]
+		[phaserbank, [-10, 0, 10, 12]]
+		[phaserbank, [2, 0, 10, 12]]
+		[phaserbank, [0, 1, 2, 11]]
     ]
 	EditorIcon
 	{
