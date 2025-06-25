@@ -48,7 +48,7 @@ Components
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = { BaseValue=300; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=600; }
+		Damage = { BaseValue=550; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=750; }
 	}
 
 	Hit

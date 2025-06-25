@@ -7,10 +7,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Warpnacelle_3x6_Desc"
 	Resources
 	[
-		[steel, 480]
-		[coil2, 120]
-		[tristeel, 60]
-		[antimatter, 6]
+		[steel, 756]
+		[coil2, 280]
+		[tristeel, 160]
+		[antimatter, 6]//should cost 146880, but the 80 isn't possible with standard consturction materials so rounded to 146900
+//		[steel, 480]
+//		[coil2, 120]
+//		[tristeel, 60]
+//		[antimatter, 6]
 	]
 	TypeCategories = [thruster, uses_power, nacelle]
 	Size = [3, 6]
@@ -96,6 +100,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		RampUpBuffProvider
 		{
 			Type = SelfBuffProvider
+			OperationalToggle = IsOperational
 			BuffType = NacelleRampUp
 			ChainsFromBuffType = Nacelle
 			BuffAmount = { BaseValue=0; BuffType=Nacelle; BuffMode=Add; }
@@ -109,6 +114,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		RampUpFinalBuffProvider
 		{
 			Type = SelfBuffProvider
+			OperationalToggle = IsOperational
 			BuffType = NacelleRampUpFinal
 			ChainsFromBuffType = NacelleRampUp
 			BuffAmount = { BaseValue=0; BuffType=NacelleRampUp; BuffMode=Add; }
@@ -132,7 +138,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
 			Mode = All
 		}
 
@@ -148,7 +154,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
-			CommandPoints = 14
+			CommandPoints = 24
 		}
 
 		BatteryStorage
@@ -158,7 +164,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 8000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		FtlEfficiency
+		{
+			Type = FtlDrive
+			OperationalToggle = IsOperational
+			SpinDownDuration = 0
+			JumpEfficiency = 50%
+			JumpEfficiencyDistanceRange = [10, 29]
+		}
 		EngineBuffToggle
 		{
 			Type = BuffToggle
@@ -603,6 +616,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}

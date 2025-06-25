@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 4]
 		[antimatter, 1]
 	]
-	TypeCategories = [thruster, uses_power, nacelle]
+	TypeCategories = [thruster, uses_power, nacelle, ftl]
 	Size = [1, 4]
 	IsRotateable = true
 	IsFlippable = true
@@ -62,7 +62,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, PartCrew, BatteryStorage]
 			Mode = All
 		}
 
@@ -78,7 +78,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
-			CommandPoints = 1
+			CommandPoints = 4
 		}
 
 		BatteryStorage
@@ -88,7 +88,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 8000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		FtlEfficiency
+		{
+			Type = FtlDrive
+			OperationalToggle = IsOperational
+			SpinDownDuration = 0
+			JumpEfficiency = 50%
+			JumpEfficiencyDistanceRange = [2, 10]
+		}
 		EngineBuffToggle
 		{
 			Type = BuffToggle
@@ -480,6 +487,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}

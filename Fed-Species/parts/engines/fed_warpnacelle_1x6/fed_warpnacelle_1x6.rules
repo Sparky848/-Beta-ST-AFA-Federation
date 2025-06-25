@@ -7,7 +7,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Warpnacelle_1x6_Desc"
 	Resources
 	[
-		[steel, 240]
+		[steel, 240]//5666.66666667 per tile, *20% per width gained. Not including 1x4 nacelle
 		[coil2, 60]
 		[tristeel, 30]
 		[antimatter, 2]
@@ -64,7 +64,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
 			Mode = All
 		}
 
@@ -80,7 +80,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
-			CommandPoints = 10
+			CommandPoints = 6
 		}
 
 		BatteryStorage
@@ -90,7 +90,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 8000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		FtlEfficiency
+		{
+			Type = FtlDrive
+			OperationalToggle = IsOperational
+			SpinDownDuration = 0
+			JumpEfficiency = 50%
+			JumpEfficiencyDistanceRange = [5, 20]
+		}
 		EngineBuffToggle
 		{
 			Type = BuffToggle
@@ -482,6 +489,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}

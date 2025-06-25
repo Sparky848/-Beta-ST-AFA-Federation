@@ -14,6 +14,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[antimatter, 5]
 		[dilithium, 2]
 	]
+	CrewSpeedFactor = .8
+	CrewCongestedSpeedFactor = .8
 	AIValueFactor = 8
 	Size = [2, 3]
 	//IsRotateable = true
@@ -84,7 +86,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, PartCrew]
 			Mode = All
 		}
 		IsConnected 
@@ -109,6 +111,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		BatteryProducer
 		{
 			Type = ResourceConverter
+			OperationalToggle = IsOperational
 			ToStorage = BatteryStorage
 			ToQuantity = 25
 			Interval = { BaseValue=0.5; BuffType=WarpcoreBuffVSmall; BuffMode=Subtract; MinValue=0.20; }
@@ -212,6 +215,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		AntimatterSplitter
 		{
 			Type = InlineResourceConverter
+			OperationalToggle = IsOperational
 			ResourceType = antimatter
 			FromStorage = AntimatterStorage
 			FromQuantity = 1
@@ -229,12 +233,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ResourceConverter
 		{
 			Type = ResourceConverter
-			//OperationalToggle = IsOperational
+			OperationalToggle = IsOperational
 			From
 			[
 				{
 					Storage = AntimatterSplitter
-					Quantity = 1
+					Quantity = 50
 				}
 			]
 			ToStorage = BatteryStorage
@@ -283,6 +287,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		BuffProvider
 		{
 			Type = GridBuffProvider
+			OperationalToggle = IsOperational
 			BuffType = AntimatterPower
 			BuffAmount = 100%
 			GridDistance = 100
@@ -301,6 +306,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		EnergySubstation
 		{
 			Type = ResourceConverter
+			OperationalToggle = IsOperational
 			From
 			[
 				{
@@ -384,7 +390,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		FtlDrive
 		{
 			Type = FtlDrive
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 			PowerStorage = FtlBatteryStorage
 			FuelStorage = HyperiumStorage
 			SpinDownDuration = 8

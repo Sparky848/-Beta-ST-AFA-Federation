@@ -264,7 +264,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AIFirepowerRating = 350
 			FirePermissionToggle = FireModeToggle
 			AutoTargetCrewSafetyDist = 8
-			IgnoreSourceShipLowLOSChecks = false
+			IgnoreSourceShipLowLOSChecks = true
 			IgnoreJunkLOSChecks = true
 			HoldTargetWhileFiring = 0.5
 			Emitter = BulletEmitter

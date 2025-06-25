@@ -77,7 +77,7 @@ Components
 	{
 		Type = PenetratingHit
 		SourcePartCollisionDelay = 1.5/30
-		Penetration = 15//{ BaseValue=15; BuffType=CaptainsRoomBuff; BuffMode=Multiply; }
+		Penetration = 6//{ BaseValue=15; BuffType=CaptainsRoomBuff; BuffMode=Multiply; }
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
 

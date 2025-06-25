@@ -152,7 +152,7 @@ HitOperational
 		{
 			Type = ExplosiveDamage
 			Radius = 1.5
-			TotalDamage = { BaseValue=4800; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
+			TotalDamage = { BaseValue=2250; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }//{ BaseValue=4800; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 			Slices = 1
 		}
 		{

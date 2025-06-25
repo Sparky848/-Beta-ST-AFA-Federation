@@ -32,16 +32,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
-		BuffOperational
-		{
-			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
-			Mode = All
-		}
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
 			Mode = All
 		}
 
@@ -80,12 +74,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			ResupplyThreshold = 1000
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 		}
 
 		PhaserBuffProviderLeft
 		{
 			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
 			BuffType = Phaser
 			BuffAmount = 100%
 			Criteria
@@ -98,6 +93,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		PhaserBuffProviderRight
 		{
 			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
 			BuffType = Phaser
 			BuffAmount = 100%
 			Criteria
@@ -136,7 +132,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = AreaBuffProvider
 			BuffType = PhaserOperation
 			BuffArea = [0, -1, 2, 2]
-			OperationalToggle = BuffOperational
+			OperationalToggle = IsOperational
 		}
 
 		

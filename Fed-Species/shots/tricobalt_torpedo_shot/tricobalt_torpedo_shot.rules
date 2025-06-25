@@ -34,7 +34,7 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 45
+		Acceleration = 20
 	}
 
 	NegativeAcceleration
@@ -103,8 +103,8 @@ Components
 					// Damage = 4500
 					// Radius = 8
 					Type = ExplosiveDamage
-					TotalDamage = 150000
-					Radius = 10
+					TotalDamage = 35000//150000
+					Radius = 3
 					ExpandDuration = .8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
@@ -115,13 +115,28 @@ Components
 						OperationalHealth = true
 						StructuralHealth = false
 						Friendlies = true
+						ExcludePartCategories = [armor]
+					}
+				}
+				{
+					
+					Type = ExplosiveDamage
+					TotalDamage = 140000
+					DamagePool = DamagePool
+					Radius = 6
+					ExpandDuration = 0.8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					Filter
+					{
+						OnlyPartCategories = [armor]
 					}
 				}
 				{
 					// Type = Impulse;
 					// Impulse = 600;
 					Type = ExplosiveDamage
-					TotalDamage = 45000
+					TotalDamage = 25000
 					Radius = 8
 					ExpandDuration = .8
 					ExpandStartRadius = 2

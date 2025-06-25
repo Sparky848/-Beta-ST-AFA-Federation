@@ -26,18 +26,22 @@ Parts
 								"<s20><red>Must be placed horizontally to an adjacent phaserbank.</red></s20>"
     Phaser_Bank = "Standard Phaser Bank"
     Phaser_Bank_Icon = "Standard Phaser Bank"
-    Phaser_Bank_Desc = "The Standard Phaser Bank is a beam weapon with numerous emitters that allows it to fire in a selectable 180°-45° arc. Each phaser bank needs an adjacent control room to work."\
-					   "\n<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
+    Phaser_Bank_Desc = "The Standard Phaser Bank is a beam weapon with numerous emitters that allows it to fire in a selectable 180°-45° arc.\n"\
+						"<cyan>Each phaser bank needs a horizontally connected control room to work.</cyan>\n\n"\
+					    "<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
     Phaser_Bank_Modular = "Phaser Bank"
     Phaser_Bank_Modular_Icon = "Phaser Bank"
     Phaser_Bank_Modular_Desc = "Phaser Bank beam weapon with numerous emitters that allows it to fire in a 180°-45° arc. IN DEVELOPMENT"
 	Burst_Phaser_Bank_PD = "Burst PD Phaser Bank"
 	Burst_Phaser_Bank_PD_Icon = "Burst PD Phaser Bank"
-	Burst_Phaser_Bank_PD_Desc = "Burst PD Phaser Bank for eliminating fast moving projectiles such as HE."
+	Burst_Phaser_Bank_PD_Desc = "Burst PD Phaser Bank for eliminating fast moving projectiles such as HE.\n"\
+								"<cyan>Each phaser bank needs a horizontally connected control room to work.</cyan>\n\n"
+								//"<red><s18>Indicators currently broken for this part</s18></red>"
 	Burst_Phaser_Bank_COM = "Multi-Emitter Combat Phaser Bank"
 	Burst_Phaser_Bank_COM_Icon = "Multi-Emitter Combat Phaser Bank"
-	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat, Fires multiple untargetable beams"\
-								 "\n<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
+	Burst_Phaser_Bank_COM_Desc = "Multi-Emitter Phaser Bank adapted for combat, Fires multiple untargetable beams.\n"\
+								"<cyan>Each phaser bank needs a horizontally connected control room to work.</cyan>\n\n"\
+								 "<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
 
 	Tiny_Phaser_Bank_1x1 = "Shuttle Phaser Emitter"
 	Tiny_Phaser_Bank_1x1_Icon = "Shuttle Phaser Emitter"
@@ -50,7 +54,8 @@ Parts
 	Phaser_Lance = "Phaser Lance"
 	Phaser_Lance_Icon = "Phaser Lance"
 	Phaser_Lance_Desc = "The Ultimate Phaser"\
-						"\nTakes a tremendous amount of power to fire,and can be manually powered"
+						"\nTakes a tremendous amount of power to fire, and can be manually powered.\n"\
+						"<cyan>Each phaser bank needs a horizontally connected control room to work.</cyan>\n\n"
 	Phaser_Lance_Giga = "Giga Lance"
 	Phaser_Lance_Giga_Icon = "Giga Lance"
 	Phaser_Lance_Giga_Desc = "A Truly Ridiculous Phaser"
@@ -68,8 +73,9 @@ Parts
 	Phaser_Lance2_Desc = "The Ultimate Phaser {2}"
 	Phaser_Bank_Med = "Medium Phaser Bank"
     Phaser_Bank_Icon_Med = "Medium Phaser Bank"
-    Phaser_Bank_Desc_Med = "A medium sized phaser bank with higher output but reduced firing angle, Each phaser bank needs an adjacent control room to work"\
-						   "\n<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
+    Phaser_Bank_Desc_Med = "A medium sized phaser bank with higher output but reduced firing angle, Each phaser bank needs an adjacent control room to work.\n"\
+							"<cyan>Each phaser bank needs a horizontally connected control room to work.</cyan>\n\n"\
+						   "<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
 					       //"\n<s18><green>See Standard Size for more details</green></s18>"
     // Rooms
 	Captains_Room = "Captain's Ready Room"
@@ -220,7 +226,7 @@ PartToggles
 						"<white>Max Damage:</white> <good>16,000</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>5</good><gray>metre radius</gray>\n"\
 						"<white>Max Shield Damage:</white> <good>25,000</good><gray>/shot</gray>\n"\
-						"<white>Penetration:</white> <good>15</good><gray>metres</gray>\n"\
+						"<white>Penetration:</white> <good>6</good><gray>metres</gray>\n"\
 						"<white>Range:</white> <good>320</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>4.5</good><gray>seconds</gray>\n"\
 						"<white>Shot Speed:</white> <good>100</good><gray>metres/sec</gray>\n"\
@@ -232,16 +238,18 @@ PartToggles
 
 	TorpedoType_Tricobalt = "Slow, High impact torpedo\n\n"\
 						"<b>Tricobalt Torpedo Launcher</b>\n\n"\
-						"<white>Max Damage:</white> <good>150,000</good><gray>/shot</gray>\n"\
-						"<white>Damage Area:</white> <good>10</good><gray>metre radius</gray>\n"\
+						"<white>Max Component Damage:</white> <good>35,000</good><gray>/shot</gray>\n"\
+						"<white>Max Armour Damage:</white> <good>140,000</good><gray>/shot</gray>\n"\
+						"<white>Component Damage Area:</white> <good>3</good><gray>metre radius</gray>\n"\
+						"<white>Armour Damage Area:</white> <good>6</good><gray>metre radius</gray>\n"\
 						"<white>Shield Damage:</white> <good>900</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>280</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
 						"<white>Shot Speed:</white> <good>40</good><gray>metres/sec</gray>\n"\
 						"<white>Turn Velocity:</white> <good>140</good><gray>degrees/sec</gray>\n"\
-						"<white>Acceleration:</white> <good>45</good><gray>metres/sec²</gray>\n"\
+						"<white>Acceleration:</white> <good>20</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>125</good>\n"\
+						"<white>Health:</white> <good>1500</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_Transphasic = "The ultimate torpedo, but is it worth the risk?\n\n"\
@@ -276,7 +284,7 @@ PartToggles
 
 	Phaser_arc_120_Tooltip	= "While less versatile than its standard counterpart, the increase in damage far outways the negatives\n\n"\
 							  "<b>Medium 120° Phaser</b>\n"\
-							  "<white>Max Damage:</white> <good>72,000</good><gray>/shot</gray>\n"\
+							  "<white>Max Damage:</white> <good>33,750</good><gray>/shot</gray>\n"\
 							  "<white>Damage Area:</white> <good>1.5</good><gray>metre radius</gray>\n"\
 							  "<white>Shield Damage:</white> <good>15,750</good><gray>/shot</gray>\n"\
 							  "<white>Range:</white> <good>260</good><gray>metres</gray>\n"\
@@ -293,7 +301,7 @@ PartToggles
 
 	Phaser_arc_80_Tooltip	= "An excellent middle-ground for tougher engagements\n\n"\
 							  "<b>Medium 80° Phaser</b>\n"\
-							  "<white>Max Damage:</white> <good>99,000</good><gray>/shot</gray>\n"\
+							  "<white>Max Damage:</white> <good>48,750</good><gray>/shot</gray>\n"\
 							  "<white>Damage Area:</white> <good>1.65</good><gray>metre radius</gray>\n"\
 							  "<white>Shield Damage:</white> <good>24,750</good><gray>/shot</gray>\n"\
 							  "<white>Range:</white> <good>220</good><gray>metres</gray>\n"\
@@ -310,7 +318,7 @@ PartToggles
 
 	Phaser_arc_35_Tooltip	= "Nigh unparalled damage, watch them melt\n\n"\
 							  "<b>Medium 35° Phaser</b>\n"\
-							  "<white>Max Damage:</white> <good>136,125</good><gray>/shot</gray>\n"\
+							  "<white>Max Damage:</white> <good>71,250</good><gray>/shot</gray>\n"\
 							  "<white>Damage Area:</white> <good>1.75</good><gray>metre radius</gray>\n"\
 							  "<white>Shield Damage:</white> <good>33,750</good><gray>/shot</gray>\n"\
 							  "<white>Range:</white> <good>200</good><gray>metres</gray>\n"\

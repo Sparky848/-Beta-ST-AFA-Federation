@@ -324,7 +324,46 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
 			Location = [.5, 3]
 		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 3.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
 
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					//Delay = &~/Part/Components/Turret/FireInterval
+					//Delay = 0.49
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				//Not Connected
+				{
+					Toggle = HasBuff
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
+		}
 		Blueprints
 		{
 			Type = BlueprintSprite

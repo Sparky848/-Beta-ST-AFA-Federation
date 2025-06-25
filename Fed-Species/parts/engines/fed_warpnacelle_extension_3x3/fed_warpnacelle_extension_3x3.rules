@@ -108,6 +108,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		EngineBuffProvider
 		{
 			Type = SelfBuffProvider
+			OperationalToggle = IsOperational
 			BuffType = Nacelle
 			ChainsFromBuffType = Engine
 			BuffAmount = { BaseValue=100%; BuffType=Engine; BuffMode=Multiply; }
@@ -154,7 +155,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, NacelleOperationBuffToggle]
+			Toggles = [PowerToggle, BatteryStorage, NacelleOperationBuffToggle, PartCrew]
 			Mode = All
 		}
 
@@ -180,7 +181,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 8000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		FtlEfficiency
+		{
+			Type = FtlDrive
+			OperationalToggle = IsOperational
+			SpinDownDuration = 0
+			JumpEfficiency = 50%
+			JumpEfficiencyDistanceRange = [3, 10]
+		}
 		EngineBuffToggle
 		{
 			Type = BuffToggle
@@ -620,6 +628,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}

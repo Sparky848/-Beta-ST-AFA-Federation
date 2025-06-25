@@ -46,10 +46,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle]
+			Toggles = [PowerToggle, IsConnected]
 			Mode = All
 		}
-
+		IsConnected
+		{
+			Type = BuffToggle
+			BuffType = Phaser
+		}
 		PowerToggle
 		{
 			Type = UIToggle
@@ -183,6 +187,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			ResupplyThreshold = 0
 			OperationalToggle = PowerToggle
+			IncludeWhenUnderConstruction = false
 		}
 		InternalCapacity
 		{
@@ -194,6 +199,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			HighColor = [238, 255, 0]
 			FullColor = [238, 255, 0]
 			Height = 5
+			IncludeWhenUnderConstruction = false
 		}
 		Graphics
 		{
@@ -279,6 +285,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
 			Location = [.5, 5]
 			FactorHitEffectsWith = BatteryStorage
+			IncludeWhenUnderConstruction = false
 			HitEffects
 			[
 				{
@@ -411,6 +418,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 100000
 			MinResourcesUsed = 100000
+			IncludeWhenUnderConstruction = false
 		}
 
 		ChargeEffect
@@ -469,41 +477,49 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				ClampAnimation = true
 			}
 		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 4.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
 
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/Weapon/FireInterval
+					//Delay = 0.49
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				//Not Connected
+				{
+					Toggle = IsConnected
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
+		}
 		
 	}
 
-Indicators
-{
-	Type = IndicatorSprites
-	Location = [.5, 3]
-	Layer = "indicators"
-	Indicators
-	[
-		// Turned off.
-		{
-			Toggle = PowerToggle
-			AtlasSprite
-			{
-				File = &/INDICATORS/PowerOff
-				Size = [.5, .5]
-			}
-		}
-
-		// Out of power.
-		{
-			Toggle = BatteryStorage
-			Delay = &~/Part/Components/Weapon/FireInterval
-			//Delay = 0.49
-			AtlasSprite
-			{
-				File = &/INDICATORS/NoPower
-				Size = [.5, .5]
-			}
-		}
-		
-	]
-}
 
 Stats
 {
