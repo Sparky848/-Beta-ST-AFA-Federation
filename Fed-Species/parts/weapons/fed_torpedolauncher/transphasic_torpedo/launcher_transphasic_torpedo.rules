@@ -46,7 +46,7 @@ Components
 		ResourceType = battery
 		Storage = BatteryStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
-		ResupplyThreshold = 500
+		ResupplyThreshold = 1
 		OperarionalToggle = PowerToggle
 	}
 	MissilesPrereq

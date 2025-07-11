@@ -270,7 +270,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					TargetType = Bullets
-					BulletTargetCategories = [missile, mine, bullet, stafa_torpedo]
+					BulletTargetCategories = [missile, mine, stafa_torpedo]
 					Toggle = DefendToggle
 				}
 				{
@@ -395,28 +395,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					// Out of power.
 				{
 					Toggle = BatteryStorage
-						Delay = &~/Part/Components/Turret/FireInterval
-						//Delay = 0.49
-						AtlasSprite
-						{
-							File = &/INDICATORS/NoPower
-							Size = [.5, .5]
-						}
-					}
-					//Not Connected
+					Delay = &~/Part/Components/Turret/FireInterval
+					//Delay = 0.49
+					AtlasSprite
 					{
-						Toggle = IsConnected
-						ShowInBuildMode = true
-						AtlasSprite
-						{
-							File = &/INDICATORS/MissingComponent
-							Size = [1, 1]
-						}
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
 					}
-				]
-			}
+				}
+				//Not Connected
+				{
+					Toggle = IsConnected
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
 		}
 	}
+
 	Stats
 	{
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
@@ -451,3 +451,4 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 	]
+}

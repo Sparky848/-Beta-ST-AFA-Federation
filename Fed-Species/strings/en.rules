@@ -236,13 +236,13 @@ PartToggles
 						"<white>Health:</white> <good>125</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
-	TorpedoType_Tricobalt = "Slow, High impact torpedo\n\n"\
+	TorpedoType_Tricobalt = "Slow torpedo that deals highly localised damage\n\n"\
 						"<b>Tricobalt Torpedo Launcher</b>\n\n"\
 						"<white>Max Component Damage:</white> <good>35,000</good><gray>/shot</gray>\n"\
 						"<white>Max Armour Damage:</white> <good>140,000</good><gray>/shot</gray>\n"\
 						"<white>Component Damage Area:</white> <good>3</good><gray>metre radius</gray>\n"\
 						"<white>Armour Damage Area:</white> <good>6</good><gray>metre radius</gray>\n"\
-						"<white>Shield Damage:</white> <good>900</good><gray>/shot</gray>\n"\
+						"<white>Shield Damage:</white> <good>9,000</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>280</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
 						"<white>Shot Speed:</white> <good>40</good><gray>metres/sec</gray>\n"\

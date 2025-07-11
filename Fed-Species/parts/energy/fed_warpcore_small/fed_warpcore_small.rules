@@ -196,13 +196,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		AntimatterStorage
 		{
-			Type = TypedResourceGrid
+			Type = ResourceStorage
 			ResourceType = antimatter
-			MaxResources = 2
+			MaxResources = 10
 			StartingResources = 0
-            GridRect = [3,1,1,1]
+            UITileRect = [3,1,1,1]
             Layer = "structure"
             SpriteInset = [12/64, 4/64, 6/64, 11/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			DropResourcesWhenDestroyed = false
 		}
 		AntimatterSplitter
 		{

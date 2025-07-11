@@ -297,7 +297,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					TargetType = Bullets
-					BulletTargetCategories = [missile, mine]
+					BulletTargetCategories = [missile, mine, bullet, stafa_torpedo]
 					Toggle = DefendToggle
 				}
 				{

@@ -20,8 +20,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 //		[antimatter, 7]
 //		[dilithium, 4]
 	]
-	CrewSpeedFactor = .4
-	CrewCongestedSpeedFactor = .5
+	CrewSpeedFactor = .45
+	CrewCongestedSpeedFactor = .4
 	AIValueFactor = 10
 	Size = [6, 6]
 	IsRotateable = false
@@ -166,14 +166,35 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		AntimatterStorage
 		{
-			Type = TypedResourceGrid
+			Type = ResourceStorage
 			ResourceType = antimatter
-			MaxResources = 2
+			MaxResources = 10
 			StartingResources = 0
-            GridRect = [5,5,1,1]
+            UITileRect = [0,0,1,1]
             Layer = "structure"
             SpriteInset = [12/64, 4/64, 6/64, 11/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			DropResourcesWhenDestroyed = false
 		}
+//		AntimatterStorage2
+//		{
+//			Type = ResourceStorage
+//			ResourceType = antimatter
+//			MaxResources = 5
+//			StartingResources = 0
+  //          Layer = "structure"
+// /           SpriteInset = [12/64, 4/64, 6/64, 11/64]
+//			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+//			DropResourcesWhenDestroyed = false
+//		}
+//		AntimatterCombinedStorage
+//		{
+//			Type = MultiResourceStorage
+//			ResourceType = antimatter
+//			ResourceStorages = [AntimatterStorage, AntimatterStorage2]
+//			//ToggleOnResources = 1
+//			//ToggleOffResources = 0
+//		}
 		AntimatterSplitter
 		{
 			Type = InlineResourceConverter
@@ -185,7 +206,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		AntimatterConsumer
 		{
-			Type = TypedResourceGridConsumer
+			Type = ResourceConsumer
 			ResourceType = antimatter
 			Storage = AntimatterStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
@@ -292,11 +313,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = hyperium
-			MaxResources = 100
-			UITileRect = [0, 0, 1, 1]
+			MaxResources = 50
+			UITileRect = [5, 0, 1, 1]
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
 			DropResourcesWhenDestroyed = true
 		}
+		//HyperiumStorage2
+//		{
+//			Type = ResourceStorage
+//			ResourceType = hyperium
+//			MaxResources = 50
+//			UITileRect = [0, 5, 1, 1]
+//			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+//			DropResourcesWhenDestroyed = true
+//		}
+//		HyperiumCombinedStorage
+//		{
+//			Type = MultiResourceStorage
+//			ResourceType = hyperium
+//			ResourceStorages = [HyperiumStorage, HyperiumStorage2]
+//			//ToggleOnResources = 1
+//			//ToggleOffResources = 0
+//		}
 		HyperiumConsumer
 		{
 			Type = ResourceConsumer
@@ -348,7 +386,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToggleOnResources = 12000
 			ToggleOffResource = 11999
 		}
-
+		
 		FtlDrive
 		{
 			Type = FtlDrive

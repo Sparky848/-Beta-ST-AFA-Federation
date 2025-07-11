@@ -20,8 +20,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 //		[antimatter, 10]
 //		[dilithium, 5]
 	]
-	CrewSpeedFactor = .2
-	CrewCongestedSpeedFactor = .1
+	CrewSpeedFactor = .4
+	CrewCongestedSpeedFactor = .3
 	AIValueFactor = 10
 	Size = [8, 8]
 	IsRotateable = false
@@ -179,13 +179,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		AntimatterStorage
 		{
-			Type = TypedResourceGrid
+			Type = ResourceStorage
 			ResourceType = antimatter
-			MaxResources = 2
+			MaxResources = 10
 			StartingResources = 0
-            GridRect = [7,7,1,1]
+            UITileRect = [7,7,1,1]
             Layer = "structure"
             SpriteInset = [12/64, 4/64, 6/64, 11/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			DropResourcesWhenDestroyed = false
 		}
 		AntimatterSplitter
 		{
