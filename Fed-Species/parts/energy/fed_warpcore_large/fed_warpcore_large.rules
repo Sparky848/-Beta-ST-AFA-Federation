@@ -200,7 +200,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		AntimatterConsumer
 		{
-			Type = TypedResourceGridConsumer
+			Type = ResourceConsumer
 			ResourceType = antimatter
 			Storage = AntimatterStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
