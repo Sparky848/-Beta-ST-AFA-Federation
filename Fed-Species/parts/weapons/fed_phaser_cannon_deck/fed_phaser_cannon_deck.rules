@@ -248,7 +248,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IgnoreSourceShipLowLOSChecks = true
 			IgnoreSourceShipHighLOSChecks = false
 			IgnoreJunkLOSChecks = true
-			HoldTargetWhileFiring = 0.5
+			//HoldTargetWhileFiring = 0.5
 			Emitter = BulletEmitter
 
 			AutoTargets
