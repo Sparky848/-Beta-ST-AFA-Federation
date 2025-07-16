@@ -479,7 +479,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/PhaserBolt"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage/BaseValue
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage/
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
