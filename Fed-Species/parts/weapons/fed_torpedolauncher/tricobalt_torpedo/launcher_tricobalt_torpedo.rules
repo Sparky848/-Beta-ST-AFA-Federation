@@ -1,3 +1,12 @@
+EditorIcon
+{
+	Texture
+	{
+		File = "temp_logo.png"
+		SampleMode = Linear
+	}
+	Size = [40, 100]
+}
 Components
 {
 	MissileStorage

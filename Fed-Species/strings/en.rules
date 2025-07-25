@@ -349,6 +349,25 @@ Stats
 	TransferRateFmt = "<white>Energy Transfer Rate:</white> <good>{0}</good>"
 }
 
+TorpedoTypes
+{
+	Photon = "Photon Torpedo"
+	PhotonDesc = "Simple, low cost torpedo"
+	Quantum = "Quantum Torpedo"
+	QuantumDesc = "Highly penetrative torpedo"
+	DeckPhoton = "Deck Photon Torpedo"
+	DeckPhotonDesc = "Simple, low cost torpedo"
+	DeckQuantum = "Deck Quantum Torpedo"
+	DeckQuantumDesc = "Highly penetrative torpedo"
+	StandardPhoton = "Standard Photon Torpedo"
+	StandardPhotonDesc = "Simple, low cost torpedo"
+	StandardQuantum = "Standard Quantum Torpedo"
+	StandardQuantumDesc = "Highly penetrative torpedo"
+	Tricobalt = "Tricobalt Device"
+	TricobaltDesc = "Slow torpedo that deals highly localised damage"
+	Transphasic = "Transphasic Torpedo"
+	TransphasicDesc = "The ultimate torpedo, but is it worth the risk?"
+}
 StatCategories
 {
 	PhaserBolt = "Phaser pulse"

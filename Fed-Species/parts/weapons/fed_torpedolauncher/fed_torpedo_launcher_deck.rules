@@ -218,7 +218,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			HighPriorityPrerequisites = [MissilesPrereqProxy]
 			CrewDestinations
 			[
-				[ .5, 3.44]
+				[.5, 3.44]
 				[1.5, 3.44]
 			]
 			CrewLocations

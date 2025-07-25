@@ -43,6 +43,11 @@ Actions:
 		ManyToAdd = &<fed_tech.rules>/Techs
 	}
 	
+	{
+		Action = AddMany
+		AddTo = "<modes/pvp/pvp_buildbattle/techs_buildbattle.rules>/Techs"
+		ManyToAdd = &<bnb_tech.rules>/Techs
+	}
 	//******************** PARTS ********************
 	{
 		Action = AddMany
