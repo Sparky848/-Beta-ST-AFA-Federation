@@ -95,7 +95,7 @@ Components
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerAboveAverage, FireModeToggle]
+		Toggles = [CommonReloadTimerAverage, FireModeToggle]
 		Mode = All
 	}
 

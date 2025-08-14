@@ -2,7 +2,7 @@ ID = "st-afa.beta_federation"
 Name = "[Beta] ST-AFA - Federation"
 Version = 0.1.6
 Author = "ST-AFA Mod-Team"
-CompatibleGameVersions = ["0.28.1"]
+CompatibleGameVersions = ["0.30.0"]
 ModifiesMultiplayer = true
 Logo = logo.png
 Description = "Adds STAR TREK stuff to the game \n\n"\
@@ -36,6 +36,13 @@ Actions:
 		With = &<gui/menus.rules>/LogoShip
 	}
 
+	
+	//******************** TUTORIALS ********************
+	{
+		Action = AddMany
+		AddTo = "<codex/tutorials/tutorials.rules>/CodexPages"
+		ManyToAdd = &<codex/tutorials/tutorials.rules>/CodexPages
+	}	
 	//******************** TECHS ********************
 	{
 		Action = AddMany
@@ -54,8 +61,18 @@ Actions:
 		AddTo = "<ships/terran/terran.rules>/terran/parts"
 		ManyToAdd = &<parts/federation.rules>/Parts
 	}
+	//******************** Statuses ********************
+	{
+		Action = AddMany
+		AddTo = "<statuses/statuses.rules>/Statuses"
+		ManyToAdd = &<statuses/statuses.rules>/Statuses
+	}
 	//******************** SOUNDS ********************
-
+//	{
+//		Action = Overrides
+//		OverrideIn = "<common_effects/common_effects.rules>"
+//		Overrides = &<audio/audio.rules>/PhaseCannonDeploy
+//	}
 	//******************** RESOURCES ********************
 	//******************** UI ********************
 	{

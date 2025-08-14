@@ -1,0 +1,263 @@
+ID = "stafa.fed_quantum_torpedo_shot_standard"  // originals by kurim
+Range = { BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=300; }
+IdealRange
+[
+	{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
+	{ BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=300; }
+]
+IdealRadius = [5, 50]
+Speed = { BaseValue=35; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=40; }
+SourceShipLowCollisions = false
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.3
+		Density = 0.1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 45d
+		Delay = .1
+		AvoidanceRaycastDistance = 250
+		VelocityCompensation = 60%
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 70
+	}
+
+	NegativeAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-90, 0]
+		AccelerationOverTime = [0, .75]
+		Direction = FrameOfReferenceVelocity
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 10
+		HasTarget = true
+	}
+
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+		// Distance auto-computed from range.
+		HasTarget = false
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 500
+		TargetCategory = "stafa_torpedo"
+		OnDeath = &../Hit/HitOperational
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 8000//{ BaseValue=15000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=18000; }
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		SourcePartCollisionDelay = 1.5/30
+		Penetration = 4//{ BaseValue=15; BuffType=CaptainsRoomBuff; BuffMode=Multiply; }
+		PenetrationSpeed = &~/Speed
+		FactorEffectsWith = Targetable
+		SourceShipLowCollisions = false
+		FriendlyShipLowCollisions = false
+
+		//CrewCollisions = {Enemies=true; Junk=true}
+		//HitCrew = &HitOperational
+
+		HitShield
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 20000//{ BaseValue=25000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=32000; }
+					Radius = 2
+				}
+				{
+					Type = Impulse
+					Impulse = 75
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 11000
+					DamagePool = DamagePool
+					Radius = 3
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
+					NDamage = 1500
+				}
+				{
+					Type = Impulse;
+					Impulse = 75;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/quantum_torpedo_hit.rules>
+				&<particles/quantum_torpedo_flash.rules>
+				&<particles/quantum_torpedo_sparks.rules>
+				&<particles/quantum_torpedo_spikes.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "quantum_torpedo_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+			
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 5000//{ BaseValue=4000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
+					Radius = 2
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/quantum_torpedo_hit_struct.rules>
+				&<particles/quantum_torpedo_flash.rules>
+				&<particles/quantum_torpedo_sparks_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "quantum_torpedo_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 5000//{ BaseValue=6000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
+					DamagePool = DamagePool
+					DoPooledDamageFirst = true
+					Radius = 2
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
+					NDamage = 750
+				}
+				{
+					Type = Impulse
+					Impulse = 75
+				}
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+
+	Sprite
+	{
+		Type = AnimatedSprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "quantum_torpedo_shot.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [2, 2]
+			}
+			FrameCount = 8
+			FrameSize = [128, 128]
+			FramesPerRow = 2
+			FramesPerSecond = 60
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [6, 6]
+			VertexColor = [0, 0, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

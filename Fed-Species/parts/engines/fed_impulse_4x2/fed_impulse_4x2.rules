@@ -68,7 +68,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
 			Mode = All
 		}
 
@@ -94,7 +94,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 16000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		ThrustLevel
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThruster
+			Invert = false
+			LowColor = [130, 20, 20]
+			HighColor = [200, 30, 30]
+			FullColor = [245, 40, 40]
+			Height = 6
+		}
 		EngineBuffToggle
 		{
 			Type = BuffToggle
@@ -426,6 +447,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}

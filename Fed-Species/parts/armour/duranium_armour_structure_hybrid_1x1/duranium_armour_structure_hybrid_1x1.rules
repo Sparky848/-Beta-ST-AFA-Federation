@@ -1,0 +1,175 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/DuraniumArmourStructureHybrid1x1"
+	IconNameKey = "Parts/DuraniumArmourStructureHybrid1x1Icon"
+	ID = stafa.duranium_armour_structure_hybrid_1x1
+	//EditorGroups = ["StarfleetDefences"]
+	EditorParentParts = [ "stafa.duranium_armour" ]
+	DescriptionKey = "Parts/DuraniumArmourStructureHybrid1x1Desc"
+	EditorReplacementPartID = ""
+	Resources
+	[
+		[tristeel, 5]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+
+	SelectionTypeID = "durarmour"
+	MaxHealth = 4000
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances
+	{
+		explosive = 65%
+		thermal = -5%
+	}
+	TypeCategories = [durarmour, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	CreatePartPerTileWhenGrabbed = ""
+	InitialPenetrationResistance = 6
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 0
+	Density = 6
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 1]
+				[0, 1]
+			]
+		}
+
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 1000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armour shows up in ship ghosts.
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{
+						File = "../duranium_armour_wedge/armour.png"
+						NormalsFile = "external_wall_normals.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "armour_33.png"
+						NormalsFile = "external_wall_normals_33.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "armour_66.png"
+						NormalsFile = "external_wall_normals_66.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "../duranium_armour_wedge/roof.png"
+						NormalsFile = "../duranium_armour_wedge/roof_normals.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "../duranium_armour_wedge/roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "../duranium_armour_wedge/roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+		AOEResist = (&~/Part/DamageResistances/explosive) * 100
+	}
+}

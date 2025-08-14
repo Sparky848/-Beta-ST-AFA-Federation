@@ -1,0 +1,195 @@
+BASE = &<fed_phaser_cannon_deck.rules>
+
+RANGE = (&BASE/Range) + 50
+TOTAL_DRAIN = 300% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Amount/BaseValue)
+TOTAL_SHIELD_DRAIN = 300% * (&Base/Components/Hit/HitShield/HitEffects/0/Amount/BaseValue)
+DRAIN_DURATION = 5
+PENETRATION = 10
+ARMOR_PENETRATION_FACTOR = 2/7
+
+DRAIN_PER_SECOND = (&TOTAL_DRAIN) / (&DRAIN_DURATION)
+SHIELD_DRAIN_PER_SECOND = (&TOTAL_SHIELD_DRAIN) / (&DRAIN_DURATION)
+
+
+Bullet : BASE
+{
+	ID = "stafa.fed_small_tetryon_bolt_deck"
+	OtherIDs = ["small_tetryon_bolt_deck"]
+	Range = { BaseValue=400; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=460; }
+	IdealRange
+	[
+		{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=160; }
+		{ BaseValue=400; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=460; }
+	]
+	IdealRadius = [5, 50]
+	Speed = { BaseValue=240; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=280; }
+	SourceShipLowCollisions = false
+	Components
+	{
+		Physics
+		{
+			Type = CirclePhysics
+			Radius = 0.5
+			Density = 0.0001
+		}
+
+		Death
+		{
+			Type = DeathByLifetime
+			// Lifetime will be auto-calculated based on range and speed.
+		}
+
+		Targetable
+		{
+			Type = Targetable
+			Health = 30
+			TargetCategory = "laser"
+		}
+		Hit
+		{
+			Type = PenetratingHit
+			FriendlyShipLowCollisions = false
+			Penetration = 1
+			PenetratesOperational = false
+			FactorEffectsWith = Targetable
+
+			CrewCollisions = {Enemies=true; Junk=true}
+			PenetratesCrew = true
+			HitCrew = &HitOperational
+
+			HitShield = &HitOperational
+			HitOperational
+			{
+				Offset = [-0.15, 0]
+				ReduceEffectsByPenetration = true
+
+				HitEffects
+				[
+	//				{
+	//					Type = ExplosiveResourceDrain
+	//					ResourceType = battery
+	//					TotalDrain = 1000
+	//					Radius = 3
+	/	/				Slices = 1
+	///					Filter
+	//					{
+	//						Ships = true
+	//						Shields = true
+	//					}
+	//
+	//					MediaEffectsOnDrain
+	//					[
+	//						&<particles2/ship_drain.rules>
+	//						//&<particles2/disruptor_bolt_hit_center_bounce.rules>
+	//						//&<particles2/disruptor_bolt_hit_center_bounce2.rules>
+	//						//&<particles2/disruptor_bolt_hit_sizzle.rules>
+	//
+	//						: /BASE_SOUNDS/AudioExterior
+	//						{
+	//	/						Sound = "discharge.wav"
+	///							Volume = 1
+	//							SpeedVariation = .2
+	//						}
+	//					]
+	//				}
+					{
+						Type = StatusApplication
+						StatusType = stafa.tetryon_drain
+						StatusDuration = &~/DRAIN_DURATION
+						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+					}
+					//: &0
+					//{
+					//	Delay = .5
+					//}
+					//: &0
+					//{
+					//	Delay = 1.0
+					//}
+					//: &0
+					//{
+					//	Delay = 1.5
+					//}
+					//: &0
+					//{
+					//	Delay = 2.0
+					//}
+					//: &0
+					//{
+					//	Delay = 2.5
+					//}
+				]
+
+				MediaEffects
+				[
+					&<particles2/disruptor_bolt_hit_lightning.rules>
+					&<particles2/disruptor_bolt_hit_orb.rules>
+					&<particles2/disruptor_bolt_hit_bolts.rules>
+					&<particles2/disruptor_bolt_flash.rules>
+
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "disruptor_bolt_hit.wav"
+						Volume = .4
+						SpeedVariation = .4
+					}
+				]
+			}
+			HitStructural
+			{
+				//no effect
+			}
+			PenetratingOperational
+			{
+				// No effect.
+			}
+			PenetratingStructural
+			{
+				// No effect.
+			}
+			FinishedPenetratingOperational = &PenetratingOperational
+			FinishedPenetratingStructural = &PenetratingStructural
+		}
+
+		Sprite
+		{
+			Type = Sprite
+			ReduceScaleWith = Hit
+			ReduceScaleExponent = 0.5
+			Sprite
+			{
+				Texture
+				{
+					File = "small_tetryon_bolt_deck.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [2, 2]
+			}
+		}
+
+		GlowSprite
+		{
+			Type = Sprite
+			RenderBucket = BulletUpper4
+			Z = 0
+			IsLight = true
+			Sprite
+			{
+				Texture
+				{
+					File = "./Data/common_effects/particles/blob.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [4, 4]
+				VertexColor = [39, 185, 245]
+				TargetBlendMode = Add
+				Shader = "./Data/common_effects/fancy_light.shader"
+				_litReflectiveStrength = 24
+				_litAdditiveStrength = 0.05
+				_unlitAdditiveStrength = 0.25
+			}
+		}
+	}
+}

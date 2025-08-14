@@ -1,0 +1,8 @@
+AtlasTextureParams
+{
+	MipLevels = 7 // Assumes 64x64 min sprite size.
+}
+Statuses
+[
+	&<tetryon_drain/tetryon_drain.rules>
+]

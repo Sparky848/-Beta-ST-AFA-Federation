@@ -23,7 +23,7 @@ Parts
 	Phaser_Bank_Controller = "Phaser Bank Controller"
     Phaser_Bank_Controller_Icon = "Phaser Bank Controller"
     Phaser_Bank_Controller_Desc = "Phaser Bank Control room, which will control adjacent Phaserbanks."\
-								"<s20><red>Must be placed horizontally to an adjacent phaserbank.</red></s20>"
+								"<s20><red>Must be placed in parallel/with the 2 long side of the controller touching the phaserbank.</red></s20>\n"
     Phaser_Bank = "Standard Phaser Bank"
     Phaser_Bank_Icon = "Standard Phaser Bank"
     Phaser_Bank_Desc = "The Standard Phaser Bank is a beam weapon with numerous emitters that allows it to fire in a selectable 180°-45° arc.\n"\
@@ -61,10 +61,12 @@ Parts
 	Phaser_Lance_Giga_Desc = "A Truly Ridiculous Phaser"
 	Heavy_Phaser_Cannon = "Heavy Phaser Cannon"
 	Heavy_Phaser_Cannon_Icon = "Heavy Phaser Cannon"
-	Heavy_Phaser_Cannon_Desc = "Heavy hitting Phaser Cannon that fires in 4 shot bursts"
+	Heavy_Phaser_Cannon_Desc = "Heavy hitting Phaser Cannon that fires in 4 shot bursts"\
+							"\nCan be placed behind 2 layers of armour, however 1 is ideal"
 	Def_Dual_Phaser_Cannon = "Defiant's Phaser Cannon"
 	Def_Dual_Phaser_Cannon_Icon = "Defiant's Phaser Cannon"
-	Def_Dual_Phaser_Cannon_Desc = "Defiant Class inspired dual cannons, fires rapid 4 shot bursts."
+	Def_Dual_Phaser_Cannon_Desc = "Defiant Class inspired dual cannons, fires rapid 4 shot bursts."\
+								"\nCan be placed behind 1 layer of armour"
 	StandardTorpedolauncherDeck = "Standard Torpedo Launcher"
 	StandardTorpedolauncherDeck_Icon = "Standard Torpedo Launcher"
 	StandardTorpedolauncherDeck_Desc = "A Standard Fire Torpedo Launcher, Capable of firing 1 torpedo every 2 seconds"
@@ -77,6 +79,15 @@ Parts
 							"<cyan>Each phaser bank needs a horizontally connected control room to work.</cyan>\n\n"\
 						   "<s20><red>Due to the strain impacted on ship systems having greater than 30 phaserbanks (excl. point defence) will significantly reduce performance</red></s20>"
 					       //"\n<s18><green>See Standard Size for more details</green></s18>"
+	Small_Tetryon_Cannon_Deck = "Small Tetryon Cannon"
+	Small_Tetryon_Cannon_Deck_Icon = "Small Tetryon Cannon"
+	Small_Tetryon_Cannon_Deck_Desc = "A small, deck mounted cannon that fires energy disrupting tetryon pulses"
+
+	Phase_Cannon = "Phase Cannon"
+	Phase_Cannon_Icon = "Phase Cannon"
+	Phase_Cannon_Desc = "Early phase-modulated weapon technology allowed for a ship mounted directed energy weapon, which proved a worthy successor to primitive Plasma Cannons."\
+						"\n <bad><s22>Requires 4 seconds to deploy once activated</s22></bad>"
+
     // Rooms
 	Captains_Room = "Captain's Ready Room"
 	Captains_Room_Icon = "Ready Room"
@@ -160,7 +171,65 @@ Parts
 	// Shields
 	ShieldCore = "Shieldcore"
 	ShieldCoreIcon = "Shieldcore"
-	ShieldCoreDesc = "Central shieldcore that should guard all sides of a starship independently."
+	ShieldCoreDesc = "Central shieldcore that consists of 4 separate shields, with the front being the strongest, followed by the sides then rear"\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Forward Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Starboard Shield Health Bar</s18></color>"\
+					 "\n<color r='255' g='255' b='255' a='255'><s18> Port Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Aft Shield Health Bar</s18></color>"\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Total Shield Health Bar</s18></color>"
+	//Armour
+	DuraniumArmour = "Duranium Armour"
+	DuraniumArmourIcon = "Duranium Armour"
+	DuraniumArmourDesc = "Ship hull comprised of duranium alloy, significantly stronger than its steel counterpart"\
+						"\n<s20><bad>Currently uses tristeel as duranium hasn't been added yet</bad></s20>"
+
+	DuraniumArmour2x1 = "Duranium Armour 2x1"
+	DuraniumArmour2x1Icon = "Duranium Armour 2x1"
+	DuraniumArmour2x1Desc = &DuraniumArmourDesc
+	
+	DuraniumArmourWedge = "Duranium Armour Wedge"
+	DuraniumArmourWedgeIcon = "Duranium Armour Wedge"
+	DuraniumArmourWedgeDesc = &DuraniumArmourDesc
+	
+	DuraniumArmour1x2Wedge = "Duranium Armour Wedge (1x2)"
+	DuraniumArmour1x2WedgeIcon = "Duranium Armour Wedge (1x2)"
+	DuraniumArmour1x2WedgeDesc = &DuraniumArmourDesc
+
+	DuraniumArmour1x3Wedge = "Duranium Armour Wedge (1x3)"
+	DuraniumArmour1x3WedgeIcon = "Duranium Armour Wedge (1x3)"
+	DuraniumArmour1x3WedgeDesc = &DuraniumArmourDesc
+
+	DuraniumArmourTri = "Duranium Armour Tri"
+	DuraniumArmourTriIcon = "Duranium Armour Tri"
+	DuraniumArmourTriDesc = &DuraniumArmourDesc
+
+	DuraniumArmourStructureHybridTri = "Structured Duranium Armour Tri"
+	DuraniumArmourStructureHybridTriIcon = "Structured Duranium Armour Tri"
+	DuraniumArmourStructureHybridTriDesc = &DuraniumArmourDesc
+
+	DuraniumArmourStructureHybrid1x1 = "Structured Duranium Armour Wedge"
+	DuraniumArmourStructureHybrid1x1Icon = "Structured Duranium Armour Wedge"
+	DuraniumArmourStructureHybrid1x1Desc = &DuraniumArmourDesc
+
+	DuraniumArmourStructureHybrid1x2 = "Structured Duranium Armour Wedge (1x2)"
+	DuraniumArmourStructureHybrid1x2Icon = "Structured Duranium Armour Wedge (1x2)"
+	DuraniumArmourStructureHybrid1x2Desc = &DuraniumArmourDesc
+
+	DuraniumArmourStructureHybrid1x3 = "Structured Duranium Armour Wedge (1x3)"
+	DuraniumArmourStructureHybrid1x3Icon = "Structured Duranium Armour Wedge (1x3)"
+	DuraniumArmourStructureHybrid1x3Desc = &DuraniumArmourDesc
+
+	DuraniumArmourPlate = "Duranium Armour Plate"
+	DuraniumArmourPlateIcon = "Duranium Armour Plate"
+	DuraniumArmourPlateDesc = &DuraniumArmourDesc
+
+	DuraniumArmourPlateWedge = "Duranium Armour Plate Wedge"
+	DuraniumArmourPlateWedgeIcon = "Duranium Armour Plate Wedge"
+	DuraniumArmourPlateWedgeDesc = &DuraniumArmourDesc
+
+	DuraniumArmourPlateWedgeLong = "Duranium Armour Plate Wedge Long"
+	DuraniumArmourPlateWedgeLongIcon = "Duranium Armour Plate Wedge Long"
+	DuraniumArmourPlateWedgeLongDesc = &DuraniumArmourDesc
 }
 
 Inputs
@@ -197,6 +266,8 @@ Inputs
 		Shield_Visibility_Off = "Hidden"
 		orange_phaser = "Orange Phaser"
 		red_phaser = "Red Phaser"
+		RetractPhaseCannon = "Retract Phase Cannon"
+		DeployPhaseCannon = "Deploy Phase Cannon"
 		// cid_Sparky_test_fire_mode2_faw = "Fire At Will"
 		// cid_Sparky_test_fire_mode2_hold = "Hold Fire"
 		// cid_Sparky_test_fire_mode2_auto = "Auto Fire"
@@ -338,6 +409,8 @@ PartToggles
 	//Colourable Parts Dependancy
 	OrangePhaser = "Orange Phaser"
 	RedPhaser = "Red Phaser"
+	RetractPhaseCannon = "Retract Phase Cannon"
+	DeployPhaseCannon = "Deploy Phase Cannon"
 }
 STAFAShips = "ST-AFA Ships"
 STAFAShipsTT = "Federation Vessels"
@@ -370,7 +443,9 @@ TorpedoTypes
 }
 StatCategories
 {
-	PhaserBolt = "Phaser pulse"
+	PhaserBolt = "Phaser Pulse"
+	DeckPhaserCannonOCDesc = "Converts the Deck Phaser Cannon into a subsystem disrupting Tetryon Cannon"
+	TetryonPulse = "Tetryon Pulse"
 	TorpedoLauncher = "Torpedo Launcher"
 	QuantumTorpedoLauncher = "Quantum Torpedo Launcher"
 	TricobaltTorpedoLauncher = "Tricobalt Torpedo Launcher"
@@ -380,4 +455,17 @@ StatCategories
 	PhaserLance = "Phaser Lance"
 	ShuttlePhaser = "Shuttle Phaser"
 	Phaser = "Phaser Beam"
+	PhaseCannon = "Phase Cannon"
+}
+
+Tutorials
+{
+	Warpcore
+	{
+		Title = "Warpcores"
+		Info = "Warpcores are the centre of all starships. They provide <good>wireless power to compatible systems</good> when supplied with constant antimatter and act as hyperdrives for a ship. They <bad>explode incredibly violently</bad> as well as being <bad>very fragile</bad>."
+		Distribution = "Warpcores indicate whether or not that can give a part power by a <good>blue lightning symbol</good>. The large the warpcore, the large the range of distribution."
+		Resources = "In order to keep a warpcore fuelled <good>you will need a large amount of antimatter</good>, otherwise they will output essentially <bad>no power</bad>"
+		NoAntimatter = "A Warpcore will display a <bad>red antimatter symbol</bad> when it is <bad>out of antimatter</bad>. At this point <bad>it will be producing almost no power</bad> and thus <good>should be refuelled promptly</good>"
+	}
 }

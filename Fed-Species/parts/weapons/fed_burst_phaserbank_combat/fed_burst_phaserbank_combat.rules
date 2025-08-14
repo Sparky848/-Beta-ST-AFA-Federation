@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 6]
 	MaxHealth = 5500
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, AntimatterPower, PhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff, PhaserMainDebuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, PhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff, PhaserMainDebuff, NeedsCrew]
 	IsRotateable = true
 	IsFlippable = true
 	CrewSpeedFactor = 0.8
@@ -55,7 +55,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, IsConnected]
+			Toggles = [PowerToggle, IsConnected, HasBuffNeedsCrewInvert]
 			Mode = All
 		}
 		IsOperational2
@@ -69,6 +69,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffToggle
 			BuffType = Phaser
 		}	
+		HasBuffNeedsCrewInvert
+		{
+			Type = BuffToggle
+			BuffType = NeedsCrew
+			Invert = true
+		}
 		PowerToggle
 		{
 			Type = UIToggle
@@ -270,7 +276,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 6000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
 		Graphics
 		{
 			Type = Graphics
@@ -919,6 +935,56 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 3]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/Turret/FireInterval
+					//Delay = 0.49
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				//Not Connected
+				{
+					Toggle = IsConnected
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = HasBuffNeedsCrewInvert
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [.5, .5]
+					}
+				}
+			]
 		}
     }
 	Stats

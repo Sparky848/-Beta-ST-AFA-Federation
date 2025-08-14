@@ -7,7 +7,7 @@ IdealRange
 ]
 Duration = 1
 HitInterval = .1
-Width = 0.5
+Width = 0.8
 SourceShipLowCollisions = false
 CrewCollisions = {Enemies=true; Junk=true}
 ClipRangeToTarget = true
@@ -153,10 +153,12 @@ HitOperational
 			Type = Damage
 			Damage = { BaseValue=750; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=100; }
 		}
+		
 		{
 			Type = Impulse;
 			Impulse = 0.05;
 		}
+		
 	]
 
 	MediaEffects

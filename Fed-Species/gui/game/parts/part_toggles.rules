@@ -486,4 +486,45 @@ PartToggles
 			}
 		]
 	}
+	// Deploy/Retract Phase Cannon
+	{
+		ToggleID = "phase_cannon_status"
+		Style = CycledButton
+		MultipleModesDisplayOrder = Last
+		SortOrder = 1
+		Choices
+		[
+			// Deploy
+			{
+				ChoiceID = "deploy_phase_cannon"
+				ButtonToolTipKey = "PartToggles/DeployPhaseCannon"
+				DefaultHotkey = [K]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "deploy_cannon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Retract
+			{
+				ChoiceID = "retract_phase_cannon"
+				ButtonToolTipKey = "PartToggles/RetractPhaseCannon"
+				DefaultHotkey = [K]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "retract_cannon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 ]

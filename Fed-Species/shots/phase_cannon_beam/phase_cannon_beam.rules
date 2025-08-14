@@ -1,0 +1,167 @@
+ID = "stafa.fed_phase_cannon_beam"
+Range = 260
+IdealRange
+[
+	90
+	260
+]
+Duration = 2
+HitInterval = .1
+Width = 0.1
+SourceShipLowCollisions = false
+//CrewCollisions = {Enemies=true; Junk=true}
+ClipRangeToTarget = true
+
+BeamMediaEffects
+[
+	// The beam itself.
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			Texture2
+			{
+				File = ./Data/common_effects/particles/spark.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "./Data/shots/ion_beam/ion_beam.shader"
+			_extraBeginLength = 0
+			_extraEndLength = 0.25
+			_sizePulseFactor = 1.2
+			_sizePulseInterval = .1
+			_sizePulseUOffsetFactor = -.03
+			_endCapSize = 4
+			Size = [100%, 1]
+			VertexColor = [288, 49, 48, 217]
+			_baseColor = [0.729411764706, 0.21568627451, 0.00392156862745, 1]
+			_halfHighlightColor = [0.5, 0.22, 0.21, 1]
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		FadeInTime = .05
+		FadeOutTime = .1
+		Bucket = Upper1
+	}
+
+	// Beam lighting.
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 2]
+			_extraBeginLength = (&Size/1) / 2
+			_extraEndLength = (&Size/1) / 2
+			VertexColor = [255, 0, 0, 255]
+			_z = 0.4
+			_litReflectiveStrength = 12
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.25
+			_nrmlStrengthLimit = 1.0
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper4
+		IsLight = true
+		FadeInTime = .05
+		FadeOutTime = .1
+	}
+]
+
+HitShield = &HitOperational
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 110
+		}
+	]
+
+	MediaEffects
+	[
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit.rules>
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_flash.rules>
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_sparks.rules>
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_spikes.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
+
+HitStructuralOperationalFilter
+{
+	ExcludePartCategories = [ion_beam_prism]
+}
+HitStructural
+{
+	HitEffects
+	[
+		{
+			Type = Damage;
+			Damage = 15
+		}
+	]
+
+	MediaEffects
+	[
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.rules>
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_flash.rules>
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_sparks_struct.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .25
+			MaxConcurrent = 1
+			MaxConcurrentVolume = .5
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}

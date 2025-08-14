@@ -1,4 +1,12 @@
-Part : <./Data/ships/terran/base_part_terran.rules>/Part
+OVERCLOCK
+{
+	BULLET = &<../../../shots/phaser_bolt_deck/small_tetryon_bolt_deck.rules>
+	HEAT_PER_SHOT = 500
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/Phaser_Cannon_Deck"
 	IconNameKey = "Parts/Phaser_Cannon_Deck_Icon"
@@ -7,9 +15,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Phaser_Cannon_Deck_Desc"
 	Resources
 	[
-		[steel, 72]
-		[coil2, 30]
-//		[coil2, 4]
+		[steel, 42]
+		[coil2, 5]
+		[coil, 15]
 	]
 	TypeCategories = [weapon, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
@@ -91,7 +99,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 1000
+			MaxResources = 2000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -103,7 +111,61 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResupplyThreshold = 0
 			OperationalToggle = PowerToggle
 		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
 
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1, 1]
+		}
+
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_BulletEmitter
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_Left2 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Right : ~/Part/^/0/BASE_THERMAL_PORT
+		{	
+			Location = [1, 0]
+			Direction = Right
+		}
+		Port_Thermal_Right2 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [1, 1]
+			Direction = Right
+		}
 		CrewLocation1
 		{
 			Type = CrewLocation
@@ -235,10 +297,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//Location = [.5, 0.8128]//Relative to upper-left corner of unrotated part.
 			Location = [1, 1]
 			Rotation = -90d// Relative to unrotated part.
-			OperationalToggle = IsOperational
+			OperationalToggle = IsOperationalNonOverclocked
 			AutoFireToggle = AutoFireToggle
-			//FireInterval = 2/30
-			FireInterval = 0.5
+			FireInterval
+			{
+				BaseValue = 0.5
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, 8]
+						ModificationMode = Add
+					}
+				]
+			}
 			FiringArc = 360d
 			RotateSpeed = 90d
 			FireThresholdAngle = 1d
@@ -275,15 +349,33 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				QuadCount = 64
 			}
 		}
-
+		WeaponEmitterSelector
+		{
+			Type = ToggleEmitterSelector
+			Toggle = IsOverclocked
+			ToggleOffEmitter = BulletEmitter
+			ToggleOnEmitter = Overclock_BulletEmitter
+		}
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
 		ReloadProgressBar
 		{
 			Type = ProgressBar
-			OperationalToggle = IsOperational
+			OperationalToggle = IsOperationalNonOverclocked
 			ShowProgressFor = Turret
-			Invert = true
+			//Invert = true
 		}
-
+		OCReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperationalOverclocked
+			ShowProgressFor = Turret
+			//Invert = true
+		}
 		BulletEmitter
 		{
 			Type = BulletEmitter
@@ -291,7 +383,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret
 			GetTargetFrom = Turret
 			Location = [.5, 0]
-			OperationalToggle = IsOperational
+			OperationalToggle = IsOperationalNonOverclocked
 			Spread = [-1d, 1d]
 			//FireDelay = .2
 			Burst = 4
@@ -301,8 +393,46 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourcesUsed = 150
 			MinResourcesUsed = 1
 		}
-
+		Overclock_BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [.5, 0]
+			OperationalToggle = IsOperationalOverclocked
+			Spread = [-0.025d, 0.025d]
+			Bullet = &~/OVERCLOCK/BULLET/Bullet
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 1500
+			MinResourcesUsed = 1
+		}
+//		Overclock_BulletEmitter : BulletEmitter
+//		{
+//			OperationalToggle = IsOperationalOverclocked
+//			Bullet = &~/OVERCLOCK/BULLET/Bullet
+//		}
 		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = BulletEmitter
+			Trigger = Overclock_BulletEmitter
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				//&<particles/point_defense_shoot.rules>
+				//&<particles/point_defense_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shoot.wav"
+					Volume = .5
+					SpeedVariation = .25
+				}
+			]
+		}
+		OCFireEffect
 		{
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter
@@ -380,7 +510,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
-
 		BatterySprites
 		{
 			Type = ResourceSprites
@@ -436,7 +565,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
+					Delay = &~/Part/Components/Turret/FireInterval/BaseValue
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -453,6 +582,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [.5, .5]
 					}
 				}
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [2]
+				}
 			]
 		}
 
@@ -461,6 +599,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [2, 2]
+		}
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/StatsByCategory/0/Stats/ROF)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
 		}
 	}
 
@@ -482,7 +633,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage/
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval/BaseValue)
 				RangeLimited = [&~/Part/Components/BulletEmitter/Bullet/Range/BaseValue, &~/Part/Components/BulletEmitter/Bullet/Range/MaxValue]
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
@@ -494,4 +645,35 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 	]
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/DeckPhaserCannonOCDesc"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/TetryonPulse"
+				Stats
+				{
+					PowerDrain = [0, 0]
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					Range = &~/OVERCLOCK/BULLET/RANGE
+				}
+				Features
+				[
+					PenetratesOperational
+				]
+			}
+			{
+				NameKey = "StatCategories/OverclockedDisruption"
+				Stats
+				{
+					PowerDrainOverTime = [(&~/OVERCLOCK/BULLET/TOTAL_DRAIN) / 1000, (&~/OVERCLOCK/BULLET/DRAIN_PER_SECOND) / 1000]
+					SHIELD_DRAIN_PER_DAMAGE = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue
+					ShieldDamageOverTime = [(&~/OVERCLOCK/BULLET/TOTAL_SHIELD_DRAIN) / (&../SHIELD_DRAIN_PER_DAMAGE), (&~/OVERCLOCK/BULLET/SHIELD_DRAIN_PER_SECOND) / (&../SHIELD_DRAIN_PER_DAMAGE)]
+					EffectDuration = &~/OVERCLOCK/BULLET/DRAIN_DURATION
+				}
+			}
+		]
+	}
 }

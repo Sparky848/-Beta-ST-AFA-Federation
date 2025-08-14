@@ -123,7 +123,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = 1750
+			Damage = 500//1750
 		}
 	]
 
@@ -155,7 +155,10 @@ HitOperational
 			ExpandDuration = 0.01
 			ExpandStartRadius = 2
 			ExpandLoss = 50%
-			FireChancePerNDamage = 35%
+			StatusType = cosmoteer.fire
+			StatusChancePerNDamage = 35%
+			StatusValue = 1
+			StatusValueType = Interpolated
 			NDamage = 1000
 		}
 		{

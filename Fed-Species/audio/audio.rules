@@ -1,0 +1,9 @@
+PhaseCannonDeploy
+[
+	: &<./Data/common_effects/sounds/base_sounds.rules>/AudioExteriorDetail
+	{
+		Sound = "Phase_Cannon_Deploy.wav"
+		Volume = .5
+		SpeedVariation = .15
+	}
+]

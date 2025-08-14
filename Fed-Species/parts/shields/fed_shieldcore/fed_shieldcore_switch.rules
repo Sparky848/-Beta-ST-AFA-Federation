@@ -2976,6 +2976,61 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DrainOnFtlJump = true
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
+		FrontInternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = FrontBatteryStorage
+			Invert = false
+			LowColor = [60, 143, 185]
+			HighColor = [120, 203, 245]
+			FullColor = [120, 203, 245]
+			Height = 5
+		}
+		RightInternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = RightBatteryStorage
+			Invert = false
+			LowColor = [173, 111, 124]
+			HighColor = [233, 171, 184]
+			FullColor = [233, 171, 184]
+			Height = 5
+		}
+		LeftInternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = LeftBatteryStorage
+			Invert = false
+			LowColor = [195, 195, 195]
+			HighColor = [255, 255, 255]
+			FullColor = [255, 255, 255]
+			Height = 5
+		}
+		BackInternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BackBatteryStorage
+			Invert = false
+			LowColor = [173, 111, 124]
+			HighColor = [233, 171, 184]
+			FullColor = [233, 171, 184]
+			Height = 5
+		}
+		FullInternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = CombinedBatteryStorage
+			Invert = false
+			LowColor = [60, 143, 185]
+			HighColor = [120, 203, 245]
+			FullColor = [120, 203, 245]
+			Height = 5
+		}
 		FrontBatteryConsumer
 		{
 			Type = ResourceConsumer

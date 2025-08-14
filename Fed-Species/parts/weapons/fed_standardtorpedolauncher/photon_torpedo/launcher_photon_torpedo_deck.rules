@@ -365,7 +365,7 @@ EmitterBase
 	OperationalToggle = IsOperational
 	Location = [1, 0]
 	ResourcesUsed = 4
-	Bullet = &<../../../../shots/photon_torpedo_shot/photon_torpedo_shot_ai_deck.rules>
+	Bullet = &<../../../../shots/photon_torpedo_shot/photon_torpedo_shot_standard.rules>
 	TargetLeadPrediction = false
 	Recoil = 50
 }

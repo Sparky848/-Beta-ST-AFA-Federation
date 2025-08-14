@@ -32,16 +32,10 @@ Components
 		HasTarget = false
 	}
 
-	//Death
-	//{
-	//	Type = DeathByLifetime
-	//	// Lifetime will be auto-calculated based on range and speed.
-	//}
-
 	Targetable
 	{
 		Type = Targetable
-		Health = 450
+		Health = 20
 		TargetCategory = "laser"
 	}
 

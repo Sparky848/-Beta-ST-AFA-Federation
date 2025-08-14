@@ -380,6 +380,13 @@ PhaserCounter
 	CombineMode = Add
 	BaseValue = 1
 }
+NeedsCrew
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
 //WarpcoreStorageBuffSmall
 //{
 //	CombineMode = Max

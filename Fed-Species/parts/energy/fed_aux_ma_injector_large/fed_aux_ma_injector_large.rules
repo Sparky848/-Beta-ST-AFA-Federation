@@ -75,8 +75,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 							HitEffects
 							[
 								{
-									Type = Fire
-									FireChance = 1
+									Type = StatusApplication
+									StatusType = cosmoteer.fire
+									StatusChance = 1
+									//ValueType = Interpolated
 									Filter
 									{
 										Friendlies = true

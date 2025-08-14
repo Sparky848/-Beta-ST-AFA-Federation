@@ -124,7 +124,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=100; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
+			Damage = { BaseValue=660; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
 		}
 	]
 
@@ -151,7 +151,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=100; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
+			Damage = { BaseValue=660; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
 		}
 	]
 
@@ -183,7 +183,7 @@ HitStructural
 	[
 		{
 			Type = Damage;
-			Damage = { BaseValue=100; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
+			Damage = { BaseValue=660; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
 		}
 	]
 

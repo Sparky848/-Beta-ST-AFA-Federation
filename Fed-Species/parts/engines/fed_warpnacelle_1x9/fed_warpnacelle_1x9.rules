@@ -101,6 +101,61 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 8000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		ThrustAmountForward
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterBottom
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
+		ThrustAmountRight
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterLeft
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
+		ThrustAmountLeft
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterRight
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
+		ThrustAmountReverse
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterTop
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
 		FtlEfficiency
 		{
 			Type = FtlDrive

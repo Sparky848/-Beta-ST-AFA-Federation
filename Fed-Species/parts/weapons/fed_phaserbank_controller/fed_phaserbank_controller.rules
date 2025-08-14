@@ -66,7 +66,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 10000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
 		BatteryConsumer
 		{
 			Type = ResourceConsumer
@@ -80,7 +90,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		PhaserBuffProviderLeft
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = IsOperational
+			//OperationalToggle = IsOperational
 			BuffType = Phaser
 			BuffAmount = 100%
 			Criteria
@@ -93,7 +103,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		PhaserBuffProviderRight
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = IsOperational
+			//OperationalToggle = IsOperational
 			BuffType = Phaser
 			BuffAmount = 100%
 			Criteria
@@ -102,7 +112,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			BuffArea = [1, 0, 1, 2]
 		}
-
+		NeedsCrewBuff
+		{
+			Type = GridBuffProvider
+			OperationalToggle = PartCrew
+			BuffType = NeedsCrew
+			BuffAmount = 100%
+			GridDistance = 1
+			InvertOperationalToggle = true
+		}
 		BatteryLoader
 		{
 			Type = ResourceConverter

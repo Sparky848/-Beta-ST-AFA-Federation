@@ -333,7 +333,7 @@ EmitterBase
 	OperationalToggle = IsOperational
 	Location = [1, 0]
 	ResourcesUsed = 4
-	Bullet = &<../../../../shots/quantum_torpedo_shot/quantum_torpedo_shot_ai_deck.rules>
+	Bullet = &<../../../../shots/quantum_torpedo_shot/quantum_torpedo_shot_standard.rules>
 	TargetLeadPrediction = false
 	Recoil = 50
 }

@@ -1,0 +1,862 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/BulkAntimatterCrafter"
+	IconNameKey = "Parts/BulkAntimatterCrafterIcon"
+	ID = stafa.bulk_antimatter_crafter // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "StarfleetProduction"
+	DescriptionKey = "Parts/BulkAntimatterCrafterDesc"
+	Resources
+	[
+		[steel, 248]
+		[coil, 48]
+		[coil2, 32]
+		[tristeel, 48]
+		[processor, 5]
+	]
+	Size = [6, 5]
+	SelectionPriority = 1
+	MaxHealth = 8000
+	TypeCategories = [provides_antimatter, uses_hyperium, uses_power, uses_dilithium]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	AllowedDoorLocations
+	[
+		[-1, 3]
+		[-1, 4]
+		[0, 5]
+		[1, 5]
+		[2, 5]
+		[3, 5]
+		[4, 5]
+		[5, 5]
+		[6, 3]
+		[6, 4]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [53.33, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		HyperiumStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = hyperium
+			GridRect = [2, 3, 1, 2]
+			Layer = "doodads_low"
+			ToggleOnResources = 1
+			ToggleOffResources = 0
+			SpriteInset = [17/64, 9/64, 5/64, 5/64]
+			AllowExternalPickupAndDelivery = true
+		}
+		HyperiumConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = hyperium
+			Storage = HyperiumStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		DilithiumStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = dilithium
+			GridRect = [3, 3, 1, 2]
+			Layer = "doodads_low"
+			ToggleOnResources = 1
+			ToggleOffResources = 0
+			SpriteInset = [17/64, 9/64, 5/64, 5/64]
+			AllowExternalPickupAndDelivery = true
+		}
+		DilithiumConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = dilithium
+			Storage = DilithiumStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		AntimatterStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = antimatter
+			GridRect = [0, 3, 2, 2]
+			Layer = "doodads_low"
+			SpriteInset = [8/64, 3/64, 8/64, 12/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			RandomSpriteRotation = true
+			InitToMaxResources = 0
+		}
+		AntimatterStorage2
+		{
+			Type = TypedResourceGrid
+			ResourceType = antimatter
+			GridRect = [4, 3, 2, 2]
+			Layer = "doodads_low"
+			SpriteInset = [8/64, 3/64, 8/64, 12/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			RandomSpriteRotation = true
+			InitToMaxResources = 0
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 13000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		HyperiumResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = HyperiumStorage
+			        Quantity = 1
+			    }
+			]
+			ToStorage = FakeResourceStorage
+			ToQuantity = 1
+			Interval = 0.1
+			CheckResourceLimits = true
+		}
+		DilithiumResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = DilithiumStorage
+			        Quantity = 1
+			    }
+			]
+			ToStorage = FakeResourceStorage
+			ToQuantity = 20
+			Interval = 0.1
+			CheckResourceLimits = true
+		}
+		InternalAntimatterResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = FakeResourceStorage
+			        Quantity = 40
+			    }
+				{
+			        Storage = BatteryStorage
+			        Quantity = 2000
+			    }
+			]
+			ToStorage = FakeResourceStorage2
+			ToQuantity = 20
+			Interval = 5
+			CheckResourceLimits = true
+		}
+		InternalAntimatterResourceConverter2
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = FakeResourceStorage
+			        Quantity = 40
+			    }
+				{
+			        Storage = BatteryStorage
+			        Quantity = 2000
+			    }
+			]
+			ToStorage = FakeResourceStorage2
+			ToQuantity = 20
+			Interval = 5
+			CheckResourceLimits = true
+		}
+		FakeResourceStorage
+		{
+			Type = ResourceStorage
+			ResourceType = ion_energy
+			MaxResources = 80
+		}
+		FakeResourceStorage2
+		{
+			Type = ResourceStorage
+			ResourceType = ion_energy
+			MaxResources = 80
+		}
+		AntimatterResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = FakeResourceStorage2
+			        Quantity = 1
+			    }
+			]
+			ToStorage = AntimatterStorage
+			ToQuantity = 1
+			Interval = 1
+			CheckResourceLimits = true
+		}
+		AntimatterResourceConverter2
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = FakeResourceStorage
+			        Quantity = 1
+			    }
+			]
+			ToStorage = AntimatterStorage2
+			ToQuantity = 1
+			Interval = 1
+			CheckResourceLimits = true
+		}
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = AntimatterResourceConverter
+			Location = [2.5, 2]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./Data/ships/terran/factory_ammo/bullet_create.wav"
+					Volume = .1
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+		ConvertEffects2
+		{
+			Type = TriggeredEffects
+			Trigger = AntimatterResourceConverter2
+			Location = [2.5, 2]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./Data/ships/terran/factory_ammo/bullet_create.wav"
+					Volume = .1
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+		BeltSpeedFactor
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+		}
+		Belt
+		{
+			Type = Graphics
+			Location = [3, 2.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = AntimatterResourceConverter
+			AnimationSpeedFactor = BeltSpeedFactor
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [6, 5]
+						AnimationInterval = 0.625
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [6, 5]
+						AnimationInterval = 0.625
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [6, 5]
+						AnimationInterval = 0.625
+					}
+				]
+			}
+		}
+		Belt2
+		{
+			Type = Graphics
+			Location = [7, 2.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = AntimatterResourceConverter2
+			AnimationSpeedFactor = BeltSpeedFactor
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [6, 5]
+						AnimationInterval = 0.625
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [6, 5]
+						AnimationInterval = 0.625
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [6, 5]
+						AnimationInterval = 0.625
+					}
+				]
+			}
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [3, 2.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = HyperiumStorage
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [6, 5]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/floor_33.png"
+						Size = [6, 5]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/floor_66.png"
+						Size = [6, 5]
+					}
+				]
+			}
+			ConsumeHyperiumDoodad
+			{
+				Type = Graphics
+				Location = [3, 2.5]
+				OperationalToggle = IsOperational
+				DoodadToggle = HyperiumStorage
+				ToggleOnDoodad
+				{
+					Layer = "doors"	 //Wall layer so the hyper_coil is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+					DamageLevels
+					[
+						{
+							AnimationFiles
+							[
+								"consume_doodads1.png"
+								"consume_doodads2.png"
+								"consume_doodads3.png"
+								"consume_doodads4.png"
+								"consume_doodads5.png"
+								"consume_doodads6.png"
+								"consume_doodads7.png"
+							]
+							Size = [6, 5]
+							AnimationInterval = 0.0142857142857
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"consume_doodads1.png"
+								"consume_doodads2.png"
+								"consume_doodads3.png"
+								"consume_doodads4.png"
+								"consume_doodads5.png"
+								"consume_doodads6.png"
+								"consume_doodads7.png"
+							]
+							Size = [6, 5]
+							AnimationInterval = 0.0142857142857
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"consume_doodads1.png"
+								"consume_doodads2.png"
+								"consume_doodads3.png"
+								"consume_doodads4.png"
+								"consume_doodads5.png"
+								"consume_doodads6.png"
+								"consume_doodads7.png"
+							]
+							Size = [6, 5]
+							AnimationInterval = 0.0142857142857
+							ClampAnimation = true
+						}
+					]
+				}
+			}
+			ConsumeDilithiumDoodad
+			{
+				Type = Graphics
+				Location = [4, 2.5]
+				OperationalToggle = IsOperational
+				DoodadToggle = DilithiumStorage
+				ToggleOnDoodad
+				{
+					Layer = "upper5"	 //Wall layer so the hyper_coil is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+					DamageLevels
+					[
+						{
+							AnimationFiles
+							[
+								"consume_doodads1.png"
+								"consume_doodads2.png"
+								"consume_doodads3.png"
+								"consume_doodads4.png"
+								"consume_doodads5.png"
+								"consume_doodads6.png"
+								"consume_doodads7.png"
+							]
+							Size = [6, 5]
+							AnimationInterval = 0.0142857142857
+							//ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"consume_doodads1.png"
+								"consume_doodads2.png"
+								"consume_doodads3.png"
+								"consume_doodads4.png"
+								"consume_doodads5.png"
+								"consume_doodads6.png"
+								"consume_doodads7.png"
+							]
+							Size = [6, 5]
+							AnimationInterval = 0.0142857142857
+							//ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"consume_doodads1.png"
+								"consume_doodads2.png"
+								"consume_doodads3.png"
+								"consume_doodads4.png"
+								"consume_doodads5.png"
+								"consume_doodads6.png"
+								"consume_doodads7.png"
+							]
+							Size = [6, 5]
+							AnimationInterval = 0.0142857142857
+							//ClampAnimation = true
+						}
+					]
+				}
+			}
+			ToggleOnDoodad
+			{
+				Layer = "doors"
+				Offset = [0, -0.25]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"antimatter_cracking1.png"
+							"antimatter_cracking2.png"
+							"antimatter_cracking3.png"
+							"antimatter_cracking4.png"
+							"antimatter_cracking5.png"
+							"antimatter_cracking6.png"
+							"antimatter_cracking7.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+						AnimationStartTime = WhenSpawned
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"antimatter_cracking1_33.png"
+							"antimatter_cracking2_33.png"
+							"antimatter_cracking3_33.png"
+							"antimatter_cracking4_33.png"
+							"antimatter_cracking5_33.png"
+							"antimatter_cracking6_33.png"
+							"antimatter_cracking7_33.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+						AnimationStartTime = WhenSpawned
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"antimatter_cracking1_66.png"
+							"antimatter_cracking2_66.png"
+							"antimatter_cracking3_66.png"
+							"antimatter_cracking4_66.png"
+							"antimatter_cracking5_66.png"
+							"antimatter_cracking6_66.png"
+							"antimatter_cracking7_66.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+						AnimationStartTime = WhenSpawned
+						ClampAnimation = true
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/terran/factory_diamond/walls.png"
+						Size = [6, 5]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/walls_33.png"
+						Size = [6, 5]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/walls_66.png"
+						Size = [6, 5]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/terran/factory_diamond/lights.png"
+						Size = [6, 5]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/terran/factory_diamond/roof1.png"
+						NormalsFile = "./Data/ships/terran/factory_diamond/roof_normals1.png"
+						Size = [6, 5]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/roof1_33.png"
+						NormalsFile = "./Data/ships/terran/factory_diamond/roof_normals1_33.png"
+						Size = [6, 5]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/roof1_66.png"
+						NormalsFile = "./Data/ships/terran/factory_diamond/roof_normals1_66.png"
+						Size = [6, 5]
+					}
+				]
+			}
+			// OperationalRoofDoodad
+			// {
+				// Layer = "roof_doodads"
+				// Offset = [0, 1]
+				// DamageLevels
+				// [
+					// {
+						// File = "./Data/ships/terran/factory_diamond/roof_glows.png"
+						// Size = [2, 1]
+					// }
+					// {
+						// File = "./Data/ships/terran/factory_diamond/roof_glows_33.png"
+						// Size = [2, 1]
+					// }
+					// {
+						// File = "./Data/ships/terran/factory_diamond/roof_glows_66.png"
+						// Size = [2, 1]
+					// }
+				// ]
+			// }
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -29/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [4, 4]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5,0,0]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [3, 2.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batt1.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt2.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt3.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt4.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt5.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt6.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt7.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt8.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt9.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt10.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt11.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt12.png"
+					Size = [6, 5]
+				}
+				{
+					File = "batt13.png"
+					Size = [6, 5]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [2.5, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [2.5, 2]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [3, 2.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// No antimatter.
+				{
+					Toggle = HyperiumStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./Data/ships/terran/factory_diamond/blueprints.png"
+			Size = [6, 5]
+		}
+	}
+
+	Stats
+	{
+		//AntimatterProduction = Infinity //(&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		//AntimatterCapacity = 40
+		//HyperiumCapacity = &~/Part/Components/HyperiumStorage/MaxResources
+		//HyperiumPerAntimatter = 2
+		//HyperiumPerSecond = Infinity //(&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		//DiamondCarbonUsage = [&../HyperiumPerAntimatter, &../HyperiumPerSecond]
+		//PowerPerAntimatter = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		//PowerPerSecond = Infinity //(&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
+		//DiamondPowerUsage = [&../PowerPerAntimatter, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = 2 //&PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+}

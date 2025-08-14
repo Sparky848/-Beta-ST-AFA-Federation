@@ -6,7 +6,7 @@ IdealRange
 	{ BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
 ]
 IdealRadius = [5, 50]
-Speed = { BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
+Speed = { BaseValue=50; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
 
 Components
 {

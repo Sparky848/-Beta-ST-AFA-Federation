@@ -115,7 +115,10 @@ Components
 					TotalDamage = 16000
 					DamagePool = DamagePool
 					Radius = 5
-					FireChancePerNDamage = 1
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					NDamage = 1500
 				}
 				{
@@ -188,7 +191,10 @@ Components
 					DamagePool = DamagePool
 					DoPooledDamageFirst = true
 					Radius = 3
-					FireChancePerNDamage = 1
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					NDamage = 750
 				}
 				{

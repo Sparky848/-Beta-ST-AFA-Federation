@@ -83,10 +83,11 @@ Components
 
 			HitEffects
 			[
-				: ../../HitOperational/HitEffects/0
+				//: ../../HitOperational/HitEffects/0
 				{
-					Amount = 9000	
-					TreatShieldAsPart = true
+					Type = Damage
+					Damage = 60000
+					TreatShieldAsPart = false
 				}
 			]
 

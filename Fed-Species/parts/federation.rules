@@ -20,6 +20,8 @@ Parts
 	&<weapons/fed_phaserbank_med/fed_phaserbank_med.rules>/Part
 	&<weapons/fed_tiny_phaserbank_1x1/fed_tiny_phaserbank_1x1.rules>/Part
 	&<weapons/fed_tiny_phaserbank_2x1/fed_tiny_phaserbank_2x1.rules>/Part
+	&<weapons/fed_phase_cannon/fed_phase_cannon.rules>/Part
+	//&<weapons/fed_small_tetryon_cannon_deck/fed_small_tetryon_cannon_deck.rules>/Part
 	// &<weapons/fed_phaserlance2/fed_phaserlance2.rules>/Part
 
 	//&<weapons/fed_phaserbank_modular/fed_phaserbank_modular.rules>/Part
@@ -50,6 +52,20 @@ Parts
 	&<engines/fed_t6_warpnacelle_1x4/fed_t6_warpnacelle_1x4.rules>/Part
 	// Shields
 	&<shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part
+	//Armour
+	&<armour/duranium_armour/duranium_armour.rules>/Part
+	&<armour/duranium_armour_1x2_wedge/duranium_armour_1x2_wedge.rules>/Part
+	&<armour/duranium_armour_1x3_wedge/duranium_armour_1x3_wedge.rules>/Part
+	&<armour/duranium_armour_2x1/duranium_armour_2x1.rules>/Part
+	&<armour/duranium_armour_structure_hybrid_1x1/duranium_armour_structure_hybrid_1x1.rules>/Part
+	&<armour/duranium_armour_structure_hybrid_1x2/duranium_armour_structure_hybrid_1x2.rules>/Part
+	&<armour/duranium_armour_structure_hybrid_1x3/duranium_armour_structure_hybrid_1x3.rules>/Part
+	&<armour/duranium_armour_structure_hybrid_tri/duranium_armour_structure_hybrid_tri.rules>/Part
+	&<armour/duranium_armour_tri/duranium_armour_tri.rules>/Part
+	&<armour/duranium_armour_wedge/duranium_armour_wedge.rules>/Part
+	&<armour/duranium_armour_plate/duranium_armour_plate.rules>/Part
+	&<armour/duranium_armour_plate_wedge/duranium_armour_plate_wedge.rules>/Part
+	&<armour/duranium_armour_plate_wedge_long/duranium_armour_plate_wedge_long.rules>/Part
 	// Misc (basically AI Parts)
 	&<engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part
 	&<engines/fed_impulse_6x3/fed_impulse_6x3_ai.rules>/Part

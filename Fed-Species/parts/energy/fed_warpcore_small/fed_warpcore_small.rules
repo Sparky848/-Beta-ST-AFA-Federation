@@ -24,7 +24,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewCongestedSpeedFactor = .4
 	AIValueFactor = 10
 	Size = [4, 4]
-	IsRotateable = false
+	//IsRotateable = false
 	SelectionPriority = 0
 	SelectionTypeID = "reactors"
 	MaxHealth = 4000 // Deliberately not increasing this for med/large reactors to make them extra-fragile.
@@ -32,7 +32,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	TypeCategories = [reactor, ftl, is_crewed, uses_antimatter, warpcore]
 	ReceivableBuffs : ^/0/ReceivableBuffs [WarpcoreBuffSmall, WarpcoreSubstationBuffSmall]
 	CreatePartPerTileWhenDestroyed = ""
-	IgnoreRotationForMirroredSelection = true
+	//IgnoreRotationForMirroredSelection = true
 	BlockedTravelCells
 	[
 		[0, 2]
@@ -181,7 +181,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			LowColor = [170, 183, 0]
 			HighColor = [238, 255, 0]
 			FullColor = [238, 255, 0]
-			Height = 5
+			Height = 7
 		}
 		InternalAntimatterCapacity
 		{
@@ -192,7 +192,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			LowColor = [0, 25, 166]
 			HighColor = [0, 34, 227]
 			FullColor = [0, 34, 227]
-			Height = 4
+			Height = 8
 		}
 		AntimatterStorage
 		{
@@ -232,7 +232,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = AntimatterSplitter
-					Quantity = 50
+					Quantity = 30
 				}
 			]
 			ToStorage = BatteryStorage
@@ -685,29 +685,36 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 3250000
+					TotalDamage = 812500
 					Radius = 62
 					Delay = .05
 					ExpandDuration = .08
 					ExpandStartRadius = 6
 					ExpandLoss = 50%
-					FireChancePerNDamage = 100%
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 100%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					ImpulsePerNDamage = 5
 					NDamage = 1000
 					Filter
 					{
 						OperationalHealth = true
-						StructuralHealth = true
+						StructuralHealth = false
 						Friendlies = true
 					}
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 225000
-					Radius = 52
+					TotalDamage = 100000
+					Radius = 40
 					Delay = .05
 					ExpandDuration = .07
 					ExpandStartRadius = 4
+					StatusType = cosmoteer.heat
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					ExpandLoss = 100%
 					ImpulsePerNDamage = 3
 					NDamage = 1000
@@ -716,6 +723,29 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						OperationalHealth = false
 						StructuralHealth = true
 						Friendlies = true
+					}
+				}
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = 600000//1750000
+						EffectScaleExponent = 1
+					}
+					MaxCost = 37.5//MaxCost = 750
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+						Friendlies = true
+						Enemies = true
+						Junk = true
+						Neutrals = true
 					}
 				}
 			]

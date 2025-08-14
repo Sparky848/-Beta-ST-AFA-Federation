@@ -1,0 +1,25 @@
+ID = warpcores
+TitleKey = "Tutorials/Warpcore/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('warpcore') or ((game.HasTechUnlocked('stafa.fed_warpcore_2x3') or game.HasTechUnlocked('stafa.fed_warpcore_small') or game.HasTechUnlocked('stafa.fed_warpcore_med') or game.HasTechUnlocked('stafa.fed_warpcore_large')) and game.Fame > 0)"
+Entries
+[
+	{
+		TextKey = "Tutorials/Warpcore/Info"
+	}
+	{
+		Image { Texture { File="warpcore.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/Warpcore/Distribution"
+		Image { Texture { File="power.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/Warpcore/Resources"
+	}
+	
+	{
+		TextKey = "Tutorials/Warpcore/NoAntimatter"
+		Image { Texture { File="no_antimatter.png"; SampleMode=Linear; } }
+	}
+]

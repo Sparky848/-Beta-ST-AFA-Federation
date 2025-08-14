@@ -16,7 +16,7 @@ HitNothing
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 750
+			TotalDamage = 1000
 			Radius = 1
 			Slices = 1
 			Filter
@@ -24,7 +24,7 @@ HitNothing
 				Ships = false
 				Shields = false
 				Bullets = true
-				OnlyBulletCategories = [missile, mine]
+				OnlyBulletCategories = [missile, mine, stafa_torpedo]
 			}
 		}
 	]
@@ -97,7 +97,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 100
+			Damage = 25
 		}
 		{
 			Type = Impulse
@@ -133,7 +133,7 @@ HitStructural
 	[
 		{
 			Type = Damage;
-			Damage = (&../../../HitOperational/HitEffects/0/Damage) /2 ;
+			Damage = 15;
 		}
 		{
 			Type = Impulse;

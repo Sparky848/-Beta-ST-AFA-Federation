@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [2, 8]
 	MaxHealth = 8000
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, MedPhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff, PhaserExpoDebuff, PhaserMainDebuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser, MedPhaserExpoDebuff, PhaserCounter, PhaserMedExpoDebuff, PhaserLargeExpoDebuff, PhaserExpoDebuff, PhaserMainDebuff, NeedsCrew]
 	IsRotateable = true
 	IsFlippable = true
 	CrewSpeedFactor = 0.75
@@ -51,7 +51,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, HasBuff]
+			Toggles = [PowerToggle, BatteryStorage, HasBuff, HasBuffNeedsCrewInvert]
 			Mode = All
 		}
 		HasBuff
@@ -93,7 +93,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = FireModeToggle
 			OnMode = 2
 		}
-		
+		HasBuffNeedsCrewInvert
+		{
+			Type = BuffToggle
+			BuffType = NeedsCrew
+			Invert = true
+		}
 		PhaserMode
 		{
 			Type = UIToggle
@@ -239,7 +244,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 10000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
 		Graphics
 		{
 			Type = Graphics
@@ -360,6 +375,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = &/INDICATORS/MissingComponent
 						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = HasBuffNeedsCrewInvert
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [.5, .5]
 					}
 				}
 			]

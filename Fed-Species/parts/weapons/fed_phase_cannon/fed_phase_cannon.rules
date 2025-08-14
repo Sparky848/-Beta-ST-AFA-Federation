@@ -1,0 +1,853 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Phase_Cannon"
+	IconNameKey = "Parts/Phase_Cannon_Icon"
+	ID = "stafa.fed_phase_cannon"
+	EditorGroup = "StarfleetWeapons"
+	DescriptionKey = "Parts/Phase_Cannon_Desc"
+	Resources
+	[
+		[steel, 32]
+		[coil, 6]
+	]
+	Size = [1, 2]
+	MaxHealth = 2000
+	//IsBuildable = false
+	TypeCategories = [weapon, turret, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsRotateable = true
+	IsFlippable = true
+	CrewSpeedFactor = 0.5
+	CrewCongestedSpeedFactor = .5	
+	SelectionPriority = 1
+	InitialPenetrationResistance = 1
+	PenetrationRectType = Normal
+	ProhibitedBy : ^/0/ProhibitedBy [tall]
+	ProhibitRects
+    [
+		[tall, [-2, -2, 2, 6]]
+		[tall, [1, -2, 2, 6]]
+		[tall, [0, -2, 1, 2]]
+		[tall, [0, 2, 1, 2]]
+    ]
+	AllowedDoorLocations
+	[
+		[0, 2]
+		[-1, 1]
+		[1, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, PhaseCannonStatus]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [0.5, 0.6]
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = CanFire
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 4
+			FireDelay = 4.8
+			FiringArc = 360d
+			RotateSpeed = 180d
+			FireThresholdAngle = 0.25d
+			AIFirepowerRating = 300
+			FirePermissionToggle = FireModeToggle
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			Emitter = BeamEmitter
+			AlwaysShowCoverage = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = CanFire
+			ShowProgressFor = Turret
+			Invert = false
+		}
+
+		BeamEmitter : &<../../../shots/phase_cannon_beam/phase_cannon_beam.rules>
+		{
+			Type = BeamEmitter
+			Location = [0.5, -0.03]
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = CanFire
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 500
+			MinResourcesUsed = 1
+		}
+		
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BeamEmitter
+			Location = [0.45, -0.05]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<./Data/ships/terran/laser_blaster_small/particles/laser_blaster_small_shoot.rules>
+				&<./Data/ships/terran/laser_blaster_small/particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "phase_cannon_fire2.wav"
+					Volume = 1
+					//SpeedVariation = .25
+				}
+			]
+		}
+		ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Turret
+			Location = [0.5, 1]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "charge.wav"
+					Volume = .25
+					Speed = 1.5
+				}
+			]
+		}
+		CannonShouldOpen //Used by shell opening and closing
+		{
+			Type = MultiToggle
+			Toggles = [PhaseCannonStatus]
+			Mode = Any
+		}
+		CannonShouldClose //Used by shell opening and closing
+		{
+			Type = MultiToggle
+			Toggles = [TargetingAndCanShoot]
+			Mode = Any
+		}
+		WeaponIsTargeting
+		{
+			Type = MultiToggle
+			Toggles = [Turret]
+			Mode = Any
+		}
+		TargetingAndCanShoot
+		{
+			Type = MultiToggle
+			Toggles = [CanFire, WeaponIsTargeting, HasPower]
+			Mode = All
+		}
+		HasPower
+		{
+			Type = ThresholdToggle
+			ValueFrom = BatteryStorage
+			MinAmount = 25%
+		}
+		DeployedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = PhaseCannonStatus
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		UndeployedTrigger2
+		{
+			Type = ToggleTrigger
+			Toggle = IsOperational
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+			//InvertOperationalToggle = true
+		}
+		DepTrig
+		{
+			Type = MultiTrigger
+			Triggers = [DeployedTrigger, UndeployedTrigger2]
+			Mode = Any
+		}
+		DeployedTimer
+		{
+			Type = Timer
+			Duration = 4
+			StartTrigger = DeployedTrigger
+		}
+		CanFire
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, DeployedTimer]
+			Mode = All
+		}
+		PhaseCannonStatus
+		{
+			Type = UIToggle
+			ToggleID = "phase_cannon_status"
+			Default = 0
+			//AutoOffTrigger = ShouldTurnOffForceFireTrigger
+			//OperationalToggle = IsOperational
+			RememberValue = false
+		}
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Turret
+			Rotation = 90d
+			OperationalToggle = CanFire
+			OperationalDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "turret_on.png"
+						NormalsFile = "turret_normals.png"
+						Size = [1, 1]
+						//Offset = [0, -0.5]
+					}
+					{
+						File = "turret_on.png"
+						NormalsFile = "turret_normals.png"
+						Size = [1, 1]
+						//Offset = [0, -0.5]
+					}
+					{
+						File = "turret_on.png"
+						NormalsFile = "turret_normals.png"
+						Size = [1, 1]
+						//Offset = [0, -0.5]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "turret_off.png"
+						NormalsFile = "turret_normals.png"
+						Size = [1, 1]
+						//Offset = [0, -0.5]
+					}
+					{
+						File = "turret_off.png"
+						NormalsFile = "turret_normals.png"
+						Size = [1, 1]
+						//Offset = [0, -0.5]
+					}
+					{
+						File = "turret_off.png"
+						NormalsFile = "turret_normals.png"
+						Size = [1, 1]
+						//Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+		DeployAnimation
+		{
+			Type = OpenCloseSprite
+			Location = [.5, 1]
+			Layer = "roofs"
+			OperationalToggle = CannonShouldOpen
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof1.png"
+						"roof2.png"
+						"roof3.png"
+						"roof4.png"
+						"roof5.png"
+						"roof6.png"
+						"roof7.png"
+						"roof8.png"
+						"roof9.png"
+						"roof10.png"
+						"roof11.png"
+						"roof12.png"
+						"roof13.png"
+						"roof14.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1.png"
+						"roof2.png"
+						"roof3.png"
+						"roof4.png"
+						"roof5.png"
+						"roof6.png"
+						"roof7.png"
+						"roof8.png"
+						"roof9.png"
+						"roof10.png"
+						"roof11.png"
+						"roof12.png"
+						"roof13.png"
+						"roof14.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1.png"
+						"roof2.png"
+						"roof3.png"
+						"roof4.png"
+						"roof5.png"
+						"roof6.png"
+						"roof7.png"
+						"roof8.png"
+						"roof9.png"
+						"roof10.png"
+						"roof11.png"
+						"roof12.png"
+						"roof13.png"
+						"roof14.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof14.png"
+						"roof13.png"
+						"roof12.png"
+						"roof11.png"
+						"roof10.png"
+						"roof9.png"
+						"roof8.png"
+						"roof7.png"
+						"roof6.png"
+						"roof5.png"
+						"roof4.png"
+						"roof3.png"
+						"roof2.png"
+						"roof1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof14.png"
+						"roof13.png"
+						"roof12.png"
+						"roof11.png"
+						"roof10.png"
+						"roof9.png"
+						"roof8.png"
+						"roof7.png"
+						"roof6.png"
+						"roof5.png"
+						"roof4.png"
+						"roof3.png"
+						"roof2.png"
+						"roof1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof14.png"
+						"roof13.png"
+						"roof12.png"
+						"roof11.png"
+						"roof10.png"
+						"roof9.png"
+						"roof8.png"
+						"roof7.png"
+						"roof6.png"
+						"roof5.png"
+						"roof4.png"
+						"roof3.png"
+						"roof2.png"
+						"roof1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+						"roof_normals.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 2]
+						Offset = [0, -0.55]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [1, 2]
+						Offset = [0, -0.55]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [1, 2]
+						Offset = [0, -0.55]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+//			Roof
+//			{
+//	/			Layer = "roofs"
+///				Location = [0, 0]
+//				DamageLevels
+//				[
+//					{
+//						File = "roof1.png"
+//						NormalsFile = "roof_normals.png"
+//						Size = [1, 2]
+//					}
+//					{
+//						File = "roof_33.png"
+//						NormalsFile = "roof_normals_33.png"
+//						Size = [1, 2]
+//					}
+//					{
+//						File = "roof_66.png"
+//						NormalsFile = "roof_normals_66.png"
+//						Size = [1, 2]
+//					}
+//				]
+//			}
+		}
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [.5, 1.5]
+			Rotation = 0d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			CrewDestinations
+			[
+				&../../CrewLocation/Location
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [0.5, 0.5]
+			Toggle = PhaseCannonStatus
+			ToggledOnMediaEffects
+			[
+				: &<./Data/common_effects/sounds/base_sounds.rules>/AudioExteriorDetail
+				{
+					Sound = "Phase_Cannon_Deploy.wav"
+					Volume = .75
+					SpeedVariation = .15
+				}
+			]
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, 1]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 2]
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [.5, .5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/Turret/FireInterval
+					//Delay = 0.49
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [.5, .5]
+					}
+				}
+			]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		MinPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) / 2
+		RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/PhaseCannon"
+			Stats
+			{
+				ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
+				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
+				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
+				DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage
+				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
+				BurstDuration = &~/Part/Components/BeamEmitter/Duration
+				BurstDamage = (&DamagePerShot) * ((&BurstDuration) / (&HitInterval))
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				DamagePerSecond = (&BurstDamage) * (&ROF)
+				Damage = [&../BurstDamage, &../DamagePerSecond]
+				Range = [&~/Part/Components/BeamEmitter/Range]
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = Infinity
+				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
+				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
+			}
+		}
+	]
+}
