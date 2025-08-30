@@ -66,12 +66,12 @@ BeamMediaEffects
 		{
 			Texture
 			{
-				File = "beam.png"
+				File = "./Data/common_effects/particles/blob.png"
 				MipLevels = max
 				SampleMode = Linear
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
-			Size = [100%, 0.8]
+			Size = [100%, 2]
 			_extraBeginLength = (&Size/1) / 2
 			_extraEndLength = (&Size/1) / 2
 			VertexColor = [255, 255, 0, 255]

@@ -20,19 +20,26 @@ BeamMediaEffects
 		{
 			Texture
 			{
-				File = "beam.png"
-				SampleMode = Linear
-				MipLevels = 1
-				UVMode = Clamp
-			}
-			_noiseTexture
-			{
-				File = ./Data/common_effects/particles/noise_voronoi.png
+				File = ./Data/common_effects/particles/noise_gradient.png
 				SampleMode = Linear
 				MipLevels = max
 				UVMode = Wrap
 			}
-			Shader = "beam.shader"
+			Texture2
+			{
+				File = ./Data/common_effects/particles/spark.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "./Data/shots/ion_beam/ion_beam.shader"
 			_gradientPow = 0.35
 			_sineFreq = 2.5
 			_sineAmp = 0.03
@@ -40,7 +47,9 @@ BeamMediaEffects
 			_gradientIntensity = 3
 			_endCapSize = .125
 			Size = [100%, 8]
-			VertexColor = [255, 255, 255, 217]
+			VertexColor = [255, 76, 0, 217]
+			_baseColor = [1, 0.298, 0, 1]
+			_halfHighlightColor = [0.6627, 0.2705, 0.10196, 1]
 			TargetBlendMode
 			{
 				SourceRgbFactor = SourceAlpha

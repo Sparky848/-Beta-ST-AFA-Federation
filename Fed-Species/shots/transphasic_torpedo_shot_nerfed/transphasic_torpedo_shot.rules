@@ -62,7 +62,7 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 1450
+		Health = 5000
 		TargetCategory = "stafa_torpedo"
 		OnDeath = &../Hit/HitOperational
 	}
@@ -252,6 +252,39 @@ Components
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.25
+		}
+	}
+	GlowSprite2
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Offset = [0, 0]
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "bullet_large_oc_light.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [18.2, 18.2]
+				//VertexColor = [255, 255, 255]
+				TargetBlendMode = Add
+				Shader = "./Data/common_effects/fancy_light.shader"
+				_z = 1
+				_nrmlStrengthLimit = 1
+				_litReflectiveStrength = 24
+				_litAdditiveStrength = 0
+				_unlitAdditiveStrength = 1
+			}
+		FrameCount = 16
+		FrameSize = [512, 512]
+		FramesPerRow = 4
+		FramesPerSecond = 120
 		}
 	}
 }

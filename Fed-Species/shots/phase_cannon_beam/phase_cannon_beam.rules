@@ -78,15 +78,15 @@ BeamMediaEffects
 				SampleMode = Linear
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
-			Size = [100%, 2]
+			Size = [100%, 0.8]
 			_extraBeginLength = (&Size/1) / 2
 			_extraEndLength = (&Size/1) / 2
 			VertexColor = [255, 0, 0, 255]
-			_z = 0.4
-			_litReflectiveStrength = 12
+			_z = 0.1
+			_litReflectiveStrength = 8
 			_litAdditiveStrength = 0
 			_unlitAdditiveStrength = 0.25
-			_nrmlStrengthLimit = 1.0
+			_nrmlStrengthLimit = 9.2
 			TargetBlendMode
 			{
 				SourceRgbFactor = InverseDestColor
@@ -99,7 +99,7 @@ BeamMediaEffects
 		}
 		Bucket = Upper4
 		IsLight = true
-		FadeInTime = .05
+		FadeInTime = .25
 		FadeOutTime = .1
 	}
 ]

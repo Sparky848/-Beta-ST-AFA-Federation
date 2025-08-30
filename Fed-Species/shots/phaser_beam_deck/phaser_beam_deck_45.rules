@@ -21,27 +21,39 @@ BeamMediaEffects
 		{
 			Texture
 			{
-				File = "beam.png"
-				SampleMode = Linear
-				MipLevels = 1
-				UVMode = Clamp
-			}
-			_noiseTexture
-			{
-				File = ./Data/common_effects/particles/noise_voronoi.png
+				File = ./Data/common_effects/particles/noise_gradient.png
 				SampleMode = Linear
 				MipLevels = max
 				UVMode = Wrap
 			}
-			Shader = "beam.shader"
+			Texture2
+			{
+				File = ./Data/common_effects/particles/spark.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "./Data/shots/ion_beam/ion_beam.shader"
 			_gradientPow = 0.35
 			_sineFreq = 2.5
 			_sineAmp = 0.03
 			_noiseAmp = 0.12
 			_gradientIntensity = 3
 			_endCapSize = .125
-			Size = [100%, 0.85]
-			VertexColor = [255, 255, 255, 217]
+			Size = [100%, 1.05]
+			VertexColor = [255, 76, 0, 217]
+			_baseColor = [1, 0.298, 0, 1]
+			_halfHighlightColor = [0.6627, 0.2705, 0.10196, 1]
+			//VertexColor = [255, 154, 0, 217]
+			//_baseColor = [1, 0.6039, 0, 1]
+			//_halfHighlightColor = [0.698, 0.5, 0.145098, 1]
 			TargetBlendMode
 			{
 				SourceRgbFactor = SourceAlpha
@@ -153,6 +165,21 @@ HitOperational
 			Type = Damage
 			Damage = { BaseValue=1800; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=200; }
 		}
+		{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = 1000
+						EffectScaleExponent = 1
+					}
+					MaxCost = 2
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+				}
 		{
 			Type = Impulse;
 			Impulse = 0.2;

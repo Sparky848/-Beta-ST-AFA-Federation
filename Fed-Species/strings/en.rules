@@ -23,7 +23,7 @@ Parts
 	Phaser_Bank_Controller = "Phaser Bank Controller"
     Phaser_Bank_Controller_Icon = "Phaser Bank Controller"
     Phaser_Bank_Controller_Desc = "Phaser Bank Control room, which will control adjacent Phaserbanks."\
-								"<s20><red>Must be placed in parallel/with the 2 long side of the controller touching the phaserbank.</red></s20>\n"
+								"\n<s20><red>Must be placed in parallel/with the 2 long side of the controller touching the phaserbank.</red></s20>\n"
     Phaser_Bank = "Standard Phaser Bank"
     Phaser_Bank_Icon = "Standard Phaser Bank"
     Phaser_Bank_Desc = "The Standard Phaser Bank is a beam weapon with numerous emitters that allows it to fire in a selectable 180°-45° arc.\n"\

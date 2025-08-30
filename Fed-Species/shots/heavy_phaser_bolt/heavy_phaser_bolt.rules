@@ -83,9 +83,24 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 50000
+					TotalDamage = 2000//50000
 					DamagePool = DamagePool
-					Radius = 5
+					Radius = 7//5
+				}
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = 4000
+						EffectScaleExponent = 1
+					}
+					MaxCost = 2
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
 				}
 				{
 					Type = Impulse;

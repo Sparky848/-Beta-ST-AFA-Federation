@@ -63,7 +63,7 @@ Components
 		OperationalToggle = IsOperational
 		FireDelay = 0.49
 		ResourceStorage = BatteryStorage
-		ResourcesUsed = 2250
+		ResourcesUsed = 14000//2250
 		MinResourcesUsed = 1
 	}
 
