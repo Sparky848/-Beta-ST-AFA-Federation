@@ -285,7 +285,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = UIToggle
 			ToggleID = "phase_cannon_status"
-			Default = 0
+			Default = 1
 			//AutoOffTrigger = ShouldTurnOffForceFireTrigger
 			//OperationalToggle = IsOperational
 			RememberValue = false

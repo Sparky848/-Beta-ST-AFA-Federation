@@ -27,25 +27,25 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 450
+		Health = 125//450
 		TargetCategory = "laser"
 	}
 
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = { BaseValue=800; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1600; }
+		Damage = 400//{ BaseValue=800; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1600; }
 	}
 
 	Hit
 	{
 		Type = PenetratingHit
-		Penetration = { BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
+		Penetration = 2//{ BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = false
-		CrewCollisions = {Enemies=true; Junk=true}
-		HitCrew = &HitOperational
+		//CrewCollisions = {Enemies=true; Junk=true}
+		//HitCrew = &HitOperational
 
 		HitShield
 		{
@@ -53,13 +53,13 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 100
+					Amount = 50//100
 					TreatShieldAsPart = true
 				}
 				{
 					Type = ResourceDrain
 					ResourceType = battery
-					Amount = 200
+					Amount = 100//200
 					Filter
 					{
 						IgnoreInvulnerability = true
@@ -82,28 +82,28 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 10;
+					Impulse = 5;//10
 				}
 			]
 
 			MediaEffects
 			[
-				&<particles/phaser_bolt_small_hit.rules>
-				&<particles/phaser_bolt_small_flash.rules>
-				&<particles/phaser_bolt_small_sparks.rules>
-				&<particles/phaser_bolt_small_spikes.rules>
+				&<particles/dual_phaser_bolt_small_hit.rules>
+				&<particles/dual_phaser_bolt_small_flash.rules>
+				&<particles/dual_phaser_bolt_small_sparks.rules>
+				&<particles/dual_phaser_bolt_small_spikes.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "phaser_dual_bolt.wav"
-					Volume = .3
+					Volume = .15//.3
 					SpeedVariation = .4
 				}
 
 				: /BASE_SHAKE
 				{
-					ShakeAmount = .03
-					Duration = .3
+					ShakeAmount = .015//.03
+					Duration = .15//.3
 				}
 			]
 		}
@@ -113,19 +113,19 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
+					Damage = 300//{ BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
 				}
 				{
 					Type = Impulse;
-					Impulse = 10;
+					Impulse = 5;
 				}
 			]
 
 			MediaEffects
 			[
-				&<particles/phaser_bolt_small_hit_struct.rules>
-				&<particles/phaser_bolt_small_flash.rules>
-				&<particles/phaser_bolt_small_sparks_struct.rules>
+				&<particles/dual_phaser_bolt_small_hit_struct.rules>
+				&<particles/dual_phaser_bolt_small_flash.rules>
+				&<particles/dual_phaser_bolt_small_sparks_struct.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{
@@ -162,7 +162,7 @@ Components
 		{
 			Texture
 			{
-				File = "phaser_dual_bolt.png"
+				File = "phaser_bolt_deck.png"
 				SampleMode = Linear
 				MipLevels = max
 			}
@@ -193,4 +193,5 @@ Components
 			_unlitAdditiveStrength = 0.25
 		}
 	}
+	
 }

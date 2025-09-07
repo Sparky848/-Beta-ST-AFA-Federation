@@ -192,4 +192,24 @@ Components
 			_unlitAdditiveStrength = 0.25
 		}
 	}
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffectsScale = 1
+		Offset = [-0.25, 0]
+		MediaEffects
+		[
+			&<particles/bullet_trail_railgun.rules>
+		]
+	}
+	MediaEffects2
+	{
+		Type = MediaEffects
+		MediaEffectsScale = 1
+		Offset = [-0.25, 0]
+		MediaEffects
+		[
+			&<particles/bullet_trail_deck.rules>
+		]
+	}
 }

@@ -16,9 +16,9 @@ EmitterDef
 			ValueType = Color
 			Value
 			{
-				Rf = 1
-				Gf = 0.09803922
-				Bf = 0.09803922
+				Rf = 0.466666666667
+				Gf = 0.492156862745
+				Bf = 0.582352941176
 				Af = 0.19607843
 			}
 			Name = Color
@@ -66,16 +66,16 @@ EmitterDef
 			ValueType = Color
 			FromValue
 			{
-				Rf = 1
-				Gf = 0.09803922
-				Bf = 0.09803922
+				Rf = 0.466666666667
+				Gf = 0.492156862745
+				Bf = 0.582352941176
 				Af = 0.3137255
 			}
 			ToValue
 			{
-				Rf = 1
-				Gf = 0.23529412
-				Bf = 0.23529412
+				Rf = 0.366666666667
+				Gf = 0.392156862745
+				Bf = 0.482352941176
 				Af = 0.5882353
 			}
 			Name = "Random Color"

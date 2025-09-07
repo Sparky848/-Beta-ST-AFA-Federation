@@ -1,12 +1,12 @@
 Type = Particles
-Def = &<phaser_bolt_sparks_struct_def.rules>
+Def = &<dual_phaser_bolt_small_sparks_def.rules>
 EmitterDef
 {
 	EmitPerSecond = 0
 	EmitPerOneShot
 	{
-		Min = 30
-		Max = 30
+		Min = 60
+		Max = 60
 	}
 	PreInitializers
 	[
@@ -49,7 +49,7 @@ EmitterDef
 			Speed
 			{
 				Min = 0.1
-				Max = 6
+				Max = 8
 			}
 			AwayFromPoint
 			{
@@ -62,7 +62,7 @@ EmitterDef
 		}
 		{
 			Type = SetRandom
-			DataOut = color
+			DataOut = base_color
 			ValueType = Color
 			FromValue
 			{
@@ -96,8 +96,8 @@ EmitterDef
 			Type = SetRandom
 			DataOut = lifetime
 			ValueType = Float
-			FromValue = 0.2
-			ToValue = 0.4
+			FromValue = 0.6
+			ToValue = 0.8
 			Name = "Random Lifetime"
 			Enabled = true
 			UpdateAfterInit = false
@@ -105,7 +105,7 @@ EmitterDef
 	]
 	PostInitializers[]
 }
-Bucket = Lower2
+Bucket = Lower3
 UseRealTime = false
 PenetratingBucket
 MinIntensity = 0

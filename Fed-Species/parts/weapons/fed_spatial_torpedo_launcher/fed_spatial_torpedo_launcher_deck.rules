@@ -1,0 +1,585 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/SpatialTorpedoLauncherDeck"
+	IconNameKey = "Parts/SpatialTorpedoLauncherDeckIcon"
+	ID = "stafa.spatialtorpedolauncher_deck_1x4"
+	// OtherIDs = [torpedo_launcher_deck]
+	EditorGroups = ["StarfleetWeapons"]
+	DescriptionKey = "Parts/SpatialTorpedoLauncherDeckDesc"
+	OtherIDs = [spatialtorpedolauncher_deck_1x4_L, spatialtorpedolauncher_deck_1x4_R, stafa.spatialtorpedolauncher_deck_1x4_L, stafa.spatialtorpedolauncher_deck_1x4_R]
+	FlipWhenLoadingIDs = [spatialtorpedolauncher_deck_1x4_R, stafa.spatialtorpedolauncher_deck_1x4_R]
+	Resources
+	[
+		[steel, 28]
+		[coil, 8]
+		[processor, 1]
+	]
+	Size = [1, 4]
+	// PhysicalRect = [0, 1, 2, 3]
+	// RectColliderRectType = Normal
+	// SaveRect = &PhysicalRect
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 4500
+	TypeCategories = [weapon, uses_torpedos_deck, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	// ProhibitAbove = 0
+	IsFlippable = true
+	IsRotatable = true
+	ProhibitRects
+    [
+		[uses_torpedos_deck, [0, 0, 0, 0]]
+		[uses_torpedos_deck, [0, 0, 0, 2]]
+		[uses_torpedos_deck, [0, 3, 0, 2]]
+		[uses_torpedos_deck, [-1, 1, 0, 1]]
+        // [uses_torpedos_deck, [1, -1, 1, 3]]
+		[uses_torpedos_deck, [0, 2, 0, 2]]
+		[uses_torpedos_deck, [0, 5, 0, 0]]
+		[uses_torpedos_deck, [1, 1, 0, 1]]
+    ]
+	AllowedDoorLocations
+	[
+		[1, 3]
+	]
+	ForceManhattanPathInPart = true
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [0, 3]
+			Value = [Up]
+		}
+	]
+
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [20, 80]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		MissileStorage
+		{
+			Type = ResourceStorage
+			ResourceType = missile_part_he
+			MaxResources = 2
+			ToggleOnResources = 2
+			ToggleOffResources = 1
+			DelayBeforeReadyToUse = .5
+			DropResourcesWhenDestroyed = true
+			DropResourcesWhenRemoved = true
+			UITileRect = [0, 3, 1, 1]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileDeliver
+		}
+
+		WeaponBase
+		{
+			Type = TurretWeapon // This has an arc of 0, but we don't want to use FixedWeapon because that will only shot at things directly in the LOS.
+			Rotation = -90d
+			Location = [.5, 1]
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			IgnoreSourceShipLowLOSChecks = true
+			FireInterval = 4
+			FiringArc = 0d;
+			ValidArc = 55d;
+			FireThresholdAngle = 5d;
+			RotateSpeed = 0d
+			AllowFireWithBlockedLOS = true
+			AIFirepowerRating = 1400
+			FirePermissionToggle = FirePermissionToggle
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+					EnableInDirectControlMode = true
+				}
+			]
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+			
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+		EmitterBase
+		{
+			Type = BulletEmitter
+			ChainedTo = WeaponBase
+			FireTrigger = WeaponBase
+			GetTargetFrom = WeaponBase
+			Location = [0, 0]
+			OperationalToggle = IsOperational
+			ResourcesUsed = 2
+			ResourceStorage = MissileStorage
+			Bullet = &<../../../shots/spatial_torpedo_shot/spatial_torpedo_shot.rules>
+			TargetLeadPrediction = false
+			Recoil = 50
+		}
+
+		LaunchEffectBase
+		{
+			Type = TriggeredEffects
+			Trigger = EmitterBase
+			MediaEffects
+			[
+				&<particles/spatial_torpedo_launcher_shoot.rules>
+				&<particles/spatial_torpedo_launcher_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../shots/spatial_torpedo_shot/spatial_torpedo_shot.wav"
+					SpeedVariation = .25
+				}
+			]
+		}
+		MissilesPrereqProxy
+		{
+			Type = ToggleProxy
+			ComponentID = MissilesPrereq
+		}
+
+		Consumer
+		{
+			Type = ResourceConsumer
+			ResourceType = missile_part_he
+			Storage = MissileStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			OverridePriorityKey = MissileStorage
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		MissilesPrereq
+		{
+			Type = MultiToggle
+			Toggles = [MissileStorage]
+			Mode = Any
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = WeaponBase
+			//Invert = true
+		}
+
+		FirePermissionToggle
+		{
+			Type = MultiToggle
+			Toggles = [FireModeToggle]
+			Mode = All
+		}
+
+		MissileSprites
+		{
+			Type = ResourceSprites
+			Location = [.5, .6]
+			ResourceStorage = MissileStorage
+			Layer = "weapons"
+			HasZeroResourceSprite = true
+			ResourceLevels
+			[
+				{
+					File = "missile_0.png"
+					Offset = [0, 3]
+					Size = [1, 1]
+				}
+				{
+					File = "missile_1.png"
+					NormalsFile = "missile_normals_1.png"
+					Offset = [0, 2.25]
+					Size = [1, 2]
+				}
+				{
+					File = "missile_2.png"
+					NormalsFile = "missile_normals_2.png"
+					Offset = [0, 1.5]
+					Size = [1, 4]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1, 2]
+
+			FactorHitEffectsWith = MissileStorage
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 30000
+					Radius = 5
+					Delay = .05
+					FireChancePerNDamage = 50%
+					NDamage = 1000
+					CrewKillChance = 50%
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 10000
+					Radius = 4
+					Delay = .05
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Crew = false
+					}
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 2]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [0.9, 0.9]
+						//Offset = [0.5, 0]
+					}
+				}
+
+				// Out of missiles.
+				{
+					Toggle = MissilesPrereq
+					Delay = &~/Part/Components/WeaponBase/FireInterval
+					AtlasSprite
+					{
+						File =  &/INDICATORS/NoMissiles
+						Size = [0.9, 0.9]
+						//Offset = [0.5, 0]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [0.9, 0.9]
+						//Offset = [0.5, 0]
+					}
+				}
+			]
+		}
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [.5, 3.46]
+			Rotation = -180d
+		}
+
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [MissilesPrereqProxy]
+			CrewDestinations
+			[
+				[ .5, 3.609375]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 2]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 1.53]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+			//	Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 4]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 4]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, 0.5]
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, 1.17]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [3.5, 3.5]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5, 0, 0]
+					}
+				]
+			}
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints_spatial_torpedo.png"
+			Size = [1, 4]
+			Offset = [0, 0]
+		}
+		
+
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		SpatialTorpedoCapacity = 1
+
+
+		// RecCrew = (&CrewRequired) + (&<he/missile_launcher_he.rules>/MissileStats/Stats/ROF) * (&<he/missile_launcher_he.rules>/MissileStats/Stats/MissileParts) * 4
+	}
+
+	StatsNotesKey = "Stats/MissileLauncherNotes"
+	MissileStats
+	{
+		NameKey = "StatCategories/TorpedoLauncher"
+		Stats
+		{
+			DamagePerShot = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage
+			DamagePerSecond = (&DamagePerShot) * (&ROF)
+			Damage = [&../DamagePerShot, &../DamagePerSecond]
+			DamageArea = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
+			ROF = 1 / (&~/Part/Components/WeaponBase/FireInterval)
+			RangeLimited = [&~/Part/Components/Bullet/Range/BaseValue, &~/Part/Components/Bullet/Range/MaxValue]
+			Arc = deg(&~/Part/Components/WeaponBase/ValidArc)
+			ShotLaunchSpeed = &~/EmitterBase/Bullet/Speed/BaseValue
+			Acceleration = &~/EmitterBase/Bullet/Components/Acceleration/Acceleration
+			ShotGuidance = deg(&~/EmitterBase/Bullet/Components/Homing/TurnVelocity)
+			ShotHP = &~/EmitterBase/Bullet/Components/Targetable/Health
+			MissileParts = &~/EmitterBase/ResourcesUsed
+		}
+	}
+}

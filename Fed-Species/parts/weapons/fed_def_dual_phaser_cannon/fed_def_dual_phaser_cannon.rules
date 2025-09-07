@@ -318,7 +318,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, 0]
+			Location = [1.5, -0.15]//[1.5, 0]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 0.01
@@ -326,7 +326,24 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				BurstDelay = 0.2
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 5000
+			ResourcesUsed = 2500//5000
+			MinResourcesUsed = 1
+		}
+		BulletEmittera
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [1.5, 0.15]//[1.5, 0]
+			OperationalToggle = IsOperational
+			Spread = [0.1d, 0.1d]
+			FireDelay = 0.01
+			Burst = 4
+				BurstDelay = 0.2
+			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 2500//5000
 			MinResourcesUsed = 1
 		}
 
@@ -336,7 +353,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, 0]
+			Location = [1.5, -0.15]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 1.2
@@ -344,7 +361,24 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				BurstDelay = 0.2
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 5000
+			ResourcesUsed = 2500
+			MinResourcesUsed = 1
+		}
+		BulletEmitter2a
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [1.5, 0.15]
+			OperationalToggle = IsOperational
+			Spread = [0.1d, 0.1d]
+			FireDelay = 1.2
+			Burst = 4
+				BurstDelay = 0.2
+			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 2500
 			MinResourcesUsed = 1
 		}
 
@@ -354,7 +388,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, 0]
+			Location = [1.5, -0.15]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 2.4
@@ -362,7 +396,24 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				BurstDelay = 0.2
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 5000
+			ResourcesUsed = 2500
+			MinResourcesUsed = 1
+		}
+		BulletEmitter3a
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [1.5, 0.15]
+			OperationalToggle = IsOperational
+			Spread = [0.1d, 0.1d]
+			FireDelay = 2.4
+			Burst = 4
+				BurstDelay = 0.2
+			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 2500
 			MinResourcesUsed = 1
 		}
 
@@ -598,7 +649,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/PhaserBolt"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage/BaseValue
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)

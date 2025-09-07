@@ -1,0 +1,52 @@
+ID = "stafa.fed_spatial_torpedo_shot2"  
+Range = { BaseValue=200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=250; }
+IdealRange
+[
+	{ BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=50; }
+	{ BaseValue=200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=250; }
+]
+IdealRadius = [5, 50]
+SourceShipLowCollisions = false
+Speed = 0
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [3, .5]
+		Density = 0.1
+	}
+	BoostAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-10, 100]
+		AccelerationOverTime = [0, 0.15]
+	}
+	NegativeAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-10, 2]
+		AccelerationOverTime = [0, .15]
+		Direction = FrameOfReferenceVelocity
+	}
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 360d
+		//Delay = .5
+		ModifiesLinearVelocity = true
+		VelocityCompensation = 40%
+	}
+
+
+	DeathByDistanceTraveledTargeted
+	{
+		Type = DeathByDistanceTraveled
+		Distance = (&~/Range/BaseValue) * 3
+	}
+	MediaEffects =  &<spatial_torpedo_shot.rules>/Components/MediaEffects
+	Targetable = &<spatial_torpedo_shot.rules>/Components/Targetable
+	Hit = &<spatial_torpedo_shot.rules>/Components/Hit
+
+	Sprite = &<spatial_torpedo_shot.rules>/Components/Sprite
+}

@@ -6,6 +6,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	// OtherIDs = [torpedo_launcher_deck]
 	EditorGroups = ["StarfleetWeapons"]
 	DescriptionKey = "Parts/StandardTorpedolauncherDeck_Desc"
+	OtherIDs = [standardtorpedolauncher_deck_1x4_L, standardtorpedolauncher_deck_1x4_R, stafa.standardtorpedolauncher_deck_1x4_L, stafa.standardtorpedolauncher_deck_1x4_R]
+	FlipWhenLoadingIDs = [standardtorpedolauncher_deck_1x4_R, stafa.standardtorpedolauncher_deck_1x4_R]
 	Resources
 	[
 		[steel, 40]
@@ -23,6 +25,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	TypeCategories = [weapon, uses_torpedos_deck, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	// ProhibitAbove = 0
+	IsFlippable = true
 	ProhibitRects
     [
 		[uses_torpedos_deck, [0, 0, 0, 0]]
@@ -129,7 +132,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		TorpedoType
 		{
 			Type = UIToggle
-			ToggleID = "torpedo_type_deck"
+			ToggleID = "torpedo_type_standard"
 			Default = 0
 			AlwaysAllowInBuildMode = true
 		}
@@ -447,7 +450,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 			ShowOnlyInToggleMode
 			{
-				ToggleID = "torpedo_type_deck"
+				ToggleID = "torpedo_type_standard"
 				Mode = 0
 			}
 		}
@@ -460,7 +463,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 			ShowOnlyInToggleMode
 			{
-				ToggleID = "torpedo_type_deck"
+				ToggleID = "torpedo_type_standard"
 				Mode = 1
 			}
 		}

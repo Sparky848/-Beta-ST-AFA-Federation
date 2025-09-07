@@ -14,7 +14,7 @@ Components
 	Physics
 	{
 		Type = CirclePhysics
-		Radius = 0.2
+		Radius = 0.1//0.2
 		Density = 0.01
 	}
 
@@ -27,21 +27,21 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 450
+		Health = 125//450
 		TargetCategory = "laser"
 	}
 
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = { BaseValue=1200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1800; }
+		Damage = 600//{ BaseValue=1200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1800; }
 	}
 
 	Hit
 	{
 		Type = PenetratingHit
 		SourcePartCollisionDelay = 0.1/30
-		Penetration = { BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
+		Penetration = 2//{ BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = true
@@ -54,7 +54,7 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 800
+					Amount = 400//800
 					TreatShieldAsPart = true
 				}
 			]
@@ -69,13 +69,13 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 2500
+					TotalDamage = 1250//2500
 					Radius = 1.5
 					DamagePool = DamagePool
 				}
 				{
 					Type = Impulse;
-					Impulse = 10;
+					Impulse = 5;//10
 				}
 			]
 
@@ -106,11 +106,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
+					Damage = 300//{ BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
 				}
 				{
 					Type = Impulse;
-					Impulse = 10;
+					Impulse = 5;//10
 				}
 			]
 
@@ -155,7 +155,7 @@ Components
 		{
 			Texture
 			{
-				File = "phaser_dual_bolt.png"
+				File = "phaser_bolt_deck.png"
 				SampleMode = Linear
 				MipLevels = max
 			}
@@ -181,9 +181,29 @@ Components
 			VertexColor = [255, 147, 15]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
-			_litReflectiveStrength = 24
+			_litReflectiveStrength = 12
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.25
 		}
+	}
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffectsScale = 1
+		Offset = [-0.25, 0]
+		MediaEffects
+		[
+			&<particles/bullet_trail_railgun.rules>
+		]
+	}
+	MediaEffects2
+	{
+		Type = MediaEffects
+		MediaEffectsScale = 1
+		Offset = [-0.25, 0]
+		MediaEffects
+		[
+			&<particles/bullet_trail_deck.rules>
+		]
 	}
 }

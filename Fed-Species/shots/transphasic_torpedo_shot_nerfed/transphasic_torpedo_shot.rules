@@ -13,7 +13,7 @@ Components
 	Physics
 	{
 		Type = CirclePhysics
-		Radius = 0.7
+		Radius = 0.35
 		Density = 0.1
 	}
 	

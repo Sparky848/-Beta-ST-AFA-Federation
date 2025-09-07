@@ -2,11 +2,10 @@ BASE = &<phaser_bolt_deck.rules>
 
 SPEED = (&BASE/Speed/BaseValue) + 40
 RANGE = (&BASE/Range/BaseValue) + 50
-TOTAL_DRAIN = 8000
-TOTAL_SHIELD_DRAIN = 8000
+TOTAL_DRAIN = 3500
+TOTAL_SHIELD_DRAIN = 3500
 DRAIN_DURATION = 8
-PENETRATION = 10
-ARMOR_PENETRATION_FACTOR = 2/7
+
 DRAIN_PER_SECOND = (&TOTAL_DRAIN) / (&DRAIN_DURATION)
 SHIELD_DRAIN_PER_SECOND = (&TOTAL_SHIELD_DRAIN) / (&DRAIN_DURATION)
 
@@ -23,38 +22,74 @@ Bullet : BASE
 	{
 		Hit : ^/0/Hit
 		{
-			Penetration = &~/PENETRATION
-			PenetratesOperational = true
-			PartCategoryPenetrationFactors
-			{
-				armor = &~/ARMOR_PENETRATION_FACTOR
-			}
+			PenetratesOperational = false
 			HitShield : ^/0/HitShield
 			{
 				HitEffects
 				[
-					: ../../PenetratingOperational/HitEffects/0
+					: ../../HitOperational/HitEffects/0
 					{
+						Amount = 5000
 						StatusValue = { BaseValue = (&~/SHIELD_DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+					}
+					{
+						Type = StatusApplication
+						StatusType = cosmoteer.disruptor_drain
+						StatusDuration = &~/DRAIN_DURATION
+						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+					}
+				]
+				MediaEffects
+				[
+					&<particles2/disruptor_bolt_hit_lightning.rules>
+					&<particles2/disruptor_bolt_hit_orb.rules>
+					&<particles2/disruptor_bolt_hit_bolts.rules>
+					&<particles2/disruptor_bolt_flash.rules>
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "disruptor_bolt_hit.wav"
+						Volume = .4
+						SpeedVariation = .4
 					}
 				]
 			}
-			HitOperational : PenetratingOperational
+			HitOperational : ^/0/HitOperational
 			{
 				HitEffects : ^/0/HitEffects
-				[
-					&~/BASE/Components/Hit/HitOperational/HitEffects/1
-				]
-			}
-			PenetratingOperational : ^/0/HitOperational
-			{
-				HitEffects
 				[
 					{
 						Type = StatusApplication
 						StatusType = cosmoteer.disruptor_drain
 						StatusDuration = &~/DRAIN_DURATION
 						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+					}
+				]
+				MediaEffects
+				[
+					&<particles2/disruptor_bolt_hit_lightning.rules>
+					&<particles2/disruptor_bolt_hit_orb.rules>
+					&<particles2/disruptor_bolt_hit_bolts.rules>
+					&<particles2/disruptor_bolt_flash.rules>
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "disruptor_bolt_hit.wav"
+						Volume = .4
+						SpeedVariation = .4
+					}
+				]
+				
+			}
+			HitStructural : ^/0/HitStructural
+			{
+				MediaEffects
+				[
+					&<particles2/disruptor_bolt_hit_struct_lightning.rules>
+
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "disruptor_bolt_hit.wav"
+						Volume = .3
+						SpeedVariation = .4
 					}
 				]
 			}
@@ -118,6 +153,26 @@ Bullet : BASE
 				_litAdditiveStrength = 0.05
 				_unlitAdditiveStrength = 0.25
 			}
+		}
+		MediaEffects2
+		{
+			Type = MediaEffects
+			MediaEffectsScale = 1
+			Offset = [-0.25, 0]
+			MediaEffects
+			[
+				&<particles2/bullet_trail_railgun.rules>
+			]
+		}
+		MediaEffects3
+		{
+			Type = MediaEffects
+			MediaEffectsScale = 1
+			Offset = [-0.25, 0]
+			MediaEffects
+			[
+				&<particles2/bullet_trail_railgun2.rules>
+			]
 		}
 	}
 }

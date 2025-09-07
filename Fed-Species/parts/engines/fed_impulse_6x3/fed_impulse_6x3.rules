@@ -22,7 +22,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	SelectionTypeID = "impulse"
 	MaxHealth = 24000
-	ThrusterForce = 10687.5//13500
+	ThrusterForce = 19000//10687.5//13500
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 2400

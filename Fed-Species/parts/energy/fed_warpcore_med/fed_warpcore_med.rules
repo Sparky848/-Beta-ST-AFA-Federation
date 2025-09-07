@@ -225,7 +225,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 			ToStorage = BatteryStorage
-			ToQuantity = 805
+			ToQuantity = 1060//805
 			Interval = .05
 		}
 		ConvertEffects

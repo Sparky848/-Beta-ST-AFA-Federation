@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	SelectionTypeID = "impulse"
 	MaxHealth = 2000
-	ThrusterForce = 625  //625 per tile with a 30% increase for the first thickness increase, then 5% per thickness and 2.5% per width, i.e 3x1 has 5% increase per tile, 6x2 has a 42.5% increase.
+	ThrusterForce = 1000 //1111.111... new value, uses same logic//625  //625 per tile with a 30% increase for the first thickness increase, then 5% per thickness and 2.5% per width, i.e 3x1 has 5% increase per tile, 6x2 has a 42.5% increase.
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 200

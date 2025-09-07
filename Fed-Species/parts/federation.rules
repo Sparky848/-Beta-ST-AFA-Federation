@@ -21,6 +21,7 @@ Parts
 	&<weapons/fed_tiny_phaserbank_1x1/fed_tiny_phaserbank_1x1.rules>/Part
 	&<weapons/fed_tiny_phaserbank_2x1/fed_tiny_phaserbank_2x1.rules>/Part
 	&<weapons/fed_phase_cannon/fed_phase_cannon.rules>/Part
+	&<weapons/fed_spatial_torpedo_launcher/fed_spatial_torpedo_launcher_deck.rules>/Part
 	//&<weapons/fed_small_tetryon_cannon_deck/fed_small_tetryon_cannon_deck.rules>/Part
 	// &<weapons/fed_phaserlance2/fed_phaserlance2.rules>/Part
 

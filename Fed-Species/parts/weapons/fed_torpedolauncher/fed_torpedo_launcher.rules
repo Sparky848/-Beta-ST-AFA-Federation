@@ -193,6 +193,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}
+		CommonReloadTimerSortaShort
+		{
+			Type = Timer
+			Duration = 1
+			AutoStart = true
+			StartTrigger = CommonReloadResetTriggerProxy
+		}
 		CommonReloadTimerKindaShort
 		{
 			Type = Timer
@@ -204,6 +211,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = Timer
 			Duration = 2
+			AutoStart = true
+			StartTrigger = CommonReloadResetTriggerProxy
+		}
+		CommonReloadTimerBelowAverage
+		{
+			Type = Timer
+			Duration = 2.5
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}

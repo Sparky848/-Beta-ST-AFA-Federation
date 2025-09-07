@@ -111,6 +111,7 @@ Components
 					ExpandLoss = 100%
 					ImpulsePerNDamage = 10
 					NDamage = 1000
+					Slices = 1
 					Filter
 					{
 						OperationalHealth = true
@@ -128,9 +129,25 @@ Components
 					ExpandDuration = 0.8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
+					Slices = 1
 					Filter
 					{
 						OnlyPartCategories = [armor]
+					}
+				}
+				{
+					
+					Type = ExplosiveDamage
+					TotalDamage = 300000
+					DamagePool = DamagePool
+					Radius = 6
+					ExpandDuration = 0.8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					Slices = 1
+					Filter
+					{
+						OnlyPartCategories = [durarmour]
 					}
 				}
 				{
@@ -144,6 +161,7 @@ Components
 					ExpandLoss = 100%
 					ImpulsePerNDamage = 5
 					NDamage = 1000
+					Slices = 1
 					Filter
 					{
 						OperationalHealth = false

@@ -21,7 +21,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		explosive = 65%
 		thermal = -5%
 	}
-	TypeCategories = [durarmour]
+	TypeCategories = [durarmour, non_flammable]
 	Flammable = false
 	InitialPenetrationResistance = 8
 	ContinuingPenetrationResistance = &InitialPenetrationResistance

@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	SelectionTypeID = "impulse"
 	MaxHealth = 6000
-	ThrusterForce = 1968.75//4875
+	ThrusterForce = 3500//1968.75 I want these to be used lol, this 3.5k gives more thrust per tile than warpnacelles//4875
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 600

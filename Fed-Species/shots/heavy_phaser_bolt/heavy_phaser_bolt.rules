@@ -107,7 +107,7 @@ Components
 					Impulse = 50;
 				}
 			]
-
+			MediaEffectsScale = 1.5
 			MediaEffects
 			[
 				&<particles/phaser_bolt_small_hit.rules>
@@ -142,7 +142,7 @@ Components
 					Impulse = 10;
 				}
 			]
-
+			
 			MediaEffects
 			[
 				&<particles/phaser_bolt_small_hit_struct.rules>
@@ -214,5 +214,25 @@ Components
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.25
 		}
+	}
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffectsScale = 1
+		Offset = [2, 0]
+		MediaEffects
+		[
+			&<particles/bullet_trail_railgun.rules>
+		]
+	}
+	MediaEffects2
+	{
+		Type = MediaEffects
+		MediaEffectsScale = 1
+		Offset = [2, 0]
+		MediaEffects
+		[
+			&<particles/bullet_trail_deck.rules>
+		]
 	}
 }

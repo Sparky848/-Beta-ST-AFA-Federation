@@ -115,7 +115,7 @@ Components
 					Type = ExplosiveDamage
 					TotalDamage = 13500
 					DamagePool = DamagePool
-					Radius = 5
+					Radius = 4
 					StatusType = cosmoteer.fire
 					StatusChancePerNDamage = 50%
 					StatusValue = 1

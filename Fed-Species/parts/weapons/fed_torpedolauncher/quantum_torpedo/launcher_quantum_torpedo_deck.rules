@@ -52,7 +52,7 @@ Components
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = CommonReloadTimerAboveAverage
+		ShowProgressFor = CommonReloadTimerBelowAverage
 		Invert = true
 	}
 
@@ -105,7 +105,7 @@ Components
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerAboveAverage, FireModeToggle]
+		Toggles = [CommonReloadTimerBelowAverage, FireModeToggle]
 		Mode = All
 	}
 
@@ -260,7 +260,7 @@ Components
 			// Out of missiles.
 			{
 				Toggle = MissilesPrereq
-				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerAboveAverage/Duration
+				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerBelowAverage/Duration
 				AtlasSprite
 				{
 					File =  &/INDICATORS/NoQuantum
@@ -303,7 +303,7 @@ WeaponBase
 	FireInterval = 0 // Uses common reload timer.
 	FiringArc = 45d;
 	ValidArc = 45d;
-	FireThresholdAngle = 45d;
+	FireThresholdAngle = 0d;
 	RotateSpeed = 0d
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 1600
@@ -356,7 +356,7 @@ MissileStats
 		DamagePerSecond = (&DamagePerShot) * (&ROF)
 		Damage = [&../DamagePerShot, &../DamagePerSecond]
 		DamageArea = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
-		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerAboveAverage/Duration)
+		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerBelowAverage/Duration)
 		RangeLimited = [&~/Part/Components/Bullet/Range/BaseValue, &~/Part/Components/Bullet/Range/MaxValue]
 		Arc = deg(&~/WeaponBase/ValidArc)
 		ShotLaunchSpeed = &~/EmitterBase/Bullet/Speed/BaseValue

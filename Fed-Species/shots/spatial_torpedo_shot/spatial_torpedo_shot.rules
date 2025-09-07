@@ -1,0 +1,207 @@
+ID = "stafa.fed_spatial_torpedo_shot"  
+Range = { BaseValue=200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=250; }
+IdealRange
+[
+	{ BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=50; }
+	{ BaseValue=200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=250; }
+]
+IdealRadius = [5, 50]
+Speed = { BaseValue=35; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=40; }
+SourceShipLowCollisions = false
+Stage2 = &<spatial_torpedo2.rules>
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [3, .5]
+		Density = 0.1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 0d
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 25
+	}
+
+	DeployDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = 0.3
+		FactorEffectsWith = Targetable
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &~/Stage2
+					Count = 1
+					InheritVelocity = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
+				}
+			]
+		}
+	}
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-1.4, 0]
+		Rotation = 180d
+		MediaEffects
+		[
+			&<particles/spatial_torpedo_thruster_fire.rules>
+			&<particles/spatial_torpedo_thruster_smoke.rules>
+			&<particles/spatial_torpedo_thruster_plume.rules>
+			&<particles/spatial_torpedo_thruster_plume_light.rules>
+		]
+	}
+	Targetable
+	{
+		Type = Targetable
+		Health = 600
+		TargetCategories = [stafa_torpedo, missile]
+		OnDeath = &../Hit/HitOperational
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 1.5/30
+		FactorEffectsWith = Targetable
+		SourceShipLowCollisions = false
+		FriendlyShipLowCollisions = false
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield
+		{
+			HitEffects
+			[
+				: ../../HitOperational/HitEffects/0
+				{
+					Amount = 2500
+					TreatShieldAsPart = true
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 7000
+					Slices = 1
+					Radius = 2
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/spatial_torpedo_hit.rules>
+				&<particles/spatial_torpedo_flash.rules>
+				&<particles/spatial_torpedo_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "spatial_torpedo_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 1000
+					Radius = 2
+				}
+				{
+					Type = Impulse;
+					Impulse = 1.5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/spatial_torpedo_hit.rules>
+				&<particles/spatial_torpedo_flash.rules>
+				&<particles/spatial_torpedo_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "spatial_torpedo_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		IsLit = false
+		Sprite
+		{
+			Texture
+			{
+				File = "spatial_torpedo.png"
+				MipLevels = max
+			}
+			Size = [3, 1]
+		}
+
+		NormalsTexture
+		{
+			File = "spatial_torpedo_normals.png"
+			MipLevels = max
+		}
+	}
+}

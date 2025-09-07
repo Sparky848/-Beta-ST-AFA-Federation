@@ -56,10 +56,23 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
 			Mode = All
 		}
-
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
 		PowerToggle
 		{
 			Type = UIToggle
@@ -71,7 +84,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 2
 		}
 
@@ -109,7 +122,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			ResupplyThreshold = 0
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 		InternalCapacity
 		{
@@ -297,7 +310,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 			//Location = [.5, 0.8128]//Relative to upper-left corner of unrotated part.
 			Location = [1, 1]
 			Rotation = -90d// Relative to unrotated part.
-			OperationalToggle = IsOperationalNonOverclocked
+			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			FireInterval
 			{
@@ -308,7 +321,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 						Type = BuffRemap
 						BuffType = Overclock
 						RemapFrom = [0, 1]
-						RemapTo = [1, 8]
+						RemapTo = [0, 4]//[1, 8]
 						ModificationMode = Add
 					}
 				]
@@ -349,13 +362,6 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 				QuadCount = 64
 			}
 		}
-		WeaponEmitterSelector
-		{
-			Type = ToggleEmitterSelector
-			Toggle = IsOverclocked
-			ToggleOffEmitter = BulletEmitter
-			ToggleOnEmitter = Overclock_BulletEmitter
-		}
 		IsOperationalNonOverclocked
 		{
 			Type = MultiToggle
@@ -365,14 +371,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 		ReloadProgressBar
 		{
 			Type = ProgressBar
-			OperationalToggle = IsOperationalNonOverclocked
-			ShowProgressFor = Turret
-			//Invert = true
-		}
-		OCReloadProgressBar
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperationalOverclocked
+			OperationalToggle = IsOperational
 			ShowProgressFor = Turret
 			//Invert = true
 		}
@@ -393,25 +392,15 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 			ResourcesUsed = 150
 			MinResourcesUsed = 1
 		}
-		Overclock_BulletEmitter
+		Overclock_BulletEmitter : BulletEmitter
 		{
-			Type = BulletEmitter
-			ChainedTo = Turret
-			FireTrigger = Turret
-			GetTargetFrom = Turret
-			Location = [.5, 0]
 			OperationalToggle = IsOperationalOverclocked
 			Spread = [-0.025d, 0.025d]
+			Burst = 2
 			Bullet = &~/OVERCLOCK/BULLET/Bullet
-			ResourceStorage = BatteryStorage
 			ResourcesUsed = 1500
-			MinResourcesUsed = 1
 		}
-//		Overclock_BulletEmitter : BulletEmitter
-//		{
-//			OperationalToggle = IsOperationalOverclocked
-//			Bullet = &~/OVERCLOCK/BULLET/Bullet
-//		}
+
 		FireEffect
 		{
 			Type = TriggeredEffects

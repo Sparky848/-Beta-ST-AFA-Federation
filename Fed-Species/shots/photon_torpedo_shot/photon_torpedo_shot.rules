@@ -99,6 +99,7 @@ Components
 					Type = ExplosiveDamage
 					TotalDamage = 12000
 					Radius = 2
+					Slices = 1
 				}
 				{
 					Type = Impulse;

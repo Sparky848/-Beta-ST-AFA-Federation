@@ -296,7 +296,7 @@ WeaponBase
 	FireInterval = 0 // Uses common reload timer.
 	FiringArc = 45d;
 	ValidArc = 45d;
-	FireThresholdAngle = 45d;
+	FireThresholdAngle = 0d;
 	RotateSpeed = 0d
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 1600
