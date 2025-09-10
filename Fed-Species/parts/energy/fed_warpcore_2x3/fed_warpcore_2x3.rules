@@ -332,7 +332,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = hyperium
 			MaxResources = 30
 			UITileRect = [0, 0, 1, 1]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PartDeliver
 			DropResourcesWhenDestroyed = true
 		}
 		HyperiumConsumer
@@ -567,7 +567,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/ships/terran/reactor_small/destroyed.wav"
+					RandomSounds = ["./Data/ships/terran/reactor_small/destroyed/destroyed_01.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_02.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_03.wav"]
 					Volume = 2
 					Speed = .5
 					SpeedVariation = .25 * (&Speed)

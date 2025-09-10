@@ -503,18 +503,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [1, .5]
 		}
 
+
 		ThrusterHum
 		{
 			Type = ContinuousEffects
 			Location = [1, .5]
 			OperationalToggle = IsOperational
+			FactorMediaEffectsIntensityWith = ThrusterAnimationSpeed
 			MediaEffects
 			[
 				: /COMMON_SOUNDS/ThrusterHum
 				{
-					Volume = .05
-					Speed = 1.5
-					MaxConcurrentVolume = 1
+					Sound = "nacelle_running.wav"
+					Volume = .35
+					Speed = 1
+					MaxConcurrentVolume = .55
 				}
 			]
 		}

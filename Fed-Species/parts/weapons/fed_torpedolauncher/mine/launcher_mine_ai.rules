@@ -6,7 +6,7 @@ Components
 		ResourceType = torpedo_part
 		MaxResources = 6*4
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/HeavyDeliver
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MineDeliver
         ToggleOnResources = 4
         ToggleOffResources = 3
 		DropResourcesWhenDestroyed = true
@@ -153,7 +153,9 @@ Components
 
 			: /BASE_SOUNDS/AudioExterior
 			{
-				Sound = "./Data/ships/terran/missile_launcher/shoot.wav"
+				RandomSounds = ["./Data/ships/terran/missile_launcher/mine/sounds/launcher_launch_mine_01.wav",
+								"./Data/ships/terran/missile_launcher/mine/sounds/launcher_launch_mine_02.wav",
+								"./Data/ships/terran/missile_launcher/mine/sounds/launcher_launch_mine_03.wav"]
 				Speed = 0.5
 				SpeedVariation = .25
 			}

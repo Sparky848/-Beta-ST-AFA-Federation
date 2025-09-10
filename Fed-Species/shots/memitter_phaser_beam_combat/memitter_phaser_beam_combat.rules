@@ -1,32 +1,15 @@
-ID = "sparky.burst_fed_phaser_beam_pd"
+ID = "stafa.burst_fed_phaser_beam_combat"
 Range = { BaseValue=180; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=220; }
 IdealRange
 [
 	{ BaseValue=20; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=20; }
 	{ BaseValue=165; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=210; }
 ]
-Duration = 0.25
+Duration = 0.15
 HitInterval = .1
 SourceShipLowCollisions = false
 ClipRangeToTarget = true
-
-// HitNothing
-// {
-// 	HitEffects
-// 	[
-// 		{
-// 			Type = ExplosiveDamage
-// 			TotalDamage = 500
-// 			Radius = 1
-// 			Slices = 1
-// 			Filter
-// 			{
-// 				Ships = true
-// 				Shields = true
-// 			}
-// 		}
-// 	]
-// }
+Width = 0.8
 
 BeamMediaEffects
 [
@@ -88,14 +71,40 @@ BeamMediaEffects
 	}
 ]
 
-HitShield = &HitOperational
+HitShield
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = { BaseValue=1000; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=100; }
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/phaser_beam_hit.rules>
+		&<particles/phaser_beam_hit_flash.rules>
+		&<particles/phaser_beam_hit_sparks.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
 HitOperational
 {
 	HitEffects
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=350; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=50; }
+			Damage = { BaseValue=700; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=50; }
 		}
 		{
 			Type = Impulse
@@ -131,7 +140,7 @@ HitStructural
 	[
 		{
 			Type = Damage;
-			Damage = (&../../../HitOperational/HitEffects/0/Damage/BaseValue) /2 ;
+			Damage = 350;
 		}
 		{
 			Type = Impulse;

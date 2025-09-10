@@ -64,7 +64,10 @@ Components
 
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/shots/disruptor_bolt/discharge.wav"
+							RandomSounds = ["./Data/shots/disruptor_bolt/sounds/disruptor_discharge_01.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_02.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_03.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_04.wav"]
 							Volume = 1
 							SpeedVariation = .2
 						}
@@ -97,7 +100,9 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/missile_he/missile_he_hit.wav"
+					RandomSounds = ["./Data/shots/missile_he/sounds/launcher_rocket_impact_01.wav",
+									"./Data/shots/missile_he/sounds/launcher_rocket_impact_02.wav",
+									"./Data/shots/missile_he/sounds/launcher_rocket_impact_03.wav"]
 					Volume = .75
 					SpeedVariation = .4
 				}
@@ -281,7 +286,9 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/missile_he/missile_he_hit.wav"
+					RandomSounds = ["./Data/shots/missile_he/sounds/launcher_rocket_impact_01.wav",
+									"./Data/shots/missile_he/sounds/launcher_rocket_impact_02.wav",
+									"./Data/shots/missile_he/sounds/launcher_rocket_impact_03.wav"]
 					Volume = .75
 					SpeedVariation = .4
 				}

@@ -294,9 +294,9 @@ WeaponBase
 	AutoFireToggle = AutoFireToggle
 	IgnoreSourceShipLowLOSChecks = true
 	FireInterval = 0 // Uses common reload timer.
-	FiringArc = 45d;
+	FiringArc = 0d;
 	ValidArc = 45d;
-	FireThresholdAngle = 0d;
+	FireThresholdAngle = 45d;
 	RotateSpeed = 0d
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 1600
@@ -307,7 +307,7 @@ WeaponBase
 		{
 			TargetType = ShipParts
 			Toggle = AutoTargetToggle
-			EnableInDirectControlMode = true
+			//EnableInDirectControlMode = true
 		}
 	]
 	BlueprintArcSprite

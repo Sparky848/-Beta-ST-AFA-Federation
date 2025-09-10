@@ -239,9 +239,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "./Data/ships/terran/factory_ammo/bullet_create.wav"
-					Volume = .1
-					Speed = .5
+					RandomSounds = ["./Data/ships/terran/factory_nuke/sounds/nuclear_missiles_factory_putdown_01.wav",
+									"./Data/ships/terran/factory_nuke/sounds/nuclear_missiles_factory_putdown_02.wav",
+									"./Data/ships/terran/factory_nuke/sounds/nuclear_missiles_factory_putdown_03.wav",
+									"./Data/ships/terran/factory_nuke/sounds/nuclear_missiles_factory_putdown_04.wav",
+									"./Data/ships/terran/factory_nuke/sounds/nuclear_missiles_factory_putdown_05.wav"]
+					Volume = 1
+					Db = -2
+					Speed = 1
 					SpeedVariation = .05
 				}
 			]
@@ -274,7 +279,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -284,7 +289,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -294,7 +299,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -304,7 +309,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -314,7 +319,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -324,7 +329,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -334,7 +339,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -344,7 +349,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -354,7 +359,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -364,7 +369,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -374,7 +379,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -384,7 +389,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -394,7 +399,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -404,7 +409,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -414,7 +419,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -424,7 +429,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -434,7 +439,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -444,7 +449,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -454,7 +459,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					UVRotation = 3
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 			]
 		}
@@ -476,7 +481,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper1-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -485,7 +490,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper2-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -494,7 +499,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper3-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -503,7 +508,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper4-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -512,7 +517,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper5-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -521,7 +526,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper6-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -530,7 +535,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper7-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -539,7 +544,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper8-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -548,7 +553,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper9-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -557,7 +562,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper10-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -566,7 +571,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper11-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -575,7 +580,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper12-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -584,7 +589,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper13-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -593,7 +598,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper14-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -602,7 +607,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper15-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -611,7 +616,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper16-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -620,7 +625,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper17-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -629,7 +634,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper18-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 				{
 					AnimationFiles
@@ -638,7 +643,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"copper19-1.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 3.15789473684
+					AnimationInterval = 0.26315789473
 				}
 			]
 		}
@@ -692,7 +697,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		BeltSpeedFactor
         {
         	Type = BuffableValue
-        	Value = { BaseValue=0.00789473684; BuffType=Factory; BuffMode=Multiply; }
+        	Value = { BaseValue=0.0625; BuffType=Factory; BuffMode=Multiply; }
         }
 
 		Graphics
@@ -1107,9 +1112,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/shots/disruptor_bolt/discharge.wav"
+							RandomSounds = ["./Data/shots/disruptor_bolt/sounds/disruptor_discharge_01.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_02.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_03.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_04.wav"]
 							Volume = 1
-							SpeedVariation = .2
+							SpeedVariation = .15
 						}
 					]
 				}

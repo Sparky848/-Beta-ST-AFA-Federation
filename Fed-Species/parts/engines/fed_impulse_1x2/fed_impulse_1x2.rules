@@ -301,9 +301,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				&<particles/impulse.rules>
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
-					Volume = .075
-					Speed = 2
-					MaxConcurrentVolume = .15
+					Sound = "impulse_running.wav"
+					Volume = .45
+					Speed = 1
+					MaxConcurrentVolume = .45
 				}
 			]
 		}

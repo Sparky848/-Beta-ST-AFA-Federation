@@ -96,7 +96,9 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/missile_he/missile_he_hit.wav"
+					RandomSounds = ["./Data/shots/missile_he/sounds/launcher_rocket_impact_01.wav",
+									"./Data/shots/missile_he/sounds/launcher_rocket_impact_02.wav",
+									"./Data/shots/missile_he/sounds/launcher_rocket_impact_03.wav"]
 					Volume = .75
 					SpeedVariation = .4
 				}

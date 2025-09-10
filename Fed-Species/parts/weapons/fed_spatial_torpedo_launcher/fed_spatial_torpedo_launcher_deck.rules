@@ -113,7 +113,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DropResourcesWhenDestroyed = true
 			DropResourcesWhenRemoved = true
 			UITileRect = [0, 3, 1, 1]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PartDeliver
 		}
 
 		WeaponBase
@@ -124,21 +124,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
 			FireInterval = 4
-			FiringArc = 0d;
-			ValidArc = 55d;
-			FireThresholdAngle = 5d;
-			RotateSpeed = 0d
+			FiringArc = 55d
+			FireThresholdAngle = 5d
+			RotateSpeed = 360d
 			AllowFireWithBlockedLOS = true
-			AIFirepowerRating = 1400
+			AIFirepowerRating = 100
 			FirePermissionToggle = FirePermissionToggle
+			Emitter = EmitterBase
 
 			AutoTargets
 			[
 				{
 					TargetType = ShipParts
 					Toggle = AutoTargetToggle
-					EnableInDirectControlMode = true
+					//EnableInDirectControlMode = true
 				}
 			]
 			BlueprintArcSprite

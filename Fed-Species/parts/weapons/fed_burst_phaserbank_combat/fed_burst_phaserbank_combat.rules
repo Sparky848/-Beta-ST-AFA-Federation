@@ -551,7 +551,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					TargetType = ShipParts
 					Toggle = AutoTargetToggle
 				}
-		    ]
+			]
 			BlueprintArcSprite
 			{
 				Texture = &/INDICATORS/WeaponArc
@@ -621,21 +621,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret
 			Location = [0.45, 0]
 		}
-		Emitter1b : BeamEmitter
-		{
-			FireTrigger = Turret
-			Location = [0.45, 0]
-		}
+//		Emitter1b : BeamEmitter
+//		{
+//			FireTrigger = Turret
+//			Location = [0.45, 0]
+//		}
 
 		BeamEmitter2 : &<../../../shots/memitter_phaser_beam_combat/memitter_phaser_beam_combat.rules>
 		{
 			Type = BeamEmitter
 			Location = [0.45, 1]
 			ChainedTo = Turret2
-			FireTrigger =Turret2
+			FireTrigger = Turret2
 			GetTargetFrom = Turret2
 			OperationalToggle = IsOperational2
-			FireDelay = 0
+			FireDelay = 0.5
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1
@@ -650,11 +650,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [0.45, 1]
 		}
 
-		Emitter2b : BeamEmitter
-		{
-			FireTrigger = Turret2
-			Location = [0.45, 1]
-		}
+//		Emitter2b : BeamEmitter
+//		{
+//			FireTrigger = Turret2
+//			Location = [0.45, 1]
+//		}
 
 		BeamEmitter3 : &<../../../shots/memitter_phaser_beam_combat/memitter_phaser_beam_combat.rules>
 		{
@@ -664,7 +664,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret3
 			GetTargetFrom = Turret3
 			OperationalToggle = IsOperational
-			FireDelay = 0
+			FireDelay = 1
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1
@@ -678,11 +678,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [0.45, 0]
 		}
 
-		Emitter3b : BeamEmitter
-		{
-			FireTrigger = Turret3
-			Location = [0.45, 0]
-		}
+//		Emitter3b : BeamEmitter
+//		{
+//			FireTrigger = Turret3
+//			Location = [0.45, 0]
+//		}
 
 		BeamEmitter4 : &<../../../shots/memitter_phaser_beam_combat/memitter_phaser_beam_combat.rules>
 		{
@@ -692,7 +692,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret4
 			GetTargetFrom = Turret4
 			OperationalToggle = IsOperational
-			FireDelay = 0
+			FireDelay = 1.5
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1
@@ -706,11 +706,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [0.45, 0]
 		}
 
-		Emitter4b : BeamEmitter
-		{
-			FireTrigger = Turret4
-			Location = [0.45, 0]
-		}
+//		Emitter4b : BeamEmitter
+//		{
+//			FireTrigger = Turret4
+//			Location = [0.45, 0]
+//		}
 
 		ChargeEffect
 		{
