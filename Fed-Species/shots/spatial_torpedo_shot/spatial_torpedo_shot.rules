@@ -28,7 +28,12 @@ Components
 	{
 		Type = SameShipRetarget
 	}
-
+//	Sensor
+//	{
+//		Type = Sensor
+//		SightRadius = 800
+//		RadarRadius = 2400
+//	} This was a test, leaving as a reminder
 	Acceleration
 	{
 		Type = Acceleration

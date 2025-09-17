@@ -262,7 +262,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 			Location = [1, 2]
-
+			IncludeWhenUnderConstruction = false
 			FactorHitEffectsWith = MissileStorage
 			HitEffects
 			[
@@ -563,24 +563,25 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		// RecCrew = (&CrewRequired) + (&<he/missile_launcher_he.rules>/MissileStats/Stats/ROF) * (&<he/missile_launcher_he.rules>/MissileStats/Stats/MissileParts) * 4
 	}
 
-	StatsNotesKey = "Stats/MissileLauncherNotes"
-	MissileStats
-	{
-		NameKey = "StatCategories/TorpedoLauncher"
-		Stats
+	StatsByCategory
+	[
 		{
-			DamagePerShot = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage
-			DamagePerSecond = (&DamagePerShot) * (&ROF)
-			Damage = [&../DamagePerShot, &../DamagePerSecond]
-			DamageArea = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
-			ROF = 1 / (&~/Part/Components/WeaponBase/FireInterval)
-			RangeLimited = [&~/Part/Components/Bullet/Range/BaseValue, &~/Part/Components/Bullet/Range/MaxValue]
-			Arc = deg(&~/Part/Components/WeaponBase/ValidArc)
-			ShotLaunchSpeed = &~/EmitterBase/Bullet/Speed/BaseValue
-			Acceleration = &~/EmitterBase/Bullet/Components/Acceleration/Acceleration
-			ShotGuidance = deg(&~/EmitterBase/Bullet/Components/Homing/TurnVelocity)
-			ShotHP = &~/EmitterBase/Bullet/Components/Targetable/Health
-			MissileParts = &~/EmitterBase/ResourcesUsed
+			NameKey = "StatCategories/SpatialTorpedo"
+			Stats
+			{
+				DamagePerShot = &~/Part/Components/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage
+				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				Damage = [&../DamagePerShot, &../DamagePerSecond]
+				DamageArea = &~/Part/Components/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
+				ROF = 1 / (&~/Part/Components/WeaponBase/FireInterval)
+				RangeLimited = [&~/Part/Components/EmitterBase/Bullet/Range/BaseValue, &~/Part/Components/EmitterBase/Bullet/Range/MaxValue]
+				Arc = deg(&~/Part/Components/WeaponBase/FiringArc)
+				ShotLaunchSpeed = &~/Part/Components/EmitterBase/Bullet/Speed/BaseValue
+				Acceleration = &~/Part/Components/EmitterBase/Bullet/Components/Acceleration/Acceleration
+				ShotGuidance = deg(&~/Part/Components/EmitterBase/Bullet/Components/Homing/TurnVelocity)
+				ShotHP = &~/Part/Components/EmitterBase/Bullet/Components/Targetable/Health
+				MissileParts = &~/Part/Components/EmitterBase/ResourcesUsed
+			}
 		}
-	}
+	]
 }

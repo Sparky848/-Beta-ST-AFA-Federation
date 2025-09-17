@@ -522,6 +522,7 @@ StatCategories
 	ShuttlePhaser = "Shuttle Phaser"
 	Phaser = "Phaser Beam"
 	PhaseCannon = "Phase Cannon"
+	SpatialTorpedo = "Spatial Torpedo"
 }
 
 Tutorials

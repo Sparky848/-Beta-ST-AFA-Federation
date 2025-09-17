@@ -135,7 +135,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 100
+					TotalDamage = 1500
 					Radius = 2
 				}
 				{

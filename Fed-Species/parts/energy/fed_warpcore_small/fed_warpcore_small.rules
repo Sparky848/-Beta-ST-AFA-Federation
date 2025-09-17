@@ -224,7 +224,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
-		ResourceConverter
+		ResourceConverter//322.5 power per antimatter
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsOperational
@@ -232,7 +232,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = AntimatterSplitter
-					Quantity = 30
+					Quantity = 22//30
 				}
 			]
 			ToStorage = BatteryStorage
