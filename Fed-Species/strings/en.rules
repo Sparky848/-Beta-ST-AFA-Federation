@@ -531,7 +531,7 @@ Tutorials
 	{
 		Title = "Warpcores"
 		Info = "Warpcores are the centre of all starships. They provide <good>wireless power to compatible systems</good> when supplied with constant antimatter and act as hyperdrives for a ship. They <bad>explode incredibly violently</bad> as well as being <bad>very fragile</bad>."
-		Distribution = "Warpcores indicate whether or not that can give a part power by a <good>blue lightning symbol</good>. The large the warpcore, the large the range of distribution."
+		Distribution = "You can tell whether or not a part can be wirelessly fueled because it will have a <good>blue lightning symbol</good>. The larger the warpcore, the larger the range of distribution."
 		Resources = "In order to keep a warpcore fuelled <good>you will need a large amount of antimatter</good>, otherwise they will output essentially <bad>no power</bad>"
 		NoAntimatter = "A Warpcore will display a <bad>red antimatter symbol</bad> when it is <bad>out of antimatter</bad>. At this point <bad>it will be producing almost no power</bad> and thus <good>should be refuelled promptly</good>"
 	}

@@ -7,10 +7,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Phaser_Lance_Desc"
 	Resources
 	[
-		[steel, 180]
-		[coil2, 35]
-		[tristeel, 38]
-		[diamond, 8]
+		[steel, 480]
+		[coil2, 128]
+		[tristeel, 68]
+		[diamond, 16]
 	]
 	Size = [2, 10]
 	MaxHealth = 30000
@@ -365,8 +365,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			//FireInterval = 2/30
-			FireInterval = 20
-			AIFirepowerRating = 1500
+			FireInterval = 120//20
+			AIFirepowerRating = 15000
 			FirePermissionToggle = FireModeToggle
 			// AutoTargetCrewSafetyDist = 8
 			IgnoreSourceShipLowLOSChecks = true

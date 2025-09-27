@@ -165,7 +165,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ShowProgressFor = Turret
 			Invert = false
 		}
-
+		
 		BeamEmitter : &<../../../shots/phase_cannon_beam/phase_cannon_beam.rules>
 		{
 			Type = BeamEmitter
@@ -175,7 +175,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			GetTargetFrom = Turret
 			OperationalToggle = CanFire
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 500
+			ResourcesUsed = 1000
 			MinResourcesUsed = 1
 		}
 		

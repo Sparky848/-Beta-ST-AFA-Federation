@@ -132,7 +132,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = 500//1750
+			Damage = 200//500//1750
 		}
 	]
 
