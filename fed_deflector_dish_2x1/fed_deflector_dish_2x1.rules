@@ -1,0 +1,283 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Deflector_Dish"
+	IconNameKey = "Parts/Deflector_Dish_Icon"
+	ID = "stafa.fed_deflector_dish_2x1"
+	EditorGroup = "StarfleetWeapons"
+	DescriptionKey = "Parts/Deflector_Dish_Desc"
+	Resources
+	[
+		[steel, 24]
+		[coil2, 8]
+		[tristeel, 10]
+		[diamond, 2]
+	]//to be actually checked, and based on performance
+	Size = [2, 1]
+	MaxHealth = 4500//old warpcore health lol
+	TypeCategories = [weapon, turret, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorDebuff, DeflectorCounter]//small ship variant needs manual power
+	IsRotateable = true
+	IsFlippable = true
+	CrewSpeedFactor = .5
+	CrewCongestedSpeedFactor = .5	
+	SelectionPriority = 1
+	InitialPenetrationResistance = 2
+	PenetrationRectType = Normal
+	ProhibitedBy : ^/0/ProhibitedBy [tall]
+	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [tall]
+	ProhibitRects
+    [
+		[tall, [-1, -1, 4, 1]]
+		[tall, [0, -1, 1, 1]]
+		[tall, [-1, 1, 4, 1]]
+		[tall, [0, 2, 1, 1]]
+    ]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		DeflectorMode
+		{
+			Type = UIToggle
+			ToggleID = "deflector_type"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+
+		DeflectorShieldPulseToggle
+		{
+			Type = ModeToggle
+			Mode = DeflectorMode
+			OnMode = 0
+		}
+
+		DeflectorShieldPulse
+		{
+			Type = ToggledComponents
+			Toggle = DeflectorShieldPulseToggle
+			IncludeInBlueprints = true
+			Components = &<fed_dd2x1_shield_drain.rules>/Components
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 12000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		DeflectorDebuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = DeflectorDebuff
+			GridDistance = 500
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		DeflectorCounterBuff//not sure which I am going to use yet. I imagine it will be Counter
+		{
+			Type = GridBuffProvider
+			BuffType = DeflectorCounter
+			GridDistance = 500
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		DeflectorCount
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=DeflectorCounter; BuffMode=Add; }
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 3]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Location = [1, 1]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, 3]
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 3]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					//Delay = &~/Part/Components/Turret/FireInterval
+					//Delay = 0.49
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				
+				// No crew.
+				{
+					Toggle = PartCrew
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [.5, .5]
+					}
+				}
+			]
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 1]
+		}
+	}
+}
+
