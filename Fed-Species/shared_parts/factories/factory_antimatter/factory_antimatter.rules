@@ -125,11 +125,33 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			        MinQuantityForConversion = 1
 			    }
 			]
-			ToStorage = AntimatterStorage
+			ToStorage = FakeResourceStorage
 			ToQuantity = 5
-			Interval = 1.3
+			Interval = 0.1
+			CheckResourceLimits = true
 		}
-
+		FakeResourceStorage
+		{
+			Type = ResourceStorage
+			ResourceType = ion_energy
+			MaxResources = 5
+		}
+		ResourceConverter2
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = FakeResourceStorage
+			        Quantity = 1
+			    }
+			]
+			ToStorage = AntimatterStorage
+			ToQuantity = 1
+			Interval = 0.4
+			CheckResourceLimits = true
+		}
 		ConvertEffects
 		{
 			Type = TriggeredEffects

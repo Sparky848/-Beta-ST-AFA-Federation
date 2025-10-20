@@ -158,6 +158,7 @@ HitOperational
 {
 	HitEffects
 	[
+		
 		{
 			Type = ExplosiveDamage
 			Radius = 1.5
@@ -167,6 +168,10 @@ HitOperational
 		{
 			Type = Impulse;
 			Impulse = 0.1;
+		}
+		{
+			Type = Damage
+			Damage = { BaseValue=750; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=100; }
 		}
 	]
 

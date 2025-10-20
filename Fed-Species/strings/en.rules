@@ -235,6 +235,29 @@ Parts
 	SpatialTorpedoLauncherDeckIcon = "Spatial Torpedo Launcher"
 	SpatialTorpedoLauncherDeckDesc = "Basic, primitive, inexpensive torpedo."\
 									"\n <s20>\"These are so <good>hilariously weak</good> it is outrite suicidal to mount these on ones vessel\"~FSR Privateer</s20>"
+
+	Gen1BussardCollector1x1 = "TOS Bussard Collector 1x1"
+	Gen1BussardCollector1x1Icon = "TOS Bussard Collector 1x1"
+	Gen1BussardCollector1x1Desc = "TOS Bussard Collector 1x1\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	Gen1BussardCollector2x2 = "TOS Bussard Collector 2x2"
+	Gen1BussardCollector2x2Icon = "TOS Bussard Collector 2x2"
+	Gen1BussardCollector2x2Desc = "TOS Bussard Collector 2x2\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	Gen1BussardCollector3x3 = "TOS Bussard Collector 3x3"
+	Gen1BussardCollector3x3Icon = "TOS Bussard Collector 3x3"
+	Gen1BussardCollector3x3Desc = "TOS Bussard Collector 3x3\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	DuraniumArmour1x1BCCowling = "1x1 Bussard Cowling"
+	DuraniumArmour1x1BCCowlingIcon = "1x1 Bussard Cowling"
+	DuraniumArmour1x1BCCowlingDesc = "A duranium armour cowling for 1x1 bussard collectors"
+
+	DuraniumArmour3x3BCCowling = "3x3 Bussard Cowling"
+	DuraniumArmour3x3BCCowlingIcon = "3x3 Bussard Cowling"
+	DuraniumArmour3x3BCCowlingDesc = "A duranium armour cowling for 3x3 bussard collectors"
 }
 
 Inputs

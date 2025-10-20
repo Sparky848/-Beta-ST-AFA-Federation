@@ -27,8 +27,10 @@ Parts
 
 	//&<weapons/fed_phaserbank_modular/fed_phaserbank_modular.rules>/Part
 	//&<weapons/fed_phaserbank_emitter/fed_phaserbank_emitter.rules>/Part
+
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
+
 	// Energy
 	&<energy/fed_warpcore_small/fed_warpcore_small.rules>/Part
 	&<energy/fed_warpcore_med/fed_warpcore_med.rules>/Part
@@ -37,6 +39,7 @@ Parts
 	&<energy/fed_aux_ma_injector_small/fed_aux_ma_injector_small.rules>/Part
 	&<energy/fed_aux_ma_injector_large/fed_aux_ma_injector_large.rules>/Part
 	&<energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part
+
 	// Engines
 	&<engines/fed_warpnacelle_1x6/fed_warpnacelle_1x6.rules>/Part
 	&<engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part
@@ -51,8 +54,11 @@ Parts
 	&<engines/fed_neb_warpnacelle_3x9/fed_neb_warpnacelle_3x9.rules>/Part
 	&<engines/fed_warpnacelle_extension_3x3/fed_warpnacelle_extension_3x3.rules>/Part
 	&<engines/fed_t6_warpnacelle_1x4/fed_t6_warpnacelle_1x4.rules>/Part
+	&<engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part
+
 	// Shields
 	&<shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part
+
 	//Armour
 	&<armour/duranium_armour/duranium_armour.rules>/Part
 	&<armour/duranium_armour_1x2_wedge/duranium_armour_1x2_wedge.rules>/Part
@@ -67,27 +73,36 @@ Parts
 	&<armour/duranium_armour_plate/duranium_armour_plate.rules>/Part
 	&<armour/duranium_armour_plate_wedge/duranium_armour_plate_wedge.rules>/Part
 	&<armour/duranium_armour_plate_wedge_long/duranium_armour_plate_wedge_long.rules>/Part
-	// Misc (basically AI Parts)
-	&<engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part
-	&<engines/fed_impulse_6x3/fed_impulse_6x3_ai.rules>/Part
-	&<engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6_special.rules>/Part
-	&<weapons/fed_torpedolauncher/fed_torpedo_launcher_ai.rules>/Part
-	&<weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon_station.rules>/Part
-	&<shields/fed_shieldcore/fed_shieldcore_ai_stations.rules>/Part
-	&<misc/ai_airlock/ai_airlock_a.rules>/Part
-	&<misc/ai_airlock/ai_airlock_d.rules>/Part
-	&<misc/ai_airlock/ai_airlock_t.rules>/Part
-	&<misc/ai_armor/duranium_armor.rules>/Part
-	&<misc/ai_armor/duranium_armor_tri.rules>/Part
-	&<misc/ai_armor/duranium_armor_wedge.rules>/Part
-	&<misc/ai_armor/duranium_armor1x2_wedge.rules>/Part
-	&<misc/ai_armor/duranium_armor1x3_wedge.rules>/Part
-	&<misc/ai_armor/duranium_armor2x1.rules>/Part
-	&<misc/ai_armor/tritanium_armor.rules>/Part
-	&<misc/ai_armor/tritanium_armor_tri.rules>/Part
-	&<misc/ai_armor/tritanium_armor_wedge.rules>/Part
-	&<misc/ai_armor/tritanium_armor1x2_wedge.rules>/Part
-	&<misc/ai_armor/tritanium_armor1x3_wedge.rules>/Part
-	&<misc/ai_armor/tritanium_armor2x1.rules>/Part
-	&<misc/ai_power/reactor_small.rules>/Part
+	&<armour/duranium_armour_1x1_bc_cowling/duranium_armour_1x1_bc_cowling.rules>/Part
+	&<armour/duranium_armour_3x3_bc_cowling/duranium_armour_3x3_bc_cowling.rules>/Part
+	
+	//Misc
+	&<misc/fed_gen1bussard_collector_1x1/fed_gen1bussard_collector_1x1.rules>/Part
+	&<misc/fed_gen1bussard_collector_2x2/fed_gen1bussard_collector_2x2.rules>/Part
+	&<misc/fed_gen1bussard_collector_3x3/fed_gen1bussard_collector_3x3.rules>/Part
+	
+	
+	// AI Parts {Unused}
+	
+//	&<engines/fed_impulse_6x3/fed_impulse_6x3_ai.rules>/Part
+//	&<engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6_special.rules>/Part
+//	&<weapons/fed_torpedolauncher/fed_torpedo_launcher_ai.rules>/Part
+//	&<weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon_station.rules>/Part
+//	&<shields/fed_shieldcore/fed_shieldcore_ai_stations.rules>/Part
+//	&<ai/ai_airlock/ai_airlock_a.rules>/Part
+//	&<ai/ai_airlock/ai_airlock_d.rules>/Part
+//	&<ai/ai_airlock/ai_airlock_t.rules>/Part
+//	&<ai/ai_armor/duranium_armor.rules>/Part
+//	&<ai/ai_armor/duranium_armor_tri.rules>/Part
+//	&<ai/ai_armor/duranium_armor_wedge.rules>/Part
+//	&<ai/ai_armor/duranium_armor1x2_wedge.rules>/Part
+//	&<ai/ai_armor/duranium_armor1x3_wedge.rules>/Part
+//	&<ai/ai_armor/duranium_armor2x1.rules>/Part
+//	&<ai/ai_armor/tritanium_armor.rules>/Part
+//	&<ai/ai_armor/tritanium_armor_tri.rules>/Part
+///	&<ai/ai_armor/tritanium_armor_wedge.rules>/Part
+	//&<ai/ai_armor/tritanium_armor1x2_wedge.rules>/Part
+//	&<ai/ai_armor/tritanium_armor1x3_wedge.rules>/Part
+//	&<ai/ai_armor/tritanium_armor2x1.rules>/Part
+//	&<ai/ai_power/reactor_small.rules>/Part
 ]
