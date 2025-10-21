@@ -258,6 +258,21 @@ Parts
 	DuraniumArmour3x3BCCowling = "3x3 Bussard Cowling"
 	DuraniumArmour3x3BCCowlingIcon = "3x3 Bussard Cowling"
 	DuraniumArmour3x3BCCowlingDesc = "A duranium armour cowling for 3x3 bussard collectors"
+
+	KelGen1BussardCollector1x1 = "Kelvin Bussard Collector 1x1"
+	KelGen1BussardCollector1x1Icon = "Kelvin Bussard Collector 1x1"
+	KelGen1BussardCollector1x1Desc = "Kelvin Bussard Collector 1x1\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	KelGen1BussardCollector2x2 = "Kelvin Bussard Collector 2x2"
+	KelGen1BussardCollector2x2Icon = "Kelvin Bussard Collector 2x2"
+	KelGen1BussardCollector2x2Desc = "Kelvin Bussard Collector 2x2\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	KelGen1BussardCollector3x3 = "Kelvin Bussard Collector 3x3"
+	KelGen1BussardCollector3x3Icon = "Kelvin Bussard Collector 3x3"
+	KelGen1BussardCollector3x3Desc = "Kelvin Bussard Collector 3x3\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
 }
 
 Inputs
