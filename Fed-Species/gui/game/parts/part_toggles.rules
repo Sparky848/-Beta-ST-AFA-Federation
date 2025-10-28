@@ -566,4 +566,57 @@ PartToggles
 			}
 		]
 	}
+	//Refit Bussard Colour Change
+	{
+		ToggleID = "refbussard_colour"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Black
+			{
+				ChoiceID = "refbussard_black"
+				ButtonToolTipKey = "PartToggles/RefBussard_Black"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "black.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Red
+			{
+				ChoiceID = "refbussard_red"
+				ButtonToolTipKey = "PartToggles/RefBussard_Red"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "red.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Blue
+			{
+				ChoiceID = "refbussard_blue"
+				ButtonToolTipKey = "PartToggles/RefBussard_Blue"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "blue.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 ]

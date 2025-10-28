@@ -76,7 +76,7 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 600
+		Health = 800
 		TargetCategories = [stafa_torpedo, missile]
 		OnDeath = &../Hit/HitOperational
 	}

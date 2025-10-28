@@ -1,0 +1,95 @@
+Components
+{
+	Graphics4
+	{
+		Type = Graphics
+		Location = [1, 1.5]
+		OperationalToggle = IsOperational
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			
+			DamageLevels
+			[
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+			]
+		}
+		OperationalRoofDoodad
+		{
+			Layer = "roof_turrets"
+			
+			DamageLevels
+			[
+				{
+					File = "roofglow1.png"
+					Size = [2, 3]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [2, 3]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [2, 3]
+				}
+			]
+		}
+	}
+	Graphics5
+	{
+		Type = Graphics
+		Location = [1, 1.5]
+		OperationalToggle = IsUnOperational
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			
+			DamageLevels
+			[
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+			]
+		}
+		OperationalRoofDoodad
+		{
+			Layer = "roof_turrets"
+			
+			DamageLevels
+			[
+				{
+					File = "roofglow1.png"
+					Size = [2, 3]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [2, 3]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [2, 3]
+				}
+			]
+		}
+	}
+}
