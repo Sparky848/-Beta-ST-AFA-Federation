@@ -2,7 +2,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/Deflector_Dish"
 	IconNameKey = "Parts/Deflector_Dish_Icon"
-	ID = "stafa.fed_deflector_dish_2x1"
+	ID = "stafa.fed_deflector_dish_2x2"
 	EditorGroup = "StarfleetWeapons"
 	DescriptionKey = "Parts/Deflector_Dish_Desc"
 	Resources
@@ -12,13 +12,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 10]
 		[diamond, 2]
 	]//to be actually checked, and based on performance
-	Size = [2, 1]
+	Size = [2, 2]
 	MaxHealth = 4500//old warpcore health lol
 	TypeCategories = [weapon, turret, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorDebuff, DeflectorCounter]//small ship variant needs manual power
 	IsRotateable = true
 	IsFlippable = true
-	CrewSpeedFactor = .5
+	CrewSpeedFactor = 1
 	CrewCongestedSpeedFactor = .5	
 	SelectionPriority = 1
 	InitialPenetrationResistance = 2
@@ -28,9 +28,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ProhibitRects
     [
 		[tall, [-1, -1, 4, 1]]
-		[tall, [0, -1, 1, 1]]
-		[tall, [-1, 1, 4, 1]]
-		[tall, [0, 2, 1, 1]]
+		[tall, [0, -2, 3, 1]]
+		[tall, [-1, 0, 1, 3]]
+		[tall, [2, 0, 1, 2]]
     ]
 	EditorIcon
 	{
@@ -39,7 +39,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64, 32]
+		Size = [32, 32]
 	}
 	Components : ^/0/Components
 	{
@@ -115,6 +115,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 12000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
+		CommonGasStorage
+		{
+			ResourceType = common_gas
+			MaxResources = 4000//going to use battery style for this. whereby 1 common_gas resource is 1000 units internally. Gives us more freedom for balancing
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		ElectronGasStorage
+		{
+			ResourceType = electron_gas
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		//Smaller Deflector won't use Ionic Gas, and thus be limited to weaker functions
 		InternalCapacity
 		{
 			Type = ProgressBar
@@ -147,10 +160,91 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffableValue
 			Value = { BaseValue=1; BuffType=DeflectorCounter; BuffMode=Add; }
 		}
+		ShieldPulseTurret
+		{
+			Type = TurretWeapon
+			Location = [.5, 1]
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			//FireInterval = 2/30
+			FireInterval = 60
+			FiringArc = 10d
+			RotateSpeed = 360d
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 550
+			FirePermissionToggle = FireModeToggle
+			IgnoreSourceShipLowLOSChecks = true
+			Emitter = ShieldPulseBeamEmitter
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ShieldPulseReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = ShieldPulseTurret
+			Invert = false
+		}
+		ShieldPulseBeamEmitter : //&<../../../shots/phaser_lance_nerfed/phaser_lance_nerfed.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = ShieldPulseTurret
+			FireTrigger = ShieldPulseTurret
+			GetTargetFrom = ShieldPulseTurret
+			OperationalToggle = IsOperational
+			FireDelay = 2
+			ResourceStorage = ShieldPulseStorage
+			ResourcesUsed = 
+			MinResourcesUsed = 
+			IncludeWhenUnderConstruction = false
+		}
+
+		ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = ShieldPulseTurret
+			Trigger = ShieldPulseTurret
+			Location = [.5, 1]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "charge.wav"//temp
+					Volume = .25
+					Speed = 1.5
+				}
+			]
+		}
 		Graphics
 		{
 			Type = Graphics
-			Location = [0.5, 3]
+			Location = [1, 1]
 			OperationalToggle = IsOperational
 			Floor
 			{
@@ -159,15 +253,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "floor.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 					{
 						File = "floor_33.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 					{
 						File = "floor_66.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -179,15 +273,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "walls.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 					{
 						File = "walls_33.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 					{
 						File = "walls_66.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -200,17 +294,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = "roof.png"
 						NormalsFile = "roof_normals.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 					{
 						File = "roof_33.png"
 						NormalsFile = "roof_normals_33.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 					{
 						File = "roof_66.png"
 						NormalsFile = "roof_normals_66.png"
-						Size = [2, 1]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -229,12 +323,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
-			Location = [.5, 3]
+			Location = [1, 1]
 		}
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [.5, 3]
+			Location = [1, 1]
 			Layer = "indicators"
 			Indicators
 			[
@@ -267,7 +361,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoCrew
-						Size = [.5, .5]
+						Size = [1, 1]
 					}
 				}
 			]
@@ -276,7 +370,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [2, 1]
+			Size = [2, 2]
 		}
 	}
 }
