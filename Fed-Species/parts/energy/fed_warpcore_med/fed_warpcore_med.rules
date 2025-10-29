@@ -114,26 +114,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToQuantity = 225 //75
 			Interval = .5// 0.45/sec
 		}
+
 		BatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 50000
-			StartingResources = 50000
-			//SuppliesResources = true
-			//MinResourcesPickUp = 3000
-			//MaxResourcesPickUp = 3000
-			//InitPickUp = 2001
-			//PickUpRate = 1000 / 1.0
-			//ExpectedResourceGenerationRate = (&../BatteryProducer/ToQuantity) / (&../BatteryProducer/Interval)
-			//ToggleOnResources = 6001
-			//ToggleOffResources = 6000
-		}
-		CombinedBatteryStorage
 		{
 			Type = MultiResourceStorage
 			ResourceType = battery
-			ResourceStorages = [BatteryStorage, FtlBatteryStorage]
+			MaxResources = 50000
+			StartingResources = 50000
 			ViaBuffs
 			{
 				OutgoingBuffProviders = [BuffProvider]
@@ -146,7 +133,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ProgressBar
 			OperationalToggle = IsOperational
-			ShowProgressFor = CombinedBatteryStorage
+			ShowProgressFor = BatteryStorage
 			Invert = false
 			LowColor = [170, 183, 0]
 			HighColor = [238, 255, 0]
@@ -255,7 +242,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		// {
 			// Type = ResourceConsumer
 			// ResourceType = battery
-			// Storage = CombinedBatteryStorage
+			// Storage = BatteryStorage
 			// DefaultPriority = 0
 			// ResupplyThreshold = 1000
 		// }
@@ -280,32 +267,32 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 //			Type = ResourceConverter
 ///			FromStorage = BatteryStorage
 	//		FromQuantity = 500
-//			ToStorage = CombinedBatteryStorage
+//			ToStorage = BatteryStorage
 //			ToQuantity = 500
 //			Interval = 0.1
 //			MinFromQuantityForConversion = 501
 //		}
-		EnergySubstation
+		FtlEnergySubstation
 		{
 			Type = ResourceConverter
-			OperationalToggle = IsOperational
+			OperationalToggle = FtlDrive
 			From
 			[
 				{
 				Storage = BatteryStorage
-				Quantity = 805
-				MinQuantityForConversion = 805
+				Quantity = 500
+				MinQuantityForConversion = 500
 				}
 			]
 			To
 			[
 				{
-				Storage = CombinedBatteryStorage
-				Quantity = 805
-				MinQuantityForConversion = 805
+				Storage = FtlBatteryStorage
+				Quantity = 500
+				MinQuantityForConversion = 500
 				}
 			]
-			Interval = { BaseValue=0.05; BuffType=WarpcoreSubstationBuffSmall; BuffMode=Subtract; MinValue=0.03; }
+			Interval = 0.35
 		}
 		
 		// Hyperdrive
@@ -970,7 +957,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		AntimatterPowerGen = (&BasePowerGen) + ((&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval) / 1000)
 		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
-		TransferRate = ((&~/Part/Components/EnergySubstation/From/0/MinQuantityForConversion) / (&~/Part/Components/EnergySubstation/Interval/BaseValue)) / 1000
+		//TransferRate = ((&~/Part/Components/EnergySubstation/From/0/MinQuantityForConversion) / (&~/Part/Components/EnergySubstation/Interval/BaseValue)) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 	}
 }

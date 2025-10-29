@@ -66,15 +66,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IsIntermediateStorage = true
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-		BatteryConsumer
-		{
-			Type = ResourceConsumer
-			ResourceType = battery
-			Storage = BatteryStorage
-			DefaultPriority = &/PRIORITIES/Storage_Supply
-			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
-		}
+//		BatteryConsumer
+//		{
+//			Type = ResourceConsumer
+//			ResourceType = battery
+//			Storage = BatteryStorage
+//			DefaultPriority = &/PRIORITIES/Storage_Supply
+//			ResupplyThreshold = 500
+//			OperationalToggle = PowerToggle
+//		}
 
 		Graphics
 		{
