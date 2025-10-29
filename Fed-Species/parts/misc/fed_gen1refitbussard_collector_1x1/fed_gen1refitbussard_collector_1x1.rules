@@ -1,0 +1,340 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Gen1RefitBussardCollector1x1"
+	IconNameKey = "Parts/Gen1RefitBussardCollector1x1Icon"
+	ID = stafa.fed_gen1refitbussard_collector_1x1
+	EditorGroups = ["StarfleetUtilities"]
+	DescriptionKey = "Parts/Gen1RefitBussardCollector1x1Desc"
+	Resources
+	[
+		[steel, 8]
+		[tristeel, 1]
+		[coil, 2]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	SelectionTypeID = "bussard"
+	MaxHealth = 3000
+	TypeCategories = [non_flammable, bussard_collector]
+	Flammable = false
+	InitialPenetrationResistance = 7
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	Density = 1
+	IsRotateable = true
+	ExternalWalls = [Bottom]
+	InternalWalls = [Left, TopLeft, TopRight, Right]
+	AllowedContiguity = [Bottom, Left, Right]
+	IsWalled = true	
+	IsSelfDestructible = true
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+		IsUnOperational
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational]
+			Mode = Any
+			Invert = true
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		ColourSelector
+		{
+			Type = UIToggle
+			ToggleID = "refbussard_colour"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+
+		BlackColourToggle
+		{
+			Type = ModeToggle
+			Mode = ColourSelector
+			OnMode = 0
+		}
+		BlackColourComponents
+		{
+			Type = ToggledComponents
+			Toggle = BlackColourToggle
+			IncludeInBlueprints = true
+			Components = &<black/black.rules>/Components
+		}
+
+		RedColourToggle
+		{
+			Type = ModeToggle
+			Mode = ColourSelector
+			OnMode = 1
+		}
+		RedColourComponents
+		{
+			Type = ToggledComponents
+			Toggle = RedColourToggle
+			IncludeInBlueprints = true
+			Components = &<red/red.rules>/Components
+		}
+
+		BlueColourToggle
+		{
+			Type = ModeToggle
+			Mode = ColourSelector
+			OnMode = 2
+		}
+		BlueColourComponents
+		{
+			Type = ToggledComponents
+			Toggle = BlueColourToggle
+			IncludeInBlueprints = true
+			Components = &<blue/blue.rules>/Components
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "wall.png"
+						Size = [1, 1]
+					}
+					{
+						File = "wall_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "wall_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		Graphics2
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"floororb1.png"
+							"floororb2.png"
+							"floororb3.png"
+							"floororb4.png"
+							"floororb5.png"
+							"floororb6.png"
+							"floororb7.png"
+							"floororb8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"floororb1.png"
+							"floororb2.png"
+							"floororb3.png"
+							"floororb4.png"
+							"floororb5.png"
+							"floororb6.png"
+							"floororb7.png"
+							"floororb8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"floororb1.png"
+							"floororb2.png"
+							"floororb3.png"
+							"floororb4.png"
+							"floororb5.png"
+							"floororb6.png"
+							"floororb7.png"
+							"floororb8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "floororb1.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floororb1.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floororb1.png"
+						Size = [1, 1]
+					}
+				]
+			}			
+		}
+		Graphics3
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"floorosd1.png"
+							"floorosd2.png"
+							"floorosd3.png"
+							"floorosd4.png"
+							"floorosd5.png"
+							"floorosd6.png"
+							"floorosd7.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"floorosd_33_1.png"
+							"floorosd_33_2.png"
+							"floorosd_33_3.png"
+							"floorosd_33_4.png"
+							"floorosd_33_5.png"
+							"floorosd_33_6.png"
+							"floorosd_33_7.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"floorosd_66_1.png"
+							"floorosd_66_2.png"
+							"floorosd_66_3.png"
+							"floorosd_66_4.png"
+							"floorosd_66_5.png"
+							"floorosd_66_6.png"
+							"floorosd_66_7.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+		}
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		
+	}
+}

@@ -273,6 +273,36 @@ Parts
 	KelGen1BussardCollector3x3Icon = "Kelvin Bussard Collector 3x3"
 	KelGen1BussardCollector3x3Desc = "Kelvin Bussard Collector 3x3\n"\
 								"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	SovBussardCollector1x2 = "Sovereign Type Bussard Collector 1x2"
+	SovBussardCollector1x2Icon = "Sovereign Type Bussard Collector 1x2"
+	SovBussardCollector1x2Desc = "Sovereign Type Bussard Collector 1x2\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+	
+	SovBussardCollector2x4 = "Sovereign Type Bussard Collector 2x4"
+	SovBussardCollector2x4Icon = "Sovereign Type Bussard Collector 2x4"
+	SovBussardCollector2x4Desc = "Sovereign Type Bussard Collector 2x4\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	SovBussardCollector3x5 = "Sovereign Type Bussard Collector 3x5"
+	SovBussardCollector3x5Icon = "Sovereign Type Bussard Collector 3x5"
+	SovBussardCollector3x5Desc = "Sovereign Type Bussard Collector 3x5\n"\
+								"<s20><cyan>Currently only decorational</cyan></s20>"
+	
+	Gen1RefitBussardCollector1x1 = "TOS Refit Bussard Collector 1x1"
+	Gen1RefitBussardCollector1x1Icon = "TOS Refit Bussard Collector 1x1"
+	Gen1RefitBussardCollector1x1Desc = "TOS Refit Bussard Collector 1x1\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	Gen1RefitBussardCollector2x3 = "TOS Refit Bussard Collector 2x3"
+	Gen1RefitBussardCollector2x3Icon = "TOS Refit Bussard Collector 2x3"
+	Gen1RefitBussardCollector2x3Desc = "TOS Refit Bussard Collector 2x3\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	Gen1RefitBussardCollector3x4 = "TOS Refit Bussard Collector 3x4"
+	Gen1RefitBussardCollector3x4Icon = "TOS Refit Bussard Collector 3x4"
+	Gen1RefitBussardCollector3x4Desc = "TOS Refit Bussard Collector 3x4\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
 }
 
 Inputs

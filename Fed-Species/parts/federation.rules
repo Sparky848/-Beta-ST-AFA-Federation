@@ -83,6 +83,12 @@ Parts
 	&<misc/fed_altgen1bussard_collector_1x1/fed_altgen1bussard_collector_1x1.rules>/Part
 	&<misc/fed_altgen1bussard_collector_2x2/fed_altgen1bussard_collector_2x2.rules>/Part
 	&<misc/fed_altgen1bussard_collector_3x3/fed_altgen1bussard_collector_3x3.rules>/Part
+	&<misc/fed_sovbussard_collector_1x2/fed_sovbussard_collector_1x2.rules>/Part
+	&<misc/fed_sovbussard_collector_2x4/fed_sovbussard_collector_2x4.rules>/Part
+	&<misc/fed_sovbussard_collector_3x5/fed_sovbussard_collector_3x5.rules>/Part
+	&<misc/fed_gen1refitbussard_collector_1x1/fed_gen1refitbussard_collector_1x1.rules>/Part
+	&<misc/fed_gen1refitbussard_collector_2x3/fed_gen1refitbussard_collector_2x3.rules>/Part
+	&<misc/fed_gen1refitbussard_collector_3x4/fed_gen1refitbussard_collector_3x4.rules>/Part
 	
 	
 	// AI Parts {Unused}

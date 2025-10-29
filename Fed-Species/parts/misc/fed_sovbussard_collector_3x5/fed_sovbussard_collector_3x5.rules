@@ -1,0 +1,286 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/SovBussardCollector3x5"
+	IconNameKey = "Parts/SovBussardCollector3x5Icon"
+	ID = stafa.fed_sovbussard_collector_3x5
+	EditorParentParts = [ "stafa.fed_sovbussard_collector_1x2" ]
+	DescriptionKey = "Parts/SovBussardCollector3x5Desc"
+	Resources
+	[
+		[steel, 40]
+		[tristeel, 5]
+		[coil, 10]
+	]
+	AIValueFactor = 0
+	Size = [3, 5]
+	SelectionTypeID = "bussard"
+	MaxHealth = 10500
+	TypeCategories = [non_flammable, bussard_collector]
+	Flammable = false
+	InitialPenetrationResistance = 7
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	Density = 1
+	IsRotateable = true
+	ExternalWalls = [Bottom]
+	InternalWalls = [Left, TopLeft, TopRight, Right]
+	AllowedContiguity = [Bottom, Left, Right]
+	IsWalled = true	
+	IsSelfDestructible = true
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 106.6666]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 2.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 5]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 5]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 5]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "wall.png"
+						Size = [3, 5]
+					}
+					{
+						File = "wall_33.png"
+						Size = [3, 5]
+					}
+					{
+						File = "wall_66.png"
+						Size = [3, 5]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [3, 5]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [3, 5]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [3, 5]
+					}
+				]
+			}
+			
+			OperationalRoofDoodad
+			{
+				Layer = "roof_turrets"
+				
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_glow1.png"
+							"roof_glow2.png"
+							"roof_glow3.png"
+							"roof_glow4.png"
+							"roof_glow5.png"
+							"roof_glow6.png"
+							"roof_glow7.png"
+							"roof_glow8.png"
+						]
+						Size = [3, 5]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"roof_glow_33_1.png"
+							"roof_glow_33_2.png"
+							"roof_glow_33_3.png"
+							"roof_glow_33_4.png"
+							"roof_glow_33_5.png"
+							"roof_glow_33_6.png"
+							"roof_glow_33_7.png"
+							"roof_glow_33_8.png"
+						]
+						Size = [3, 5]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"roof_glow_66_1.png"
+							"roof_glow_66_2.png"
+							"roof_glow_66_3.png"
+							"roof_glow_66_4.png"
+							"roof_glow_66_5.png"
+							"roof_glow_66_6.png"
+							"roof_glow_66_7.png"
+							"roof_glow_66_8.png"
+						]
+						Size = [3, 5]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+		}
+		Graphics2
+		{
+			Type = Graphics
+			Location = [1.5, 2.5]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"floor_glow1.png"
+							"floor_glow2.png"
+							"floor_glow3.png"
+							"floor_glow4.png"
+							"floor_glow5.png"
+							"floor_glow6.png"
+							"floor_glow7.png"
+							"floor_glow8.png"
+							"floor_glow9.png"
+						]
+						Size = [3, 5]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"floor_glow_33_1.png"
+							"floor_glow_33_2.png"
+							"floor_glow_33_3.png"
+							"floor_glow_33_4.png"
+							"floor_glow_33_5.png"
+							"floor_glow_33_6.png"
+							"floor_glow_33_7.png"
+							"floor_glow_33_8.png"
+							//"floor_glow_33_9.png"
+						]
+						Size = [3, 5]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"floor_glow_66_1.png"
+							"floor_glow_66_2.png"
+							"floor_glow_66_3.png"
+							"floor_glow_66_4.png"
+							"floor_glow_66_5.png"
+							"floor_glow_66_6.png"
+							"floor_glow_66_7.png"
+							"floor_glow_66_8.png"
+							//"floor_glow_66_9.png"
+						]
+						Size = [3, 5]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "glow_off.png"
+						Size = [3, 5]
+					}
+					{
+						File = "glow_off.png"
+						Size = [3, 5]
+					}
+					{
+						File = "glow_off.png"
+						Size = [3, 5]
+					}
+				]
+			}
+		}
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [1.5, 2.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [3, 5]
+		}
+	}
+
+	Stats
+	{
+		
+	}
+}

@@ -1,0 +1,167 @@
+Components
+{
+	Graphics4
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = IsOperational
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"floororbcasing1.png"
+						"floororbcasing2.png"
+						"floororbcasing3.png"
+						"floororbcasing4.png"
+						"floororbcasing5.png"
+						"floororbcasing6.png"
+						"floororbcasing7.png"
+						"floororbcasing8.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.1
+					AnimationStartTime = Zero
+				}
+				{
+					AnimationFiles
+					[
+						"floororbcasing_33_1.png"
+						"floororbcasing_33_2.png"
+						"floororbcasing_33_3.png"
+						"floororbcasing_33_4.png"
+						"floororbcasing_33_5.png"
+						"floororbcasing_33_6.png"
+						"floororbcasing_33_7.png"
+						"floororbcasing_33_8.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.1
+					AnimationStartTime = Zero
+				}
+				{
+					AnimationFiles
+					[
+						"floororbcasing_66_1.png"
+						"floororbcasing_66_2.png"
+						"floororbcasing_66_3.png"
+						"floororbcasing_66_4.png"
+						"floororbcasing_66_5.png"
+						"floororbcasing_66_6.png"
+						"floororbcasing_66_7.png"
+						"floororbcasing_66_8.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.1
+					AnimationStartTime = Zero
+				}
+			]
+		}
+		
+		OperationalRoofDoodad
+		{
+			Layer = "roof_turrets"
+			
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roofglow1.png"
+						"roofglow2.png"
+						"roofglow3.png"
+						"roofglow4.png"
+						"roofglow5.png"
+						"roofglow6.png"
+						"roofglow7.png"
+						"roofglow8.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.1
+					AnimationStartTime = Zero
+				}
+				{
+					AnimationFiles
+					[
+						"roofglow_33_1.png"
+						"roofglow_33_2.png"
+						"roofglow_33_3.png"
+						"roofglow_33_4.png"
+						"roofglow_33_5.png"
+						"roofglow_33_6.png"
+						"roofglow_33_7.png"
+						"roofglow_33_8.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.1
+					AnimationStartTime = Zero
+				}
+				{
+					AnimationFiles
+					[
+						"roofglow_66_1.png"
+						"roofglow_66_2.png"
+						"roofglow_66_3.png"
+						"roofglow_66_4.png"
+						"roofglow_66_5.png"
+						"roofglow_66_6.png"
+						"roofglow_66_7.png"
+						"roofglow_66_8.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.1
+					AnimationStartTime = Zero
+				}
+			]
+		}
+		
+	}
+	Graphics5
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = IsUnOperational
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "doodads_off.png"
+					Size = [1, 1]
+				}
+				{
+					File = "doodads_off.png"
+					Size = [1, 1]
+				}
+				{
+					File = "doodads_off.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		OperationalRoofDoodad
+		{
+			Layer = "roof_turrets"
+			DamageLevels
+			[
+				{
+					File = "roof_doodads_off.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roof_doodads_off.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roof_doodads_off.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}
