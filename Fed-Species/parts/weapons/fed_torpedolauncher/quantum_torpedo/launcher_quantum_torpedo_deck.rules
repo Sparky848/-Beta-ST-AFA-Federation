@@ -19,17 +19,22 @@ Components
 		// Nothing different.
 	}
 
+	MissileStorageC : ~/MissileStorageBase
+	{
+		// Nothing different.
+	}
+
 	CombinedMissileStorage
 	{
 		Type = MultiResourceStorage
 		ResourceType = torpedo_part
-		ResourceStorages = [MissileStorageA, MissileStorageB]
+		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
+		ToggleOnResources = 12
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
-
 	Consumer
 	{
 		Type = ResourceConsumer
@@ -44,28 +49,26 @@ Components
 	MissilesPrereq
 	{
 		Type = MultiToggle
-		Toggles = [MissileStorageA, MissileStorageB]
-		Mode = Any
+		Toggles = [MissileStorageA, MissileStorageB, MissileStorageC]
+		Mode = All
 	}
 
 	ReloadProgressBar
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = CommonReloadTimerBelowAverage
+		ShowProgressFor = CommonReloadTimerSomewhatShort
 		Invert = true
 	}
 
 	WeaponA : ~/WeaponBase
 	{
-		Location = [.75, 1]
+		Location = [.5, 1]
 		ShowExplicitTarget = false
 		Emitter = EmitterA
-		BlueprintArcSprite
-		
 	}
 
-	EmitterA : ~/EmitterBase	
+	EmitterA : ~/EmitterBase
 	{
 		ChainedTo = WeaponA
 		FireTrigger = WeaponA
@@ -75,17 +78,9 @@ Components
 
 	WeaponB : ~/WeaponBase
 	{
-		Location = [1.25, 1]
+		Location = [1, 1]
 		Emitter = EmitterB
-		BlueprintArcSprite
-		{
-			Texture = &/INDICATORS/WeaponArc
-			Size = [0, 1.5]
-			Color = [255, 0, 0, 63]
-		}
-		BlueprintArcRadius = 10
-		BlueprintArcSpriteSegments = 64
-			
+
 		CoverageSectorArc
 		{
 			Texture = &/INDICATORS/VerticalGradient
@@ -102,17 +97,32 @@ Components
 		ResourceStorage = MissileStorageB
 	}
 
+	WeaponC : ~/WeaponBase
+	{
+		Location = [1.5, 1]
+		ShowExplicitTarget = false
+		Emitter = EmitterC
+	}
+
+	EmitterC : ~/EmitterBase
+	{
+		ChainedTo = WeaponC
+		FireTrigger = WeaponC
+		GetTargetFrom = WeaponC
+		ResourceStorage = MissileStorageC
+	}
+
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerBelowAverage, FireModeToggle]
+		Toggles = [CommonReloadTimerSomewhatShort, FireModeToggle, CombinedMissileStorage]
 		Mode = All
 	}
 
 	CommonReloadResetTrigger
 	{
 		Type = MultiTrigger
-		Triggers = [WeaponA, WeaponB]
+		Triggers = [WeaponA, WeaponB, WeaponC]
 	}
 
 	LaunchEffectA : ~/LaunchEffectBase
@@ -125,6 +135,12 @@ Components
 	{
 		ChainedTo = WeaponB
 		Trigger = WeaponB
+	}
+
+	LaunchEffectC : ~/LaunchEffectBase
+	{
+		ChainedTo = WeaponC
+		Trigger = WeaponC
 	}
 
 	External_Walls_Graphics
@@ -158,7 +174,7 @@ Components
 	MissileSpritesA
 	{
 		Type = ResourceSprites
-		Location = [.7 + 2/64, 1.6]
+		Location = [.5 + 2/64, 1.6]
 		ResourceStorage = MissileStorageA
 		Layer = "weapons"
 		HasZeroResourceSprite = true
@@ -196,9 +212,16 @@ Components
 
 	MissileSpritesB : MissileSpritesA
 	{
-		Location = [1.3 - 2/64, 1.6]
+		Location = [1, 1.6]
 		ResourceStorage = MissileStorageB
 	}
+
+	MissileSpritesC : MissileSpritesB
+	{
+		Location = [1.5 - 2/64, 1.6]
+		ResourceStorage = MissileStorageC
+	}
+
 
 	DestroyedEffects
 	{
@@ -260,7 +283,7 @@ Components
 			// Out of missiles.
 			{
 				Toggle = MissilesPrereq
-				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerBelowAverage/Duration
+				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerSomewhatShort/Duration
 				AtlasSprite
 				{
 					File =  &/INDICATORS/NoQuantum
@@ -292,7 +315,13 @@ MissileStorageBase
 	DropResourcesWhenDestroyed = true
 	DropResourcesWhenRemoved = true
 }
-
+ReloadProgressBarB
+{
+	Type = ProgressBar
+	OperationalToggle = IsOperational
+	ShowProgressFor = WeaponBase
+	Invert = false
+}
 WeaponBase
 {
 	Type = TurretWeapon // This has an arc of 0, but we don't want to use FixedWeapon because that will only shot at things directly in the LOS.
@@ -300,7 +329,7 @@ WeaponBase
 	OperationalToggle = IsOperational
 	AutoFireToggle = AutoFireToggle
 	IgnoreSourceShipLowLOSChecks = true
-	FireInterval = 0 // Uses common reload timer.
+	FireInterval = 6 
 	FiringArc = 45d;
 	ValidArc = 45d;
 	FireThresholdAngle = 2d;
@@ -356,7 +385,7 @@ MissileStats
 		DamagePerSecond = (&DamagePerShot) * (&ROF)
 		Damage = [&../DamagePerShot, &../DamagePerSecond]
 		DamageArea = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
-		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerBelowAverage/Duration)
+		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerSomewhatShort/Duration)
 		RangeLimited = [&~/Part/Components/Bullet/Range/BaseValue, &~/Part/Components/Bullet/Range/MaxValue]
 		Arc = deg(&~/WeaponBase/ValidArc)
 		ShotLaunchSpeed = &~/EmitterBase/Bullet/Speed/BaseValue

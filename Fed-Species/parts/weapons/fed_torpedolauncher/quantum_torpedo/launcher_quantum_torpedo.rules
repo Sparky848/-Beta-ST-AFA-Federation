@@ -19,13 +19,19 @@ Components
 		// Nothing different.
 	}
 
+	MissileStorageC : ~/MissileStorageBase
+	{
+		// Nothing different.
+	}
+
 	CombinedMissileStorage
 	{
 		Type = MultiResourceStorage
 		ResourceType = torpedo_part
-		ResourceStorages = [MissileStorageA, MissileStorageB]
+		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
+		ToggleOnResources = 12
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
@@ -44,21 +50,22 @@ Components
 	MissilesPrereq
 	{
 		Type = MultiToggle
-		Toggles = [MissileStorageA, MissileStorageB]
-		Mode = Any
+		Toggles = [MissileStorageA, MissileStorageB, MissileStorageC]
+		Mode = All
 	}
 
 	ReloadProgressBar
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = CommonReloadTimerSortaShort
+		ShowProgressFor = CommonReloadTimerVeryShort
 		Invert = true
 	}
+	
 
 	WeaponA : ~/WeaponBase
 	{
-		Location = [.75, 1]
+		Location = [.5, 1]
 		ShowExplicitTarget = false
 		Emitter = EmitterA
 	}
@@ -73,7 +80,7 @@ Components
 
 	WeaponB : ~/WeaponBase
 	{
-		Location = [1.25, 1]
+		Location = [1, 1]
 		Emitter = EmitterB
 
 		CoverageSectorArc
@@ -92,17 +99,32 @@ Components
 		ResourceStorage = MissileStorageB
 	}
 
+	WeaponC : ~/WeaponBase
+	{
+		Location = [1.5, 1]
+		ShowExplicitTarget = false
+		Emitter = EmitterC
+	}
+
+	EmitterC : ~/EmitterBase
+	{
+		ChainedTo = WeaponC
+		FireTrigger = WeaponC
+		GetTargetFrom = WeaponC
+		ResourceStorage = MissileStorageC
+	}
+
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerSortaShort, FireModeToggle]
+		Toggles = [CommonReloadTimerVeryShort, FireModeToggle, CombinedMissileStorage]
 		Mode = All
 	}
 
 	CommonReloadResetTrigger
 	{
 		Type = MultiTrigger
-		Triggers = [WeaponA, WeaponB]
+		Triggers = [WeaponA, WeaponB, WeaponC]
 	}
 
 	LaunchEffectA : ~/LaunchEffectBase
@@ -115,6 +137,12 @@ Components
 	{
 		ChainedTo = WeaponB
 		Trigger = WeaponB
+	}
+
+	LaunchEffectC : ~/LaunchEffectBase
+	{
+		ChainedTo = WeaponC
+		Trigger = WeaponC
 	}
 
 	External_Walls_Graphics
@@ -148,7 +176,7 @@ Components
 	MissileSpritesA
 	{
 		Type = ResourceSprites
-		Location = [.7 + 2/64, 1.6]
+		Location = [.5 + 2/64, 1.6]
 		ResourceStorage = MissileStorageA
 		Layer = "weapons"
 		HasZeroResourceSprite = true
@@ -186,8 +214,14 @@ Components
 
 	MissileSpritesB : MissileSpritesA
 	{
-		Location = [1.3 - 2/64, 1.6]
+		Location = [1, 1.6]
 		ResourceStorage = MissileStorageB
+	}
+
+	MissileSpritesC : MissileSpritesB
+	{
+		Location = [1.5 - 2/64, 1.6]
+		ResourceStorage = MissileStorageC
 	}
 
 	DestroyedEffects
@@ -250,7 +284,7 @@ Components
 			// Out of missiles.
 			{
 				Toggle = MissilesPrereq
-				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerSortaShort/Duration
+				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerVeryShort/Duration
 				AtlasSprite
 				{
 					File =  &/INDICATORS/NoQuantum
@@ -290,7 +324,7 @@ WeaponBase
 	OperationalToggle = IsOperational
 	AutoFireToggle = AutoFireToggle
 	IgnoreSourceShipLowLOSChecks = true
-	FireInterval = 0 // Uses common reload timer.
+	FireInterval = 5 
 	FiringArc = 45d;
 	ValidArc = 45d;
 	FireThresholdAngle = 2d;
@@ -316,7 +350,7 @@ EmitterBase
 	Location = [1, 0]
 	ResourcesUsed = 4
 	Bullet = &<../../../../shots/quantum_torpedo_shot/quantum_torpedo_shot.rules>
-	TargetLeadPrediction = false
+	TargetLeadPrediction = true
 	Recoil = 50
 }
 
@@ -346,7 +380,7 @@ MissileStats
 		DamagePerSecond = (&DamagePerShot) * (&ROF)
 		Damage = [&../DamagePerShot, &../DamagePerSecond]
 		DamageArea = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
-		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerSortaShort/Duration)
+		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerVeryShort/Duration)
 		RangeLimited = [&~/Part/Components/Bullet/Range/BaseValue, &~/Part/Components/Bullet/Range/MaxValue]
 		Arc = deg(&~/WeaponBase/ValidArc)
 		ShotLaunchSpeed = &~/EmitterBase/Bullet/Speed/BaseValue

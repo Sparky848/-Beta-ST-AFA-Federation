@@ -20,7 +20,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 50d
+		TurnVelocity = 60d
 		Delay = .1
 		AvoidanceRaycastDistance = 250
 		VelocityCompensation = 60%
@@ -31,19 +31,19 @@ Components
 		Type = SameShipRetarget
 	}
 
-	Acceleration
-	{
-		Type = Acceleration
-		Acceleration = 90
-	}
+//	Acceleration
+//	{
+//		Type = Acceleration
+//		Acceleration = 90
+//	}
 
-	NegativeAcceleration
-	{
-		Type = Acceleration
-		Acceleration = [-90, 0]
-		AccelerationOverTime = [0, .75]
-		Direction = FrameOfReferenceVelocity
-	}
+//	NegativeAcceleration
+//	{
+//		Type = Acceleration
+//		Acceleration = [-90, 0]
+//		AccelerationOverTime = [0, .75]
+//		Direction = FrameOfReferenceVelocity
+//	}
 
 	DeathByLifetime
 	{
@@ -120,6 +120,16 @@ Components
 					StatusValue = 1
 					StatusValueType = Interpolated
 					NDamage = 1500
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 10000
+					Radius = 3
+					Slices = 1
+					Filter
+					{
+						OnlyPartCategories = [armor]
+					}
 				}
 				{
 					Type = Impulse;
@@ -226,7 +236,7 @@ Components
 					SampleMode = Linear
 					MipLevels = max
 				}
-				Size = [2, 2]
+				Size = [3, 3]//[2, 2]
 			}
 			FrameCount = 8
 			FrameSize = [128, 128]
@@ -249,8 +259,8 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [6, 6]
-			VertexColor = [119, 202, 225]
+			Size = [9, 9]//[6, 6]
+			VertexColor = [72, 175, 225]//[119, 202, 225]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
 			_litReflectiveStrength = 24
@@ -275,7 +285,7 @@ Components
 					MipLevels = max
 					SampleMode = Linear
 				}
-				Size = [18.2, 18.2]
+				Size = [27.3, 27.3] //[18.2, 18.2]
 				//VertexColor = [255, 255, 255]
 				TargetBlendMode = Add
 				Shader = "./Data/common_effects/fancy_light.shader"

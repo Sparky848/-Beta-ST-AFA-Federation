@@ -93,7 +93,23 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = PowerToggle
 			CommandPoints = 5
 		}
-
+		IsFullAmmo
+		{
+			Type = ThresholdToggle
+			ValueFrom = MissileStorageBase
+			MinAmount = 100%
+		}
+		MissileStorageBase
+		{
+			Type = ResourceStorage
+			ResourceType = torpedo_part
+			MaxResources = 4
+			ToggleOnResources = 4
+			ToggleOffResources = 3
+			DelayBeforeReadyToUse = .5
+			DropResourcesWhenDestroyed = true
+			DropResourcesWhenRemoved = true
+		}
 		FireModeToggle
 		{
 			Type = UIToggle
