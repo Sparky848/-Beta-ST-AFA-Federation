@@ -295,9 +295,9 @@ WeaponBase
 	IgnoreSourceShipLowLOSChecks = true
 	FireInterval = 0 // Uses common reload timer.
 	FiringArc = 0d;
-	ValidArc = 45d;
-	FireThresholdAngle = 45d;
-	RotateSpeed = 0d
+	ValidArc = 65d;
+	FireThresholdAngle = 65d;
+	RotateSpeed = 360d
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 1600
 	FirePermissionToggle = FirePermissionToggle

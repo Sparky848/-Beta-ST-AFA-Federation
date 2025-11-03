@@ -315,13 +315,7 @@ MissileStorageBase
 	DropResourcesWhenDestroyed = true
 	DropResourcesWhenRemoved = true
 }
-ReloadProgressBarB
-{
-	Type = ProgressBar
-	OperationalToggle = IsOperational
-	ShowProgressFor = WeaponBase
-	Invert = false
-}
+
 WeaponBase
 {
 	Type = TurretWeapon // This has an arc of 0, but we don't want to use FixedWeapon because that will only shot at things directly in the LOS.
@@ -330,10 +324,10 @@ WeaponBase
 	AutoFireToggle = AutoFireToggle
 	IgnoreSourceShipLowLOSChecks = true
 	FireInterval = 6 
-	FiringArc = 45d;
-	ValidArc = 45d;
+	FiringArc = 75d;
+	ValidArc = 75d;
 	FireThresholdAngle = 2d;
-	RotateSpeed = 0d
+	RotateSpeed = 360d
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 1600
 	FirePermissionToggle = FirePermissionToggle
@@ -346,6 +340,21 @@ WeaponBase
 			//EnableInDirectControlMode = true
 		}
 	]
+	BlueprintArcSprite
+	{
+		Texture = &/INDICATORS/WeaponArc
+		Size = [0, 1.5]
+		Color = [255, 0, 0, 63]
+	}
+	BlueprintArcRadius = 10
+	BlueprintArcSpriteSegments = 64
+		
+	CoverageSectorArc
+	{
+		Texture = &/INDICATORS/VerticalGradient
+		VertexColor = [255, 255, 255, 51]
+		QuadCount = 64
+	}
 }
 
 EmitterBase

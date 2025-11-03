@@ -6,7 +6,7 @@ IdealRange
 	{ BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
 ]
 IdealRadius = [5, 50]
-Speed = { BaseValue=100; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=120; }
+Speed = { BaseValue=150; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=180; }
 
 Components
 {
@@ -20,7 +20,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 60d
+		TurnVelocity = 90d
 		Delay = .1
 		AvoidanceRaycastDistance = 250
 		VelocityCompensation = 60%
@@ -31,19 +31,19 @@ Components
 		Type = SameShipRetarget
 	}
 
-//	Acceleration
-//	{
-//		Type = Acceleration
-//		Acceleration = 90
-//	}
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 90
+	}
 
-//	NegativeAcceleration
-//	{
-//		Type = Acceleration
-//		Acceleration = [-90, 0]
-//		AccelerationOverTime = [0, .75]
-//		Direction = FrameOfReferenceVelocity
-//	}
+	NegativeAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-90, 0]
+		AccelerationOverTime = [0, .75]
+		Direction = FrameOfReferenceVelocity
+	}
 
 	DeathByLifetime
 	{

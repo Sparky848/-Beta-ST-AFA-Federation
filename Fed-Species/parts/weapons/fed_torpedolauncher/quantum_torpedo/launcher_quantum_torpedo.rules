@@ -325,10 +325,10 @@ WeaponBase
 	AutoFireToggle = AutoFireToggle
 	IgnoreSourceShipLowLOSChecks = true
 	FireInterval = 5 
-	FiringArc = 45d;
-	ValidArc = 45d;
+	FiringArc = 90d;
+	ValidArc = 90d;
 	FireThresholdAngle = 2d;
-	RotateSpeed = 0d
+	RotateSpeed = 360d
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 1600
 	FirePermissionToggle = FirePermissionToggle

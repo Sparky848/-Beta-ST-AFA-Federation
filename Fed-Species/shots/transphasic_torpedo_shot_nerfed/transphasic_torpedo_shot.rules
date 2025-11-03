@@ -137,6 +137,20 @@ Components
 						Friendlies = true
 					}
 				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 200000
+					Radius = 5
+					ExpandDuration = 0.05
+					ExpandStartRadius = 6
+					ExpandLoss = 50%
+					ImpulsePerNDamage = 4
+					NDamage = 1000
+					Filter
+					{
+						OnlyPartCategories = [durarmour]
+					}
+				}
 			]
 
 			MediaEffects

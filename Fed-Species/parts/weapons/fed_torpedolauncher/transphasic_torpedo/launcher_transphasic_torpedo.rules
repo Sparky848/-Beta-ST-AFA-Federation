@@ -91,7 +91,6 @@ Components
 				EnableInDirectControlMode = true
 			}
 		]
-
 		BlueprintArcSprite
 		{
 			Texture = &/INDICATORS/WeaponArc
@@ -100,7 +99,7 @@ Components
 		}
 		BlueprintArcRadius = 10
 		BlueprintArcSpriteSegments = 64
-
+			
 		CoverageSectorArc
 		{
 			Texture = &/INDICATORS/VerticalGradient

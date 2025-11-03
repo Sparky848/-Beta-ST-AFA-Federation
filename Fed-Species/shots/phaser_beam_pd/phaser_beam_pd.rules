@@ -16,7 +16,7 @@ HitNothing
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 1000
+			TotalDamage = 110//1000
 			Radius = 1
 			Slices = 1
 			Filter
@@ -97,7 +97,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 25
+			Damage = 45//25
 		}
 		{
 			Type = Impulse
