@@ -89,7 +89,13 @@ Parts
 	&<misc/fed_gen1refitbussard_collector_1x1/fed_gen1refitbussard_collector_1x1.rules>/Part
 	&<misc/fed_gen1refitbussard_collector_2x3/fed_gen1refitbussard_collector_2x3.rules>/Part
 	&<misc/fed_gen1refitbussard_collector_3x4/fed_gen1refitbussard_collector_3x4.rules>/Part
-	//&<misc/fed_galaxybussard_collector_3x4/fed_galaxybussard_collector_3x4.rules>/Part
+	&<misc/fed_galaxybussard_collector_1x1/fed_galaxybussard_collector_1x1.rules>/Part
+	&<misc/fed_galaxybussard_collector_2x3/fed_galaxybussard_collector_2x3.rules>/Part
+	&<misc/fed_galaxybussard_collector_3x4/fed_galaxybussard_collector_3x4.rules>/Part
+	&<misc/fed_galaxybussard_collector_5x7/fed_galaxybussard_collector_5x7.rules>/Part
+	&<misc/fed_altvoybussard_collector_1x2/fed_altvoybussard_collector_1x2.rules>/Part
+	&<misc/fed_altvoybussard_collector_2x4/fed_altvoybussard_collector_2x4.rules>/Part
+	&<misc/fed_altvoybussard_collector_3x5/fed_altvoybussard_collector_3x5.rules>/Part
 	
 	// AI Parts {Unused}
 	

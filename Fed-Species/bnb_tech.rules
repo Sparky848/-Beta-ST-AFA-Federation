@@ -286,7 +286,7 @@ Techs
 		]
 		Cost = 5000
 		ToggleChoicesUnlocked = [[torpedo_type, 1]]
-		ResourcesUnlocked = [torpedo_part]
+		ResourcesUnlocked = [quantum_torpedo_part]
 		FundsThresholdBeforeOffered = 100000
 		Category = [weapons]
 	}
@@ -334,7 +334,7 @@ Techs
 		]
 		Cost = 5000
 		ToggleChoicesUnlocked = [[torpedo_type, 1]]
-		ResourcesUnlocked = [torpedo_part]
+		ResourcesUnlocked = [quantum_torpedo_part]
 		FundsThresholdBeforeOffered = 100000
 		Category = [weapons]
 	}
@@ -366,7 +366,7 @@ Techs
 		]
 		Cost = 5000
 		ToggleChoicesUnlocked = [[torpedo_type, 1]]
-		ResourcesUnlocked = [torpedo_part]
+		ResourcesUnlocked = [quantum_torpedo_part]
 		FundsThresholdBeforeOffered = 100000
 		Category = [weapons]
 	}

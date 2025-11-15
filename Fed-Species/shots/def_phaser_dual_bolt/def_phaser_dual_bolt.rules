@@ -34,14 +34,14 @@ Components
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = 600//{ BaseValue=1200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1800; }
+		Damage = 825//600//{ BaseValue=1200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1800; }
 	}
 
 	Hit
 	{
 		Type = PenetratingHit
 		SourcePartCollisionDelay = 0.1/30
-		Penetration = 2//{ BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
+		Penetration = 3//{ BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = true
@@ -54,7 +54,7 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 400//800
+					Amount = 750//400//800
 					TreatShieldAsPart = true
 				}
 			]
@@ -69,7 +69,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1250//2500
+					TotalDamage = 2000//1250//2500
 					Radius = 1.5
 					DamagePool = DamagePool
 				}
@@ -106,7 +106,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 300//{ BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
+					Damage = 450//{ BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
 				}
 				{
 					Type = Impulse;

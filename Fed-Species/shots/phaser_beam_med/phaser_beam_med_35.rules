@@ -160,9 +160,24 @@ HitOperational
 	[
 		{
 			Type = ExplosiveDamage
-			Radius = 1.75
+			Radius = 3
 			TotalDamage = { BaseValue=4750; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }//{ BaseValue=9075; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 			Slices = 1
+		}
+		{
+			Type = GridStatusApplication
+			StatusType = cosmoteer.heat
+			HitPartSourceRectType = Normal
+			StatusValue = 0
+			StatusValuePool
+			{
+				BaseValue = 1250
+				EffectScaleExponent = 1
+			}
+			MaxCost = 2
+			EmptyTileCost = Infinity
+			ValueFalloff = 1
+			FalloffPadding = 1
 		}
 		{
 			Type = Impulse;

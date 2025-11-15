@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/GalaxyBussardCollector3x4"
 	IconNameKey = "Parts/GalaxyBussardCollector3x4Icon"
 	ID = stafa.fed_galaxybussard_collector_3x4
-	EditorParentParts = [ "stafa.fed_gen1refitbussard_collector_1x1" ]
+	EditorParentParts = [ "stafa.fed_galaxybussard_collector_1x1" ]
 	DescriptionKey = "Parts/GalaxyBussardCollector3x4Desc"
 	Resources
 	[
@@ -63,7 +63,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		
+		BussardBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = HasBussard3
+			BuffAmount = { BaseValue=1; BuffType=HasBussard3; BuffMode=Add; }
+			BuffArea = [0, 4, 3, 1]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 3
+			}
+		}
 		Graphics
 		{
 			Type = Graphics
@@ -79,11 +92,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [3, 4]
 					}
 					{
-						File = "floor_33.png"
+						File = "floor.png"
 						Size = [3, 4]
 					}
 					{
-						File = "floor_66.png"
+						File = "floor.png"
 						Size = [3, 4]
 					}
 				]
@@ -257,6 +270,26 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [3, 4]
 						AnimationInterval = 0.1
 						AnimationStartTime = Zero
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_turrets"
+				
+				DamageLevels
+				[
+					{
+						File = "roof_glow1.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_glow_33_1.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_glow_66_1.png"
+						Size = [3, 4]
 					}
 				]
 			}

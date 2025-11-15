@@ -119,15 +119,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 //			OperationalToggle = PowerToggle
 //		}
 
-		BuffProvider
+//		BuffProvider
+//		{
+//			Type = GridBuffProvider
+//			BuffType = Engine
+//			BuffAmount = 30%
+//			GridDistance = 100
+//			OperationalToggle = PowerToggle
+//		}
+		BuffProvider2
 		{
 			Type = GridBuffProvider
-			BuffType = Engine
-			BuffAmount = 30%
+			BuffType = CaptainsRoomBuff
+			BuffAmount = 50%
 			GridDistance = 100
 			OperationalToggle = PowerToggle
 		}
-
 		CrewLocation1
 		{
 			Type = CrewLocation

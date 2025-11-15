@@ -57,6 +57,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
+		BussardBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = HasBussard2
+			BuffAmount = { BaseValue=1; BuffType=HasBussard2; BuffMode=Add; }
+			BuffArea = [0, 2, 2, 1]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 2
+			}
+		}
 		Collider
 		{
 			Type = PolygonCollider

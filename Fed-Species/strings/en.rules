@@ -91,7 +91,7 @@ Parts
     // Rooms
 	Captains_Room = "Captain's Ready Room"
 	Captains_Room_Icon = "Ready Room"
-	Captains_Room_Desc = "Room used to buff engine power and weapon range on a starship"\
+	Captains_Room_Desc = "Room used to buff projectile speed and weapon range on a starship"\
 						"\n<s14>The captain's ready room was a personal office reserved for the commanding officer of a starship and was typically accessed from the bridge.</s14>"
 	// Energy
 	Warpcore_small = "Small Warpcore"
@@ -303,6 +303,41 @@ Parts
 	Gen1RefitBussardCollector3x4Icon = "TOS Refit Bussard Collector 3x4"
 	Gen1RefitBussardCollector3x4Desc = "TOS Refit Bussard Collector 3x4\n"\
 									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	GalaxyBussardCollector3x4 = "TNG Bussard Collector 3x4"
+	GalaxyBussardCollector3x4Icon = "TNG Bussard Collector 3x4"
+	GalaxyBussardCollector3x4Desc = "TNG Bussard Collector 3x4\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	GalaxyBussardCollector2x3 = "TNG Bussard Collector 2x3"
+	GalaxyBussardCollector2x3Icon = "TNG Bussard Collector 2x3"
+	GalaxyBussardCollector2x3Desc = "TNG Bussard Collector 2x3\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	GalaxyBussardCollector1x1 = "TNG Bussard Collector 1x1"
+	GalaxyBussardCollector1x1Icon = "TNG Bussard Collector 1x1"
+	GalaxyBussardCollector1x1Desc = "TNG Bussard Collector 1x1\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	GalaxyBussardCollector5x7 = "TNG Bussard Collector 5x7"
+	GalaxyBussardCollector5x7Icon = "TNG Bussard Collector 5x7"
+	GalaxyBussardCollector5x7Desc = "TNG Bussard Collector 5x7\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	AltVoyBussardCollector3x5 = "Alt Voyager-A Bussard 3x5"
+	AltVoyBussardCollector3x5Icon = "Alt Voyager-A Bussard 3x5"
+	AltVoyBussardCollector3x5Desc = "Alt Voyager-A Bussard 3x5\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	AltVoyBussardCollector2x4 = "Alt Voyager-A Bussard 2x4"
+	AltVoyBussardCollector2x4Icon = "Alt Voyager-A Bussard 2x4"
+	AltVoyBussardCollector2x4Desc = "Alt Voyager-A Bussard 2x4\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	AltVoyBussardCollector1x2 = "Alt Voyager-A Bussard 1x2"
+	AltVoyBussardCollector1x2Icon = "Alt Voyager-A Bussard 1x2"
+	AltVoyBussardCollector1x2Desc = "Alt Voyager-A Bussard 1x2\n"\
+									"<s20><cyan>Currently only decorational</cyan></s20>"
 }
 
 Inputs
@@ -459,7 +494,7 @@ PartToggles
 
 	TorpedoType_Transphasic = "The ultimate torpedo, but is it worth the risk?\n\n"\
 						"<b>Transphasic Torpedo Launcher</b>\n\n"\
-						"<white>Build Cost:</white> <good>20</good><image name='transphasic_torpedo_part'/><gray>Parts</gray>, <good>20</good><image name='battery'/>"\
+						"<white>Build Cost:</white> <good>20</good><image name='transphasic_torpedo_part'/><gray>Parts</gray>, <good>20</good><image name='battery'/>\n"\
 						"<white>Max Damage:</white> <good>1,003,000</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>20</good><gray>metre radius</gray>\n"\
 						"<white>Range:</white> <good>200</good><gray>metres</gray>\n"\

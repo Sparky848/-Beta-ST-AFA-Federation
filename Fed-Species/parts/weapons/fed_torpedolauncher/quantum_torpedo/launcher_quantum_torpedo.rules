@@ -27,7 +27,7 @@ Components
 	CombinedMissileStorage
 	{
 		Type = MultiResourceStorage
-		ResourceType = torpedo_part
+		ResourceType = quantum_torpedo_part
 		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
@@ -39,7 +39,7 @@ Components
 	Consumer
 	{
 		Type = ResourceConsumer
-		ResourceType = torpedo_part
+		ResourceType = quantum_torpedo_part
 		Storage = CombinedMissileStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
 		OverridePriorityKey = MissileStorage
@@ -308,7 +308,7 @@ Components
 MissileStorageBase
 {
 	Type = ResourceStorage
-	ResourceType = torpedo_part
+	ResourceType = quantum_torpedo_part
 	MaxResources = 4
 	ToggleOnResources = 4
 	ToggleOffResources = 3

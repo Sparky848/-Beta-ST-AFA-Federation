@@ -70,7 +70,7 @@ Bullet : BASE
 	//					ResourceType = battery
 	//					TotalDrain = 1000
 	//					Radius = 3
-	/	/				Slices = 1
+	//				Slices = 1
 	///					Filter
 	//					{
 	//						Ships = true

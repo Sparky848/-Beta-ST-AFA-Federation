@@ -83,7 +83,7 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 4500
+					Amount = 3000//4500
 					TreatShieldAsPart = true
 				}
 			]
@@ -98,9 +98,17 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 10000
+					TotalDamage = 12500//10000
 					Radius = 2
 					Slices = 1
+				}
+				{
+					Type = Damage
+					Damage = 750
+					Filter
+					{
+						OnlyPartCategories = [durarmour]
+					}
 				}
 				{
 					Type = Impulse;
@@ -135,7 +143,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 150
+					TotalDamage = 300//150
 					Radius = 2
 				}
 				{

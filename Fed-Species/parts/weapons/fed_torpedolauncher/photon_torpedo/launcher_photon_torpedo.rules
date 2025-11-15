@@ -24,13 +24,19 @@ Components
 		// Nothing different.
 	}
 
+	MissileStorageD : ~/MissileStorageBase
+	{
+		// Nothing different.
+	}
+
 	CombinedMissileStorage
 	{
 		Type = MultiResourceStorage
 		ResourceType = torpedo_part
-		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC]
+		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC, MissileStorageD]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
+		ToggleOnResources = 16
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
@@ -49,8 +55,8 @@ Components
 	MissilesPrereq
 	{
 		Type = MultiToggle
-		Toggles = [MissileStorageA, MissileStorageB, MissileStorageC]
-		Mode = Any
+		Toggles = [MissileStorageA, MissileStorageB, MissileStorageC, MissileStorageD]
+		Mode = All
 	}
 
 	ReloadProgressBar
@@ -78,7 +84,7 @@ Components
 
 	WeaponB : ~/WeaponBase
 	{
-		Location = [1, 1]
+		Location = [1.5, 1]
 		Emitter = EmitterB
 
 		CoverageSectorArc
@@ -112,17 +118,32 @@ Components
 		ResourceStorage = MissileStorageC
 	}
 
+	WeaponD : ~/WeaponBase
+	{
+		Location = [1.5, 1]
+		ShowExplicitTarget = false
+		Emitter = EmitterD
+	}
+
+	EmitterD : ~/EmitterBase
+	{
+		ChainedTo = WeaponD
+		FireTrigger = WeaponD
+		GetTargetFrom = WeaponD
+		ResourceStorage = MissileStorageD
+	}
+
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerVeryShort, FireModeToggle]
+		Toggles = [CommonReloadTimerVeryShort, FireModeToggle, CombinedMissileStorage]
 		Mode = All
 	}
 
 	CommonReloadResetTrigger
 	{
 		Type = MultiTrigger
-		Triggers = [WeaponA, WeaponB, WeaponC]
+		Triggers = [WeaponA, WeaponB, WeaponC, WeaponD]
 	}
 
 	LaunchEffectA : ~/LaunchEffectBase
@@ -142,6 +163,13 @@ Components
 		ChainedTo = WeaponC
 		Trigger = WeaponC
 	}
+
+	LaunchEffectD : ~/LaunchEffectBase
+	{
+		ChainedTo = WeaponD
+		Trigger = WeaponD
+	}
+
 
 	External_Walls_Graphics
 	{
@@ -174,7 +202,7 @@ Components
 	MissileSpritesA
 	{
 		Type = ResourceSprites
-		Location = [.5 + 2/64, 1.6]
+		Location = [.765625, 1.6]
 		ResourceStorage = MissileStorageA
 		Layer = "weapons"
 		HasZeroResourceSprite = true
@@ -212,14 +240,20 @@ Components
 
 	MissileSpritesB : MissileSpritesA
 	{
-		Location = [1, 1.6]
+		Location = [.8203125, 1.6]
 		ResourceStorage = MissileStorageB
 	}
 
 	MissileSpritesC : MissileSpritesB
 	{
-		Location = [1.5 - 2/64, 1.6]
+		Location = [1.1640625, 1.6]
 		ResourceStorage = MissileStorageC
+	}
+
+	MissileSpritesD : MissileSpritesC
+	{
+		Location = [1.5078125, 1.6]
+		ResourceStorage = MissileStorageD
 	}
 
 	DestroyedEffects

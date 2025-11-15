@@ -70,14 +70,14 @@ Components
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = 15000//{ BaseValue=15000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=18000; }
+		Damage = 18000//15000
 	}
 
 	Hit
 	{
 		Type = PenetratingHit
 		SourcePartCollisionDelay = 1.5/30
-		Penetration = 6//{ BaseValue=15; BuffType=CaptainsRoomBuff; BuffMode=Multiply; }
+		Penetration = 8//6
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
 
@@ -92,8 +92,9 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 25000//{ BaseValue=25000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=32000; }
+					TotalDamage = 20000//25000
 					Radius = 2
+					Slices = 1
 				}
 				{
 					Type = Impulse
@@ -112,7 +113,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 16000
+					TotalDamage = 22000//16000
 					DamagePool = DamagePool
 					Radius = 5
 					StatusType = cosmoteer.fire
@@ -123,12 +124,22 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 10000
+					TotalDamage = 25000//10000
 					Radius = 3
 					Slices = 1
 					Filter
 					{
 						OnlyPartCategories = [armor]
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 32500
+					Radius = 2
+					Slices = 1
+					Filter
+					{
+						OnlyPartCategories = [durarmour]
 					}
 				}
 				{
@@ -166,7 +177,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = { BaseValue=4000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
+					TotalDamage = 17500//{ BaseValue=4000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
 					Radius = 2
 				}
 				{
@@ -197,10 +208,10 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = { BaseValue=6000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
+					TotalDamage = 12500//{ BaseValue=6000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
 					DamagePool = DamagePool
 					DoPooledDamageFirst = true
-					Radius = 3
+					Radius = 4//3
 					StatusType = cosmoteer.fire
 					StatusChancePerNDamage = 50%
 					StatusValue = 1
