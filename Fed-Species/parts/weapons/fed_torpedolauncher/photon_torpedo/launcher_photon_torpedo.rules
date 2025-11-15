@@ -202,7 +202,7 @@ Components
 	MissileSpritesA
 	{
 		Type = ResourceSprites
-		Location = [.765625, 1.6]
+		Location = [.46875, 1.6]
 		ResourceStorage = MissileStorageA
 		Layer = "weapons"
 		HasZeroResourceSprite = true
