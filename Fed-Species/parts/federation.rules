@@ -27,6 +27,7 @@ Parts
 
 	//&<weapons/fed_phaserbank_modular/fed_phaserbank_modular.rules>/Part
 	//&<weapons/fed_phaserbank_emitter/fed_phaserbank_emitter.rules>/Part
+	//&<weapons/fed_deflector_dish_2x2/fed_deflector_dish_2x2.rules>/Part
 
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
@@ -55,6 +56,8 @@ Parts
 	&<engines/fed_warpnacelle_extension_3x3/fed_warpnacelle_extension_3x3.rules>/Part
 	&<engines/fed_t6_warpnacelle_1x4/fed_t6_warpnacelle_1x4.rules>/Part
 	&<engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part
+	&<engines/fed_warpnacelle_extension_2x2/fed_warpnacelle_extension_2x2.rules>/Part
+	&<engines/fed_warpnacelle_extension_1x1/fed_warpnacelle_extension_1x1.rules>/Part
 
 	// Shields
 	&<shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part

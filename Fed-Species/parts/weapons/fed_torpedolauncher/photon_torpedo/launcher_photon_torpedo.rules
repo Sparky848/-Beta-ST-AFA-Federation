@@ -355,7 +355,7 @@ WeaponBase
 	Rotation = -90d
 	OperationalToggle = IsOperational
 	AutoFireToggle = AutoFireToggle
-	FireInterval = 0 // Uses common reload timer.
+	FireInterval = 4 
 	FiringArc = 0d;
 	ValidArc = 360d;
 	FireThresholdAngle = 180d;

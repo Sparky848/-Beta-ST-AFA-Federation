@@ -167,7 +167,13 @@ Parts
 	Warpnacelle_Extension_3x3_Icon = "Nacelle Extension 3"
 	Warpnacelle_Extension_3x3_Desc = "Nacelle extension that provides additional thrust to large nacelles"
 	
-							  
+	Warpnacelle_Extension_2x2 = "Nacelle Extension 2"
+	Warpnacelle_Extension_2x2_Icon = "Nacelle Extension 2"
+	Warpnacelle_Extension_2x2_Desc = "Nacelle extension that provides additional thrust to medium nacelles"		
+
+	Warpnacelle_Extension_1x1 = "Nacelle Extension 1"
+	Warpnacelle_Extension_1x1_Icon = "Nacelle Extension 1"
+	Warpnacelle_Extension_1x1_Desc = "Nacelle extension that provides additional thrust to small nacelles"					  
 	// Shields
 	ShieldCore = "Shieldcore"
 	ShieldCoreIcon = "Shieldcore"
@@ -387,62 +393,68 @@ PartToggles
 {
 	TorpedoType_Photon = "Simple, low cost torpedo\n\n"\
 						"<b>Photon Torpedo Launcher</b>\n\n"\
-						"<white>Max Damage:</white> <good>12,000</good><gray>/shot</gray>\n"\
+						"<white>Max Damage:</white> <good>15,000</good><gray>/shot</gray>\n"\
+						"<white>Extra Duranium Armour Damage:</white> <good>1,000</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>2</good><gray>metre radius</gray>\n"\
-						"<white>Shield Damage:</white> <good>5,000</good><gray>/shot</gray>\n"\
+						"<white>Shield Damage:</white> <good>4,000</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>320</good><gray>metres</gray>\n"\
-						"<white>Rate of Fire:</white> <good>0.25</good><gray>seconds</gray>\n"\
-						"<white>Shot Speed:</white> <good>40</good><gray>metres/sec</gray>\n"\
+						"<white>Rate of Fire:</white> <good>4</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>50</good><gray>metres/sec</gray>\n"\
 						"<white>Turn Velocity:</white> <good>240</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>65</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>800</good>\n"\
+						"<white>Health:</white> <good>1,000</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_Quantum = "Highly penetrative torpedo\n\n"\
 						"<b>Quantum Torpedo Launcher</b>\n\n"\
-						"<white>Damage Pool:</white> <good>15,000</good><gray>/shot</gray>\n"\
-						"<white>Max Damage:</white> <good>16,000</good><gray>/shot</gray>\n"\
+						"<white>Damage Pool:</white> <good>18,000</good><gray>/shot</gray>\n"\
+						"<white>Max Damage:</white> <good>19,000</good><gray>/shot</gray>\n"\
+						"<white>Extra Armour Damage:</white> <good>13,000</good><gray>/shot</gray>\n"\
+						"<white>Extra Duranium Armour Damage:</white> <good>28,500</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>5</good><gray>metre radius</gray>\n"\
 						"<white>Max Shield Damage:</white> <good>25,000</good><gray>/shot</gray>\n"\
-						"<white>Penetration:</white> <good>6</good><gray>metres</gray>\n"\
+						"<white>Penetration:</white> <good>8</good><gray>metres</gray>\n"\
 						"<white>Range:</white> <good>320</good><gray>metres</gray>\n"\
-						"<white>Rate of Fire:</white> <good>1</good><gray>seconds</gray>\n"\
-						"<white>Shot Speed:</white> <good>100</good><gray>metres/sec</gray>\n"\
-						"<white>Turn Velocity:</white> <good>50</good><gray>degrees/sec</gray>\n"\
+						"<white>Rate of Fire:</white> <good>5</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>150</good><gray>metres/sec</gray>\n"\
+						"<white>Turn Velocity:</white> <good>90</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>90</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>10</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>3,200</good>\n"\
+						"<white>Health:</white> <good>3,600</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_DeckPhoton = "Simple, low cost torpedo\n\n"\
 						"<b>Deck Photon Torpedo Launcher</b>\n\n"\
-						"<white>Max Damage:</white> <good>10,000</good><gray>/shot</gray>\n"\
+						"<white>Max Damage:</white> <good>12,500</good><gray>/shot</gray>\n"\
+						"<white>Extra Duranium Armour Damage:</white> <good>750</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>2</good><gray>metre radius</gray>\n"\
-						"<white>Shield Damage:</white> <good>4,500</good><gray>/shot</gray>\n"\
+						"<white>Shield Damage:</white> <good>3,000</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>320</good><gray>metres</gray>\n"\
-						"<white>Rate of Fire:</white> <good>0.5</good><gray>seconds</gray>\n"\
+						"<white>Rate of Fire:</white> <good>5</good><gray>seconds</gray>\n"\
 						"<white>Shot Speed:</white> <good>40</good><gray>metres/sec</gray>\n"\
 						"<white>Turn Velocity:</white> <good>200</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>55</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>500</good>\n"\
+						"<white>Health:</white> <good>800</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_DeckQuantum = "Highly penetrative torpedo\n\n"\
 						"<b>Deck Quantum Torpedo Launcher</b>\n\n"\
-						"<white>Damage Pool:</white> <good>12,500</good><gray>/shot</gray>\n"\
-						"<white>Max Damage:</white> <good>13,500</good><gray>/shot</gray>\n"\
+						"<white>Damage Pool:</white> <good>14,000</good><gray>/shot</gray>\n"\
+						"<white>Max Damage:</white> <good>12,500</good><gray>/shot</gray>\n"\
+						"<white>Extra Armour Damage:</white> <good>6,000</good><gray>/shot</gray>\n"\
+						"<white>Extra Duranium Armour Damage:</white> <good>18,500</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>4</good><gray>metre radius</gray>\n"\
-						"<white>Max Shield Damage:</white> <good>22,500</good><gray>/shot</gray>\n"\
-						"<white>Penetration:</white> <good>5</good><gray>metres</gray>\n"\
+						"<white>Max Shield Damage:</white> <good>9,250</good><gray>/shot</gray>\n"\
+						"<white>Penetration:</white> <good>6</good><gray>metres</gray>\n"\
 						"<white>Range:</white> <good>300</good><gray>metres</gray>\n"\
-						"<white>Rate of Fire:</white> <good>2.5</good><gray>seconds</gray>\n"\
-						"<white>Shot Speed:</white> <good>50</good><gray>metres/sec</gray>\n"\
-						"<white>Turn Velocity:</white> <good>45</good><gray>degrees/sec</gray>\n"\
+						"<white>Rate of Fire:</white> <good>6</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>100</good><gray>metres/sec</gray>\n"\
+						"<white>Turn Velocity:</white> <good>80</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>80</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>10</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>2,600</good>\n"\
+						"<white>Health:</white> <good>3,200</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_StandardPhoton = "Simple, low cost torpedo\n\n"\
@@ -456,7 +468,7 @@ PartToggles
 						"<white>Turn Velocity:</white> <good>180</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>45</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>400</good>\n"\
+						"<white>Health:</white> <good>700</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_StandardQuantum = "Highly penetrative torpedo\n\n"\
@@ -472,7 +484,7 @@ PartToggles
 						"<white>Turn Velocity:</white> <good>45</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>70</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>10</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>2,000</good>\n"\
+						"<white>Health:</white> <good>2,800</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_Tricobalt = "Slow torpedo that deals highly localised damage\n\n"\
@@ -485,11 +497,11 @@ PartToggles
 						"<white>Shield Damage:</white> <good>60,000</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>280</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
-						"<white>Shot Speed:</white> <good>40</good><gray>metres/sec</gray>\n"\
+						"<white>Shot Speed:</white> <good>70</good><gray>metres/sec</gray>\n"\
 						"<white>Turn Velocity:</white> <good>140</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>20</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>4,000</good>\n"\
+						"<white>Health:</white> <good>6,000</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_Transphasic = "The ultimate torpedo, but is it worth the risk?\n\n"\
@@ -503,7 +515,7 @@ PartToggles
 						"<white>Turn Velocity:</white> <good>145</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>65</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>30</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>1000</good>\n"\
+						"<white>Health:</white> <good>7,200</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 						
 	TorpedoType_Mine = "Cloaked Mine Launcher"//I really need to do this at some point

@@ -41,7 +41,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ThrustIncreaseTime = 4
 	ThrustRecoveryTime = 2
 	FuelUsage = 200
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, AntimatterPower, EnginePowerDistribution]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, AntimatterPower, Nacelle, NacelleThrust, NacelleRampUp, NacelleRampUpFinal, NacelleOperation, NacelleBatteryConnection, EnginePowerDistribution]
 	BlockedTravelCells
 	[
 		[0, 1]
@@ -59,6 +59,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[0, -1]
 		[1, -1]
+		[-1, 0]
+		[2, 0]
 	]
 	EditorIcon
 	{
@@ -77,7 +79,66 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Toggles = [PowerToggle, BatteryStorage, PartCrew]
 			Mode = All
 		}
+		ThrustBuffProvider
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = NacelleThrust
+			ChainsFromBuffType = Nacelle
+			BuffAmount = { BaseValue=0; BuffType=Nacelle; BuffMode=Add; }
+		}
+		IsConnected // Needed to be referenced by extenders.
+		{
+			Type = ToggleProxy
+			ComponentID = PowerToggle
+		}
+		EngineBuffProvider
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Nacelle
+			ChainsFromBuffType = Engine
+			BuffAmount = { BaseValue=100%; BuffType=Engine; BuffMode=Multiply; }
+		//	OperationalToggle = BatteryStorage
+		}
 
+		RampUpBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = NacelleRampUp
+			ChainsFromBuffType = Nacelle
+			BuffAmount = { BaseValue=0; BuffType=Nacelle; BuffMode=Add; }
+		}
+
+		InvThrustBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=NacelleThrust; BuffMode=Divide; }
+		}
+		RampUpFinalBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = NacelleRampUpFinal
+			ChainsFromBuffType = NacelleRampUp
+			BuffAmount = { BaseValue=0; BuffType=NacelleRampUp; BuffMode=Add; }
+			BuffMultiplier = InvThrustBuffValue
+		}
+
+		NacelleOperationBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = NacelleOperation
+			BuffArea = [0, -1, 2, 1]
+			OperationalToggle = IsOperational
+			ShowBuffRange = true
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 2
+				Bottom = 0
+			}
+		}
 		PowerToggle
 		{
 			Type = UIToggle

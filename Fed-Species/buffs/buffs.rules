@@ -413,3 +413,25 @@ HasBussard3
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
 }
+DeflectorCounter
+{
+	CombineMode = Add
+	BaseValue = 1
+}
+DeflectorDebuff
+{
+	CombineMode = Add
+	BaseValue = 0.8
+
+	Icon
+	{
+		Texture
+		{
+			File = "debuff_phaser.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+	IconPriority = 1 
+}

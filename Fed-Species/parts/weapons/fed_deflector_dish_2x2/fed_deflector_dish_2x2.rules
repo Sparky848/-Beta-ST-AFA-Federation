@@ -105,7 +105,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ToggledComponents
 			Toggle = DeflectorShieldPulseToggle
 			IncludeInBlueprints = true
-			Components = &<fed_dd2x1_shield_drain.rules>/Components
+			Components = &<fed_dd2x2_shield_drain.rules>/Components
 		}
 
 		BatteryStorage
@@ -115,17 +115,46 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResources = 12000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-		CommonGasStorage
+		BatteryConsumer
 		{
-			ResourceType = common_gas
-			MaxResources = 4000//going to use battery style for this. whereby 1 common_gas resource is 1000 units internally. Gives us more freedom for balancing
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		CloudyGasStorage
+		{
+			Type = ResourceStorage
+			ResourceType = cloudy_gas
+			MaxResources = 4
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		CloudyGasConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = cloudy_gas
+			Storage = CloudyGasStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 1
+			OperationalToggle = PowerToggle
 		}
 		ElectronGasStorage
 		{
+			Type = ResourceStorage
 			ResourceType = electron_gas
 			MaxResources = 2000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		ElectronGasConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = electron_gas
+			Storage = ElectronGasStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 1
+			OperationalToggle = PowerToggle
 		}
 		//Smaller Deflector won't use Ionic Gas, and thus be limited to weaker functions
 		InternalCapacity
@@ -137,7 +166,29 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			LowColor = [170, 183, 0]
 			HighColor = [238, 255, 0]
 			FullColor = [238, 255, 0]
-			Height = 7
+			Height = 4
+		}
+			InternalCloudyGasCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = CloudyGasStorage
+			Invert = false
+			LowColor = [115, 137, 155]
+			HighColor = [187, 224, 255]
+			FullColor = [187, 224, 255]
+			Height = 5
+		}
+		InternalElectronGasCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = ElectronGasStorage
+			Invert = false
+			LowColor = [105, 147, 45]
+			HighColor = [180, 155, 77]
+			FullColor = [180, 155, 77]
+			Height = 5
 		}
 		DeflectorDebuffProvider
 		{
@@ -160,87 +211,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffableValue
 			Value = { BaseValue=1; BuffType=DeflectorCounter; BuffMode=Add; }
 		}
-		ShieldPulseTurret
-		{
-			Type = TurretWeapon
-			Location = [.5, 1]
-			Rotation = -90d// Relative to unrotated part.
-			OperationalToggle = IsOperational
-			AutoFireToggle = AutoFireToggle
-			//FireInterval = 2/30
-			FireInterval = 60
-			FiringArc = 10d
-			RotateSpeed = 360d
-			FireThresholdAngle = 1d
-			AIFirepowerRating = 550
-			FirePermissionToggle = FireModeToggle
-			IgnoreSourceShipLowLOSChecks = true
-			Emitter = ShieldPulseBeamEmitter
 
-			AutoTargets
-			[
-				{
-					TargetType = ShipParts
-					Toggle = AutoTargetToggle
-				}
-			]
 
-			BlueprintArcSprite
-			{
-				Texture = &/INDICATORS/WeaponArc
-				Size = [0, 1.5]
-				Color = [255, 0, 0, 63]
-			}
-			BlueprintArcRadius = 10
-			BlueprintArcSpriteSegments = 64
-
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
-		}
-
-		ShieldPulseReloadProgressBar
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = ShieldPulseTurret
-			Invert = false
-		}
-		ShieldPulseBeamEmitter : //&<../../../shots/phaser_lance_nerfed/phaser_lance_nerfed.rules>
-		{
-			Type = BeamEmitter
-			ChainedTo = ShieldPulseTurret
-			FireTrigger = ShieldPulseTurret
-			GetTargetFrom = ShieldPulseTurret
-			OperationalToggle = IsOperational
-			FireDelay = 2
-			ResourceStorage = ShieldPulseStorage
-			ResourcesUsed = 
-			MinResourcesUsed = 
-			IncludeWhenUnderConstruction = false
-		}
-
-		ChargeEffect
-		{
-			Type = TriggeredEffects
-			ChainedTo = ShieldPulseTurret
-			Trigger = ShieldPulseTurret
-			Location = [.5, 1]
-			AnchorMediaEffects = true
-
-			MediaEffects
-			[
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "charge.wav"//temp
-					Volume = .25
-					Speed = 1.5
-				}
-			]
-		}
 		Graphics
 		{
 			Type = Graphics
@@ -308,6 +280,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
+		}
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [.65625, 1.27]
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [1.34375, 1.27]
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 2
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+				&../../CrewLocation2/Location
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+			]
 		}
 
 		OperationEffects

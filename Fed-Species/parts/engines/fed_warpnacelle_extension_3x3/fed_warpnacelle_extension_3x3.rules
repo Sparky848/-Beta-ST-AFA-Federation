@@ -91,20 +91,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
-		NacelleBuffProvider
-		{
-			Type = AreaBuffProvider
-			BuffType = Nacelle
-			BuffAmount = { BaseValue=0; BuffType=Nacelle; BuffMode=Add; }
-			BuffArea = [0, 3, 3, 1]
-			OperationalToggle = IsOperational
-			ChainsFromBuffType = Nacelle
-			Criteria
-			{
-			//	IDs = [stafa.fed_warpnacelle_extension_3x3, stafa.fed_warpnacelle_3x6, stafa.fed_warpnacelle_3x9]
-				Top = 3
-			}
-		}
+		
 		EngineBuffProvider
 		{
 			Type = SelfBuffProvider
@@ -119,7 +106,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffToggle
 			BuffType = NacelleOperation
 		}
-		
+		NacelleBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = Nacelle
+			BuffAmount = { BaseValue=0; BuffType=Nacelle; BuffMode=Add; }
+			BuffArea = [0, 3, 3, 1]
+			OperationalToggle = IsOperational
+			ChainsFromBuffType = Nacelle
+			ShowBuffRange = true
+			Criteria
+			{
+			//	IDs = [stafa.fed_warpnacelle_extension_3x3, stafa.fed_warpnacelle_3x6, stafa.fed_warpnacelle_3x9]
+				Top = 3
+				Right = 3
+			}
+		}
 		NacelleOperationBuffProvider
 		{
 			Type = AreaBuffProvider
@@ -127,6 +129,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 3, 1]
 			OperationalToggle = IsOperational
 			ChainsFromBuffType = NacelleOperation
+			ShowBuffRange = true
 			Criteria
 			{
 				Rot = 0
@@ -134,12 +137,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Right = 3
 				Bottom = 0
 			}
-		}
-		IsConnected
-		{
-			Type = MultiToggle
-			Toggles = [PowerToggle, IsConnectedProxy]
-			Mode = All
 		}
 		IsConnectedProxy
 		{
@@ -150,7 +147,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				IDs = [stafa.fed_warpnacelle_extension_3x3, stafa.fed_warpnacelle_3x9, stafa.fed_warpnacelle_3x6, stafa.fed_neb_warpnacelle_3x9]
 				Top = 3
+				Right = 3
 			}
+		}
+		IsConnected
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, IsConnectedProxy]
+			Mode = All
 		}
 		IsOperational
 		{

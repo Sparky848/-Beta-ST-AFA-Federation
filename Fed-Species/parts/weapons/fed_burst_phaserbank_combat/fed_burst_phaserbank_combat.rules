@@ -388,7 +388,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			//FireInterval = 2/30
-			FireInterval = 8
+			FireInterval = 11//8
 			FiringArc = 200d
 			RotateSpeed = 3600d
 			FireThresholdAngle = 0.25d
@@ -436,7 +436,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			//FireInterval = 2/30
-			FireInterval = 7
+			FireInterval = 11//7
 			FiringArc = 200d
 			RotateSpeed = 3600d
 			FireThresholdAngle = 0.25d
@@ -483,7 +483,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			//FireInterval = 2/30
-			FireInterval = 6
+			FireInterval = 11//6
 			FiringArc = 200d
 			RotateSpeed = 3600d
 			FireThresholdAngle = 0.25d
@@ -530,7 +530,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			//FireInterval = 2/30
-			FireInterval = 5
+			FireInterval = 11//5
 			FiringArc = 200d
 			RotateSpeed = 3600d
 			FireThresholdAngle = 0.25d
@@ -607,7 +607,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret
 			GetTargetFrom = Turret
 			OperationalToggle = IsOperational
-			FireDelay = 0
+			FireDelay = 2
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1
@@ -635,7 +635,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret2
 			GetTargetFrom = Turret2
 			OperationalToggle = IsOperational2
-			FireDelay = 0.5
+			FireDelay = 3//0.5
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1
@@ -664,7 +664,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret3
 			GetTargetFrom = Turret3
 			OperationalToggle = IsOperational
-			FireDelay = 1
+			FireDelay = 4//1
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1
@@ -692,7 +692,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret4
 			GetTargetFrom = Turret4
 			OperationalToggle = IsOperational
-			FireDelay = 1.5
+			FireDelay = 5//1.5
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1

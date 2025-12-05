@@ -362,7 +362,7 @@ WeaponBase
 	OperationalToggle = IsOperational
 	AutoFireToggle = AutoFireToggle
 	IgnoreSourceShipLowLOSChecks = true
-	FireInterval = 0 // Uses common reload timer.
+	FireInterval = 5 
 	FiringArc = 0d;
 	ValidArc = 360d;
 	FireThresholdAngle = 180d;

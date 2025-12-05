@@ -92,7 +92,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 20000//25000
+					TotalDamage = 17000//20000//25000
 					Radius = 2
 					Slices = 1
 				}
@@ -113,7 +113,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 22000//16000
+					TotalDamage = 19000//22000//16000
 					DamagePool = DamagePool
 					Radius = 5
 					StatusType = cosmoteer.fire
@@ -124,7 +124,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 25000//10000
+					TotalDamage = 13000//19000//25000//10000
 					Radius = 3
 					Slices = 1
 					Filter
@@ -134,7 +134,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 32500
+					TotalDamage = 28500//32500
 					Radius = 2
 					Slices = 1
 					Filter
@@ -144,7 +144,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 100;
+					Impulse = 70;//100
 				}
 			]
 
@@ -208,7 +208,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 12500//{ BaseValue=6000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
+					TotalDamage = 10000//12500//{ BaseValue=6000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
 					DamagePool = DamagePool
 					DoPooledDamageFirst = true
 					Radius = 4//3

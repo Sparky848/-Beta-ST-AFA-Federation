@@ -619,4 +619,27 @@ PartToggles
 			}
 		]
 	}
+	// Deflector Type
+	{
+		ToggleID = "deflector_type"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Photon Torpedo.
+			{
+				ChoiceID = "deflector_type_shield_drain"
+				ButtonToolTipKey = "PartToggles/DeflectorType_shield_drain"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "photon_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 ]

@@ -58,9 +58,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = PolygonCollider
 			Vertices
 			[
-				[1, .78125]
+				[.78125, 1]
 				[1, 1]
-				[0, 1]
+				[1, 0]
 			]
 		}
 

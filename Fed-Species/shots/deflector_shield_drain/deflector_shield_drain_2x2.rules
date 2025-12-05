@@ -1,0 +1,174 @@
+ID = "stafa.fed_deflector_shield_drain_2x2"
+Range = 300
+IdealRange
+[
+	250
+	325
+]
+Duration = 4
+HitInterval = .1
+Width = 1
+SourceShipLowCollisions = false
+ReceivableBuffs = [DeflectorDebuff]
+BeamMediaEffects
+[
+	// The beam itself.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			Texture2
+			{
+				File = ./Data/common_effects/particles/spark.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "./Data/shots/ion_beam/ion_beam.shader"
+			_gradientPow = 0.35
+			_sineFreq = 2.5
+			_sineAmp = 0.03
+			_noiseAmp = 0.12
+			_gradientIntensity = 3
+			_endCapSize = .125
+			Size = [100%, 0.7]
+			VertexColor = [255, 138, 0, 217]
+			_baseColor = [1, 0.5411, 0, 1]
+			_halfHighlightColor = [0.698, 0.439, 0.145098, 1]
+			//VertexColor = [255, 200, 0, 217]
+			//_baseColor = [1, 0.784, 0, 1]
+			//_halfHighlightColor = [0.698, 0.685, 0.145098, 1]
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		RandomTimeOffset = [0, 1]
+		Bucket = Upper1
+	}
+	&<particles/phaser_beam_emit_sparks.rules>
+	&<particles/phaser_beam_hit.rules>
+	&<particles/phaser_beam_hit_flash.rules>
+	// Beam lighting.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = "beam.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 0.8]
+			_extraBeginLength = (&Size/1) / 2
+			_extraEndLength = (&Size/1) / 2
+			VertexColor = [255, 255, 0, 255]
+			_z = 0.1
+			_litReflectiveStrength = 8
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.25
+			_nrmlStrengthLimit = 0.2
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper4
+		IsLight = true
+		FadeInTime = .5
+		FadeOutTime = .1
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "light_phasor_beam.wav"
+		Volume = 1
+		Speed = 1
+		MaxConcurrent = 1
+		RampUpTime = .5
+		RampDownTime = .5
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+
+]
+
+HitShield
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 2000
+		}
+		{
+			Type = ExplosiveResourceDrain
+			ResourceType = battery
+			TotalDrain = { BaseValue = 2000; EffectScaleExponent = 1 }
+			Radius = 6
+			Slices = 1
+			Filter
+			{
+				Ships = true
+				Shields = true
+				Friendlies = true
+			}
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/phaser_beam_hit.rules>
+		&<particles/phaser_beam_hit_flash.rules>
+		&<particles/phaser_beam_hit_sparks.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
+HitOperational
+
+
+HitStructural

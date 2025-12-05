@@ -274,6 +274,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = Timer
 			Duration = 4
 			StartTrigger = DeployedTrigger
+			Autostart = true
 		}
 		CanFire
 		{
@@ -288,7 +289,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			//AutoOffTrigger = ShouldTurnOffForceFireTrigger
 			//OperationalToggle = IsOperational
-			RememberValue = false
+			RememberValue = true
 		}
 		TurretGraphics
 		{
@@ -347,7 +348,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
-		DeployAnimation
+		RoofDeployAnimation
 		{
 			Type = OpenCloseSprite
 			Location = [.5, 1]
@@ -372,9 +373,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						"roof12.png"
 						"roof13.png"
 						"roof14.png"
+						"roof15.png"
+						"roof16.png"
 					]
 					NormalsAnimationFiles
 					[
+						"roof_normals.png"
+						"roof_normals.png"
 						"roof_normals.png"
 						"roof_normals.png"
 						"roof_normals.png"
@@ -398,37 +403,41 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					AnimationFiles
 					[
-						"roof1.png"
-						"roof2.png"
-						"roof3.png"
-						"roof4.png"
-						"roof5.png"
-						"roof6.png"
-						"roof7.png"
-						"roof8.png"
-						"roof9.png"
-						"roof10.png"
-						"roof11.png"
-						"roof12.png"
-						"roof13.png"
-						"roof14.png"
+						"roof_33_1.png"
+						"roof_33_2.png"
+						"roof_33_3.png"
+						"roof_33_4.png"
+						"roof_33_5.png"
+						"roof_33_6.png"
+						"roof_33_7.png"
+						"roof_33_8.png"
+						"roof_33_9.png"
+						"roof_33_10.png"
+						"roof_33_11.png"
+						"roof_33_12.png"
+						"roof_33_13.png"
+						"roof_33_14.png"
+						"roof_33_15.png"
+						"roof_33_16.png"
 					]
 					NormalsAnimationFiles
 					[
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
 					]
 					Size = [1, 2]
 					AnimationInterval = 0.307692307692
@@ -438,23 +447,27 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					AnimationFiles
 					[
-						"roof1.png"
-						"roof2.png"
-						"roof3.png"
-						"roof4.png"
-						"roof5.png"
-						"roof6.png"
-						"roof7.png"
-						"roof8.png"
-						"roof9.png"
-						"roof10.png"
-						"roof11.png"
-						"roof12.png"
-						"roof13.png"
-						"roof14.png"
+						"roof_66_1.png"
+						"roof_66_2.png"
+						"roof_66_3.png"
+						"roof_66_4.png"
+						"roof_66_5.png"
+						"roof_66_6.png"
+						"roof_66_7.png"
+						"roof_66_8.png"
+						"roof_66_9.png"
+						"roof_66_10.png"
+						"roof_66_11.png"
+						"roof_66_12.png"
+						"roof_66_13.png"
+						"roof_66_14.png"
+						"roof_66_15.png"
+						"roof_66_16.png"
 					]
 					NormalsAnimationFiles
 					[
+						"roof_normals.png"
+						"roof_normals.png"
 						"roof_normals.png"
 						"roof_normals.png"
 						"roof_normals.png"
@@ -481,6 +494,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					AnimationFiles
 					[
+						"roof15.png"	
+						"roof15.png"
 						"roof14.png"
 						"roof13.png"
 						"roof12.png"
@@ -498,20 +513,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					NormalsAnimationFiles
 					[
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
 					]
 					Size = [1, 2]
 					AnimationInterval = 0.307692307692
@@ -521,37 +538,41 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					AnimationFiles
 					[
-						"roof14.png"
-						"roof13.png"
-						"roof12.png"
-						"roof11.png"
-						"roof10.png"
-						"roof9.png"
-						"roof8.png"
-						"roof7.png"
-						"roof6.png"
-						"roof5.png"
-						"roof4.png"
-						"roof3.png"
-						"roof2.png"
-						"roof1.png"
+						"roof_33_15.png"
+						"roof_33_15.png"
+						"roof_33_14.png"
+						"roof_33_13.png"
+						"roof_33_12.png"
+						"roof_33_11.png"
+						"roof_33_10.png"
+						"roof_33_9.png"
+						"roof_33_8.png"
+						"roof_33_7.png"
+						"roof_33_6.png"
+						"roof_33_5.png"
+						"roof_33_4.png"
+						"roof_33_3.png"
+						"roof_33_2.png"
+						"roof_33_1.png"
 					]
 					NormalsAnimationFiles
 					[
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
+						"roof_normals_33.png"
 					]
 					Size = [1, 2]
 					AnimationInterval = 0.307692307692
@@ -561,37 +582,41 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					AnimationFiles
 					[
-						"roof14.png"
-						"roof13.png"
-						"roof12.png"
-						"roof11.png"
-						"roof10.png"
-						"roof9.png"
-						"roof8.png"
-						"roof7.png"
-						"roof6.png"
-						"roof5.png"
-						"roof4.png"
-						"roof3.png"
-						"roof2.png"
-						"roof1.png"
+						"roof_66_15.png"
+						"roof_66_15.png"
+						"roof_66_14.png"
+						"roof_66_13.png"
+						"roof_66_12.png"
+						"roof_66_11.png"
+						"roof_66_10.png"
+						"roof_66_9.png"
+						"roof_66_8.png"
+						"roof_66_7.png"
+						"roof_66_6.png"
+						"roof_66_5.png"
+						"roof_66_4.png"
+						"roof_66_3.png"
+						"roof_66_2.png"
+						"roof_66_1.png"
 					]
 					NormalsAnimationFiles
 					[
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
-						"roof_normals.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
+						"roof_normals_66.png"
 					]
 					Size = [1, 2]
 					AnimationInterval = 0.307692307692
@@ -600,6 +625,171 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
+
+		DeployAnimation
+		{
+			Type = OpenCloseSprite
+			Location = [.5, 1]
+			Layer = "doodads_low"
+			OperationalToggle = CannonShouldOpen
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"floor_turret_off.png"
+						"floor_turret2.png"
+						"floor_turret3.png"
+						"floor_turret4.png"
+						"floor_turret5.png"
+						"floor_turret6.png"
+						"floor_turret7.png"
+						"floor_turret8.png"
+						"floor_turret9.png"
+						"floor_turret10.png"
+						"floor_turret11.png"
+						"floor_turret12.png"
+						"floor_turret13.png"
+						"floor_turret14.png"
+						"floor_turret15.png"
+						"floor_turret16.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"floor_turret_off.png"
+						"floor_turret2.png"
+						"floor_turret3.png"
+						"floor_turret4.png"
+						"floor_turret5.png"
+						"floor_turret6.png"
+						"floor_turret7.png"
+						"floor_turret8.png"
+						"floor_turret9.png"
+						"floor_turret10.png"
+						"floor_turret11.png"
+						"floor_turret12.png"
+						"floor_turret13.png"
+						"floor_turret14.png"
+						"floor_turret15.png"
+						"floor_turret16.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"floor_turret_off.png"
+						"floor_turret2.png"
+						"floor_turret3.png"
+						"floor_turret4.png"
+						"floor_turret5.png"
+						"floor_turret6.png"
+						"floor_turret7.png"
+						"floor_turret8.png"
+						"floor_turret9.png"
+						"floor_turret10.png"
+						"floor_turret11.png"
+						"floor_turret12.png"
+						"floor_turret13.png"
+						"floor_turret14.png"
+						"floor_turret15.png"
+						"floor_turret16.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"floor_turret16.png"
+						"floor_turret15.png"
+						"floor_turret14.png"
+						"floor_turret13.png"
+						"floor_turret12.png"
+						"floor_turret11.png"
+						"floor_turret10.png"
+						"floor_turret9.png"
+						"floor_turret8.png"
+						"floor_turret7.png"
+						"floor_turret6.png"
+						"floor_turret5.png"
+						"floor_turret4.png"
+						"floor_turret3.png"
+						"floor_turret2.png"
+						"floor_turret_off.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"floor_turret16.png"
+						"floor_turret15.png"
+						"floor_turret14.png"
+						"floor_turret13.png"
+						"floor_turret12.png"
+						"floor_turret11.png"
+						"floor_turret10.png"
+						"floor_turret9.png"
+						"floor_turret8.png"
+						"floor_turret7.png"
+						"floor_turret6.png"
+						"floor_turret5.png"
+						"floor_turret4.png"
+						"floor_turret3.png"
+						"floor_turret2.png"
+						"floor_turret_off.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"floor_turret16.png"
+						"floor_turret15.png"
+						"floor_turret14.png"
+						"floor_turret13.png"
+						"floor_turret12.png"
+						"floor_turret11.png"
+						"floor_turret10.png"
+						"floor_turret9.png"
+						"floor_turret8.png"
+						"floor_turret7.png"
+						"floor_turret6.png"
+						"floor_turret5.png"
+						"floor_turret4.png"
+						"floor_turret3.png"
+						"floor_turret2.png"
+						"floor_turret_off.png"
+					]
+					Size = [1, 2]
+					AnimationInterval = 0.307692307692
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
 		Graphics
 		{
 			Type = Graphics
