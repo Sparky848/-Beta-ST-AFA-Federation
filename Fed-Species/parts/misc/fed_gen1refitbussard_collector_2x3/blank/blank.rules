@@ -1,0 +1,51 @@
+Components
+{
+	Graphics5
+	{
+		Type = Graphics
+		Location = [1, 1.5]
+		//OperationalToggle = IsUnOperational
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			
+			DamageLevels
+			[
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [2, 3]
+				}
+			]
+		}
+		Roof
+		{
+			Layer = "roofs"
+			DamageLevels
+			[
+				{
+					File = "roof_blank.png"
+					NormalsFile = "roof_normals.png"
+					Size = [2, 3]
+				}
+				{
+					File = "roof_blank_33.png"
+					NormalsFile = "roof_normals_33.png"
+					Size = [2, 3]
+				}
+				{
+					File = "roof_blank_66.png"
+					NormalsFile = "roof_normals_66.png"
+					Size = [2, 3]
+				}
+			]
+		}
+	}
+}

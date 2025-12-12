@@ -1,0 +1,186 @@
+ID = "stafa.fed_ejected_warpcore_small"
+Range = 0
+IdealRange = 0
+Speed = 0
+RandomRotation = true
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [4, 4]
+		Density = 2
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 6
+		HasTarget = false
+		OnDeath = &../Hit/HitOperational
+	}
+
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 4000
+		TargetCategories = [mine, stafa_torpedo]
+		OnDeath = &../Hit/HitOperational
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 3
+		SourceShipLowCollisions = false
+
+		HitShield
+		{
+			HitEffects
+			[
+				: ../../HitOperational/HitEffects/0
+				{
+					Amount = 406250
+					TreatShieldAsPart = true
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 812500
+					Radius = 62
+					Delay = .05
+					ExpandDuration = .08
+					ExpandStartRadius = 6
+					ExpandLoss = 50%
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 100%
+					StatusValue = 1
+					StatusValueType = Interpolated
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+						Junk = true
+						Neutrals = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 100000
+					Radius = 40
+					Delay = .05
+					ExpandDuration = .07
+					ExpandStartRadius = 4
+					StatusType = cosmoteer.heat
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 3
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Junk = true
+						Neutrals = true
+					}
+				}
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = 600000//1750000
+						EffectScaleExponent = 1
+					}
+					MaxCost = 37.5//MaxCost = 750
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+						Friendlies = true
+						Enemies = true
+						Junk = true
+						Neutrals = true
+					}
+				}
+			]
+			MediaEffectsScale = 1
+			MediaEffects
+			[
+				&<boom/reactor_explode_large.rules>
+				&<boom/reactor_explode_flash_large.rules>
+				&<boom/reactor_shockwave_large.rules>
+				&<./Data/common_effects/particles/explosions/huge_part_explode_debris.rules>
+				&<./Data/common_effects/particles/explosions/huge_part_explode_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["./Data/ships/terran/reactor_small/destroyed/destroyed_01.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_02.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_03.wav"]
+					Volume = 2
+					Speed = .5
+					SpeedVariation = .25 * (&Speed)
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .75
+					Duration = 4
+				}
+			]
+		}
+		HitStructural
+		{
+			// No effect.
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		Sprite
+		{
+			Texture
+			{
+				File = "floor_on.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [4, 4]
+		}
+	}
+}

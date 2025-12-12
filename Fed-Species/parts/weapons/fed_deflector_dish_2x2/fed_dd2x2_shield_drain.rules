@@ -62,7 +62,7 @@ Components
 		FireDelay = 5
 		ResourceStorage = BatteryStorage
 		ResourcesUsed = 11999
-		MinResourcesUsed = 1
+		MinResourcesUsed = 11999
 	}
 	ResourceUser : &<../../../shots/empty_beam/empty_beam.rules>
 	{
@@ -75,7 +75,7 @@ Components
 		FireDelay = 5
 		ResourceStorage = CloudyGasStorage
 		ResourcesUsed = 2
-		MinResourcesUsed = 1
+		MinResourcesUsed = 2
 	}
 
 

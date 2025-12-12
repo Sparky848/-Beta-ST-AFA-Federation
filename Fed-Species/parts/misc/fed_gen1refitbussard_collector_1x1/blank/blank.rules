@@ -1,0 +1,139 @@
+Components
+{
+	/*Graphics4
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = IsOperational
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			
+			DamageLevels
+			[
+				{
+					File = "floororbcasing.png"
+					Size = [1, 1]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [1, 1]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		OperationalRoofDoodad
+		{
+			Layer = "roof_turrets"
+			
+			DamageLevels
+			[
+				{
+					File = "roofglow1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		Roof
+		{
+			Layer = "roofs"
+			DamageLevels
+			[
+				{
+					File = "roof_blank.png"
+					NormalsFile = "roof_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roof_blank_33.png"
+					NormalsFile = "roof_normals_33.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roof_blank_66.png"
+					NormalsFile = "roof_normals_66.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}*/
+	Graphics5
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		//OperationalToggle = IsUnOperational
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			
+			DamageLevels
+			[
+				{
+					File = "floororbcasing.png"
+					Size = [1, 1]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [1, 1]
+				}
+				{
+					File = "floororbcasing.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		Roof
+		{
+			Layer = "roofs"
+			DamageLevels
+			[
+				{
+					File = "roof_blank.png"
+					NormalsFile = "roof_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roof_blank_33.png"
+					NormalsFile = "roof_normals_33.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roof_blank_66.png"
+					NormalsFile = "roof_normals_66.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		/*OperationalRoofDoodad
+		{
+			Layer = "roof_turrets"
+			
+			DamageLevels
+			[
+				{
+					File = "roofglow1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "roofglow1.png"
+					Size = [1, 1]
+				}
+			]
+		}*/
+	}
+}

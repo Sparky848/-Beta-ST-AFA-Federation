@@ -1,6 +1,6 @@
 ID = "st-afa.beta_federation"
 Name = "[Beta] ST-AFA - Federation"
-Version = "[Beta] 0.2.10"//look I always forget these so don't expect it to change :p
+Version = "[Beta] 0.2.11-pre"//look I always forget these so don't expect it to change :p
 Author = "ST-AFA Mod-Team"
 CompatibleGameVersions = ["0.30.1b"]
 ModifiesMultiplayer = true

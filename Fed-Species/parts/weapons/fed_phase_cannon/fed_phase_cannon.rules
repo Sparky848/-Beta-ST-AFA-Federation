@@ -53,6 +53,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Toggles = [PowerToggle, BatteryStorage, PartCrew, PhaseCannonStatus]
 			Mode = All
 		}
+		AltOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew, PhaseCannonStatus]
+			Mode = All
+		}
 
 		PowerToggle
 		{
@@ -175,8 +181,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			GetTargetFrom = Turret
 			OperationalToggle = CanFire
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 1000
-			MinResourcesUsed = 1
+			ResourcesUsed = 999
+			MinResourcesUsed = 999
 		}
 		
 		FireEffect
@@ -282,6 +288,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Toggles = [IsOperational, DeployedTimer]
 			Mode = All
 		}
+		AltCanFire
+		{
+			Type = MultiToggle
+			Toggles = [AltOperational, DeployedTimer]
+			Mode = All
+		}
 		PhaseCannonStatus
 		{
 			Type = UIToggle
@@ -296,7 +308,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = Graphics
 			ChainedTo = Turret
 			Rotation = 90d
-			OperationalToggle = CanFire
+			OperationalToggle = AltCanFire
 			OperationalDoodad
 			{
 				Layer = "roof_turrets"

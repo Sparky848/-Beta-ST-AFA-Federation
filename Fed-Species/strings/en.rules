@@ -67,9 +67,10 @@ Parts
 	Def_Dual_Phaser_Cannon_Icon = "Defiant's Phaser Cannon"
 	Def_Dual_Phaser_Cannon_Desc = "Defiant Class inspired dual cannons, fires rapid 4 shot bursts."\
 								"\nCan be placed behind 1 layer of armour"
-	StandardTorpedolauncherDeck = "Standard Torpedo Launcher"
-	StandardTorpedolauncherDeck_Icon = "Standard Torpedo Launcher"
-	StandardTorpedolauncherDeck_Desc = "A Standard Fire Torpedo Launcher, Capable of firing 1 torpedo every 2 seconds"
+	StandardTorpedolauncherDeck = "Micro Torpedo Launcher"
+	StandardTorpedolauncherDeck_Icon = "Micro Torpedo Launcher"
+	StandardTorpedolauncherDeck_Desc = "A Torpedo Launcher intended for use on shuttlecraft\n"\
+										"Capable of firing approximately 1 torpedo every 2 seconds"
 	Phaser_Lance2 = "Phaser Lance 2"
 	Phaser_Lance2_Icon = "Phaser Lance 2"
 	Phaser_Lance2_Desc = "The Ultimate Phaser {2}"
@@ -87,6 +88,12 @@ Parts
 	Phase_Cannon_Icon = "Phase Cannon"
 	Phase_Cannon_Desc = "Early phase-modulated weapon technology allowed for a ship mounted directed energy weapon, which proved a worthy successor to primitive Plasma Cannons."\
 						"\n <bad><s22>Requires 4 seconds to deploy once activated</s22></bad>"
+
+	Deflector_Dish_2x2 = "Small Deflector Dish"
+	Deflector_Dish_2x2Icon = "Small Deflector Dish"
+	Deflector_Dish_2x2Desc = "Heavy support style weapon, capable of turning <i>nebula derived gases</i> into incredibly potent pulses.\n\n"\
+							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n"\
+							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
 
     // Rooms
 	Captains_Room = "Captain's Ready Room"
@@ -123,6 +130,7 @@ Parts
 						"\n<color r='165' g='223' b='255' a='255'><s18>Crew cannot pass across the warpcore to the other side of the part</s18></color>"\
 						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	// Engines
+
 	Warpnacelle_3x6 = "Wide Warpnacelle"
 	Warpnacelle_3x6_Icon = "Warpnacelle 3x6"
 	Warpnacelle_3x6_Desc = "Delivers thrust and maneuverability to big federation starships, like Nebula classes"
@@ -174,6 +182,7 @@ Parts
 	Warpnacelle_Extension_1x1 = "Nacelle Extension 1"
 	Warpnacelle_Extension_1x1_Icon = "Nacelle Extension 1"
 	Warpnacelle_Extension_1x1_Desc = "Nacelle extension that provides additional thrust to small nacelles"					  
+	
 	// Shields
 	ShieldCore = "Shieldcore"
 	ShieldCoreIcon = "Shieldcore"
@@ -344,6 +353,12 @@ Parts
 	AltVoyBussardCollector1x2Icon = "Alt Voyager-A Bussard 1x2"
 	AltVoyBussardCollector1x2Desc = "Alt Voyager-A Bussard 1x2\n"\
 									"<s20><cyan>Currently only decorational</cyan></s20>"
+
+	Heavy_Dual_Phaser_Cannon = "Heavy Dual Phaser Cannon"
+	Heavy_Dual_Phaser_CannonIcon = "Heavy Dual Phaser Cannon"
+	Heavy_Dual_Phaser_CannonDesc = "Improving on earlier iterations, this weapon fires 3, 2 shot bursts of compressed nadions that rapidly diffuse into an enemies hull.\n"\
+								"<i>Initial impact causes a small explosion, followed by fires being set inside the enemy ship</i>\n"\
+								"<cyan>Longer barrels have slightly longer reload times</cyan>"
 }
 
 Inputs
@@ -590,8 +605,36 @@ PartToggles
 	//Colourable Parts Dependancy
 	OrangePhaser = "Orange Phaser"
 	RedPhaser = "Red Phaser"
+	//
 	RetractPhaseCannon = "Retract Phase Cannon"
 	DeployPhaseCannon = "Deploy Phase Cannon"
+
+	//
+	EjectedWarpcore = "<red><s25><i><b>One does not simply reverse fate</b></i></s25></red>"
+	WarpcoreNotEjected = "Eject the warpcore after 5 seconds, dropping it into open space\n"\
+					"<red> WARNING: THIS IS NOT REVERSIBLE</red>\n"\
+					"<cyan><s18> To rebuild: delete the old part and build a new core. If you don't, we are not liable for damages caused. ~ST-AFA Dev Team</s18></cyan>"
+
+	//HDPC Barrel Lengths
+	LeftSizeOne = "Left Barrel: 1 Tile"
+	LeftSizeTwo = "Left Barrel: 2 Tiles"
+	LeftSizeThree = "Left Barrel: 3 Tiles"
+
+	RightSizeOne = "Right Barrel: 1 Tile"
+	RightSizeTwo = "Right Barrel: 2 Tiles"
+	RightSizeThree = "Right Barrel: 3 Tiles"
+
+	//Refit TOS Bussard
+	RefBussard_Black = "Black"
+	RefBussard_Red = "Red"
+	RefBussard_Blue = "Blue"
+	RefBussard_Blank = "Blank"
+
+	//Deflector 2x2
+	DeflectorType_shield_drain= "Shield Drain\n"\
+								"<red><s18>Only damages shields</s18></red>"
+	DeflectorType_energy_drain = "Energy Drain\n"\
+								"<red><s18>Does not damage shields</s18></red>"
 }
 STAFAShips = "ST-AFA Ships"
 STAFAShipsTT = "Federation Vessels"

@@ -617,6 +617,20 @@ PartToggles
 					}
 				}
 			}
+			// Blank
+			{
+				ChoiceID = "refbussard_blank"
+				ButtonToolTipKey = "PartToggles/RefBussard_Blank"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "blank.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
 		]
 	}
 	// Deflector Type
@@ -626,7 +640,7 @@ PartToggles
 		ShowInEditor = true
 		Choices
 		[
-			// Photon Torpedo.
+			// Shield Drain
 			{
 				ChoiceID = "deflector_type_shield_drain"
 				ButtonToolTipKey = "PartToggles/DeflectorType_shield_drain"
@@ -635,6 +649,166 @@ PartToggles
 					Texture
 					{
 						File = "photon_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Energy Drain
+			{
+				ChoiceID = "deflector_type_energy_drain"
+				ButtonToolTipKey = "PartToggles/DeflectorType_energy_drain"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "quantum_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	//HDPC Left Size
+	{
+		ToggleID = "hdpc_left_size_toggle"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Size 1
+			{
+				ChoiceID = "hdpc_left_size_toggle1"
+				ButtonToolTipKey = "PartToggles/LeftSizeOne"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "left_size_toggle1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Size 2
+			{
+				ChoiceID = "hdpc_left_size_toggle2"
+				ButtonToolTipKey = "PartToggles/LeftSizeTwo"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "left_size_toggle2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Size 3
+			{
+				ChoiceID = "hdpc_left_size_toggle3"
+				ButtonToolTipKey = "PartToggles/LeftSizeThree"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "left_size_toggle3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	//HDPC Right Size
+	{
+		ToggleID = "hdpc_right_size_toggle"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Size 1
+			{
+				ChoiceID = "hdpc_right_size_toggle1"
+				ButtonToolTipKey = "PartToggles/RightSizeOne"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "right_size_toggle1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Size 2
+			{
+				ChoiceID = "hdpc_right_size_toggle2"
+				ButtonToolTipKey = "PartToggles/RightSizeTwo"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "right_size_toggle2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Size 3
+			{
+				ChoiceID = "hdpc_right_size_toggle3"
+				ButtonToolTipKey = "PartToggles/RightSizeThree"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "right_size_toggle3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Eject Warpcore
+	{
+		ToggleID = "warpcore_eject_toggle"
+		Style = CycledButton
+		MultipleModesDisplayOrder = Last
+		SortOrder = 1
+		Choices
+		[
+			// Normal
+			{
+				ChoiceID = "warpcore_not_ejected"
+				ButtonToolTipKey = "PartToggles/WarpcoreNotEjected"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "warpcore_eject.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Eject
+			{
+				ChoiceID = "ejected_warpcore"
+				ButtonToolTipKey = "PartToggles/EjectedWarpcore"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "warpcore_ejected.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

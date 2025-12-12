@@ -99,14 +99,329 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		
-		BatteryProducer
+		WarpcoreEject 
 		{
-			Type = ResourceConverter
-			OperationalToggle = IsOperational
-			ToStorage = BatteryStorage
-			ToQuantity = 200//50  (0.4/sec)
-			Interval = { BaseValue=0.5; BuffType=WarpcoreBuffSmall; BuffMode=Subtract; MinValue=0.20; }//
+			Type = UIToggle
+			ToggleID = "warpcore_eject_toggle"
+			Default = 0
+		}
+		WarpcoreIsActive
+		{
+			Type = ModeToggle
+			Mode = WarpcoreEject
+			OnMode = 0
+		}
+		WarpcoreEjectionCycle
+		{
+			Type = ModeToggle
+			Mode = WarpcoreEject
+			OnMode = 1
+		}
+		WarpcoreEjectTimerTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = WarpcoreEjectionCycle	
+		}
+		WarpcoreEjectTimer
+		{
+			Type = Timer
+			Duration = 5
+			StartTrigger = WarpcoreEjectTimerTrigger
+			AutoStart = false
+		}
+		WarpcoreActive
+		{
+			Type = ToggledComponents
+			Toggle = WarpcoreIsActive
+			Components
+			{
+				BatteryProducer
+				{
+					Type = ResourceConverter
+					OperationalToggle = IsOperational
+					ToStorage = BatteryStorage
+					ToQuantity = 200//50  (0.4/sec)
+					Interval = { BaseValue=0.5; BuffType=WarpcoreBuffSmall; BuffMode=Subtract; MinValue=0.20; }//
+				}
+				WarpcoreSmallBuffToggle
+				{
+					Type = BuffToggle
+					BuffType = WarpcoreBuffSmall
+				}
+				ResourceConverter//322.5 power per antimatter
+				{
+					Type = ResourceConverter
+					OperationalToggle = IsOperational
+					From
+					[
+						{
+							Storage = AntimatterSplitter
+							Quantity = 22//30
+						}
+					]
+					ToStorage = BatteryStorage
+					ToQuantity = 473
+					Interval = .075
+				}
+				ConvertEffects
+				{
+					Type = TriggeredEffects
+					Trigger = ResourceConverter
+					Location = [2, 2]
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioInterior
+						{
+							Sound = "../../../sounds/create_energy.wav"
+							Volume = .1
+							Speed = .5
+							SpeedVariation = .05
+						}
+					]
+				}
+				BuffProvider
+				{
+					Type = GridBuffProvider
+					OperationalToggle = IsOperational
+					BuffType = AntimatterPower
+					BuffAmount = 100%
+					GridDistance = 100
+				}
+				FtlEnergySubstation
+				{
+					Type = ResourceConverter
+					OperationalToggle = FtlDrive
+					From
+					[
+						{
+						Storage = BatteryStorage
+						Quantity = 500
+						MinQuantityForConversion = 500
+						}
+					]
+					To
+					[
+						{
+						Storage = FtlBatteryStorage
+						Quantity = 500
+						MinQuantityForConversion = 500
+						}
+					]
+					Interval = 0.3
+				}
+				// Hyperdrive
+				HyperiumStorage
+				{
+					Type = ResourceStorage
+					ResourceType = hyperium
+					MaxResources = 100
+					UITileRect = [0, 0, 1, 1]
+					ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PartDeliver
+					DropResourcesWhenDestroyed = true
+				}
+				HyperiumConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = hyperium
+					Storage = HyperiumStorage
+					DefaultPriority = &/PRIORITIES/Utility_Supply
+					OperationalToggle = PowerToggle
+					ConsumptionToggleButtonOffset = [0, -.4]
+				}
+				FtlBatteryStorage
+				{
+					Type = ResourceStorage
+					ResourceType = battery
+					MaxResources = 8000
+					StartingResources = &MaxResources
+					//InitToMaxResources = 0
+					ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+				}
+				// FtlBatteryConsumer
+				// {
+					// Type = ResourceConsumer
+					// ResourceType = battery
+					// Storage = FtlBatteryStorage
+					// DefaultPriority = &/PRIORITIES/Ftl_Supply
+					// OperationalToggle = FtlDrive
+					// AllowNonOperationalMinPriorityDelivery = false
+					// OverrideExclusiveCrewAssignment = true
+				// }
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = FtlDrive
+					ShowProgressFor = FtlBatteryStorage
+				}
+
+				FtlBatteryStorageCharging
+				{
+					Type = MultiResourceStorage
+					ResourceType = battery
+					ResourceStorages = [FtlBatteryStorage]
+					ToggleOnResources = 1
+					ToggleOffResources = 0
+				}
+				FtlBatteryStorageFull
+				{
+					Type = MultiResourceStorage
+					ResourceType = battery
+					ResourceStorages = [FtlBatteryStorage]
+					ToggleOnResources = 8000
+					ToggleOffResource = 7999
+				}
+
+				FtlDrive
+				{
+					Type = FtlDrive
+					OperationalToggle = IsOperational
+					PowerStorage = FtlBatteryStorage
+					FuelStorage = HyperiumStorage
+					SpinDownDuration = 5
+					JumpEfficiency = 80%
+					JumpEfficiencyDistanceRange = [10, 45]
+
+					JumpOutMediaEffects
+					[
+						&<./Data/ships/common/particles/ftl_lightning.rules>
+						// TODO: Fix size an spacing
+					]
+					JumpOutGateMediaEffects
+					[
+						&<./Data/ships/common/particles/ftl_gate_lightning_out.rules>
+
+						: /BASE_SOUNDS/AudioExteriorZoomless
+						{
+							Sound = "../../../sounds/warp_speed_in.wav"
+							Volume = 1
+							MaxConcurrentVolume = 1
+							Speed = 1
+							MaxConcurrent = 3
+						}
+					]
+					JumpInMediaEffects
+					[
+						: &<./Data/ships/common/particles/ftl_lightning.rules>
+						{
+							Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
+						}
+					]
+					JumpInGateMediaEffects
+					[
+						: &<./Data/ships/common/particles/ftl_gate_lightning_in.rules>
+						{
+							Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
+						}
+
+						: /BASE_SOUNDS/AudioExteriorZoomless
+						{
+							Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .8
+							Sound = "../../../sounds/warp_speed_out.wav"
+							Volume = 1
+							MaxConcurrentVolume = 1
+							Speed = 1
+							MaxConcurrent = 3
+						}
+					]
+				}
+				DestroyedEffects
+				{
+					Type = DeathEffects
+					Location = [2, 3]
+
+					MediaEffects
+					[
+						&<boom/reactor_explode_large.rules>
+						&<boom/reactor_explode_flash_large.rules>
+						&<boom/reactor_shockwave_large.rules>
+						&<./Data/common_effects/particles/explosions/huge_part_explode_debris.rules>
+						&<./Data/common_effects/particles/explosions/huge_part_explode_smoke.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							RandomSounds = ["./Data/ships/terran/reactor_small/destroyed/destroyed_01.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_02.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_03.wav"]
+							Volume = 2
+							Speed = .5
+							SpeedVariation = .25 * (&Speed)
+						}
+
+						: /BASE_SHAKE
+						{
+							ShakeAmount = .75
+							Duration = 4
+						}
+					]
+
+					HitEffects
+					[
+						{
+							Type = ExplosiveDamage
+							TotalDamage = 812500
+							Radius = 62
+							Delay = .05
+							ExpandDuration = .08
+							ExpandStartRadius = 6
+							ExpandLoss = 50%
+							StatusType = cosmoteer.fire
+							StatusChancePerNDamage = 100%
+							StatusValue = 1
+							StatusValueType = Interpolated
+							ImpulsePerNDamage = 5
+							NDamage = 1000
+							Filter
+							{
+								OperationalHealth = true
+								StructuralHealth = false
+								Friendlies = true
+							}
+						}
+						{
+							Type = ExplosiveDamage
+							TotalDamage = 100000
+							Radius = 40
+							Delay = .05
+							ExpandDuration = .07
+							ExpandStartRadius = 4
+							StatusType = cosmoteer.heat
+							StatusChancePerNDamage = 50%
+							StatusValue = 1
+							StatusValueType = Interpolated
+							ExpandLoss = 100%
+							ImpulsePerNDamage = 3
+							NDamage = 1000
+							Filter
+							{
+								OperationalHealth = false
+								StructuralHealth = true
+								Friendlies = true
+							}
+						}
+						{
+							Type = GridStatusApplication
+							StatusType = cosmoteer.heat
+							HitPartSourceRectType = Normal
+							StatusValue = 0
+							StatusValuePool
+							{
+								BaseValue = 600000//1750000
+								EffectScaleExponent = 1
+							}
+							MaxCost = 37.5//MaxCost = 750
+							EmptyTileCost = Infinity
+							ValueFalloff = 1
+							FalloffPadding = 1
+							Filter
+							{
+								Self = true
+								Friendlies = true
+								Enemies = true
+								Junk = true
+								Neutrals = true
+							}
+						}
+					]
+				}
+			}
 		}
 		//BatteryProducer2
 		//{
@@ -129,11 +444,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	//		Toggles = [IsConnected]
 	//		Mode = All
 	//	}
-		WarpcoreSmallBuffToggle
-		{
-			Type = BuffToggle
-			BuffType = WarpcoreBuffSmall
-		}
+		
 		//ExtendedBatteryStorage
 		//{
 		//	IsOperational = WarpcoreSmallBuffToggle
@@ -152,6 +463,31 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		//	Interval = 0.5
 		//	MinFromQuantityForConversion = 0
 		//}
+		WarpcoreEjectionMechanism
+		{
+			Type = TriggeredEffects
+			Trigger = WarpcoreEjectTimer
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<ejected_warpcore_small.rules>
+					Count = 1
+					Distance = 0
+					//Spread = [-5d, 5d]
+					InheritVelocity = true
+				}
+				{
+					Type = Damage
+					Damage = 5000
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+		}
 		BatteryStorage
 		{
 			Type = MultiResourceStorage
@@ -165,7 +501,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			AddMode = DistributeEvenly //PrioritizeLeastResources
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-			ExpectedResourceGenerationRate = { BaseValue = (&../../BatteryProducer/ToQuantity) / (&../../BatteryProducer/Interval/BaseValue); BuffType=WarpcoreBuffSmall; BuffMode=Multiply; }
+			//ExpectedResourceGenerationRate = { BaseValue = (&../../WarpcoreActive/Components/BatteryProducer/ToQuantity) / (&../../WarpcoreActive/Components/BatteryProducer/Interval/BaseValue); BuffType=WarpcoreBuffSmall; BuffMode=Multiply; }
 		}
 		InternalCapacity
 		{
@@ -219,37 +555,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
-		ResourceConverter//322.5 power per antimatter
-		{
-			Type = ResourceConverter
-			OperationalToggle = IsOperational
-			From
-			[
-				{
-					Storage = AntimatterSplitter
-					Quantity = 22//30
-				}
-			]
-			ToStorage = BatteryStorage
-			ToQuantity = 473
-			Interval = .075
-		}
-		ConvertEffects
-		{
-			Type = TriggeredEffects
-			Trigger = ResourceConverter
-			Location = [2, 2]
-			MediaEffects
-			[
-				: /BASE_SOUNDS/AudioInterior
-				{
-					Sound = "../../../sounds/create_energy.wav"
-					Volume = .1
-					Speed = .5
-					SpeedVariation = .05
-				}
-			]
-		}
+		
 		// BatteryProducer
 		// {
 			// Type = ResourceConverter
@@ -273,14 +579,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
 		}
 
-		BuffProvider
-		{
-			Type = GridBuffProvider
-			OperationalToggle = IsOperational
-			BuffType = AntimatterPower
-			BuffAmount = 100%
-			GridDistance = 100
-		}
+	
 		//EnergySubstation
 		//{
 		//	Type = ResourceConverter
@@ -292,143 +591,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		//	MinFromQuantityForConversion = 376
 		//}
 		
-		FtlEnergySubstation
-		{
-			Type = ResourceConverter
-			OperationalToggle = FtlDrive
-			From
-			[
-				{
-				Storage = BatteryStorage
-				Quantity = 500
-				MinQuantityForConversion = 500
-				}
-			]
-			To
-			[
-				{
-				Storage = FtlBatteryStorage
-				Quantity = 500
-				MinQuantityForConversion = 500
-				}
-			]
-			Interval = 0.3
-		}
-		// Hyperdrive
-		HyperiumStorage
-		{
-			Type = ResourceStorage
-			ResourceType = hyperium
-			MaxResources = 100
-			UITileRect = [0, 0, 1, 1]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PartDeliver
-			DropResourcesWhenDestroyed = true
-		}
-		HyperiumConsumer
-		{
-			Type = ResourceConsumer
-			ResourceType = hyperium
-			Storage = HyperiumStorage
-			DefaultPriority = &/PRIORITIES/Utility_Supply
-			OperationalToggle = PowerToggle
-			ConsumptionToggleButtonOffset = [0, -.4]
-		}
-		FtlBatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 8000
-			StartingResources = &MaxResources
-			//InitToMaxResources = 0
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		// FtlBatteryConsumer
-		// {
-			// Type = ResourceConsumer
-			// ResourceType = battery
-			// Storage = FtlBatteryStorage
-			// DefaultPriority = &/PRIORITIES/Ftl_Supply
-			// OperationalToggle = FtlDrive
-			// AllowNonOperationalMinPriorityDelivery = false
-			// OverrideExclusiveCrewAssignment = true
-		// }
-		ReloadProgressBar
-		{
-			Type = ProgressBar
-			OperationalToggle = FtlDrive
-			ShowProgressFor = FtlBatteryStorage
-		}
-
-		FtlBatteryStorageCharging
-		{
-			Type = MultiResourceStorage
-			ResourceType = battery
-			ResourceStorages = [FtlBatteryStorage]
-			ToggleOnResources = 1
-			ToggleOffResources = 0
-		}
-		FtlBatteryStorageFull
-		{
-			Type = MultiResourceStorage
-			ResourceType = battery
-			ResourceStorages = [FtlBatteryStorage]
-			ToggleOnResources = 8000
-			ToggleOffResource = 7999
-		}
-
-		FtlDrive
-		{
-			Type = FtlDrive
-			OperationalToggle = IsOperational
-			PowerStorage = FtlBatteryStorage
-			FuelStorage = HyperiumStorage
-			SpinDownDuration = 5
-			JumpEfficiency = 80%
-			JumpEfficiencyDistanceRange = [10, 45]
-
-			JumpOutMediaEffects
-			[
-				&<./Data/ships/common/particles/ftl_lightning.rules>
-				// TODO: Fix size an spacing
-			]
-			JumpOutGateMediaEffects
-			[
-				&<./Data/ships/common/particles/ftl_gate_lightning_out.rules>
-
-				: /BASE_SOUNDS/AudioExteriorZoomless
-				{
-					Sound = "../../../sounds/warp_speed_in.wav"
-					Volume = 1
-					MaxConcurrentVolume = 1
-					Speed = 1
-					MaxConcurrent = 3
-				}
-			]
-			JumpInMediaEffects
-			[
-				: &<./Data/ships/common/particles/ftl_lightning.rules>
-				{
-					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
-				}
-			]
-			JumpInGateMediaEffects
-			[
-				: &<./Data/ships/common/particles/ftl_gate_lightning_in.rules>
-				{
-					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
-				}
-
-				: /BASE_SOUNDS/AudioExteriorZoomless
-				{
-					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .8
-					Sound = "../../../sounds/warp_speed_out.wav"
-					Volume = 1
-					MaxConcurrentVolume = 1
-					Speed = 1
-					MaxConcurrent = 3
-				}
-			]
-		}
 
 		Graphics
 		{
@@ -648,103 +810,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 		}
 
-		DestroyedEffects
-		{
-			Type = DeathEffects
-			Location = [2, 3]
-
-			MediaEffects
-			[
-				&<boom/reactor_explode_large.rules>
-				&<boom/reactor_explode_flash_large.rules>
-				&<boom/reactor_shockwave_large.rules>
-				&<./Data/common_effects/particles/explosions/huge_part_explode_debris.rules>
-				&<./Data/common_effects/particles/explosions/huge_part_explode_smoke.rules>
-
-				: /BASE_SOUNDS/AudioExterior
-				{
-					RandomSounds = ["./Data/ships/terran/reactor_small/destroyed/destroyed_01.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_02.wav", "./Data/ships/terran/reactor_small/destroyed/destroyed_03.wav"]
-					Volume = 2
-					Speed = .5
-					SpeedVariation = .25 * (&Speed)
-				}
-
-				: /BASE_SHAKE
-				{
-					ShakeAmount = .75
-					Duration = 4
-				}
-			]
-
-			HitEffects
-			[
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 812500
-					Radius = 62
-					Delay = .05
-					ExpandDuration = .08
-					ExpandStartRadius = 6
-					ExpandLoss = 50%
-					StatusType = cosmoteer.fire
-					StatusChancePerNDamage = 100%
-					StatusValue = 1
-					StatusValueType = Interpolated
-					ImpulsePerNDamage = 5
-					NDamage = 1000
-					Filter
-					{
-						OperationalHealth = true
-						StructuralHealth = false
-						Friendlies = true
-					}
-				}
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 100000
-					Radius = 40
-					Delay = .05
-					ExpandDuration = .07
-					ExpandStartRadius = 4
-					StatusType = cosmoteer.heat
-					StatusChancePerNDamage = 50%
-					StatusValue = 1
-					StatusValueType = Interpolated
-					ExpandLoss = 100%
-					ImpulsePerNDamage = 3
-					NDamage = 1000
-					Filter
-					{
-						OperationalHealth = false
-						StructuralHealth = true
-						Friendlies = true
-					}
-				}
-				{
-					Type = GridStatusApplication
-					StatusType = cosmoteer.heat
-					HitPartSourceRectType = Normal
-					StatusValue = 0
-					StatusValuePool
-					{
-						BaseValue = 600000//1750000
-						EffectScaleExponent = 1
-					}
-					MaxCost = 37.5//MaxCost = 750
-					EmptyTileCost = Infinity
-					ValueFalloff = 1
-					FalloffPadding = 1
-					Filter
-					{
-						Self = true
-						Friendlies = true
-						Enemies = true
-						Junk = true
-						Neutrals = true
-					}
-				}
-			]
-		}
+		
 		
 		CrewLocation1
 		{
@@ -859,11 +925,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		BasePowerGen = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
-		AntimatterPowerGen = (&BasePowerGen) + ((&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval) / 1000)
+		BasePowerGen = (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/Interval/BaseValue) / 1000
+		AntimatterPowerGen = (&BasePowerGen) + ((&~/Part/Components/WarpcoreActive/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/ResourceConverter/Interval) / 1000)
 		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
 		//TransferRate = ((&~/Part/Components/EnergySubstation/From/0/MinQuantityForConversion) / (&~/Part/Components/EnergySubstation/Interval/BaseValue)) / 1000
-		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000 
 	}
 }

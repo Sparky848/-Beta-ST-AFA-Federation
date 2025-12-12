@@ -64,7 +64,7 @@ Components
 		FireDelay = 0.49
 		ResourceStorage = BatteryStorage
 		ResourcesUsed = 6750//1500
-		MinResourcesUsed = 1
+		MinResourcesUsed = 6750
 	}
 
 	ChargeEffect

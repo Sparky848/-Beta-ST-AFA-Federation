@@ -119,6 +119,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ShowBuffRange = true
 			Criteria
 			{
+				IDs = [stafa.fed_warpnacelle_extension_2x2, stafa.fed_warpnacelle_2x9, stafa.fed_warpnacelle_2x6]
 				Top = 2
 				Right = 2
 			}
@@ -133,6 +134,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ShowBuffRange = true
 			Criteria
 			{
+				IDs = [stafa.fed_warpnacelle_extension_2x2, stafa.fed_warpnacelle_2x9, stafa.fed_warpnacelle_2x6]
 				Rot = 0
 				Left = 0
 				Right = 2

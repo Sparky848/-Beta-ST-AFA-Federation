@@ -1,0 +1,655 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Warpnacelle_1x9"
+	IconNameKey = "Parts/Warpnacelle_1x9_Icon"
+	ID = "stafa.fed_warpnacelle_1x9_logo_ship" // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "StarfleetFlight"
+	DescriptionKey = "Parts/Warpnacelle_1x9_Desc"
+	Resources
+	[
+		[steel, 320]
+		[coil2, 90]
+		[tristeel, 50]
+		[antimatter, 3]
+//		[steel, 480]
+//		[coil2, 120]
+//		[tristeel, 60]
+//		[antimatter, 3]
+	]
+	TypeCategories = [thruster, uses_power, nacelle]
+	Size = [1, 9]
+	IsRotateable = true
+	IsBuildable = false
+	PhysicalRect = [0, 0, 1, 9]
+	SaveRect = &PhysicalRect
+	BoundingRectType = Physical
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeRotations = [0, 1, 3]
+	SelectionTypeID = "thrusters"
+	MaxHealth = 6750//4500 moving to 750 per tile
+	ProhibitRects
+	[
+		//[default, [-2, -3, 1, 1]]	// top
+		//[default, [2, -3, 1, 1]]	// top
+		//[default, [3, -2, 1, 3]]	// top right
+		//[default, [-3, -2, 1, 3]]	// top left
+		//[default, [-3, 2, 1, 1]]	// single block
+		//[default, [-3, 5, 1, 1]]	// single block
+		//[default, [3, 2, 1, 1]]		// single block
+		//[default, [3, 5, 1, 1]]		// single block
+		[default, [2, 7, 1, 5]]		// bottom right
+		[default, [-2, 7, 1, 5]]	// bottom left
+		[default, [-1, 12, 3, 200]]	// bottom
+	]
+	ThrusterForce = 9000
+	ThrustIncreaseTime = 4
+	ThrustRecoveryTime = 2
+	FuelUsage = 400
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, AntimatterPower, Nacelle, NacelleThrust, NacelleRampUp, NacelleRampUpFinal, NacelleOperation, NacelleBatteryConnection, EnginePowerDistribution]
+	BlockedTravelCells
+	[
+		[0, 1]
+		[0, 2]
+		[0, 3]
+		[0, 4]
+		[0, 5]
+		[0, 6]
+		[0, 7]
+		[0, 8]
+	]
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[-1, 0]
+		[1, 0]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [7.11, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+		ThrustBuffProvider
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = NacelleThrust
+			ChainsFromBuffType = Nacelle
+			BuffAmount = { BaseValue=0; BuffType=Nacelle; BuffMode=Add; }
+		}
+		IsConnected // Needed to be referenced by extenders.
+		{
+			Type = ToggleProxy
+			ComponentID = PowerToggle
+		}
+		EngineBuffProvider
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Nacelle
+			ChainsFromBuffType = Engine
+			BuffAmount = { BaseValue=100%; BuffType=Engine; BuffMode=Multiply; }
+		//	OperationalToggle = BatteryStorage
+		}
+
+		RampUpBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = NacelleRampUp
+			ChainsFromBuffType = Nacelle
+			BuffAmount = { BaseValue=0; BuffType=Nacelle; BuffMode=Add; }
+		}
+
+		InvThrustBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=NacelleThrust; BuffMode=Divide; }
+		}
+		RampUpFinalBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = NacelleRampUpFinal
+			ChainsFromBuffType = NacelleRampUp
+			BuffAmount = { BaseValue=0; BuffType=NacelleRampUp; BuffMode=Add; }
+			BuffMultiplier = InvThrustBuffValue
+		}
+
+		NacelleOperationBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = NacelleOperation
+			BuffArea = [0, -1, 1, 1]
+			OperationalToggle = IsOperational
+			ShowBuffRange = true
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 1
+				Bottom = 0
+			}
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 9
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 8000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		ThrustAmountForward
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterBottom
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
+		ThrustAmountRight
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterLeft
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
+		ThrustAmountLeft
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterRight
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
+		ThrustAmountReverse
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainThrusterTop
+			Invert = false
+			LowColor = [39, 128, 128]
+			HighColor = [39, 235, 235]
+			FullColor = [39, 245, 245]
+			Height = 4
+		}
+		FtlEfficiency
+		{
+			Type = FtlDrive
+			OperationalToggle = IsOperational
+			SpinDownDuration = 0
+			JumpEfficiency = 50%
+			JumpEfficiencyDistanceRange = [6, 22]
+		}
+		EngineBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = Engine
+		}
+		ToggledBatteryConsumer
+		{
+			Type = ToggledComponents
+			Toggle = EngineBuffToggle
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				BatteryConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = battery
+					Storage = BatteryStorage
+					DefaultPriority = &/PRIORITIES/Thruster_Supply
+					ResupplyThreshold = 1000
+					OperationalToggle = PowerToggle
+				}
+			}
+		}
+		
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.6, 0.6]
+			Rotation = 180d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				[0.6, 0.3]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		
+		ThrusterAnimationSpeed
+		{
+			Type = MultiValue
+			Values = [MainThrusterBottom, MainThrusterRight, MainThrusterLeft, MainThrusterTop]
+			Mode = Max
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 4.5]
+			OperationalToggle = IsOperational
+			AnimationSpeedFactor = ThrusterAnimationSpeed
+			AnimationSpeedFactorRenormalize = [0.75, 2.0]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 9]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 9]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 9]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 9]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 9]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 9]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [1, 9]
+					}
+					{
+						File = "doodads_off.png"
+						Size = [1, 9]
+					}
+					{
+						File = "doodads_off.png"
+						Size = [1, 9]
+					}
+				]
+			}
+			// OperationalLighting
+			// {
+				// Layer = "lights_add"
+				// Offset = [0, .5]
+				// DamageLevels
+				// [
+					// {
+						// AnimationFiles
+						// [
+							// "./Data/ships/terran/thruster_small_3way/lights.png"
+							// "./Data/ships/terran/thruster_small_3way/lights2.png"
+						// ]
+						// Size = [3, 2]
+						// AnimationInterval = 0.1
+					// }
+				// ]
+			// }
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 9]
+					}
+					{
+						File = "walls.png"
+						Size = [1, 9]
+					}
+					{
+						File = "walls.png"
+						Size = [1, 9]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 9]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 9]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 9]
+					}
+				]
+			}
+
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [1, 9]
+					}
+					{
+						File = "roof_glows.png"
+						Size = [1, 9]
+					}
+					{
+						File = "roof_glows.png"
+						Size = [1, 9]
+					}
+				]
+			}
+		}
+		AddonGraphics
+		{
+			Type = Graphics
+			Location = [0.6, 0.6]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [1, 1]
+						Z = 2.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [120, 254, 255]
+					}
+				]
+			}
+		}
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, .5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			HasZeroResourceSprite = false
+			ResourceLevels
+			[
+				{
+					File = "./Data/ships/terran/thruster_small_3way/batteries1.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		MainThrusterBottom
+		{
+			Type = Thruster
+			Location = [0.5, 9] // Relative to upper-left corner of unrotated part.
+			Rotation = 90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = -0.05
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		MainThrusterRight
+		{
+			Type = Thruster
+			Location = [1, 1.5] // Relative to upper-left corner of unrotated part.
+			Rotation = 0d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		MainThrusterLeft
+		{
+			Type = Thruster
+			Location = [0, 1.5] // Relative to upper-left corner of unrotated part.
+			Rotation = 180d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		MainThrusterTop
+		{
+			Type = Thruster
+			Location = [0.5, 9] // Relative to upper-left corner of unrotated part.
+			Rotation = 270d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = -0.05
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+		
+		
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, .5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [1, .5]
+		}
+
+
+		ThrusterHum
+		{
+			Type = ContinuousEffects
+			Location = [1, .5]
+			OperationalToggle = IsOperational
+			FactorMediaEffectsIntensityWith = ThrusterAnimationSpeed
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterHum
+				{
+					Sound = "nacelle_running.wav"
+					Volume = .45
+					Speed = 1
+					MaxConcurrentVolume = .65
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 4.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 9]
+		}
+	}
+
+	Stats
+	{
+		ThrusterForce = &~/Part/ThrusterForce
+		ThrusterRampUp = &~/Part/ThrustIncreaseTime
+		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&ThrusterPowerUsage) / 2
+		RecCrew = (&RecPower) * 4
+	}
+}

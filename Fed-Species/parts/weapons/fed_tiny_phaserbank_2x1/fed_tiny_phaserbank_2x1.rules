@@ -27,10 +27,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [phaserbank]
 	ProhibitRects
     [
-		[phaserbank, [-10, -10, 22, 10]]
-		[phaserbank, [-10, 0, 10, 12]]
-		[phaserbank, [2, 0, 10, 12]]
-		[phaserbank, [0, 1, 2, 11]]
+		[phaserbank, [-3, -3, 8, 3]]
+		[phaserbank, [-3, 0, 3, 4]]
+		[phaserbank, [2, 0, 3, 1]]
+		[phaserbank, [0, 1, 5, 3]]
     ]
 	EditorIcon
 	{

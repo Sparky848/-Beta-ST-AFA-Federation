@@ -46,8 +46,8 @@ BeamMediaEffects
 			_gradientIntensity = 3
 			_endCapSize = .125
 			Size = [100%, 0.7]
-			VertexColor = [255, 138, 0, 217]
-			_baseColor = [1, 0.5411, 0, 1]
+			VertexColor = [255, 0, 0, 217]
+			_baseColor = [1, 0, 0, 1]
 			_halfHighlightColor = [0.698, 0.439, 0.145098, 1]
 			//VertexColor = [255, 200, 0, 217]
 			//_baseColor = [1, 0.784, 0, 1]
@@ -85,7 +85,7 @@ BeamMediaEffects
 			Size = [100%, 0.8]
 			_extraBeginLength = (&Size/1) / 2
 			_extraEndLength = (&Size/1) / 2
-			VertexColor = [255, 255, 0, 255]
+			VertexColor = [255, 0, 0, 255]
 			_z = 0.1
 			_litReflectiveStrength = 8
 			_litAdditiveStrength = 0
@@ -134,20 +134,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = 2000
-		}
-		{
-			Type = ExplosiveResourceDrain
-			ResourceType = battery
-			TotalDrain = { BaseValue = 2000; EffectScaleExponent = 1 }
-			Radius = 6
-			Slices = 1
-			Filter
-			{
-				Ships = true
-				Shields = true
-				Friendlies = true
-			}
+			Damage = 1500
 		}
 	]
 

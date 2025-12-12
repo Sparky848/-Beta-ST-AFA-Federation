@@ -148,7 +148,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = PhotonTorpedoToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<photon_torpedo/launcher_photon_torpedo_deck.rules>/Components
 		}
 
@@ -162,7 +162,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = QuantumTorpedoToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<quantum_torpedo/launcher_quantum_torpedo_deck.rules>/Components
 		}
 

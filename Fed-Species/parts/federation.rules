@@ -22,12 +22,14 @@ Parts
 	&<weapons/fed_tiny_phaserbank_2x1/fed_tiny_phaserbank_2x1.rules>/Part
 	&<weapons/fed_phase_cannon/fed_phase_cannon.rules>/Part
 	&<weapons/fed_spatial_torpedo_launcher/fed_spatial_torpedo_launcher_deck.rules>/Part
+	&<weapons/fed_heavy_dual_phaser_cannon/fed_heavy_dual_phaser_cannon.rules>/Part
 	//&<weapons/fed_small_tetryon_cannon_deck/fed_small_tetryon_cannon_deck.rules>/Part
 	// &<weapons/fed_phaserlance2/fed_phaserlance2.rules>/Part
 
 	//&<weapons/fed_phaserbank_modular/fed_phaserbank_modular.rules>/Part
 	//&<weapons/fed_phaserbank_emitter/fed_phaserbank_emitter.rules>/Part
-	//&<weapons/fed_deflector_dish_2x2/fed_deflector_dish_2x2.rules>/Part
+	&<weapons/fed_deflector_dish_2x2/fed_deflector_dish_2x2.rules>/Part
+
 
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
@@ -123,4 +125,12 @@ Parts
 //	&<ai/ai_armor/tritanium_armor1x3_wedge.rules>/Part
 //	&<ai/ai_armor/tritanium_armor2x1.rules>/Part
 //	&<ai/ai_power/reactor_small.rules>/Part
+
+
+	//Logo Ship Parts
+	&<logo_ship/fed_warpnacelle_extension_3x3/fed_warpnacelle_extension_3x3.rules>/Part
+	&<logo_ship/fed_warpnacelle_extension_1x1/fed_warpnacelle_extension_1x1.rules>/Part
+	&<logo_ship/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part
+	&<logo_ship/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part
+	&<logo_ship/fed_def_dual_phaser_cannon/fed_def_dual_phaser_cannon.rules>/Part
 ]

@@ -268,7 +268,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			//FireInterval = 2/30
 			FireInterval = 6
-			FiringArc = 25d
+			FiringArc = 45d//25d
 			RotateSpeed = 360d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 350
@@ -324,9 +324,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 0.01
 			Burst = 4
 				BurstDelay = 0.2
+				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 2500//5000
+			ResourcesUsed = 275
 			MinResourcesUsed = 1
 		}
 		BulletEmittera
@@ -341,9 +342,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 0.01
 			Burst = 4
 				BurstDelay = 0.2
+				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 2500//5000
+			ResourcesUsed = 275//2500//5000
 			MinResourcesUsed = 1
 		}
 
@@ -359,9 +361,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 1.2
 			Burst = 4
 				BurstDelay = 0.2
+				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 2500
+			ResourcesUsed = 275
 			MinResourcesUsed = 1
 		}
 		BulletEmitter2a
@@ -376,9 +379,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 1.2
 			Burst = 4
 				BurstDelay = 0.2
+				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 2500
+			ResourcesUsed = 275
 			MinResourcesUsed = 1
 		}
 
@@ -394,9 +398,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 2.4
 			Burst = 4
 				BurstDelay = 0.2
+				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 2500
+			ResourcesUsed = 275//2500
 			MinResourcesUsed = 1
 		}
 		BulletEmitter3a
@@ -411,11 +416,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 2.4
 			Burst = 4
 				BurstDelay = 0.2
+				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/def_phaser_dual_bolt/def_phaser_dual_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 2500
+			ResourcesUsed = 275
 			MinResourcesUsed = 1
 		}
+
 
 		FireEffect
 		{
@@ -649,8 +656,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/PhaserBolt"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage
-				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				DamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage) + (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage) + (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/1/Damage)
+				DamagePerSecond = (((&DamagePerShot) * 2) * (&~/Part/Components/BulletEmitter/Burst)) * 3 * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
 				RangeLimited = [&~/Part/Components/BulletEmitter/Bullet/Range/BaseValue, &~/Part/Components/BulletEmitter/Bullet/Range/MaxValue]
@@ -659,7 +666,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed/BaseValue
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
 				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
-				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				PowerPerSecond = (((&PowerPerShot) * 2) * (&~/Part/Components/BulletEmitter/Burst)) * 3 * (&ROF)
 				ShotPowerUsage = [(&../PowerPerShot) / 5, &../PowerPerSecond]
 			}
 		}

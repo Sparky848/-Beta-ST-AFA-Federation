@@ -1,0 +1,257 @@
+Components
+{
+	TurretRight
+	{
+		Type = TurretWeapon
+		Location = [1.34375, -1.5]
+		Rotation = -90d// Relative to unrotated part.
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = 8
+		FiringArc = 40d
+		RotateSpeed = 40d
+		//ValidArc = 50d
+		FireThresholdAngle = 50d
+		AIFirepowerRating = 550
+		FirePermissionToggle = FireModeToggle
+		IgnoreSourceShipLowLOSChecks = true
+		IgnoreJunkLOSChecks = true
+		Emitter = BulletEmitterRight
+
+		AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+		]
+
+		BlueprintArcSprite
+		{
+			Texture = &/INDICATORS/WeaponArc
+			Size = [0, 1.5]
+			Color = [255, 0, 0, 63]
+		}
+		BlueprintArcRadius = 10
+		BlueprintArcSpriteSegments = 64
+
+		CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+
+	ReloadProgressBarRight
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = TurretRight
+		Invert = false
+	}
+
+	BulletEmitterRight
+	{
+		Type = BulletEmitter
+		ChainedTo = TurretRight
+		FireTrigger = TurretRight
+		GetTargetFrom = TurretRight
+		Location = [1.6, 0]
+		OperationalToggle = IsOperational
+		Spread = [0.1d, 0.1d]
+		FireDelay = 0.01
+		Burst = 2
+			BurstDelay = 0.5//0.2
+			UseResourcePerShotInBurst = true
+		Bullet = &<../../../../shots/heavy_dual_phaser_bolt/heavy_dual_phaser_bolt.rules>
+		ResourceStorage = BatteryStorage
+		ResourcesUsed = 275
+		MinResourcesUsed = 1
+	}
+	BulletEmitterRight2 : BulletEmitterRight
+	{
+		FireDelay = 0.5//1.2
+	}
+	BulletEmitterRight3 : BulletEmitterRight
+	{
+		FireDelay = 1//2.4
+	}
+
+	FireEffectRight
+	{
+		Type = TriggeredEffects
+		ChainedTo = BulletEmitterRight
+		Trigger = BulletEmitterRight
+		//Location = [-1, 0]
+		AnchorMediaEffects = true
+
+		MediaEffects
+		[
+			&<../particles/dual_phaser_cannon_shoot.rules>
+			&<../particles/dual_phaser_cannon_shoot_flash.rules>
+
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "../shoot.wav"
+				Volume = .6
+				SpeedVariation = .25
+			}
+		]
+	}
+
+	FireEffectRight2 : FireEffectRight
+	{
+		Type = TriggeredEffects
+		ChainedTo = BulletEmitterRight2
+		Trigger = BulletEmitterRight2
+	}
+	FireEffectRight3 : FireEffectRight
+	{
+		Type = TriggeredEffects
+		ChainedTo = BulletEmitterRight3
+		Trigger = BulletEmitterRight3
+	}
+
+	BulletEmitterRightTriggers
+	{
+		Type = MultiTrigger
+		Triggers = [BulletEmitterRight, BulletEmitterRight2, BulletEmitterRight3]
+		Mode = Any
+	}
+	ChargeEffectRight
+	{
+		Type = Sprite
+		//ChainedTo = TurretRight
+		Location = [1, 0] //[1.34375, 0]
+		ResetAnimationTrigger = BulletEmitterRightTriggers
+		Rotation = 0d
+		Layer = "doodads_high"
+		AtlasSprite
+		{
+			AnimationFiles
+			[
+				"fire_doodad_right1.png"
+				"fire_doodad_right2.png"
+				"fire_doodad_right3.png"
+				"fire_doodad_right4.png"
+				"fire_doodad_right5.png"
+				"fire_doodad_right6.png"
+				"fire_doodad_right7.png"
+				"fire_doodad_right8.png"
+				"fire_doodad_right9.png"
+				"fire_doodad_right10.png"
+				"fire_doodad_right11.png"
+				"fire_doodad_right12.png"
+			]
+			Size = [2, 6]
+			AnimationInterval = 0.033333333333
+			AnimationStartTime = MinValue
+			ClampAnimation = true
+		}
+	}
+
+	TurretGraphicsRight
+	{
+		Type = Graphics
+		//ChainedTo = TurretRight
+		Location = [1.34375, -1.5]
+		Rotation = 0d
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "turret3.png"
+					NormalsFile = "turret3_normals.png"
+					Size = [.4375, 3]
+					//Offset = [0, 0]
+				}
+				{
+					File = "turret3.png"
+					NormalsFile = "turret3_normals.png"
+					Size = [.4375, 3]
+				//	Offset = [0, -0.75]
+				}
+				{
+					File = "turret3.png"
+					NormalsFile = "turret3_normals.png"
+					Size = [.4375, 3]
+				//	Offset = [0, -0.75]
+				}
+			]
+		}
+	}
+}
+
+
+IndicatorsRight
+{
+	Type = IndicatorSprites
+	Location = [1, 1.5]
+	Layer = "indicators"
+	Indicators
+	[
+		// Turned off.
+		{
+			Toggle = PowerToggle
+			AtlasSprite
+			{
+				File = &/INDICATORS/PowerOff
+				Size = [.5, .5]
+			}
+		}
+		// Out of power.
+		{
+			Toggle = BatteryStorage
+			Delay = (&~/Part/Components/TurretRight/FireInterval) * 5
+			AtlasSprite
+			{
+				File = &/INDICATORS/NoPower
+				Size = [.5, .5]
+			}
+		}
+		
+		// No crew.
+		{
+			Toggle = PartCrew
+			AtlasSprite
+			{
+				File = &/INDICATORS/NoCrew
+				Size = [.5, .5]
+			}
+		}
+	]
+}
+
+Stats
+{
+	CrewRequired = &~/Part/Components/PartCrew/Crew
+	PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 200
+
+	RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+	RecCrew = (&CrewRequired) + (&RecPower) * 4
+}
+
+StatsByCategory
+[
+	{
+		NameKey = "StatCategories/PhaserBolt"
+		Stats
+		{
+			DamagePerShot = &~/Part/Components/BulletEmitterRight/Bullet/Components/DamagePool/Damage
+			DamagePerSecond = (&DamagePerShot) * (&ROF)
+			Damage = [&../DamagePerShot, &../DamagePerSecond]
+			ROF = 1 / (&~/Part/Components/TurretRight/FireInterval)
+			RangeLimited = [&~/Part/Components/BulletEmitterRight/Bullet/Range/BaseValue, &~/Part/Components/BulletEmitterRight/Bullet/Range/MaxValue]
+			Arc = deg(&~/Part/Components/TurretRight/FiringArc)
+			TurretSpeed = deg(&~/Part/Components/TurretRight/RotateSpeed)
+			ShotSpeed = &~/Part/Components/BulletEmitterRight/Bullet/Speed/BaseValue
+			ShotHP = &~/Part/Components/BulletEmitterRight/Bullet/Components/Targetable/Health
+			PowerPerShot = (&~/Part/Components/BulletEmitterRight/ResourcesUsed) / 1000
+			PowerPerSecond = (&PowerPerShot) * (&ROF)
+			ShotPowerUsage = [(&../PowerPerShot) / 5, &../PowerPerSecond]
+		}
+	}
+]

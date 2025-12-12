@@ -131,7 +131,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = PhotonTorpedoToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<photon_torpedo/launcher_photon_torpedo_ai.rules>/Components
 		}
 		
@@ -145,7 +145,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = QuantumTorpedoToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<quantum_torpedo/launcher_quantum_torpedo_ai.rules>/Components
 		}
 		
@@ -159,7 +159,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = TricobaltTorpedoToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<tricobalt_torpedo/launcher_tricobalt_torpedo_ai.rules>/Components
 		}
 		TransphasicTorpedoToggle
@@ -172,7 +172,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = TransphasicTorpedoToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<transphasic_torpedo/launcher_transphasic_torpedo_ai.rules>/Components
 		}
 		
@@ -186,7 +186,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = MineToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<mine/launcher_mine_ai.rules>/Components
 		}
 

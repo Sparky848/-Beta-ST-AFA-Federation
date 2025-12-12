@@ -1,0 +1,497 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Heavy_Dual_Phaser_Cannon"
+	IconNameKey = "Parts/Heavy_Dual_Phaser_CannonIcon"
+	ID = "stafa.fed_heavy_dual_phaser_cannon"
+	EditorGroups = ["StarfleetWeapons"]
+	DescriptionKey = "Parts/Heavy_Dual_Phaser_CannonDesc"
+	Resources
+	[
+		[steel, 320]
+		[tristeel, 72]
+		[coil, 84]
+		[coil2, 36]
+	]
+	TypeCategories = [weapon, uses_power, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
+	Size = [2, 3]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 18000
+	InitialPenetrationResistance = 3
+	SignificanceToggle = ScorchedToggle
+	PenetrationRectType = Normal
+	//IsRotateable = false
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[0, 3]
+		[1, 3]
+		[2, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [36.8, 92]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle]
+			Mode = All
+		}
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		/*FireAlternatingToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_alternating"
+			Default = 0
+		}
+		IsFireSynchronised_NonOverclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle ]
+			Mode = None
+		}
+		IsFireAlternating_NonOverclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle ]
+			Mode = All
+		}*/
+
+		LeftSizeToggle
+		{
+			Type = UIToggle
+			ToggleID = "hdpc_left_size_toggle"
+			Default = 0
+		}
+
+		LeftSizeOneToggle
+		{
+			Type = ModeToggle
+			Mode = LeftSizeToggle
+			OnMode = 0
+		}
+		LeftSizeOneComponents
+		{
+			Type = ToggledComponents
+			Toggle = LeftSizeOneToggle
+			IncludeInBlueprints = dynamic
+			Components = &<left/turret1.rules>/Components
+		}
+
+		LeftSizeTwoToggle
+		{
+			Type = ModeToggle
+			Mode = LeftSizeToggle
+			OnMode = 1
+		}
+		LeftSizeTwoComponents
+		{
+			Type = ToggledComponents
+			Toggle = LeftSizeTwoToggle
+			IncludeInBlueprints = dynamic
+			Components = &<left/turret2.rules>/Components
+		}
+
+		LeftSizeThreeToggle
+		{
+			Type = ModeToggle
+			Mode = LeftSizeToggle
+			OnMode = 2
+		}
+		LeftSizeThreeComponents
+		{
+			Type = ToggledComponents
+			Toggle = LeftSizeThreeToggle
+			IncludeInBlueprints = dynamic
+			Components = &<left/turret3.rules>/Components
+		}
+
+
+		RightSizeToggle
+		{
+			Type = UIToggle
+			ToggleID = "hdpc_right_size_toggle"
+			Default = 0
+		}
+
+		RightSizeOneToggle
+		{
+			Type = ModeToggle
+			Mode = RightSizeToggle
+			OnMode = 0
+		}
+		RightSizeOneComponents
+		{
+			Type = ToggledComponents
+			Toggle = RightSizeOneToggle
+			IncludeInBlueprints = dynamic
+			Components = &<right/turret1.rules>/Components
+		}
+
+		RightSizeTwoToggle
+		{
+			Type = ModeToggle
+			Mode = RightSizeToggle
+			OnMode = 1
+		}
+		RightSizeTwoComponents
+		{
+			Type = ToggledComponents
+			Toggle = RightSizeTwoToggle
+			IncludeInBlueprints = dynamic
+			Components = &<right/turret2.rules>/Components
+		}
+
+		RightSizeThreeToggle
+		{
+			Type = ModeToggle
+			Mode = RightSizeToggle
+			OnMode = 2
+		}
+		RightSizeThreeComponents
+		{
+			Type = ToggledComponents
+			Toggle = RightSizeThreeToggle
+			IncludeInBlueprints = dynamic
+			Components = &<right/turret3.rules>/Components
+		}
+
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 6000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [.65625, 2.27]
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [1.34375, 2.27]
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 2
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+				&../../CrewLocation2/Location
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, .5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, -0.5]
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 6]
+					}
+					{
+						File = "floor.png"
+						Size = [2, 6]
+					}
+					{
+						File = "floor.png"
+						Size = [2, 6]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -0.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
+						]
+						Size = [2, 6]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+		}
+		DoodadCover
+		{
+			Type = Graphics
+			Location = [1, 0]
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "shell_doodad.png"
+						Size = [2, 6]
+					}
+					{
+						File = "shell_doodad.png"
+						Size = [2, 6]
+					}
+					{
+						File = "shell_doodad.png"
+						Size = [2, 6]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1.64]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Offset = [-0.5, -0.5]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Offset = [0, -0.5]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries3.png"
+					Offset = [0, -0.5]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries4.png"
+					Offset = [0, -0.5]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries5.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries6.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [1.5, 1]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 5]
+			Offset = [0, -1]
+		}
+	}
+}
+
+Stats
+{
+	CrewRequired = &~/Part/Components/PartCrew/Crew
+	PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 200
+
+	RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+	RecCrew = (&CrewRequired) + (&RecPower) * 4
+}
+
+StatsByCategory
+[
+	{
+		NameKey = "StatCategories/PhaserBolt"
+		Stats
+		{
+			DamagePerShot = &~/Part/Components/RightSizeOneComponents/Components/BulletEmitterRight/Bullet/Components/DamagePool/Damage
+			DamagePerSecond = (&DamagePerShot) * (&ROF)
+			Damage = [&../DamagePerShot, &../DamagePerSecond]
+			ROF = 1 / (&~/Part/Components/RightSizeOneComponents/Components/TurretRight/FireInterval)
+			RangeLimited = [&~/Part/Components/RightSizeOneComponents/Components/BulletEmitterRight/Bullet/Range/BaseValue, &~/Part/Components/RightSizeOneComponents/Components/BulletEmitterRight/Bullet/Range/MaxValue]
+			Arc = deg(&~/Part/Components/RightSizeOneComponents/Components/TurretRight/FiringArc)
+			TurretSpeed = deg(&~/Part/Components/RightSizeOneComponents/Components/TurretRight/RotateSpeed)
+			ShotSpeed = &~/Part/Components/RightSizeOneComponents/Components/BulletEmitterRight/Bullet/Speed/BaseValue
+			ShotHP = &~/Part/Components/RightSizeOneComponents/Components/BulletEmitterRight/Bullet/Components/Targetable/Health
+			PowerPerShot = (&~/Part/Components/RightSizeOneComponents/Components/BulletEmitterRight/ResourcesUsed) / 1000
+			PowerPerSecond = (&PowerPerShot) * (&ROF)
+			ShotPowerUsage = [(&../PowerPerShot) / 5, &../PowerPerSecond]
+		}
+	}
+]
