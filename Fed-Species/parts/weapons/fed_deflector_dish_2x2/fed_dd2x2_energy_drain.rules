@@ -72,7 +72,7 @@ Components
 		FireTrigger = Weapon
 		GetTargetFrom = Weapon
 		OperationalToggle = IsOperational
-		FireDelay = 5
+		FireDelay = 5.5
 		ResourceStorage = CloudyGasStorage
 		ResourcesUsed = 4
 		MinResourcesUsed = 4

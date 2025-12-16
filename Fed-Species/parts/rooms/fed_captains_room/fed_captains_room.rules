@@ -95,7 +95,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceConsumer
 			ResourceType = battery
 			Storage = BatteryStorage
-			DefaultPriority = &/PRIORITIES/CaptainsRoom_Supply
+			DefaultPriority = &/PRIORITIES/PriorityUtility_Supply
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
 		}
@@ -145,7 +145,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = PartCrew
 			Crew = 1
-			DefaultPriority = &/PRIORITIES/CaptainsRoom_Crew
+			DefaultPriority = &/PRIORITIES/PriorityUtility_Crew
 			PrerequisitesBeforeCrewing = [PowerToggle]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations

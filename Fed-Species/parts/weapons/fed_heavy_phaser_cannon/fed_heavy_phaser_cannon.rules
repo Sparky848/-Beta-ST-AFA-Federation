@@ -23,7 +23,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	InitialPenetrationResistance = 4
 	PenetrationRectType = Normal
 	// ProhibitAbove = 1
-	IsRotateable = false
+	IsRotateable = true
 	AllowedDoorLocations
 	[
 		// [-1, 2]

@@ -76,7 +76,7 @@ Components
 		// PenetratesCrew = true
 		Penetration = 10
 		PenetratesShields = true
-		ShieldPenetrationFactor = (&Penetration) / 1000000000  //smaller value means higher penetration
+		ShieldPenetrationFactor = (&Penetration) / 3000000000  //smaller value means higher penetration 
 		PenetratesOperational = false
 		HitShield
 		{

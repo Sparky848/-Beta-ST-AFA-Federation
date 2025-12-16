@@ -25,7 +25,7 @@ Components
 	CombinedMissileStorage
 	{
 		Type = MultiResourceStorage
-		ResourceType = torpedo_part
+		ResourceType = tricobalt_torpedo_part
 		ResourceStorages = [MissileStorageA, MissileStorageB]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
@@ -37,7 +37,7 @@ Components
 	Consumer
 	{
 		Type = ResourceConsumer
-		ResourceType = torpedo_part
+		ResourceType = tricobalt_torpedo_part
 		Storage = CombinedMissileStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
 		OperationalToggle = PowerToggle
@@ -115,6 +115,17 @@ Components
 		ShowProgressFor = CommonReloadTimerSortaShort//CommonReloadTimerLong
 		Invert = true
 	}
+	/*TurretReloadBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = ~/WeaponBase/FireInterval
+		Invert = false
+		LowColor = [112, 166, 167]
+		HighColor = [180, 243, 244]
+		FullColor = [180, 243, 244]
+		Height = 4
+	}*/
 
 	CommonReloadResetTrigger
 	{
@@ -123,30 +134,81 @@ Components
 	}
 
 	
-
-	External_Walls_Graphics
+	/*ExternalWallsGraphics
 	{
 		Type = Graphics
-		Location = [1, 1]
+		Location = [1, 2]
 		Walls
 		{
 			Layer = "external_walls"
 			DamageLevels
 			[
 				{
-					File = "external_walls.png"
-					NormalsFile = "external_walls_normals.png"
-					Size = [2, 3]
+					File = "walls_outer.png"
+					NormalsFile = "walls_outer_normals.png"
+					Size = [2, 4]
 				}
 				{
-					File = "external_walls_33.png"
-					NormalsFile = "external_walls_normals_33.png"
-					Size = [2, 3]
+					File = "walls_outer.png"
+					NormalsFile = "walls_outer_normals.png"
+					Size = [2, 4]
 				}
 				{
-					File = "external_walls_66.png"
-					NormalsFile = "external_walls_normals_66.png"
-					Size = [2, 3]
+					File = "walls_outer.png"
+					NormalsFile = "walls_outer_normals.png"
+					Size = [2, 4]
+				}
+			]
+		}
+	}*/
+	TricobaltLighting
+	{
+		Type = Graphics
+		Location = [1, 2]
+		OperationalToggle = IsOperational
+		OperationalLighting
+		{
+			Layer = "lights_add"
+			Offset = [0, 1]
+			DamageLevels
+			[
+				{
+					File = "lights.png"
+					Size = [2, 2]
+				}
+			]
+		}
+		OperationalRoofDoodad
+		{
+			Layer = "roof_doodads"
+			Offset = [0, 0.5]
+			DamageLevels
+			[
+				{
+					File = "roof_glows.png"
+					Size = [2, 1]
+				}
+				{
+					File = "roof_glows_33.png"
+					Size = [2, 1]
+				}
+				{
+					File = "roof_glows_66.png"
+					Size = [2, 1]
+				}
+			]
+		}
+		OperationalRoofLighting
+		{
+			Layer = "roof_lights_fancy"
+			Offset = [0, 1.17]
+			DamageLevels
+			[
+				{
+					File = "./Data/ships/common/light_blob.png"
+					Size = [3.5, 3.5]
+					Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+					VertexColor = [195*1.25, 236*1.25, 225*1.25]
 				}
 			]
 		}
@@ -239,7 +301,7 @@ Components
 	MissileSpritesA
 	{
 		Type = ResourceSprites
-		Location = [.7, 1.6]
+		Location = [.6, 1.6] //[.7, 1.6]
 		ResourceStorage = MissileStorageA
 		Layer = "weapons"
 		HasZeroResourceSprite = true
@@ -248,81 +310,80 @@ Components
 			{
 				File = "missile_0.png"
 				Offset = [0, 1]
-				Size = [1.5, 1]
+				Size = [1, 1]
 			}
 			{
 				File = "missile_1.png"
 				NormalsFile = "missile_normals_1.png"
 				Offset = [0, 0.5]
-				Size = [1.5, 2]
+				Size = [1, 2]
 			}
 			{
 				File = "missile_1.png"
 				NormalsFile = "missile_normals_1.png"
 				Offset = [0, 0.5]
-				Size = [1.5, 2]
+				Size = [1, 2]
 			}
 			{
 				File = "missile_1.png"
 				NormalsFile = "missile_normals_1.png"
 				Offset = [0, 0.5]
-				Size = [1.5, 2]
+				Size = [1, 2]
 			}
 			{
 				File = "missile_2.png"
 				NormalsFile = "missile_normals_2.png"
 				Offset = [0, 0.5]
-				Size = [1.5, 2]
+				Size = [1, 2]
 			}
 			{
 				File = "missile_2.png"
 				NormalsFile = "missile_normals_2.png"
 				Offset = [0, 0.5]
-				Size = [1.5, 2]
+				Size = [1, 2]
 			}
 			{
 				File = "missile_2.png"
 				NormalsFile = "missile_normals_2.png"
 				Offset = [0, 0.5]
-				Size = [1.5, 2]
-			}
-			{
-				File = "missile_2.png"
-				NormalsFile = "missile_normals_2.png"
-				Offset = [0, 0.5]
-				Size = [1.5, 2]
+				Size = [1, 2]
 			}
 			{
 				File = "missile_3.png"
 				NormalsFile = "missile_normals_3.png"
-				Size = [1.5, 3]
+				Size = [1, 3]
 			}
 			{
 				File = "missile_3.png"
 				NormalsFile = "missile_normals_3.png"
-				Size = [1.5, 3]
+				Size = [1, 3]
 			}
 			{
 				File = "missile_3.png"
 				NormalsFile = "missile_normals_3.png"
-				Size = [1.5, 3]
-			}
-			{
-				File = "missile_3.png"
-				NormalsFile = "missile_normals_3.png"
-				Size = [1.5, 3]
+				Size = [1, 3]
 			}
 			{
 				File = "missile_4.png"
 				NormalsFile = "missile_normals_4.png"
-				Size = [1.5, 3]
+				Size = [1, 3]
+			}
+			{
+				File = "missile_4.png"
+				NormalsFile = "missile_normals_4.png"
+				Size = [1, 3]
+			}
+			{
+				File = "missile_5.png"
+				NormalsFile = "missile_normals_5.png"
+				Size = [1, 3]
 			}
 		]
 	}
 
 	MissileSpritesB : MissileSpritesA
 	{
-		Location = [1.3, 1.6]
+		Location = [1.4, 1.6]//[1.3, 1.6]
 		ResourceStorage = MissileStorageB
 	}
 
@@ -488,7 +549,7 @@ LaunchEffectBase
 MissileStorageBase
 {
 	Type = ResourceStorage
-	ResourceType = torpedo_part
+	ResourceType = tricobalt_torpedo_part
 	MaxResources = 12
 	ToggleOnResources = 12
 	ToggleOffResources = 11

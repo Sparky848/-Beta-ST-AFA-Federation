@@ -91,9 +91,25 @@ Parts
 
 	Deflector_Dish_2x2 = "Small Deflector Dish"
 	Deflector_Dish_2x2Icon = "Small Deflector Dish"
-	Deflector_Dish_2x2Desc = "Heavy support style weapon, capable of turning <i>nebula derived gases</i> into incredibly potent pulses.\n\n"\
-							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n"\
+	Deflector_Dish_2x2Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
+							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
+							"<s20>Additionally, <color r='250' g='176' b='86' a='255'>heat can be dissapated through this part</color>, in a similar fashion to radiators.</s20>\n"\
 							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
+
+	Deflector_Dish_4x2 = "Medium Deflector Dish"
+	Deflector_Dish_4x2Icon = "Medium Deflector Dish"
+	Deflector_Dish_4x2Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
+							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
+							"<s20>Additionally doubling as a decent <color r='10' g='168' b='28' a='255'>radar suite</color>, <color r='15' g='153' b='212' a='255'>shield enhancer</color> and decent <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
+							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
+
+	Deflector_Dish_4x4 = "Large Deflector Dish"
+	Deflector_Dish_4x4Icon = "Large Deflector Dish"
+	Deflector_Dish_4x4Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
+							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
+							"<s20>Additionally doubling as a high fidelity <color r='10' g='168' b='28' a='255'>radar suite</color>, improved <color r='15' g='153' b='212' a='255'>shield enhancer</color> and efficient <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
+							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
+
 
     // Rooms
 	Captains_Room = "Captain's Ready Room"
@@ -472,6 +488,22 @@ PartToggles
 						"<white>Health:</white> <good>3,200</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
+	TorpedoType_DeckTricobalt = "Slow torpedo that deals highly localised damage\n\n"\
+						"<b>Deck Tricobalt Torpedo Launcher</b>\n\n"\
+						"<white>Max Component Damage:</white> <good>35,000</good><gray>/shot</gray>\n"\
+						"<white>Max Armour Damage:</white> <good>140,000</good><gray>/shot</gray>\n"\
+						"<white>Max Duranium Armour Damage:</white> <good>300,000</good><gray>/shot</gray>\n"\
+						"<white>Component Damage Area:</white> <good>3</good><gray>metre radius</gray>\n"\
+						"<white>Armour Damage Area:</white> <good>6</good><gray>metre radius</gray>\n"\
+						"<white>Shield Damage:</white> <good>60,000</good><gray>/shot</gray>\n"\
+						"<white>Range:</white> <good>250</good><gray>metres</gray>\n"\
+						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
+						"<white>Shot Speed:</white> <good>20</good><gray>metres/sec</gray>\n"\
+						"<white>Turn Velocity:</white> <good>35</good><gray>degrees/sec</gray>\n"\
+						"<white>Acceleration:</white> <good>10</good><gray>metres/sec²</gray>\n"\
+						"<white>Health:</white> <good>5,000</good>\n"\
+						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
+
 	TorpedoType_StandardPhoton = "Simple, low cost torpedo\n\n"\
 						"<b>Standard Photon Torpedo Launcher</b>\n\n"\
 						"<white>Max Damage:</white> <good>9,000</good><gray>/shot</gray>\n"\
@@ -504,17 +536,17 @@ PartToggles
 
 	TorpedoType_Tricobalt = "Slow torpedo that deals highly localised damage\n\n"\
 						"<b>Tricobalt Torpedo Launcher</b>\n\n"\
-						"<white>Max Component Damage:</white> <good>35,000</good><gray>/shot</gray>\n"\
-						"<white>Max Armour Damage:</white> <good>140,000</good><gray>/shot</gray>\n"\
-						"<white>Max Duranium Armour Damage:</white> <good>300,000</good><gray>/shot</gray>\n"\
-						"<white>Component Damage Area:</white> <good>3</good><gray>metre radius</gray>\n"\
+						"<white>Max Component Damage:</white> <good>45,000</good><gray>/shot</gray>\n"\
+						"<white>Max Armour Damage:</white> <good>180,000</good><gray>/shot</gray>\n"\
+						"<white>Max Duranium Armour Damage:</white> <good>380,000</good><gray>/shot</gray>\n"\
+						"<white>Component Damage Area:</white> <good>5</good><gray>metre radius</gray>\n"\
 						"<white>Armour Damage Area:</white> <good>6</good><gray>metre radius</gray>\n"\
-						"<white>Shield Damage:</white> <good>60,000</good><gray>/shot</gray>\n"\
+						"<white>Shield Damage:</white> <good>95,000</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>280</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
 						"<white>Shot Speed:</white> <good>70</good><gray>metres/sec</gray>\n"\
-						"<white>Turn Velocity:</white> <good>140</good><gray>degrees/sec</gray>\n"\
-						"<white>Acceleration:</white> <good>20</good><gray>metres/sec²</gray>\n"\
+						"<white>Turn Velocity:</white> <good>40</good><gray>degrees/sec</gray>\n"\
+						"<white>Acceleration:</white> <good>15</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
 						"<white>Health:</white> <good>6,000</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"

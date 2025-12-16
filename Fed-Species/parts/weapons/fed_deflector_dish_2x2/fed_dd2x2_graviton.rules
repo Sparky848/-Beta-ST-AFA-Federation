@@ -1,0 +1,117 @@
+Components
+{
+	Weapon
+	{
+		Type = FixedWeapon
+		Location = [1, 0.5]
+		Rotation =-90d// Relative to unrotated part.
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = { BaseValue=26.0; BuffType=DeflectorCounter; BuffMode=Multiply; MaxValue=100; }
+		AIFirepowerRating = 600
+		FirePermissionToggle = FireModeToggle
+		IgnoreSourceShipLowLOSChecks = true
+		IgnoreJunkLOSChecks = true
+		Emitter = BeamEmitter
+
+		AutoTarget
+		{
+			TargetType = ShipParts
+			Toggle = AutoTargetToggle
+		}
+
+		CoverageLine//Probably either change to a blue, or change colour based on selected mode
+		{
+				LineSprite
+			{
+				Texture = &/INDICATORS/RadialGradient
+				VertexColor = [255, 255, 255, 191]
+				UVRect = [.5, 0, 0, 1]
+			}
+			LineThickness = 2
+
+			BeginCapSprite : LineSprite
+			{
+				UVRect = [0, 0, .5, 1]
+			}
+			BeginCapSize = [1, 2]
+
+			EndCapSprite : LineSprite
+			{
+				UVRect = [.5, 0, .5, 1]
+			}
+			EndCapSize = [1, 2]
+		}
+	}
+	ReloadProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = Weapon
+		Invert = false
+	}
+
+	/*BulletEmitter
+	{
+		Type = BulletEmitter
+		Location = [0.45, 0]
+		ChainedTo = Weapon
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		OperationalToggle = IsOperational
+		FireDelay = 5
+		ResourceStorage = BatteryStorage
+		ResourcesUsed = 4000
+		MinResourcesUsed = 4000
+		Spread = [1d, 1d]
+		Burst = 3
+			BurstDelay = 1
+		Bullet =  &<../../../shots/deflector_graviton/deflector_graviton_2x2.rules>
+	}*/
+	BeamEmitter : &<../../../shots/deflector_graviton/deflector_graviton_beam_2x2.rules>
+	{
+		Type = BeamEmitter
+		Location = [0.45, 0]
+		ChainedTo = Weapon
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		OperationalToggle = IsOperational
+		FireDelay = 5
+		ResourceStorage = BatteryStorage
+		ResourcesUsed = 11999
+		MinResourcesUsed = 1
+	}
+	ResourceUser : &<../../../shots/empty_beam/empty_beam.rules>
+	{
+		Type = BeamEmitter
+		Location = [0.45, 0]
+		ChainedTo = Weapon
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		OperationalToggle = IsOperational
+		FireDelay = 5
+		ResourceStorage = CloudyGasStorage
+		ResourcesUsed = 4
+		MinResourcesUsed = 4
+	}
+
+
+	ChargeEffect
+	{
+		Type = TriggeredEffects
+		ChainedTo = Weapon
+		Trigger = Weapon
+		Location = [0.5, 3]
+		AnchorMediaEffects = true
+
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "charge.wav"
+				Volume = .25
+				Speed = 1.5
+			}
+		]
+	}
+}

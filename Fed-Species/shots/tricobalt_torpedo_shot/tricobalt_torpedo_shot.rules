@@ -6,7 +6,7 @@ IdealRange
 	{ BaseValue=280; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
 ]
 IdealRadius = [5, 50]
-Speed = { BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }//{ BaseValue=70; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=90; }
+Speed = { BaseValue=30; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=50; }//{ BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }//{ BaseValue=70; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=90; }
 
 Components
 {
@@ -20,21 +20,21 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 70d//140d
+		TurnVelocity = 40d//70d//140d
 		Delay = .1
 		AvoidanceRaycastDistance = 250
-		VelocityCompensation = 60%
+		VelocityCompensation = 30%//60%
 	}
 
-	Retarget
+/*	Retarget
 	{
 		Type = SameShipRetarget
-	}
+	}*/
 
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 20
+		Acceleration = 15//20
 	}
 
 	NegativeAcceleration
@@ -48,15 +48,12 @@ Components
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime = 15
-		HasTarget = true
 	}
 
 	DeathByDistanceTraveled
 	{
 		Type = DeathByDistanceTraveled
 		// Distance auto-computed from range.
-		HasTarget = false
 	}
 
 	Targetable
@@ -74,7 +71,7 @@ Components
 		// FactorEffectsWith = Targetable
 		// Penetration = 25
 		// PenetratesCrew = true
-		CrewCollisions = {Enemies=true; Junk=true}
+	//	CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational
 
 		HitShield
@@ -86,7 +83,7 @@ Components
 				//: ../../HitOperational/HitEffects/0
 				{
 					Type = Damage
-					Damage = 60000
+					Damage = 95000//60000
 					TreatShieldAsPart = false
 				}
 			]
@@ -104,13 +101,14 @@ Components
 					// Damage = 4500
 					// Radius = 8
 					Type = ExplosiveDamage
-					TotalDamage = 35000//150000
-					Radius = 3
-					ExpandDuration = .8
+					TotalDamage = 45000//35000//150000
+					Radius = 5//3
+					ExpandDuration = 1.2//.8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
 					ImpulsePerNDamage = 10
 					NDamage = 1000
+					FireChancePerNDamage = 0.5
 					Slices = 1
 					Filter
 					{
@@ -123,10 +121,10 @@ Components
 				{
 					
 					Type = ExplosiveDamage
-					TotalDamage = 140000
+					TotalDamage = 180000//140000
 					DamagePool = DamagePool
 					Radius = 6
-					ExpandDuration = 0.8
+					ExpandDuration = 1.2//0.8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
 					Slices = 1
@@ -138,10 +136,10 @@ Components
 				{
 					
 					Type = ExplosiveDamage
-					TotalDamage = 300000
+					TotalDamage = 380000//300000
 					DamagePool = DamagePool
 					Radius = 6
-					ExpandDuration = 0.8
+					ExpandDuration = 1.2//0.8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
 					Slices = 1
@@ -154,9 +152,9 @@ Components
 					// Type = Impulse;
 					// Impulse = 600;
 					Type = ExplosiveDamage
-					TotalDamage = 25000
+					TotalDamage = 30000//25000
 					Radius = 8
-					ExpandDuration = .8
+					ExpandDuration = 1.2//.8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
 					ImpulsePerNDamage = 5

@@ -26,7 +26,7 @@ Adaptations
 		IgnoreIfNotExisting = true
 		ManyToAdd = [adapted]
 	}
-	//Heindall Lasers Small
+/*	//Heimdall Lasers Small
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
@@ -42,10 +42,11 @@ Adaptations
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+//8
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
-	//Heindall Lasers Med
+	//Heimdall Lasers Med
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
@@ -64,7 +65,7 @@ Adaptations
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
-	//Heindall Lasers L
+	//Heimdall Lasers L
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
@@ -83,7 +84,7 @@ Adaptations
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
-	//Heindall Lasers XL
+	//Heimdall Lasers XL
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
@@ -121,4 +122,5 @@ Adaptations
 {Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [adapted]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+*/
 ]

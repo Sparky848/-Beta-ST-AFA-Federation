@@ -143,29 +143,54 @@ Components
 		Trigger = WeaponC
 	}
 
-	External_Walls_Graphics
+	QuantumLighting
 	{
 		Type = Graphics
-		Location = [1, 1]
-		Walls
+		Location = [1, 2]
+		OperationalToggle = IsOperational
+		OperationalLighting
 		{
-			Layer = "external_walls"
+			Layer = "lights_add"
+			Offset = [0, 1]
 			DamageLevels
 			[
 				{
-					File = "external_walls.png"
-					NormalsFile = "external_walls_normals.png"
-					Size = [2, 3]
+					File = "lights.png"
+					Size = [2, 2]
+				}
+			]
+		}
+		OperationalRoofDoodad
+		{
+			Layer = "roof_doodads"
+			Offset = [0, 0.5]
+			DamageLevels
+			[
+				{
+					File = "roof_glows.png"
+					Size = [2, 1]
 				}
 				{
-					File = "external_walls_33.png"
-					NormalsFile = "external_walls_normals_33.png"
-					Size = [2, 3]
+					File = "roof_glows_33.png"
+					Size = [2, 1]
 				}
 				{
-					File = "external_walls_66.png"
-					NormalsFile = "external_walls_normals_66.png"
-					Size = [2, 3]
+					File = "roof_glows_66.png"
+					Size = [2, 1]
+				}
+			]
+		}
+		OperationalRoofLighting
+		{
+			Layer = "roof_lights_fancy"
+			Offset = [0, 1.17]
+			DamageLevels
+			[
+				{
+					File = "./Data/ships/common/light_blob.png"
+					Size = [3.5, 3.5]
+					Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+					VertexColor = [72*1.25, 175*1.25, 225*1.25]
 				}
 			]
 		}
@@ -174,7 +199,7 @@ Components
 	MissileSpritesA
 	{
 		Type = ResourceSprites
-		Location = [.5 + 2/64, 1.6]
+		Location = [.5 - 1/64, 1.6]//[.5 + 2/64, 1.6]
 		ResourceStorage = MissileStorageA
 		Layer = "weapons"
 		HasZeroResourceSprite = true
@@ -218,7 +243,7 @@ Components
 
 	MissileSpritesC : MissileSpritesB
 	{
-		Location = [1.5 - 2/64, 1.6]
+		Location = [1.5 + 1/64, 1.6]//[1.5 - 2/64, 1.6]
 		ResourceStorage = MissileStorageC
 	}
 

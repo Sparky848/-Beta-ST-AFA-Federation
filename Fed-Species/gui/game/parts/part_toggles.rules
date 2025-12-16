@@ -2,6 +2,8 @@ PartToggles
 [
 	// Torpedo type
 	{
+		ID = Perish
+		FormatKey = Bruh//0.30.3 </3
 		ToggleID = "torpedo_type"
 		Style = Popout
 		ShowInEditor = true
@@ -99,6 +101,21 @@ PartToggles
 					Texture
 					{
 						File = "quantum_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Tricobalt Torpedo.
+			{
+				ChoiceID = "torpedo_type_tricobalt_deck"
+				ButtonToolTipKey = "PartToggles/TorpedoType_DeckTricobalt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tricobalt_torpedo.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -663,6 +680,20 @@ PartToggles
 					Texture
 					{
 						File = "quantum_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Graviton
+			{
+				ChoiceID = "deflector_type_graviton"
+				ButtonToolTipKey = "PartToggles/DeflectorType_graviton"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tricobalt_torpedo.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

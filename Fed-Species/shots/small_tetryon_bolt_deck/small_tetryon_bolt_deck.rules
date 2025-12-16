@@ -2,7 +2,7 @@ BASE = &<fed_phaser_cannon_deck.rules>
 
 RANGE = (&BASE/Range) + 50
 TOTAL_DRAIN = 300% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Amount/BaseValue)
-TOTAL_SHIELD_DRAIN = 300% * (&Base/Components/Hit/HitShield/HitEffects/0/Amount/BaseValue)
+TOTAL_SHIELD_DRAIN = 300% * (&BASE/Components/Hit/HitShield/HitEffects/0/Amount/BaseValue)
 DRAIN_DURATION = 5
 PENETRATION = 10
 ARMOR_PENETRATION_FACTOR = 2/7

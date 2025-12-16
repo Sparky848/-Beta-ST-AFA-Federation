@@ -1,8 +1,8 @@
 ID = "st-afa.beta_federation"
 Name = "[Beta] ST-AFA - Federation"
-Version = "[Beta] 0.2.11-pre"//look I always forget these so don't expect it to change :p
+Version = "[Beta] 0.2.11-pre2"//look I always forget these so don't expect it to change :p
 Author = "ST-AFA Mod-Team"
-CompatibleGameVersions = ["0.30.1b"]
+CompatibleGameVersions = ["0.30.3a"]
 ModifiesMultiplayer = true
 Logo = logo.png
 Description = "Adds STAR TREK stuff to the game \n\n"\
@@ -21,7 +21,7 @@ Actions:
 
 [
 	//******************** FUNCTIONS ********************
-	{
+/*{
 		Action = Overrides
 		OverrideIn = "<./Data/ships/priorities.rules>"
 		Overrides
@@ -29,7 +29,7 @@ Actions:
 			CaptainsRoom_Supply = 10
 			CaptainsRoom_Crew = 10
 		}
-	}
+	}*/ //not needed as players can do this + it crashes :)
 	{
 		Action = Replace
 		Replace = "<gui/menus.rules>/LogoShip"
@@ -81,18 +81,18 @@ Actions:
 		ManyToAdd = &<gui/game/parts/part_toggles.rules>/PartToggles
 	}
 
-	{
+	/*{
 		Action = Add
-		AddTo = "<./Data/ships/base_ship.rules>/Blueprints/DrawProhibitedZoneCategories"
+		AddTo = "<ships/base_ship.rules>/Blueprints/DrawProhibitedZoneCategories"
 		ToAdd = phaserbank
-	}
+	}*/ //no clue why this is breaking
 
 	{
 		Action = Overrides
 		OverrideIn = "<./Data/gui/game/indicators/indicators.rules>"
 		Overrides = &<gui/game/indicators/indicators.rules>
 	}
-	{
+/*	{
 		Action = AddMany
 		AddTo = "<./Data/gui/game/parts/part_stats.rules>/PartStats"
 		ManyToAdd
@@ -124,9 +124,9 @@ Actions:
 				FormatKey = "Stats/TransferRateFmt"
 			}
 		]
-	}
+	}*/ //another thing broken in 0.30.3
 	//Text Sprites
-	{
+/*	{
 		Action = Overrides
 		OverrideIn = "<./Data/gui/text_sprites.rules>"
 		Overrides
@@ -161,7 +161,7 @@ Actions:
 				ProportionalSize = true
 			}
 		}
-	}
+	}*/ //another thing broken in 0.30.3
 	//******************** BUFFS ********************
     {
 		Action = Overrides

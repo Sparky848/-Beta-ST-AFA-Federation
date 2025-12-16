@@ -123,6 +123,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Components = &<fed_dd2x2_energy_drain.rules>/Components
 		}
 
+		DeflectorGravitonToggle
+		{
+			Type = ModeToggle
+			Mode = DeflectorMode
+			OnMode = 2
+		}
+
+		DeflectorGraviton
+		{
+			Type = ToggledComponents
+			Toggle = DeflectorGravitonToggle
+			IncludeInBlueprints = true
+			Components = &<fed_dd2x2_graviton.rules>/Components
+		}
 
 		BatteryStorage
 		{

@@ -1,0 +1,113 @@
+ID = "stafa.fed_deflector_graviton_2x2"
+Range = 320
+IdealRange
+[
+	280
+	350
+]
+SourceShipLowCollisions = false
+ReceivableBuffs = [DeflectorDebuff]
+Speed = 300
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [1.75, 3.5]
+		Density = 0.01
+	}
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = Impulse
+					Impulse = 4000
+				}
+				{
+					Type = Impulse
+					Impulse = 40000
+					Filter
+					{
+						Asteroids = true
+						Ships = false
+					}
+				}
+			]
+			MediaEffects
+			[
+				&<tractor_beam_glints.rules>
+				&<../phaser_bolt_deck/particles2/disruptor_bolt_hit_lightning.rules>
+				&<../phaser_bolt_deck/particles2/disruptor_bolt_hit_orb.rules>
+				&<../phaser_bolt_deck/particles2/disruptor_bolt_hit_bolts.rules>
+				&<../phaser_bolt_deck/particles2/disruptor_bolt_flash.rules>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "tractor_beam.wav"
+					Volume = 1
+					SpeedVariation = .15
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		
+	}
+	Sprite
+	{
+		Type = Sprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "shot.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [2, 4]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8, 4]
+			VertexColor = [39, 185, 245]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

@@ -63,7 +63,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
-			CommandPoints = 4
+			CommandPoints = 6
 		}
 		ScorchedToggle
 		{
@@ -459,8 +459,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [2, 5]
-			Offset = [0, -1]
+			Size = [2, 6]
+			Offset = [0, -1.5]
 		}
 	}
 }
