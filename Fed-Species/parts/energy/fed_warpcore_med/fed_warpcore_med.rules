@@ -135,6 +135,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			StartTrigger = WarpcoreEjectTimerTrigger
 			AutoStart = false
 		}
+		WarpcoreEjectTimer2
+		{
+			Type = Timer
+			Duration = 5.1
+			StartTrigger = WarpcoreEjectTimerTrigger
+			AutoStart = false
+		}
 		WarpcoreActive
 		{
 			Type = ToggledComponents
@@ -457,16 +464,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					//Spread = [-5d, 5d]
 					InheritVelocity = true
 				}
-				{
-					Type = Damage
-					Damage = 5000
-					Filter
-					{
-						Friendlies = true
-						IgnoreInvulnerability = true
-					}
-				}
 			]
+		}
+		WarpcorePartChange
+		{
+			Type = TriggeredPartSwap
+			Trigger = WarpcoreEjectTimer2
+			NewPartID = stafa.fed_empty_warpcore_med
+			NewPartLocation = [0, 0]
+			InheritHealthFraction = true
 		}
 
 		BatteryStorage

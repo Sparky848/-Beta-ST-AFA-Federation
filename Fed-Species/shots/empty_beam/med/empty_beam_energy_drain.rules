@@ -1,0 +1,14 @@
+ID = "stafa.med_empty_beam_energy_drain"
+Range = 350
+IdealRange
+[
+	300
+	375
+]
+Duration = 10
+HitInterval = .1
+Width = 1
+SourceShipLowCollisions = false
+HitShield
+HitOperational
+HitStructural

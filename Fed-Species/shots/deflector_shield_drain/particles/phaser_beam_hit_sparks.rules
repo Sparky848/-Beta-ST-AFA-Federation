@@ -26,9 +26,9 @@ EmitterDef
 			ValueType = Color
 			Value
 			{
-				Rf = 1
-				Gf = 0.63
-				Bf = 0.16
+				Rf = 0.443137254902
+				Gf = 0.686274509804
+				Bf = 1
 				Af = 1
 			}
 		}
@@ -38,9 +38,9 @@ EmitterDef
 			ValueType = Color
 			Value
 			{
-				Rf = 1
-				Gf = 0.63
-				Bf = 0.16
+				Rf = 0.443137254902
+				Gf = 686274509804
+				Bf = 1
 				Af = 1
 			}
 			Name = "Init location"

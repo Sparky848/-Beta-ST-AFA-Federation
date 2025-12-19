@@ -69,15 +69,24 @@ Components
 
 	Hit
 	{
-		Type = PenetratingHit
+		Type = SimpleHit
 		SourcePartCollisionDelay = 1.5/30
+		ShieldCollisions
+		{
+			Enemies = false
+			Friendlies = false
+			TargetedFriendlies = false
+			Junk = false
+			Neutral = false
+			Self = false
+		}
 		// FactorEffectsWith = Targetable
-		// Penetration = 25
+		//Penetration = 25
 		// PenetratesCrew = true
-		Penetration = 10
-		PenetratesShields = true
-		ShieldPenetrationFactor = (&Penetration) / 3000000000  //smaller value means higher penetration 
-		PenetratesOperational = false
+		//Penetration = 10
+		//PenetratesShields = true
+		//ShieldPenetrationFactor = (&Penetration) / 3000000000  //smaller value means higher penetration 
+		//PenetratesOperational = false
 		HitShield
 		{
 			//ReduceEffectsByPenetration = true

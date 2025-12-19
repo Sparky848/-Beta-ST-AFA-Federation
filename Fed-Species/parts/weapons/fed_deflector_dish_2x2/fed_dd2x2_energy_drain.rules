@@ -3,7 +3,7 @@ Components
 	Weapon
 	{
 		Type = FixedWeapon
-		Location = [1, 0.5]
+		Location = [1, 1]
 		Rotation =-90d// Relative to unrotated part.
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoFireToggle
@@ -22,10 +22,10 @@ Components
 
 		CoverageLine//Probably either change to a blue, or change colour based on selected mode
 		{
-				LineSprite
+			LineSprite
 			{
 				Texture = &/INDICATORS/RadialGradient
-				VertexColor = [255, 255, 255, 191]
+				VertexColor = [145, 93, 163, 191]
 				UVRect = [.5, 0, 0, 1]
 			}
 			LineThickness = 2
@@ -64,7 +64,7 @@ Components
 		ResourcesUsed = 11999
 		MinResourcesUsed = 1
 	}
-	ResourceUser : &<../../../shots/empty_beam/empty_beam.rules>
+	ResourceUser : &<../../../shots/empty_beam/small/empty_beam_energy_drain.rules>
 	{
 		Type = BeamEmitter
 		Location = [0.45, 0]

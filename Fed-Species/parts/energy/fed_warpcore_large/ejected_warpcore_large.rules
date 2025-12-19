@@ -176,11 +176,34 @@ Components
 		{
 			Texture
 			{
-				File = "floor_on.png"
+				File = "fed_warpcore_eject_proj.png"
 				SampleMode = Linear
 				MipLevels = max
 			}
-			Size = [8, 8]
+			Size = [2, 8]
+		}
+	}
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4, 16]
+			VertexColor = [195, 236, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
 		}
 	}
 }

@@ -1,0 +1,14 @@
+ID = "stafa.small_empty_beam_shield_drain"
+Range = 300
+IdealRange
+[
+	250
+	325
+]
+Duration = 4
+HitInterval = .1
+Width = 1
+SourceShipLowCollisions = false
+ReceivableBuffs = [DeflectorDebuff]
+HitOperational
+HitStructural

@@ -18,6 +18,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ExplosiveDamageAbsorption = 125%
 	DamageResistances
 	{
+		default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
 		explosive = 65%
 		thermal = 10%
 	}
@@ -29,7 +30,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ContiguityOriginPriority = 1
 	TypeCategories = [durarmourplate, durarmour, non_flammable, armour]
 	Flammable = false
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [HullPolariser]
 	CreateUnderlyingWhenDestroyed = false
 	IsExternal = true
 	IsRotateable = true

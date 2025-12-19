@@ -7,7 +7,7 @@ IdealRange
 ]
 Duration = 4
 HitInterval = .1
-Width = 1.5
+Width = 1
 SourceShipLowCollisions = false
 ReceivableBuffs = [PhaserMainDebuff, CaptainsRoomBuff]
 BeamMediaEffects
@@ -174,18 +174,27 @@ BeamMediaEffects
 	}
 
 ]
-HitShield = &HitOperational
+HitShield
+{
+	HitEffects
+	[
+		{
+			Type = Impulse
+			Impulse = 800
+		}
+	]
+}
 HitOperational
 {
 	HitEffects
 	[
 		{
 			Type = Impulse
-			Impulse = 500//3000
+			Impulse = 1250//3000
 		}
 		{
 			Type = Impulse
-			Impulse = 40000
+			Impulse = 100000
 			Filter
 			{
 				Asteroids = true
@@ -193,6 +202,7 @@ HitOperational
 			}
 		}
 	]
+	Media
 	MediaEffects
 	[
 		/*&<tractor_beam_glints.rules>

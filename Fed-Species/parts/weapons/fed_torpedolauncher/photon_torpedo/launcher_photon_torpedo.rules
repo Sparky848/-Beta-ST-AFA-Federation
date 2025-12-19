@@ -462,7 +462,7 @@ LaunchEffectBase
 		}
 	]
 }
-/*
+
 MissileStats
 {
 	NameKey = "StatCategories/TorpedoLauncher"
@@ -481,4 +481,4 @@ MissileStats
 		ShotHP = &~/EmitterBase/Bullet/Components/Targetable/Health
 		MissileParts = &~/EmitterBase/ResourcesUsed
 	}
-}*/
+}

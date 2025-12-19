@@ -1,0 +1,124 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/EmptyWarpcore_fighter"
+	IconNameKey = "Parts/EmptyWarpcore_fighter_Icon"
+	ID = "stafa.fed_empty_warpcore_fighter"
+	EditorGroup = "StarfleetPower"
+	DescriptionKey = "Parts/EmptyWarpcore_fighter_Desc"
+	IsBuildable = false
+	Resources
+	[
+		[steel, 72]
+		[coil2, 48]
+		[tristeel, 24]
+		[processor, 3]
+	]
+	CrewSpeedFactor = .8
+	CrewCongestedSpeedFactor = .8
+	AIValueFactor = 8
+	Size = [2, 3]
+	//IsRotateable = false
+	SelectionPriority = 0
+	SelectionTypeID = "reactors"
+	MaxHealth = 4000
+	AutoDoorMaxPathLength = 5
+	TypeCategories = [is_crewed, warpcore]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	CreatePartPerTileWhenDestroyed = ""
+	IgnoreRotationForMirroredSelection = true
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[1, -1]
+		[-1, 0]
+		[2, 0]
+		[-1, 2]
+		[2, 2]
+		[0, 3]
+		[1, 3]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [72, 72]
+	}
+	Components : ^/0/Components
+	{
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			CommandPoints = 150
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor_ejected.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_ejected_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_ejected_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 3]
+		}
+	}
+}

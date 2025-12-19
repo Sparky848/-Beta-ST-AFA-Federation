@@ -29,7 +29,7 @@ Components
 		ResourceStorages = [MissileStorageA, MissileStorageB]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
-		ToggleOnResources = 24
+		ToggleOnResources = 16
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
@@ -520,8 +520,8 @@ EmitterBase
 	/*FireTrigger = Weapon
 	GetTargetFrom = Weapon
 	ResourceStorage = MissileStorageBase*/
-	ResourcesUsed = 12
-	Bullet = &<../../../../shots/tricobalt_torpedo_shot/tricobalt_torpedo_shot.rules>
+	ResourcesUsed = 8
+	Bullet = &<../../../../shots/tricobalt_torpedo_shot/tricobalt_stage1.rules>
 	TargetLeadPrediction = false
 	Recoil = 150//300
 }
@@ -550,9 +550,9 @@ MissileStorageBase
 {
 	Type = ResourceStorage
 	ResourceType = tricobalt_torpedo_part
-	MaxResources = 12
-	ToggleOnResources = 12
-	ToggleOffResources = 11
+	MaxResources = 8
+	ToggleOnResources = 8
+	ToggleOffResources = 7
 	DelayBeforeReadyToUse = .5
 	UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad

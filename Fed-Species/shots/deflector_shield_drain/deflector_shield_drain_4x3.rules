@@ -1,0 +1,153 @@
+ID = "stafa.fed_deflector_shield_drain_2x2"//tachyon beam, cyan blue
+Range = 400
+IdealRange
+[
+	350
+	425
+]
+Duration = 10
+HitInterval = .1
+Width = 1
+SourceShipLowCollisions = false
+ReceivableBuffs = [DeflectorDebuff]
+BeamMediaEffects
+[
+	// The beam itself.
+	{
+        Type = Beam
+        Sprite
+        {
+            _displacementStrength = 4
+            _displacementSpeed = .08
+            Texture
+            {
+                File = beam.png
+                SampleMode = Linear
+                MipLevels = max
+                UVMode = Wrap
+            }
+            _noiseTexture
+            {
+                File = beam_noise.png
+                MipLevels = max
+                SampleMode = Linear
+                UVMode = Wrap
+            }
+            Shader = "./Data/shots/ion_beam/ion_beam.shader"
+            _extraBeginLength = 0
+            _extraEndLength = 0.25
+            _sizePulseFactor = 1.2
+            _sizePulseInterval = .1
+            _sizePulseUOffsetFactor = -.03
+            _endCapSize = 4
+            Size = [100%, 3]
+            VertexColor = [255, 255, 255, 150]
+			_baseColor = [0.443137254902, 0.686274509804, 1, 1]
+			_halfHighlightColor = [0.221568627451, 0.343137254902, 0.5, 1]
+			TargetBlendMode
+            {
+                SourceRgbFactor = InverseDestColor
+                DestRgbFactor = One
+                RgbOperator = Add
+                SourceAlphaFactor = One
+                DestAlphaFactor = One
+                AlphaOperator = Add
+            }
+        }
+        FadeInTime = .25
+        FadeOutTime = .25
+        RandomTimeOffset = [0, 1]
+        Bucket = Lower1
+    }
+	&<particles/phaser_beam_emit_sparks.rules>
+	&<particles/phaser_beam_hit.rules>
+	&<particles/phaser_beam_hit_flash.rules>
+	// Beam lighting.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = "beam.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 3.5]
+			_extraBeginLength = (&Size/1) / 2
+			_extraEndLength = (&Size/1) / 2
+			VertexColor = [113, 175, 225, 217]
+			_z = 0.1
+			_litReflectiveStrength = 8
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.25
+			_nrmlStrengthLimit = 0.2
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Lower1
+		IsLight = true
+		FadeInTime = .5
+		FadeOutTime = .1
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "light_phasor_beam.wav"
+		Volume = 1
+		Speed = 1
+		MaxConcurrent = 1
+		RampUpTime = .5
+		RampDownTime = .5
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+
+]
+
+HitShield
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 6000//1500
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/phaser_beam_hit.rules>
+		&<particles/phaser_beam_hit_flash.rules>
+		&<particles/phaser_beam_hit_sparks.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
+HitOperational
+
+
+HitStructural

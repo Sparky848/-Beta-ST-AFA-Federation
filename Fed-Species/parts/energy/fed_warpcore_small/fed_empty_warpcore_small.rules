@@ -1,0 +1,126 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/EmptyWarpcore_small"
+	IconNameKey = "Parts/EmptyWarpcore_small_Icon"
+	ID = "stafa.fed_empty_warpcore_small"
+	EditorGroup = "StarfleetPower"
+	DescriptionKey = "Parts/EmptyWarpcore_small_Desc"
+	IsBuildable = false
+	Resources
+	[
+		[steel, 320]
+		[coil2, 80]
+		[tristeel, 52]
+		[processor, 10]
+	]
+	CrewSpeedFactor = .5
+	CrewCongestedSpeedFactor = .4
+	AIValueFactor = 10
+	Size = [4, 4]
+	//IsRotateable = false
+	SelectionPriority = 0
+	SelectionTypeID = "reactors"
+	MaxHealth = 4000 // Deliberately not increasing this for med/small reactors to make them extra-fragile.
+	AutoDoorMaxPathLength = 5
+	TypeCategories = [is_crewed, warpcore]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	CreatePartPerTileWhenDestroyed = ""
+	//IgnoreRotationForMirroredSelection = true
+	BlockedTravelCells
+	[
+		[0, 2]
+		[1, 2]
+		[2, 2]
+		[3, 2]
+		[0, 3]
+		[1, 3]
+		[2, 3]
+		[3, 3]
+	]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [1, 1]
+			Value = [Right]
+		}
+		{
+			Key = [2, 1]
+			Value = [Left]
+		}
+	]
+	AllowedDoorLocations
+	[
+		[1, -1]
+		[2, -1]
+		[0, 8]
+		[-1, 1]
+		[4, 1]
+	]
+	ForceManhattanPathInPart = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [72, 72]
+	}
+	Components : ^/0/Components
+	{
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			CommandPoints = 50
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor_on.png"
+						Size = [4, 4]
+					}
+				]
+			}
+
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [4, 4]
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 4]
+		}
+	}
+}

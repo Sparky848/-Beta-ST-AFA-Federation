@@ -36,7 +36,7 @@ Components
 	{
 		Type = MultiToggle
 		Toggles = [MissileStorageA, MissileStorageB]
-		Mode = Any
+		Mode = All
 	}
 
 	ReloadProgressBar

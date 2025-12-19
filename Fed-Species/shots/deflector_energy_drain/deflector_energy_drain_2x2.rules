@@ -1,10 +1,11 @@
-ID = "stafa.fed_deflector_energy_drain_2x2"
+ID = "stafa.fed_deflector_energy_drain_2x2"//Polaron, urple
 Range = 250
 IdealRange
 [
 	200
 	275
 ]
+
 Duration = 6
 HitInterval = .1
 Width = 1
@@ -14,59 +15,51 @@ BeamMediaEffects
 [
 	// The beam itself.
 	{
-		Type = Beam
-		BeamSprite
-		{
-			Texture
-			{
-				File = ./Data/common_effects/particles/noise_gradient.png
-				SampleMode = Linear
-				MipLevels = max
-				UVMode = Wrap
-			}
-			Texture2
-			{
-				File = ./Data/common_effects/particles/spark.png
-				SampleMode = Linear
-				MipLevels = max
-				UVMode = Wrap
-			}
-			_noiseTexture
-			{
-				File = ./Data/common_effects/particles/noise_voronoi.png
-				MipLevels = max
-				SampleMode = Linear
-				UVMode = Wrap
-			}
-			Shader = "./Data/shots/ion_beam/ion_beam.shader"
-			_gradientPow = 0.35
-			_sineFreq = 2.5
-			_sineAmp = 0.03
-			_noiseAmp = 0.12
-			_gradientIntensity = 3
-			_endCapSize = .125
-			Size = [100%, 0.7]
-			VertexColor = [0, 138, 255, 217]
-			_baseColor = [0, 0.5411, 1, 1]
-			_halfHighlightColor = [0.698, 0.439, 0.145098, 1]
-			//VertexColor = [255, 200, 0, 217]
-			//_baseColor = [1, 0.784, 0, 1]
-			//_halfHighlightColor = [0.698, 0.685, 0.145098, 1]
+        Type = Beam
+        Sprite
+        {
+            _displacementStrength = 4
+            _displacementSpeed = .08
+            Texture
+            {
+                File = beam.png
+                SampleMode = Linear
+                MipLevels = max
+                UVMode = Wrap
+            }
+            _noiseTexture
+            {
+                File = beam_noise.png
+                MipLevels = max
+                SampleMode = Linear
+                UVMode = Wrap
+            }
+            Shader = "./Data/shots/ion_beam/ion_beam.shader"
+            _extraBeginLength = 0
+            _extraEndLength = 0.25
+            _sizePulseFactor = 1.2
+            _sizePulseInterval = .1
+            _sizePulseUOffsetFactor = -.03
+            _endCapSize = 4
+            Size = [100%, 2]
+            VertexColor = [255, 255, 255, 150] //[145, 93, 163]
+			_baseColor = [0.56862745098, 0.36470588235, 0.63921568627, 1]
+			_halfHighlightColor = [0.28431372549, 0.18235294118, 0.31960784314, 1]
 			TargetBlendMode
-			{
-				SourceRgbFactor = SourceAlpha
-				DestRgbFactor = One
-				RgbOperator = Add
-				SourceAlphaFactor = One
-				DestAlphaFactor = One
-				AlphaOperator = Add
-			}
-		}
-		FadeInTime = .25
-		FadeOutTime = .25
-		RandomTimeOffset = [0, 1]
-		Bucket = Upper1
-	}
+            {
+                SourceRgbFactor = InverseDestColor
+                DestRgbFactor = One
+                RgbOperator = Add
+                SourceAlphaFactor = One
+                DestAlphaFactor = One
+                AlphaOperator = Add
+            }
+        }
+        FadeInTime = .25
+        FadeOutTime = .25
+        RandomTimeOffset = [0, 1]
+        Bucket = Lower1
+    }
 	&<particles/phaser_beam_emit_sparks.rules>
 	&<particles/phaser_beam_hit.rules>
 	&<particles/phaser_beam_hit_flash.rules>
@@ -82,10 +75,10 @@ BeamMediaEffects
 				SampleMode = Linear
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
-			Size = [100%, 0.8]
+			Size = [100%, 2.5]
 			_extraBeginLength = (&Size/1) / 2
 			_extraEndLength = (&Size/1) / 2
-			VertexColor = [0, 138, 255, 217]
+			VertexColor = [145, 93, 163, 217]
 			_z = 0.1
 			_litReflectiveStrength = 8
 			_litAdditiveStrength = 0
@@ -101,7 +94,7 @@ BeamMediaEffects
 				AlphaOperator = Add
 			}
 		}
-		Bucket = Upper4
+		Bucket = Lower1
 		IsLight = true
 		FadeInTime = .5
 		FadeOutTime = .1
@@ -152,9 +145,9 @@ HitOperational
 			MediaEffectsOnDrainFactor = .0005
 			MediaEffectsOnDrain
 			[
-				&<./Data/shots/missile_emp/particles/missile_emp_hit_sizzle.rules>
-				&<./Data/shots/missile_emp/particles/missile_emp_lightning.rules>
-				&<./Data/shots/missile_emp/particles/missile_emp_drain.rules>
+				&<particles_emp/missile_emp_hit_sizzle.rules>
+				&<particles_emp/missile_emp_lightning.rules>
+				&<particles_emp/missile_emp_drain.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{

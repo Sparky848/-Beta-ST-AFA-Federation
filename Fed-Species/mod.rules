@@ -1,6 +1,6 @@
 ID = "st-afa.beta_federation"
 Name = "[Beta] ST-AFA - Federation"
-Version = "[Beta] 0.2.11-pre2"//look I always forget these so don't expect it to change :p
+Version = "[Beta] 0.2.11-pre3"//look I always forget these so don't expect it to change :p
 Author = "ST-AFA Mod-Team"
 CompatibleGameVersions = ["0.30.3a"]
 ModifiesMultiplayer = true
@@ -21,7 +21,7 @@ Actions:
 
 [
 	//******************** FUNCTIONS ********************
-/*{
+	{
 		Action = Overrides
 		OverrideIn = "<./Data/ships/priorities.rules>"
 		Overrides
@@ -29,7 +29,7 @@ Actions:
 			CaptainsRoom_Supply = 10
 			CaptainsRoom_Crew = 10
 		}
-	}*/ //not needed as players can do this + it crashes :)
+	}
 	{
 		Action = Replace
 		Replace = "<gui/menus.rules>/LogoShip"
@@ -81,18 +81,18 @@ Actions:
 		ManyToAdd = &<gui/game/parts/part_toggles.rules>/PartToggles
 	}
 
-	/*{
+	{
 		Action = Add
 		AddTo = "<ships/base_ship.rules>/Blueprints/DrawProhibitedZoneCategories"
 		ToAdd = phaserbank
-	}*/ //no clue why this is breaking
+	} 
 
 	{
 		Action = Overrides
 		OverrideIn = "<./Data/gui/game/indicators/indicators.rules>"
 		Overrides = &<gui/game/indicators/indicators.rules>
 	}
-/*	{
+	{
 		Action = AddMany
 		AddTo = "<./Data/gui/game/parts/part_stats.rules>/PartStats"
 		ManyToAdd
@@ -124,9 +124,20 @@ Actions:
 				FormatKey = "Stats/TransferRateFmt"
 			}
 		]
-	}*/ //another thing broken in 0.30.3
+	} 
+	{
+		Action = AddMany
+		AddTo = "<./Data/gui/game/parts/part_stats.rules>/PartStats"
+		ManyToAdd
+		[
+			{
+				ID = HullPolariserBuff
+				FormatKey = "Stats/HullPolariserBuffFmt"
+			}
+		]
+	}
 	//Text Sprites
-/*	{
+	{
 		Action = Overrides
 		OverrideIn = "<./Data/gui/text_sprites.rules>"
 		Overrides
@@ -161,12 +172,153 @@ Actions:
 				ProportionalSize = true
 			}
 		}
-	}*/ //another thing broken in 0.30.3
+	} //another thing broken in 0.30.3
 	//******************** BUFFS ********************
     {
 		Action = Overrides
 		OverrideIn = "<./Data/buffs/buffs.rules>"
 		Overrides = &<buffs/buffs.rules>
+	}
+	//******************** VANILLA PART CHANGES ********************
+	//1x1 Armour
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor/armor.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor/armor.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//1x2 Wedge
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_1x2_wedge/armor_1x2_wedge.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_1x2_wedge/armor_1x2_wedge.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//1x3 Wedge
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_1x3_wedge/armor_1x3_wedge.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_1x3_wedge/armor_1x3_wedge.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//2x1 Armour
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_2x1/armor_2x1.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_2x1/armor_2x1.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//Hybrid Wedge
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_structure_hybrid_1x1/armor_structure_hybrid_1x1.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_structure_hybrid_1x1/armor_structure_hybrid_1x1.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//Hybrid 1x2 Wedge
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_structure_hybrid_1x2/armor_structure_hybrid_1x2.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_structure_hybrid_1x2/armor_structure_hybrid_1x2.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//Hybrid 1x3 Wedge
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_structure_hybrid_1x3/armor_structure_hybrid_1x3.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_structure_hybrid_1x3/armor_structure_hybrid_1x3.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//Hybrid Tri
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_structure_hybrid_tri/armor_structure_hybrid_tri.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_structure_hybrid_tri/armor_structure_hybrid_tri.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//Tri
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_tri/armor_tri.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_tri/armor_tri.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
+	}
+	//Wedge
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/armor_wedge/armor_wedge.rules>/Part/DamageResistances"
+		Overrides
+		{
+			default = { BaseValue=0%; BuffType=HullPolariser; BuffMode=Add; MaxValue=30%; }
+		}
+	}
+	{
+		Action = Add
+		AddTo = "<ships/terran/armor_wedge/armor_wedge.rules>/Part/ReceivableBuffs"
+		ToAdd = HullPolariser
 	}
 	//Ships
 //	{

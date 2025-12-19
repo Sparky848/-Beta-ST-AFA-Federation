@@ -1,0 +1,230 @@
+ID = "stafa.fed_phaser_lance_nerfed"
+Range = { BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=620; }
+IdealRange
+[
+	{ BaseValue=580; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=600; }
+	{ BaseValue=620; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=640; }
+]
+Width = 2
+Duration = .5
+HitInterval = .01
+SourceShipLowCollisions = false
+// CrewCollisions = {Enemies=true; Junk=true}
+
+BeamMediaEffects
+[
+	// The beam itself.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			Texture2
+			{
+				File = ./Data/common_effects/particles/spark.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "./Data/shots/ion_beam/ion_beam.shader"
+			_gradientPow = 0.35
+			_sineFreq = 2.5
+			_sineAmp = 0.03
+			_noiseAmp = 0.12
+			_gradientIntensity = 3
+			_endCapSize = .125
+			Size = [100%, 8]
+			VertexColor = [255, 76, 0, 217]
+			_baseColor = [1, 0.298, 0, 1]
+			_halfHighlightColor = [0.6627, 0.2705, 0.10196, 1]
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		RandomTimeOffset = [0, 1]
+		Bucket = Lower1
+	}
+	&<particles/phaser_beam_emit_sparks.rules>
+	&<particles/phaser_beam_hit.rules>
+	&<particles/phaser_beam_hit_flash.rules>
+	// Beam lighting.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = "beam.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 4]//[100%, 8]
+			_extraBeginLength = 2//7
+			_extraEndLength = 2//7
+			VertexColor = [255, 255, 0, 255]
+			_z = 0.1
+			_litReflectiveStrength = 8
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.25
+			_nrmlStrengthLimit = 0.2
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Lower1
+		IsLight = true
+		FadeInTime = .5
+		FadeOutTime = .1
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "light_phasor_beam.wav"
+		Volume = 1
+		Speed = 1
+		MaxConcurrent = 1
+		RampUpTime = .5
+		RampDownTime = .5
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+
+]
+// this will be updated to be penetrating when beams can get penetration (then I can work on polaron weapons :D )
+HitShield
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 200//500//1750
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/phaser_beam_hit.rules>
+		&<particles/phaser_beam_hit_flash.rules>
+		&<particles/phaser_beam_hit_sparks.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = ExplosiveDamage
+			TotalDamage = 25000//40000
+			Radius = 3
+			ExpandDuration = 0.01
+			ExpandStartRadius = 2
+			ExpandLoss = 50%
+			StatusType = cosmoteer.fire
+			StatusChancePerNDamage = 35%
+			StatusValue = 1
+			StatusValueType = Interpolated
+			NDamage = 1000
+		}
+		{
+			Type = Impulse;
+			Impulse = 1;
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/phaser_beam_hit.rules>
+		&<particles/phaser_beam_hit_flash.rules>
+		&<particles/phaser_beam_hit_sparks.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
+
+HitStructuralOperationalFilter
+{
+	ExcludePartCategories = [ion_beam_prism]
+}
+HitStructural
+{
+	HitEffects
+	[
+		{
+			Type = ExplosiveDamage
+			TotalDamage = 3500//7500
+			Radius = 2
+		}
+		{
+			Type = Impulse;
+			Impulse = 1;
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/phaser_beam_hit_struct.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .25
+			MaxConcurrent = 1
+			MaxConcurrentVolume = .5
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}

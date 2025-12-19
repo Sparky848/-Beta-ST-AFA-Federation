@@ -1,0 +1,14 @@
+ID = "stafa.small_empty_beam_energy_drain"
+Range = 250
+IdealRange
+[
+	200
+	275
+]
+Duration = 6
+HitInterval = .1
+Width = 1
+SourceShipLowCollisions = false
+HitShield
+HitOperational
+HitStructural

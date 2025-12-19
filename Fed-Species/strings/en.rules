@@ -94,14 +94,20 @@ Parts
 	Deflector_Dish_2x2Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
 							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
 							"<s20>Additionally, <color r='250' g='176' b='86' a='255'>heat can be dissapated through this part</color>, in a similar fashion to radiators.</s20>\n"\
-							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
+							"<red>WARNING: This part is heavily WIP, stats likely to be changed</red>\n"
+	Deflector_Dish_External_2x2 = "Small External Deflector Dish"
+	Deflector_Dish_External_2x2Icon = "Small External Deflector Dish"
+	Deflector_Dish_External_2x2Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
+							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
+							"<s20>Additionally, <color r='250' g='176' b='86' a='255'>heat can be dissapated through this part</color>, in a similar fashion to radiators.</s20>\n"\
+							"<red>WARNING: This part is heavily WIP, stats likely to be changed</red>\n"
 
-	Deflector_Dish_4x2 = "Medium Deflector Dish"
-	Deflector_Dish_4x2Icon = "Medium Deflector Dish"
-	Deflector_Dish_4x2Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
+	Deflector_Dish_4x3 = "Medium Deflector Dish"
+	Deflector_Dish_4x3Icon = "Medium Deflector Dish"
+	Deflector_Dish_4x3Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
 							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
 							"<s20>Additionally doubling as a decent <color r='10' g='168' b='28' a='255'>radar suite</color>, <color r='15' g='153' b='212' a='255'>shield enhancer</color> and decent <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
-							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
+							"<red>WARNING: This part is heavily WIP, stats likely to be changed</red>\n"
 
 	Deflector_Dish_4x4 = "Large Deflector Dish"
 	Deflector_Dish_4x4Icon = "Large Deflector Dish"
@@ -120,15 +126,27 @@ Parts
 	Warpcore_small = "Small Warpcore"
 	Warpcore_small_Icon = "Small Warpcore"
 	Warpcore_small_Desc = "Provides enough energy to compatible systems in a huge radius for small ships and is able to provide warp speed."\
-						  "\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
+						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
+	EmptyWarpcore_small = "Empty Small Warpcore"
+	EmptyWarpcore_small_Icon = "Empty Small Warpcore"
+	EmptyWarpcore_small_Desc = "Salvage/Destroy this and replace it with a normal warpcore to regain functionality"
+
 	Warpcore_med = "Medium Warpcore"
 	Warpcore_med_Icon = "Medium Warpcore"
 	Warpcore_med_Desc = "Provides enough energy to compatible systems in a huge radius for medium ships and is able to provide warp speed."\
 						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
+	EmptyWarpcore_med = "Empty Med Warpcore"
+	EmptyWarpcore_med_Icon = "Empty Med Warpcore"
+	EmptyWarpcore_med_Desc = "Salvage/Destroy this and replace it with a normal warpcore to regain functionality"
+
 	Warpcore_large = "Large Warpcore"
 	Warpcore_large_Icon = "Large Warpcore"
 	Warpcore_large_Desc = "Provides enough energy to compatible systems in a huge radius for huge ships and is able to provide warp speed."\
-						  "\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
+						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
+	EmptyWarpcore_large = "Empty Large Warpcore"
+	EmptyWarpcore_large_Icon = "Empty Large Warpcore"
+	EmptyWarpcore_large_Desc = "Salvage/Destroy this and replace it with a normal warpcore to regain functionality"
+
 	Plasma_Tube = "Plasmatube"
 	Plasma_Tube_Icon = "Plasmatube"
 	Plasma_Tube_Desc = "Plasmatubes work as a power storage and distributor to the crew. They can only be charged by a running warpcore."
@@ -145,6 +163,10 @@ Parts
 	Warpcore_2x3_Desc = "A small warpcore useful for fighters"\
 						"\n<color r='165' g='223' b='255' a='255'><s18>Crew cannot pass across the warpcore to the other side of the part</s18></color>"\
 						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
+	EmptyWarpcore_fighter = "Empty Fighter Warpcore"
+	EmptyWarpcore_fighter_Icon = "Empty Fighter Warpcore"
+	EmptyWarpcore_fighter_Desc = "Salvage/Destroy this and replace it with a normal warpcore to regain functionality"
+
 	// Engines
 
 	Warpnacelle_3x6 = "Wide Warpnacelle"
@@ -375,6 +397,16 @@ Parts
 	Heavy_Dual_Phaser_CannonDesc = "Improving on earlier iterations, this weapon fires 3, 2 shot bursts of compressed nadions that rapidly diffuse into an enemies hull.\n"\
 								"<i>Initial impact causes a small explosion, followed by fires being set inside the enemy ship</i>\n"\
 								"<cyan>Longer barrels have slightly longer reload times</cyan>"
+
+	Hull_Polariser_Small = "Small Hull Polariser"
+	Hull_Polariser_SmallIcon = "Small Hull Polariser"
+	Hull_Polariser_SmallDesc = "Polarises armour providing a small amount of damage resistance."\
+							"\nHas diminishing benefits the more you use"
+
+	Hull_Polariser_Med = "Medium Hull Polariser"
+	Hull_Polariser_MedIcon = "Medium Hull Polariser"
+	Hull_Polariser_MedDesc = "Polarises armour providing an average amount of damage resistance."\
+							"\nHas diminishing benefits the more you use"
 }
 
 Inputs
@@ -663,10 +695,13 @@ PartToggles
 	RefBussard_Blank = "Blank"
 
 	//Deflector 2x2
-	DeflectorType_shield_drain= "Shield Drain\n"\
+	DeflectorType_shield_drain= "Tachyon Beam\n"\
 								"<red><s18>Only damages shields</s18></red>"
-	DeflectorType_energy_drain = "Energy Drain\n"\
+	DeflectorType_energy_drain = "Polaron Beam\n"\
+								"<s18>Drains Energy\n</s18>"\
 								"<red><s18>Does not damage shields</s18></red>"
+	DeflectorType_graviton = "Graviton Beam\n"\
+								"<s18>Pushes away objects</s18>"
 }
 STAFAShips = "ST-AFA Ships"
 STAFAShipsTT = "Federation Vessels"
@@ -676,6 +711,7 @@ Stats
 	BasePowerGenFmt = "<white>Base Power Generation:</white> <good>{0}</good>"
 	AntimatterPowerGenFmt = "<white>Antimatter Power Generation:</white> <good>{0}</good>"
 	TransferRateFmt = "<white>Energy Transfer Rate:</white> <good>{0}</good>"
+	HullPolariserBuffFmt = "<white>Hull Polariser Buff:</white> <good>{0}</good>"
 }
 
 TorpedoTypes

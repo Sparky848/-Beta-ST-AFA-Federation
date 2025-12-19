@@ -70,7 +70,7 @@ Components
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = 14000//12500
+		Damage = 12500//14000//
 	}
 
 	Hit
@@ -209,7 +209,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 7500//10000//8000
+					TotalDamage = 250//7500//10000//8000
 					DamagePool = DamagePool
 					DoPooledDamageFirst = true
 					Radius = 3

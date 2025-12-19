@@ -2,8 +2,8 @@ PartToggles
 [
 	// Torpedo type
 	{
-		ID = Perish
-		FormatKey = Bruh//0.30.3 </3
+		/*ID = Perish
+		FormatKey = Bruh//0.30.3 </3 */
 		ToggleID = "torpedo_type"
 		Style = Popout
 		ShowInEditor = true

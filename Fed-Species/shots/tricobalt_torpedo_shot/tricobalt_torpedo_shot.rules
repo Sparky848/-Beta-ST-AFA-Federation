@@ -1,12 +1,7 @@
 ID = "stafa.fed_tricobalt_torpedo_shot"  // originals by kurim
-Range = { BaseValue=280; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
-IdealRange
-[
-	{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
-	{ BaseValue=280; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
-]
-IdealRadius = [5, 50]
-Speed = { BaseValue=30; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=50; }//{ BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }//{ BaseValue=70; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=90; }
+Range = &<tricobalt_stage1.rules>/Range/BaseValue
+IdealRange = &<tricobalt_stage1.rules>/IdealRange/0/BaseValue
+Speed = 0
 
 Components
 {
@@ -25,11 +20,6 @@ Components
 		AvoidanceRaycastDistance = 250
 		VelocityCompensation = 30%//60%
 	}
-
-/*	Retarget
-	{
-		Type = SameShipRetarget
-	}*/
 
 	Acceleration
 	{
@@ -50,271 +40,16 @@ Components
 		Type = DeathByLifetime
 	}
 
-	DeathByDistanceTraveled
+	DeathByDistanceTraveledTargeted
 	{
 		Type = DeathByDistanceTraveled
-		// Distance auto-computed from range.
+		Distance = (&~/Range) * 3
 	}
 
-	Targetable
-	{
-		Type = Targetable
-		Health = 6000
-		TargetCategory = "stafa_torpedo"
-		OnDeath = &../Hit/HitOperational
-	}
+	Targetable = &<tricobalt_stage1.rules>/Components/Targetable
+	Hit = &<tricobalt_stage1.rules>/Components/Hit
 
-	Hit
-	{
-		Type = SimpleHit
-		SourcePartCollisionDelay = 1.5/30
-		// FactorEffectsWith = Targetable
-		// Penetration = 25
-		// PenetratesCrew = true
-	//	CrewCollisions = {Enemies=true; Junk=true}
-		HitCrew = &HitOperational
-
-		HitShield
-		{
-			ReduceEffectsByPenetration = true
-
-			HitEffects
-			[
-				//: ../../HitOperational/HitEffects/0
-				{
-					Type = Damage
-					Damage = 95000//60000
-					TreatShieldAsPart = false
-				}
-			]
-
-			MediaEffects = &../HitOperational/MediaEffects
-		}
-		HitOperational
-		{
-			Offset = [-0.15, 0]
-
-			HitEffects
-			[
-				{
-					// Type = Damage
-					// Damage = 4500
-					// Radius = 8
-					Type = ExplosiveDamage
-					TotalDamage = 45000//35000//150000
-					Radius = 5//3
-					ExpandDuration = 1.2//.8
-					ExpandStartRadius = 2
-					ExpandLoss = 100%
-					ImpulsePerNDamage = 10
-					NDamage = 1000
-					FireChancePerNDamage = 0.5
-					Slices = 1
-					Filter
-					{
-						OperationalHealth = true
-						StructuralHealth = false
-						Friendlies = true
-						ExcludePartCategories = [armor]
-					}
-				}
-				{
-					
-					Type = ExplosiveDamage
-					TotalDamage = 180000//140000
-					DamagePool = DamagePool
-					Radius = 6
-					ExpandDuration = 1.2//0.8
-					ExpandStartRadius = 2
-					ExpandLoss = 100%
-					Slices = 1
-					Filter
-					{
-						OnlyPartCategories = [armor]
-					}
-				}
-				{
-					
-					Type = ExplosiveDamage
-					TotalDamage = 380000//300000
-					DamagePool = DamagePool
-					Radius = 6
-					ExpandDuration = 1.2//0.8
-					ExpandStartRadius = 2
-					ExpandLoss = 100%
-					Slices = 1
-					Filter
-					{
-						OnlyPartCategories = [durarmour]
-					}
-				}
-				{
-					// Type = Impulse;
-					// Impulse = 600;
-					Type = ExplosiveDamage
-					TotalDamage = 30000//25000
-					Radius = 8
-					ExpandDuration = 1.2//.8
-					ExpandStartRadius = 2
-					ExpandLoss = 100%
-					ImpulsePerNDamage = 5
-					NDamage = 1000
-					Slices = 1
-					Filter
-					{
-						OperationalHealth = false
-						StructuralHealth = true
-						Friendlies = true
-					}
-				}
-			]
-
-			MediaEffects
-			[
-				&<particles/tricobalt_torpedo_hit.rules>
-				&<particles/tricobalt_torpedo_flash.rules>
-				&<particles/tricobalt_torpedo_sparks.rules>
-				&<particles/tricobalt_torpedo_spikes.rules>
-
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "tricobalt_torpedo_hit.wav"
-					Volume = .4
-					SpeedVariation = .4
-				}
-
-				: /BASE_SHAKE
-				{
-					ShakeAmount = .05
-					Duration = .3
-				}
-			]
-		}
-		HitStructural = &HitOperational
-		// HitStructural
-		// {
-			// HitEffects
-			// [
-				// {
-					// Type = Damage
-					// Damage = 1500
-				// }
-				// {
-					// Type = Impulse;
-					// Impulse = 2.5;
-				// }
-			// ]
-
-			// MediaEffects
-			// [
-				// &<particles/tricobalt_torpedo_hit_struct.rules>
-				// &<particles/tricobalt_torpedo_flash.rules>
-				// &<particles/tricobalt_torpedo_sparks_struct.rules>
-
-				// : /BASE_SOUNDS/AudioExterior
-				// {
-					// Sound = "tricobalt_torpedo_hit.wav"
-					// Volume = .3
-					// SpeedVariation = .4
-				// }
-			// ]
-		// }
-		PenetratingOperational
-		{
-			// No effect.
-		}
-		PenetratingStructural
-		{
-			// No effect.
-		}
-		FinishedPenetratingOperational
-		{
-			// No effect.
-		}
-		FinishedPenetratingStructural
-		{
-			// No effect.
-		}
-	}
-
-	Sprite
-	{
-		Type = AnimatedSprite
-		ReduceScaleWith = Hit
-		ReduceScaleExponent = 0.5
-		Animation
-		{
-			AtlasSprite
-			{
-				Texture
-				{
-					File = "tricobalt_torpedo_shot.png"
-					SampleMode = Linear
-					MipLevels = max
-				}
-				Size = [2, 2]
-			}
-			FrameCount = 8
-			FrameSize = [128, 128]
-			FramesPerRow = 2
-			FramesPerSecond = 60
-		}
-	}
-
-	GlowSprite
-	{
-		Type = Sprite
-		RenderBucket = BulletUpper2
-		Z = 0
-		IsLight = true
-		Sprite
-		{
-			Texture
-			{
-				File = "./Data/common_effects/particles/blob.png"
-				MipLevels = max
-				SampleMode = Linear
-			}
-			Size = [6, 6]
-			VertexColor = [195, 236, 255]
-			TargetBlendMode = Add
-			Shader = "./Data/common_effects/fancy_light.shader"
-			_litReflectiveStrength = 24
-			_litAdditiveStrength = 0.05
-			_unlitAdditiveStrength = 0.25
-		}
-	}
-	GlowSprite2
-	{
-		Type = AnimatedSprite
-		RenderBucket = BulletUpper2
-		Z = 0
-		IsLight = true
-		Offset = [0, 0]
-		Animation
-		{
-			AtlasSprite
-			{
-				Texture
-				{
-					File = "bullet_large_oc_light.png"
-					MipLevels = max
-					SampleMode = Linear
-				}
-				Size = [22, 22]
-				//VertexColor = [255, 255, 255]
-				TargetBlendMode = Add
-				Shader = "./Data/common_effects/fancy_light.shader"
-				_z = 1
-				_nrmlStrengthLimit = 1
-				_litReflectiveStrength = 24
-				_litAdditiveStrength = 0
-				_unlitAdditiveStrength = 1
-			}
-		FrameCount = 16
-		FrameSize = [512, 512]
-		FramesPerRow = 4
-		FramesPerSecond = 120
-		}
-	}
+	Sprite = &<tricobalt_stage1.rules>/Components/Sprite
+	GlowSprite = &<tricobalt_stage1.rules>/Components/GlowSprite
+	GlowSprite2 = &<tricobalt_stage1.rules>/Components/GlowSprite2
 }

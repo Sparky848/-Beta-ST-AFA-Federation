@@ -435,3 +435,25 @@ DeflectorDebuff
 	}
 	IconPriority = 1 
 }
+HullPolariser
+{
+	CombineMode = Add
+	BaseValue = 0%// One gives ~9.28% resistance, Two gives ~20.48% resistance
+	/*Exponent = 0.8
+	Multiplier = -90%*/
+	
+
+	Icon
+	{
+		Texture
+		{
+			File = "hullpolariser_buff.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}

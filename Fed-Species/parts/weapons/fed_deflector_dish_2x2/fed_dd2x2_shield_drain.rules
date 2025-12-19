@@ -25,7 +25,7 @@ Components
 				LineSprite
 			{
 				Texture = &/INDICATORS/RadialGradient
-				VertexColor = [255, 255, 255, 191]
+				VertexColor = [113, 175, 225, 191]
 				UVRect = [.5, 0, 0, 1]
 			}
 			LineThickness = 2
@@ -64,7 +64,7 @@ Components
 		ResourcesUsed = 11999
 		MinResourcesUsed = 11999
 	}
-	ResourceUser : &<../../../shots/empty_beam/empty_beam.rules>
+	ResourceUser : &<../../../shots/empty_beam/small/empty_beam_shield_drain.rules>
 	{
 		Type = BeamEmitter
 		Location = [0.45, 0]

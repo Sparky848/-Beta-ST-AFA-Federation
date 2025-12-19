@@ -29,7 +29,7 @@ Components
 		ResourceStorages = [MissileStorageA, MissileStorageB]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
-		ToggleOnResources = 24
+		ToggleOnResources = 16
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
@@ -393,11 +393,11 @@ WeaponBase
 	AutoFireToggle = AutoFireToggle
 	IgnoreSourceShipLowLOSChecks = true
 	FireInterval = 12
-	FiringArc = 90d
-	TargetingArc = 90d
-	ValidArc = 90d
+	FiringArc = 0d
+	TargetingArc = 200d
+	ValidArc = 200d
 	FireThresholdAngle = 2d
-	RotateSpeed = 90d
+	RotateSpeed = 360d
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 4800
 	FirePermissionToggle = FirePermissionToggle
@@ -432,8 +432,8 @@ EmitterBase
 {
 	Type = BulletEmitter
 	OperationalToggle = IsOperational
-	ResourcesUsed = 12
-	Bullet = &<../../../../shots/tricobalt_torpedo_shot/tricobalt_torpedo_shot_deck.rules>
+	ResourcesUsed = 8
+	Bullet = &<../../../../shots/tricobalt_torpedo_shot/tricobalt_deck_stage1.rules>
 	TargetLeadPrediction = false
 	Recoil = 175
 }
@@ -462,9 +462,9 @@ MissileStorageBase
 {
 	Type = ResourceStorage
 	ResourceType = tricobalt_torpedo_part
-	MaxResources = 12
-	ToggleOnResources = 12
-	ToggleOffResources = 11
+	MaxResources = 8
+	ToggleOnResources = 8
+	ToggleOffResources = 7
 	DelayBeforeReadyToUse = .5
 	UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad

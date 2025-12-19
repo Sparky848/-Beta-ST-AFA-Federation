@@ -2,7 +2,7 @@ ID = stafa.tetryon_drain
 Layer = Part
 StatusCombineMode = ApplyNewInstance
 TickInterval = 0.2
-FormatKey = HelpMe
+//FormatKey = HelpMe  0.30.3a issues
 Filter
 {
 	OnlyPartCategories = [ uses_power, provides_power ]

@@ -1,0 +1,15 @@
+ID = "stafa.med_empty_beam_graviton"
+Range = { BaseValue=380; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=420; }
+IdealRange
+[
+	{ BaseValue=280; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=300; }
+	{ BaseValue=380; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=420; }
+]
+Duration = 8
+HitInterval = .1
+Width = 1
+SourceShipLowCollisions = false
+ReceivableBuffs = [PhaserMainDebuff, CaptainsRoomBuff]
+HitShield
+HitOperational
+HitStructural

@@ -29,19 +29,24 @@ Parts
 	//&<weapons/fed_phaserbank_modular/fed_phaserbank_modular.rules>/Part
 	//&<weapons/fed_phaserbank_emitter/fed_phaserbank_emitter.rules>/Part
 	&<weapons/fed_deflector_dish_2x2/fed_deflector_dish_2x2.rules>/Part
-
+	&<weapons/fed_deflector_dish_2x2/fed_deflector_dish_external_2x2.rules>/Part
+	&<weapons/fed_deflector_dish_4x3/fed_deflector_dish_4x3.rules>/Part
 
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
 
 	// Energy
 	&<energy/fed_warpcore_small/fed_warpcore_small.rules>/Part
+	&<energy/fed_warpcore_small/fed_empty_warpcore_small.rules>/Part
 	&<energy/fed_warpcore_med/fed_warpcore_med.rules>/Part
+	&<energy/fed_warpcore_med/fed_empty_warpcore_med.rules>/Part
 	&<energy/fed_warpcore_large/fed_warpcore_large.rules>/Part
+	&<energy/fed_warpcore_large/fed_empty_warpcore_large.rules>/Part
 	&<energy/fed_plasma_tube/fed_plasma_tube.rules>/Part
 	&<energy/fed_aux_ma_injector_small/fed_aux_ma_injector_small.rules>/Part
 	&<energy/fed_aux_ma_injector_large/fed_aux_ma_injector_large.rules>/Part
 	&<energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part
+	&<energy/fed_warpcore_2x3/fed_empty_warpcore_fighter.rules>/Part
 
 	// Engines
 	&<engines/fed_warpnacelle_1x6/fed_warpnacelle_1x6.rules>/Part
@@ -101,6 +106,8 @@ Parts
 	&<misc/fed_altvoybussard_collector_1x2/fed_altvoybussard_collector_1x2.rules>/Part
 	&<misc/fed_altvoybussard_collector_2x4/fed_altvoybussard_collector_2x4.rules>/Part
 	&<misc/fed_altvoybussard_collector_3x5/fed_altvoybussard_collector_3x5.rules>/Part
+	&<misc/fed_hull_polariser_small/fed_hull_polariser_small.rules>/Part
+	&<misc/fed_hull_polariser_med/fed_hull_polariser_med.rules>/Part
 	
 	// AI Parts {Unused}
 	

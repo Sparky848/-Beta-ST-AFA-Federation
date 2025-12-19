@@ -7,7 +7,7 @@ Components
 		Rotation = -90d// Relative to unrotated part.
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoFireToggle
-		FireInterval = 8
+		FireInterval = 9
 		FiringArc = 50d
 		RotateSpeed = 50d
 		//ValidArc = 50d

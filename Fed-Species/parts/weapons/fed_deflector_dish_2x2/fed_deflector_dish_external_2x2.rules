@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[diamond, 2]
 	]//to be actually checked, and based on performance
 	Size = [2, 2]
-	MaxHealth = 4500//old warpcore health lol
+	MaxHealth = 12000//old warpcore health lol
 	TypeCategories = [weapon, turret, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorDebuff, DeflectorCounter]//small ship variant needs manual power
 	IsRotateable = true
@@ -23,20 +23,29 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionPriority = 1
 	InitialPenetrationResistance = 2
 	PenetrationRectType = Normal
-	ProhibitedBy : ^/0/ProhibitedBy [tall]
-	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [tall]
-	ProhibitRects
-    [
-		[tall, [-1, -1, 4, 1]]
-		[tall, [0, -2, 3, 1]]
-		[tall, [-1, 0, 1, 3]]
-		[tall, [2, 0, 1, 2]]
-    ]
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [Bottom]
+		}
+		{
+			Key = [1, 0]
+			Value = [Bottom]
+		}
+	]
+	AllowedDoorLocations
+	[
+		[0, 2]
+		[-1, 1]
+		[2, 1]
+		[1, 2]
+	]
 	EditorIcon
 	{
 		Texture
 		{
-			File = "icon.png"
+			File = "external/icon.png"
 			SampleMode = Linear
 		}
 		Size = [32, 32]
@@ -46,7 +55,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
 			Mode = All
 		}
 		
@@ -174,7 +183,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = electron_gas
-			MaxResources = 2000
+			MaxResources = 2
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		ElectronGasConsumer
@@ -310,16 +319,117 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				//Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"external/floor_doodads_1.png"
+							"external/floor_doodads_2.png"
+							"external/floor_doodads_3.png"
+							"external/floor_doodads_4.png"
+							"external/floor_doodads_5.png"
+							"external/floor_doodads_6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"external/floor_doodads_1.png"
+							"external/floor_doodads_2.png"
+							"external/floor_doodads_3.png"
+							"external/floor_doodads_4.png"
+							"external/floor_doodads_5.png"
+							"external/floor_doodads_6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"external/floor_doodads_1.png"
+							"external/floor_doodads_2.png"
+							"external/floor_doodads_3.png"
+							"external/floor_doodads_4.png"
+							"external/floor_doodads_5.png"
+							"external/floor_doodads_6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"external/roof_doodads_1.png"
+							"external/roof_doodads_2.png"
+							"external/roof_doodads_3.png"
+							"external/roof_doodads_4.png"
+							"external/roof_doodads_5.png"
+							"external/roof_doodads_6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"external/roof_doodads_1.png"
+							"external/roof_doodads_2.png"
+							"external/roof_doodads_3.png"
+							"external/roof_doodads_4.png"
+							"external/roof_doodads_5.png"
+							"external/roof_doodads_6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"external/roof_doodads_1.png"
+							"external/roof_doodads_2.png"
+							"external/roof_doodads_3.png"
+							"external/roof_doodads_4.png"
+							"external/roof_doodads_5.png"
+							"external/roof_doodads_6.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.12
+						AnimationStartTime = Zero
+					}
+				]
+			}
 		}
 		CrewLocation1
 		{
 			Type = CrewLocation
-			Location = [.65625, 1.27]
+			Location = [.45625, 1.45]
+			Rotation = 90d
 		}
 		CrewLocation2
 		{
 			Type = CrewLocation
-			Location = [1.34375, 1.27]
+			Location = [1.54375, 1.45]
+			Rotation = -90d
 		}
 		PartCrew
 		{
@@ -399,7 +509,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "blueprints.png"
+			File = "external/blueprints.png"
 			Size = [2, 2]
 		}
 	}

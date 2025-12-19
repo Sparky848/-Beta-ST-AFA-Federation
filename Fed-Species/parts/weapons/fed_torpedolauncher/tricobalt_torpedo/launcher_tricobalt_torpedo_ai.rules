@@ -27,7 +27,7 @@ Components
 	{
 		Type = MultiToggle
 		Toggles = [MissileStorage]
-		Mode = Any
+		Mode = All
 	}
 
 	Weapon

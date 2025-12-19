@@ -199,7 +199,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 5000//{ BaseValue=6000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
+					TotalDamage = 100//{ BaseValue=6000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
 					DamagePool = DamagePool
 					DoPooledDamageFirst = true
 					Radius = 2
