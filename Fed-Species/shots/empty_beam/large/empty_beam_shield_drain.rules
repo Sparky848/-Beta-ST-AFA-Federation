@@ -1,15 +1,14 @@
-ID = "stafa.small_empty_beam_energy_drain"
-Range = 350
+ID = "stafa.med_empty_beam_shield_drain"
+Range = 500
 IdealRange
 [
-	300
-	375
+	450
+	525
 ]
-Duration = 18
+Duration = 10
 HitInterval = .1
 Width = 1
 SourceShipLowCollisions = false
 ReceivableBuffs = [DeflectorDebuff]
-HitShield
 HitOperational
 HitStructural

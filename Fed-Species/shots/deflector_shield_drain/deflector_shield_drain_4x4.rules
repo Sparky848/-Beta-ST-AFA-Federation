@@ -1,11 +1,11 @@
-ID = "stafa.fed_deflector_shield_drain_4x3"//tachyon beam, cyan blue
-Range = 400
+ID = "stafa.fed_deflector_shield_drain_4x4"//tachyon beam, cyan blue
+Range = 500
 IdealRange
 [
-	350
-	425
+	450
+	525
 ]
-Duration = 10
+Duration = 16
 HitInterval = .1
 Width = 1
 SourceShipLowCollisions = false
@@ -40,7 +40,7 @@ BeamMediaEffects
             _sizePulseInterval = .1
             _sizePulseUOffsetFactor = -.03
             _endCapSize = 4
-            Size = [100%, 3]
+            Size = [100%, 4]
             VertexColor = [255, 255, 255, 150]
 			_baseColor = [0.443137254902, 0.686274509804, 1, 1]
 			_halfHighlightColor = [0.221568627451, 0.343137254902, 0.5, 1]
@@ -74,7 +74,7 @@ BeamMediaEffects
 				SampleMode = Linear
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
-			Size = [100%, 3.5]
+			Size = [100%, 4.5]
 			_extraBeginLength = (&Size/1) / 2
 			_extraEndLength = (&Size/1) / 2
 			VertexColor = [113, 175, 225, 217]
@@ -126,7 +126,7 @@ HitShield
 	[
 		{
 			Type = Damage
-			Damage = 6000//1500
+			Damage = 8000//1500
 		}
 	]
 

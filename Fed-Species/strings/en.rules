@@ -109,9 +109,9 @@ Parts
 							"<s20>Additionally doubling as a decent <color r='10' g='168' b='28' a='255'>radar suite</color>, <color r='15' g='153' b='212' a='255'>shield enhancer</color> and decent <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
 							"<red>WARNING: This part is heavily WIP, stats likely to be changed</red>\n"
 
-	Deflector_Dish_4x4 = "Large Deflector Dish"
-	Deflector_Dish_4x4Icon = "Large Deflector Dish"
-	Deflector_Dish_4x4Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
+	Deflector_Dish_4x4_Sovereign = "Sovereign Class Deflector Dish"
+	Deflector_Dish_4x4_SovereignIcon = "Sovereign Class Deflector Dish"
+	Deflector_Dish_4x4_SovereignDesc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
 							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
 							"<s20>Additionally doubling as a high fidelity <color r='10' g='168' b='28' a='255'>radar suite</color>, improved <color r='15' g='153' b='212' a='255'>shield enhancer</color> and efficient <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
 							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
@@ -537,7 +537,7 @@ PartToggles
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_StandardPhoton = "Simple, low cost torpedo\n\n"\
-						"<b>Standard Photon Torpedo Launcher</b>\n\n"\
+						"<b>Micro Photon Torpedo Launcher</b>\n\n"\
 						"<white>Max Damage:</white> <good>9,000</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>2</good><gray>metre radius</gray>\n"\
 						"<white>Shield Damage:</white> <good>3,500</good><gray>/shot</gray>\n"\
@@ -551,7 +551,7 @@ PartToggles
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_StandardQuantum = "Highly penetrative torpedo\n\n"\
-						"<b>Standard Quantum Torpedo Launcher</b>\n\n"\
+						"<b>Micro Quantum Torpedo Launcher</b>\n\n"\
 						"<white>Damage Pool:</white> <good>8,000</good><gray>/shot</gray>\n"\
 						"<white>Max Damage:</white> <good>11,000</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>3</good><gray>metre radius</gray>\n"\
@@ -724,9 +724,9 @@ TorpedoTypes
 	DeckPhotonDesc = "Simple, low cost torpedo"
 	DeckQuantum = "Deck Quantum Torpedo"
 	DeckQuantumDesc = "Highly penetrative torpedo"
-	StandardPhoton = "Standard Photon Torpedo"
+	StandardPhoton = "Micro Photon Torpedo"
 	StandardPhotonDesc = "Simple, low cost torpedo"
-	StandardQuantum = "Standard Quantum Torpedo"
+	StandardQuantum = "Micro Quantum Torpedo"
 	StandardQuantumDesc = "Highly penetrative torpedo"
 	Tricobalt = "Tricobalt Device"
 	TricobaltDesc = "Slow torpedo that deals highly localised damage"

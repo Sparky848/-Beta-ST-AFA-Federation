@@ -89,8 +89,8 @@ Components
 			[
 				//&<particles/phaser_bolt_small_hit.rules>
 				&<particles/phaser_bolt_small_flash.rules>
-				&<particles/phaser_bolt_small_sparks.rules>
-				&<particles/phaser_bolt_small_spikes.rules>
+				//&<particles/phaser_bolt_small_sparks.rules>
+				//&<particles/phaser_bolt_small_spikes.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{
@@ -124,7 +124,7 @@ Components
 			[
 				//&<particles/phaser_bolt_small_hit_struct.rules>
 				&<particles/phaser_bolt_small_flash.rules>
-				&<particles/phaser_bolt_small_sparks_struct.rules>
+				//&<particles/phaser_bolt_small_sparks_struct.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{

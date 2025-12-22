@@ -3,12 +3,12 @@ Components
 	Weapon
 	{
 		Type = FixedWeapon
-		Location = [1, 0.5]
+		Location = [2, 0.55]
 		Rotation =-90d// Relative to unrotated part.
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoFireToggle
-		FireInterval = { BaseValue=30.0; BuffType=DeflectorCounter; BuffMode=Multiply; MaxValue=120; }
-		AIFirepowerRating = 1200
+		FireInterval = { BaseValue=80.0; BuffType=DeflectorCounter; BuffMode=Multiply; MaxValue=230; }
+		AIFirepowerRating = 1750
 		FirePermissionToggle = FireModeToggle
 		IgnoreSourceShipLowLOSChecks = true
 		IgnoreJunkLOSChecks = true
@@ -22,10 +22,10 @@ Components
 
 		CoverageLine//Probably either change to a blue, or change colour based on selected mode
 		{
-				LineSprite
+			LineSprite
 			{
 				Texture = &/INDICATORS/RadialGradient
-				VertexColor = [113, 175, 225, 191]
+				VertexColor = [145, 93, 163, 191]
 				UVRect = [.5, 0, 0, 1]
 			}
 			LineThickness = 2
@@ -51,31 +51,44 @@ Components
 		Invert = false
 	}
 
-	BeamEmitter : &<../../../shots/deflector_shield_drain/deflector_shield_drain_2x2.rules>
+	BeamEmitter : &<../../../shots/deflector_energy_drain/deflector_energy_drain_4x4.rules>
 	{
 		Type = BeamEmitter
-		Location = [0.45, 0]
+		//Location = [0.55, 0]
 		ChainedTo = Weapon
 		FireTrigger = Weapon
 		GetTargetFrom = Weapon
 		OperationalToggle = IsOperational
-		FireDelay = 5
+		FireDelay = 11
 		ResourceStorage = BatteryStorage
-		ResourcesUsed = 11999
-		MinResourcesUsed = 11999
+		ResourcesUsed = 59999
+		MinResourcesUsed = 59999
 	}
-	ResourceUser : &<../../../shots/empty_beam/small/empty_beam_shield_drain.rules>
+	ResourceUser : &<../../../shots/empty_beam/large/empty_beam_energy_drain.rules>
 	{
 		Type = BeamEmitter
-		Location = [0.45, 0]
+		//Location = [0.55, 0]
 		ChainedTo = Weapon
 		FireTrigger = Weapon
 		GetTargetFrom = Weapon
 		OperationalToggle = IsOperational
-		FireDelay = 5
+		FireDelay = 11
 		ResourceStorage = CloudyGasStorage
-		ResourcesUsed = 2
-		MinResourcesUsed = 2
+		ResourcesUsed = 20
+		MinResourcesUsed = 20
+	}
+	ResourceUser2 : &<../../../shots/empty_beam/large/empty_beam_energy_drain.rules>
+	{
+		Type = BeamEmitter
+		//Location = [0.55, 0]
+		ChainedTo = Weapon
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		OperationalToggle = IsOperational
+		FireDelay = 11
+		ResourceStorage = ElectronGasStorage
+		ResourcesUsed = 12
+		MinResourcesUsed = 12
 	}
 
 

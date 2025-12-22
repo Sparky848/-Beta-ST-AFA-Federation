@@ -31,6 +31,7 @@ Parts
 	&<weapons/fed_deflector_dish_2x2/fed_deflector_dish_2x2.rules>/Part
 	&<weapons/fed_deflector_dish_2x2/fed_deflector_dish_external_2x2.rules>/Part
 	&<weapons/fed_deflector_dish_4x3/fed_deflector_dish_4x3.rules>/Part
+	&<weapons/fed_deflector_dish_4x4/fed_deflector_dish_4x4.rules>/Part
 
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part

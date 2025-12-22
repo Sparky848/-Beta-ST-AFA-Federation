@@ -1,9 +1,9 @@
-ID = "stafa.small_empty_beam_energy_drain"
-Range = 350
+ID = "stafa.med_empty_beam_energy_drain"
+Range = 450
 IdealRange
 [
-	300
-	375
+	400
+	475
 ]
 Duration = 18
 HitInterval = .1

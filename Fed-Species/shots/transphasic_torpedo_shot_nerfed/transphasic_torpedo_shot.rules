@@ -71,15 +71,15 @@ Components
 	{
 		Type = SimpleHit
 		SourcePartCollisionDelay = 1.5/30
-		ShieldCollisions
-		{
+		ShieldCollisions = false
+		/*{
 			Enemies = false
 			Friendlies = false
 			TargetedFriendlies = false
 			Junk = false
 			Neutral = false
 			Self = false
-		}
+		}*/
 		// FactorEffectsWith = Targetable
 		//Penetration = 25
 		// PenetratesCrew = true

@@ -8,7 +8,7 @@ Components
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoFireToggle
 		FireInterval = { BaseValue=60.0; BuffType=DeflectorCounter; BuffMode=Multiply; MaxValue=210; }
-		AIFirepowerRating = 600
+		AIFirepowerRating = 1500
 		FirePermissionToggle = FireModeToggle
 		IgnoreSourceShipLowLOSChecks = true
 		IgnoreJunkLOSChecks = true
@@ -80,12 +80,12 @@ Components
 	ResourceUser2 : &<../../../shots/empty_beam/med/empty_beam_energy_drain.rules>
 	{
 		Type = BeamEmitter
-		//Location = [0.45, 0]
+		Location = [0.45, 0]
 		ChainedTo = Weapon
 		FireTrigger = Weapon
 		GetTargetFrom = Weapon
 		OperationalToggle = IsOperational
-		FireDelay = 8
+		FireDelay = 8.5
 		ResourceStorage = ElectronGasStorage
 		ResourcesUsed = 8
 		MinResourcesUsed = 8

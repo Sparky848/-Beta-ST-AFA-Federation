@@ -9,6 +9,7 @@ Duration = 10
 HitInterval = .1
 Width = 1
 SourceShipLowCollisions = false
+ReceivableBuffs = [DeflectorDebuff]
 HitShield
 HitOperational
 HitStructural

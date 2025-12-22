@@ -8,7 +8,7 @@ Components
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoFireToggle
 		FireInterval = { BaseValue=40.0; BuffType=DeflectorCounter; BuffMode=Multiply; MaxValue=130; }
-		AIFirepowerRating = 600
+		AIFirepowerRating = 1250
 		FirePermissionToggle = FireModeToggle
 		IgnoreSourceShipLowLOSChecks = true
 		IgnoreJunkLOSChecks = true
