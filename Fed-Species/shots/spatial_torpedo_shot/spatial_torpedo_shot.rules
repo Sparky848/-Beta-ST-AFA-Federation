@@ -9,6 +9,7 @@ IdealRadius = [5, 50]
 Speed = { BaseValue=35; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=40; }
 SourceShipLowCollisions = false
 Stage2 = &<spatial_torpedo2.rules>
+//Damage_Const = 500
 Components
 {
 	Physics

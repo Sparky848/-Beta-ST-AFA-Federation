@@ -9,7 +9,7 @@ Duration = 4
 HitInterval = .1
 Width = 1
 SourceShipLowCollisions = false
-ReceivableBuffs = [CaptainsRoomBuff]
+ReceivableBuffs = [DeflectorDebuff, CaptainsRoomBuff]
 HitShield
 HitOperational
 HitStructural

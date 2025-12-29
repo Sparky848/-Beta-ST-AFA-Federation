@@ -71,15 +71,18 @@ Components
 	{
 		Type = SimpleHit
 		SourcePartCollisionDelay = 1.5/30
-		ShieldCollisions = false
-		/*{
+		ShieldCollisions// = false
+		{
 			Enemies = false
 			Friendlies = false
 			TargetedFriendlies = false
 			Junk = false
 			Neutral = false
 			Self = false
-		}*/
+			TargetedEnemies = false
+			Ships = false
+			Shields = false
+		}
 		// FactorEffectsWith = Targetable
 		//Penetration = 25
 		// PenetratesCrew = true
@@ -87,22 +90,7 @@ Components
 		//PenetratesShields = true
 		//ShieldPenetrationFactor = (&Penetration) / 3000000000  //smaller value means higher penetration 
 		//PenetratesOperational = false
-		HitShield
-		{
-			//ReduceEffectsByPenetration = true
-
-			HitEffects
-			[
-				//: ../../HitOperational/HitEffects/0
-				{
-					Type = Damage
-					Damage = 0
-					TreatShieldAsPart = false
-				}
-			]
-
-			MediaEffects = &../HitOperational/MediaEffects
-		}
+		//HitShield = &HitOperational
 		HitOperational
 		{
 			Offset = [-0.15, 0]

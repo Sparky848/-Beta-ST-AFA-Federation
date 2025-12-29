@@ -401,6 +401,7 @@ WeaponBase
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 4800
 	FirePermissionToggle = FirePermissionToggle
+	IgnoreFriendlyShipLowLOSChecks = true
 
 	AutoTargets
 	[
