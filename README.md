@@ -1,1 +1,1 @@
-# -Beta-ST-AFA-Federation
+This mod adds Federation/Starfleet weapons and technology to cosmoteer 
