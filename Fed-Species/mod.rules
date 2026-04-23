@@ -35,7 +35,6 @@ Actions:
 		Replace = "<gui/menus.rules>/LogoShip"
 		With = &<gui/menus.rules>/LogoShip
 	}
-
 	
 	//******************** TUTORIALS ********************
 	{
@@ -79,6 +78,12 @@ Actions:
 		Action = AddMany
 		AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
 		ManyToAdd = &<gui/game/parts/part_toggles.rules>/PartToggles
+	}
+
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_triggers.rules>/PartTriggers"
+		ManyToAdd = &<gui/game/parts/part_triggers.rules>/PartTriggers
 	}
 
 	{

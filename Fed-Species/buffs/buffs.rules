@@ -392,27 +392,7 @@ NeedsCrew
 //	CombineMode = Max
 //	BaseValue = 12000
 //}
-HasBussard
-{
-	CombineMode = Max
-	BaseValue = 0%
-	RectBorderColor = [10, 212, 98, 160]
-	RectFillColor = [10, 212, 98, 64]
-}
-HasBussard2
-{
-	CombineMode = Max
-	BaseValue = 0%
-	RectBorderColor = [10, 212, 98, 160]
-	RectFillColor = [10, 212, 98, 64]
-}
-HasBussard3
-{
-	CombineMode = Max
-	BaseValue = 0%
-	RectBorderColor = [10, 212, 98, 160]
-	RectFillColor = [10, 212, 98, 64]
-}
+
 DeflectorCounter
 {
 	CombineMode = Add

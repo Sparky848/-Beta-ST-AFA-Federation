@@ -1,0 +1,110 @@
+Part : &<fed_forcefield_corridor_centered_off.rules>/Part
+{
+	NameKey = "Parts/Forcefield_Cent_Corridor_On"
+	IconNameKey = "Parts/Forcefield_Cent_Corridor_OnIcon"
+	ID = stafa.fed_forcefield_corridor_centered_on
+	DescriptionKey = "Parts/Forcefield_Cent_Corridor_OnDesc"
+	EditorGroups = []
+	EditorParentParts = [ "stafa.fed_forcefield_corridor_centered_off" ]
+	CrewSpeedFactor = 0
+	GeneratorRequiresDoor = false
+	IsWalled = true
+	Components : ^/0/Components
+	{
+		ForcefieldOn
+		{
+			Type = TriggeredPartSwap
+			Trigger = ForcefieldActivationTimer
+			NewPartID = stafa.fed_forcefield_corridor_centered_off
+			NewPartLocation = [0, 0]
+			InheritHealthFraction = true
+		}
+		EndForcefieldAnim
+		{
+			Type = TriggeredToggle
+			OffTrigger = ForcefieldTrigger
+		}
+		EndForcefieldIdleAnim
+		{
+			Type = TriggeredToggle
+			OnTrigger = ForcefieldTrigger
+		}
+		ShouldBeActive
+		{
+			Type = MultiToggle
+			Toggles = [EndForcefieldIdleAnim]
+			Mode = All
+			Invert = true
+		}
+		ForcefieldActivationAnimation
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			DoodadToggle = StartForcefieldAnim
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"../shield_overlay_on_11.png"
+							"../shield_overlay_on_10.png"
+							"../shield_overlay_on_9.png"
+							"../shield_overlay_on_8.png"
+							"../shield_overlay_on_7.png"
+							"../shield_overlay_on_6.png"
+							"../shield_overlay_on_5.png"
+							"../shield_overlay_on_4.png"
+							"../shield_overlay_on_3.png"
+							"../shield_overlay_on_2.png"
+							"../shield_overlay_on_1.png"
+							"../shield_overlay_off.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.0409090909090909
+					}
+				]
+			}
+		}
+		ForcefieldActiveAnimation
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = ShouldBeActive
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"../shield_overlay_on_loop_1.png"
+							"../shield_overlay_on_loop_2.png"
+							"../shield_overlay_on_loop_3.png"
+							"../shield_overlay_on_loop_4.png"
+							"../shield_overlay_on_loop_5.png"
+							"../shield_overlay_on_loop_6.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "../shield_overlay_off.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+	}
+}

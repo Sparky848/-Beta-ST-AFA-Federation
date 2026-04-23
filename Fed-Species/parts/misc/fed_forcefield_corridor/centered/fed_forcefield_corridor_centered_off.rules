@@ -1,0 +1,260 @@
+Part : <./Data/ships/terran/base_floor_part_terran.rules>/Part
+{
+	NameKey = "Parts/Forcefield_Cent_Corridor_Off"
+	IconNameKey = "Parts/Forcefield_Cent_Corridor_OffIcon"
+	ID = stafa.fed_forcefield_corridor_centered_off
+	DescriptionKey = "Parts/Forcefield_Cent_Corridor_OffDesc"
+	EditorGroups = ["StarfleetUtilities"]
+	Resources
+	[
+		[steel, 4]
+		[coil2, 4]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 1
+	CrewCongestedSpeedFactor = .5
+	TypeCategories = [forcefield_corridor]
+	//ForceManhattanPathInPart = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsSelfDestructible = false
+	//IsWalled = true
+	GeneratorRequiresDoor = false
+	AllowedDoorLocations = [[0, -1]; [0, 1]]
+	/*BlockedTravelCellDirections
+	[
+		{
+			Key = [0, 0]
+			Value = [Left, Right]
+		}
+	]*/
+	/*InternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [Left, Right]
+		}
+	]
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [Left, Right, Bottom, Top]
+		}
+	]*/
+	EditorIcon
+	{
+		Texture
+		{
+			File = "../icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle]
+			Mode = All
+		}
+
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		ForcefieldTrigger
+		{
+			Type = UITrigger
+			TriggerID = "forcefield_trigger"
+			RequiresCommand = true
+		}
+
+		ForcefieldActivationTimer
+		{
+			Type = Timer
+			Duration = .5
+			StartTrigger = ForcefieldTrigger
+			AutoStart = false
+		}
+		ForcefieldOn
+		{
+			Type = TriggeredPartSwap
+			Trigger = ForcefieldActivationTimer
+			NewPartID = stafa.fed_forcefield_corridor_centered_on
+			NewPartLocation = [0, 0]
+			InheritHealthFraction = true
+		}
+		StartForcefieldAnim
+		{
+			Type = TriggeredToggle
+			OnTrigger = ForcefieldTrigger
+		}
+
+		ForcefieldActivationAnimation
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			DoodadToggle = StartForcefieldAnim
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"../shield_overlay_off.png"
+							"../shield_overlay_on_1.png"
+							"../shield_overlay_on_2.png"
+							"../shield_overlay_on_3.png"
+							"../shield_overlay_on_4.png"
+							"../shield_overlay_on_5.png"
+							"../shield_overlay_on_6.png"
+							"../shield_overlay_on_7.png"
+							"../shield_overlay_on_8.png"
+							"../shield_overlay_on_9.png"
+							"../shield_overlay_on_10.png"
+							"../shield_overlay_on_11.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.0409090909090909
+					}
+				]
+			}
+		}
+		/*Darkness_Components
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			Invert = true
+			Components
+			{
+				DarknessBlend : <./Data/ships/terran/corridor/darkness/darkness.rules>
+				{
+					Type = BlendSprite
+					Location = [.5, .5]
+					BlendsWithCategories = [corridor, forcefield_corridor]
+				}
+			}
+		}*/
+
+		/*WallsBlend : <./Data/ships/terran/walls/walls.rules>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor, forcefield_corridor]
+		}*/
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../roof.png"
+						NormalsFile = "../roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../roof_33.png"
+						NormalsFile = "../roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../roof_66.png"
+						NormalsFile = "../roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "../walls.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../walls.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../walls.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			WallsStencil
+			{
+				Layer = "walls_stencil"
+				DamageLevels
+				[
+					{
+						File = "../stencil.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "../blueprints.png"
+			Size = [1, 1]
+		}
+
+		/*BlueprintWalls : <./Data/ships/terran/walls/blueprint_walls.rules>
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor, forcefield_corridor]
+		}*/
+	}
+}

@@ -665,7 +665,7 @@ PartToggles
 				{
 					Texture
 					{
-						File = "photon_torpedo.png"
+						File = "tachyon_beam.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -679,7 +679,7 @@ PartToggles
 				{
 					Texture
 					{
-						File = "quantum_torpedo.png"
+						File = "polaron_beam.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -693,7 +693,7 @@ PartToggles
 				{
 					Texture
 					{
-						File = "tricobalt_torpedo.png"
+						File = "graviton_beam.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -847,4 +847,42 @@ PartToggles
 			}
 		]
 	}
+	// Forcefield On/Off
+	/*{
+		ToggleID = "forcefield_on_off"
+		Style = OffAlertSwitch
+		SortOrder = -1;
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "forcefield_off"
+				ButtonToolTipKey = "PartToggles/Forcefield_Off"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "forcefield_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "forcefield_on"
+				ButtonToolTipKey = "PartToggles/Forcefield_On"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "forcefield_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}*/
 ]

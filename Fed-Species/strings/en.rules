@@ -46,11 +46,11 @@ Parts
 	Tiny_Phaser_Bank_1x1 = "Shuttle Phaser Emitter"
 	Tiny_Phaser_Bank_1x1_Icon = "Shuttle Phaser Emitter"
 	Tiny_Phaser_Bank_1x1_Desc = "Phaser emitter designed solely for the emergency defence of small craft\n"\
-								"<red><s18>Due to complex power requirements it is unable to be placed within 10 tiles of another phaser</s18></red>\n"
+								"<red><s18>Due to complex power requirements it is unable to be placed within 3 tiles of another phaser</s18></red>\n"
 	Tiny_Phaser_Bank_2x1 = "Shuttle Phaser Emitter 2x1"
 	Tiny_Phaser_Bank_2x1_Icon = "Shuttle Phaser Emitter 2x1"
 	Tiny_Phaser_Bank_2x1_Desc = "Phaser emitter designed solely for the emergency defence of small craft, functionally identical to the 1x1 variant\n"\
-								"<red><s18>Due to complex power requirements it is unable to be placed within 10 tiles of another phaser</s18></red>\n"
+								"<red><s18>Due to complex power requirements it is unable to be placed within 3 tiles of another phaser</s18></red>\n"
 	Phaser_Lance = "Phaser Lance"
 	Phaser_Lance_Icon = "Phaser Lance"
 	Phaser_Lance_Desc = "The Ultimate Phaser"\
@@ -94,27 +94,34 @@ Parts
 	Deflector_Dish_2x2Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
 							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
 							"<s20>Additionally, <color r='250' g='176' b='86' a='255'>heat can be dissapated through this part</color>, in a similar fashion to radiators.</s20>\n"\
-							"<red>WARNING: This part is heavily WIP, stats likely to be changed</red>\n"
+							"<red>WARNING: This part is heavily WIP, expect changes!</red>\n"
 	Deflector_Dish_External_2x2 = "Small External Deflector Dish"
 	Deflector_Dish_External_2x2Icon = "Small External Deflector Dish"
 	Deflector_Dish_External_2x2Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
 							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
 							"<s20>Additionally, <color r='250' g='176' b='86' a='255'>heat can be dissapated through this part</color>, in a similar fashion to radiators.</s20>\n"\
-							"<red>WARNING: This part is heavily WIP, stats likely to be changed</red>\n"
+							"<red>WARNING: This part is heavily WIP, expect changes!</red>\n"
 
 	Deflector_Dish_4x3 = "Medium Deflector Dish"
 	Deflector_Dish_4x3Icon = "Medium Deflector Dish"
 	Deflector_Dish_4x3Desc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
 							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
 							"<s20>Additionally doubling as a decent <color r='10' g='168' b='28' a='255'>radar suite</color>, <color r='15' g='153' b='212' a='255'>shield enhancer</color> and decent <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
-							"<red>WARNING: This part is heavily WIP, stats likely to be changed</red>\n"
+							"<red>WARNING: This part is heavily WIP, expect changes!</red>\n"
 
 	Deflector_Dish_4x4_Sovereign = "Sovereign Class Deflector Dish"
 	Deflector_Dish_4x4_SovereignIcon = "Sovereign Class Deflector Dish"
 	Deflector_Dish_4x4_SovereignDesc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
 							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
 							"<s20>Additionally doubling as a high fidelity <color r='10' g='168' b='28' a='255'>radar suite</color>, improved <color r='15' g='153' b='212' a='255'>shield enhancer</color> and efficient <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
-							"<red>WARNING: This part is heavily WIP, stats and graphics will be changed</red>\n"
+							"<red>WARNING: This part is heavily WIP, expect changes!</red>\n"
+
+	Deflector_Dish_6x3_Galaxy = "Galaxy Class Deflector Dish"
+	Deflector_Dish_6x3_GalaxyIcon = "Galaxy Class Deflector Dish"
+	Deflector_Dish_6x3_GalaxyDesc = "Heavy support style weapon, capable of turning <i><color r='185' g='239' b='241' a='255'>nebula derived gases</color></i> into incredibly potent pulses.\n\n"\
+							"<s20>This part typically fills one niche <i>very</i> well, leading to a significant tactical advantage. But requires a large resource and time investment.</s20>\n\n"\
+							"<s20>Additionally doubling as a high fidelity <color r='10' g='168' b='28' a='255'>radar suite</color>, improved <color r='15' g='153' b='212' a='255'>shield enhancer</color> and efficient <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
+							"<red>WARNING: This part is heavily WIP, expect changes!</red>\n"
 
 
     // Rooms

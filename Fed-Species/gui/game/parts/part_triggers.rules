@@ -1,0 +1,18 @@
+PartTriggers
+[
+	// ForcefieldTrigger
+	{
+		TriggerID = "forcefield_trigger"
+		DefaultHotkey = [PlatformCmdCtrl, Shift, F]
+		ButtonToolTipKey = "PartTriggers/ForcefieldTrigger"
+		ButtonSprite
+		{
+			Texture
+			{
+				File = "forcefield_trigger.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+]
