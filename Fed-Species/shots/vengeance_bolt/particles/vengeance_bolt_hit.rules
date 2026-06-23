@@ -138,8 +138,8 @@ Def
 		UvRectIn = uv_rect
 		BaseSize
 		{
-			X = 8
-			Y = 8
+			X = 16
+			Y = 16
 		}
 		Name = ""
 	}

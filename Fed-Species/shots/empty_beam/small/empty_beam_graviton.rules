@@ -12,4 +12,4 @@ SourceShipLowCollisions = false
 ReceivableBuffs = [DeflectorDebuff, CaptainsRoomBuff]
 HitShield
 HitOperational
-HitStructural
+HitStructural;

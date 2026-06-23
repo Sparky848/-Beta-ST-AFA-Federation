@@ -378,7 +378,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
-		HullPolariserBuff = &~/Part/Components/PolariserBuffProvider/BuffAmount
+		HullPolariserBuff = (&~/Part/Components/PolariserBuffProvider/BuffAmount) * 100
 		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 

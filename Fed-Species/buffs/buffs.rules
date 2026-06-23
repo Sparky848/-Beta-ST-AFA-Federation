@@ -437,3 +437,24 @@ HullPolariser
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
 }
+DeflectorShieldBuff
+{
+	CombineMode = Add
+	BaseValue = 0%
+	Icon
+	{
+		Texture
+		{
+			File = "hullpolariser_buff.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+ShuntStateBuff {}
+ShuntToggleStateBuff {}

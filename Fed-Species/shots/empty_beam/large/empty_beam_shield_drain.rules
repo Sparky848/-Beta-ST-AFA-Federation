@@ -11,4 +11,4 @@ Width = 1
 SourceShipLowCollisions = false
 ReceivableBuffs = [DeflectorDebuff]
 HitOperational
-HitStructural
+HitStructural;

@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Deflector_Dish_2x2"
 	IconNameKey = "Parts/Deflector_Dish_2x2Icon"
 	ID = "stafa.fed_deflector_dish_2x2"
-	EditorGroup = "StarfleetWeapons"
+	EditorParentParts = [ "stafa.fed_deflector_dish_external_2x2" ]
 	DescriptionKey = "Parts/Deflector_Dish_2x2Desc"
 	Resources
 	[
@@ -41,6 +41,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		Sensor
+		{
+			Type = Sensor
+			OperationalToggle = IsOperational
+			SightRadius = 600//320
+			RadarRadius = 2000
+		}
 		IsOperational
 		{
 			Type = MultiToggle
@@ -239,7 +246,244 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffableValue
 			Value = { BaseValue=1; BuffType=DeflectorCounter; BuffMode=Add; }
 		}
+		
+		//Shield Buff
+		ShieldBuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = DeflectorShieldBuff
+			BuffAmount = -2.75%//on xs front small shield: 120,000HP > just under 140,000HP
+			GridDistance = 10
+			OperationalToggle = IsOperational
+		}
 
+		//Radiator Stuff - I do not know how this works, it just kinda does
+		IsConnected
+		{
+			Type = MultiToggle
+			Toggles = [Port_Right, Port_Left, Port_DownL, Port_DownR]
+			Mode = Any
+		}
+
+		Port_Left
+		{
+			Type = NetworkPort
+			Location = [0, 1]
+			Direction = Left
+			Types = [ thermal ]
+			RouteSource = NetworkedHeatBuffer
+			RouteEndpoint = NetworkedHeatBuffer
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+		}
+		Port_Right : Port_Left
+		{
+			Location = [1, 1]
+			Direction = Right
+		}
+		Port_DownL : Port_Left
+		{
+			Location = [0, 1]
+			Direction = Down
+		}
+		Port_DownR : Port_Left
+		{
+			Location = [1, 1]
+			Direction = Down
+		}
+
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkedHeatBuffer, NetworkHeatOutput, 0]
+						[NetworkedHeatBuffer, NetworkedThermalDissipationLoadValue, 0]
+					]
+				}
+			]
+		}
+
+		HeatBuffer
+		{
+			Type = ResourceStorage
+			ResourceType = heat
+			MaxResources = (&../HeatDissipationConverter/Dissipation) * 2000
+			//MaxResources = (&../DissipationScore/MAX_SCORE) * 2
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1
+			InitToMaxResources = 0
+			IgnoreResourcesForInitToMax = true
+		}
+
+		NetworkedHeatBuffer
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = HeatBuffer
+			Categories = [ thermal_storage ]
+		}
+
+		NetworkHeatOutput
+		{
+			Type = NetworkResourceOutput
+			ResourceType = heat
+			Mode = DistributeProportionallyByAvailable
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1
+			Categories = [ thermal_storage ]
+		}
+		//Heat Output
+		HeatDissipationConverter 
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = NetworkHeatOutput
+			MinFromQuantityForConversion = 1
+			Dissipation = 900 //This number needs to be half what you want the MJ/sec output to be
+			Dissipation_Per_Second = (&Dissipation) / (&Interval)
+			FromQuantity = (&Dissipation) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			Interval = 0.5
+		}
+
+		SteamEffects
+		{
+			Type = ContinuousEffects
+			Location = [1, 3]
+			OperationalToggle = IsOperational
+			//OperationalToggle = HeatDissipationConverter
+			//FactorMediaEffectsIntensityWith = NetworkHeatOutput
+			FactorMediaEffectsIntensityWith = NormalizedDissipationValueSmoothed
+			MediaEffects
+			[
+				//&<particles/radiator_steam.rules>
+				//&<./Data/ships/terran/radiator/particles/radiator_steam_distortion.rules>
+				//&<./Data/ships/terran/radiator/particles/radiator_heat_base.rules>
+				//&<./Data/ships/terran/radiator/particles/radiator_heat_scaling.rules>
+				//&<radiator_particles/radiator_heat_sparks.rules> //disabled gfx until it renders under the ship
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/ships/terran/radiator/sounds/radiator_venting.wav"
+					RampUpTime = .2
+					RampDownTime = .4
+
+					DynamicVolume
+					{
+						MinDistance = 0
+						MaxDistance = 10
+						DistanceFalloff = 1.5
+
+						MinZoom = 1
+						MaxZoom = 50
+						ZoomFalloff = 3
+					}
+
+					DynamicFilter
+					{
+						MinDistance = 0
+						MaxDistance = 2
+						DistanceFalloff = 1
+
+						MinZoom = 1
+						MaxZoom = 12
+						ZoomFalloff = 2
+
+						Filter
+						{
+							FilterType = LowPassAmplify
+							FromFrequency = 7350
+							ToFrequency = 250
+							FrequencyFactorExponent = 0.25
+						}
+					}
+				}
+			]
+		}
+
+		//graphical
+		Fraction { Type = StaticValue; Value = 0.9 }//thx armour heat sinks
+		One { Type = StaticValue; Value = 1 }
+		DissipationBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = HeatDissipation
+			BuffAmount = 1
+			BuffMultiplier = One
+		}
+
+		HeatDissipationConverter2
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsConnected
+			FromStorage = NetworkHeatOutput
+			MinFromQuantityForConversion = 1
+			FromQuantity
+			{
+				BaseValue = 1
+				BuffType = HeatDissipation
+				BuffMode = Multiply
+			}
+			Interval = 0.5
+		}
+
+		NormalizedDissipationValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne
+			{
+				ID = HeatDissipationConverter2
+				ValueID = "LastConversion"
+			}
+			ValueTwo = Fraction
+		}
+		
+		Zero { Type = StaticValue; Value = 0 }
+		
+		DissipationSmoothingTargetValue
+		{
+			Type = ToggleValueSelector
+			Toggle = IsConnected
+			ToggleOffValue = Zero
+			ToggleOnValue = NormalizedDissipationValue
+		}
+		
+		NormalizedDissipationValueSmoothed
+		{
+			Type = SmoothedValue
+			ValueSource = DissipationSmoothingTargetValue
+			MaxDelta = 0.25
+			Deterministic = false
+		}
+
+		NetworkedThermalDissipationLoadValue
+		{
+			Type = NetworkValue
+			ValueSource = NormalizedDissipationValueSmoothed
+			Categories = [ thermal_load_dissipation ]
+		}
+
+		//Radiator Stuff End
 
 		Graphics
 		{
@@ -452,6 +696,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 2]
 		}
+		//Heat Stat Providers
+		HeatDissipationStatDenominator
+		{
+			Type = StaticValue
+			Value = (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO) * (&~/Part/Components/HeatDissipationConverter/Interval)
+		}
+
+		HeatDissipationStatValue
+		{
+			Type = StaticValue
+			Value = (&~/Part/Components/HeatDissipationConverter/Dissipation_Per_Second)
+		}
+
+		HeatDissipationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatDissipation
+			ValueFrom = HeatDissipationStatValue
+		}
+	}
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		SightRange = &~/Part/Components/Sensor/SightRadius
+		RadarRange = &~/Part/Components/Sensor/RadarRadius
+		HeatCapacity = (&~/Part/Components/HeatBuffer/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+		HeatDissipation = (&~/Part/Components/HeatDissipationConverter/FromQuantity) / (&~/Part/Components/HeatDissipationConverter/Interval) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 	}
 }
 

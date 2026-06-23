@@ -43,7 +43,8 @@ Components
 		PenetrationSpeed = (&~/Speed/BaseValue) * 0.5
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = false
-	
+		SourceShipHighCollisions = false
+		
 		HitShield
 		{
 			Offset = [15, 0]

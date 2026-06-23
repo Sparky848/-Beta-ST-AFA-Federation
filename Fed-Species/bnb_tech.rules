@@ -178,11 +178,11 @@ Techs
 	{
 		//Name = fed_shieldcore
 		ID = stafa.fed_shieldcore
-		NameKey = &<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part/NameKey
-		DescriptionKey = &<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part/DescriptionKey
-		Icon = &<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part/EditorIcon
-		//EditorGroup = &<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part///EditorGroup
-		PartsUnlocked = [&<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part/ID]
+		NameKey = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/NameKey
+		DescriptionKey = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/DescriptionKey
+		Icon = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/EditorIcon
+		//EditorGroup = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part///EditorGroup
+		PartsUnlocked = [&<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/ID]
 		Cost = 5000
 		//Prerequisites = [stafa.fed_warpcore_med]
 		FundsThresholdBeforeOffered = 200000

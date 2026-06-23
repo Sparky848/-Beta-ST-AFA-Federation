@@ -131,7 +131,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireInterval = 4
 			FireDelay = 4.8
 			FiringArc = 360d
-			RotateSpeed = 180d
+			RotateSpeed = 45d
 			FireThresholdAngle = 0.25d
 			AIFirepowerRating = 300
 			FirePermissionToggle = FireModeToggle

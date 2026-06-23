@@ -107,8 +107,8 @@ Def
 		UvRectIn = uv_rect
 		BaseSize
 		{
-			X = 5
-			Y = 5
+			X = 10
+			Y = 10
 		}
 		MaxScale = 1
 		Name = ""

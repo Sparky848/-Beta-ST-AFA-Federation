@@ -63,20 +63,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-//		BussardBuffProvider
-//		{
-//			Type = AreaBuffProvider
-//			BuffType = HasBussard3
-//			BuffAmount = { BaseValue=1; BuffType=HasBussard3; BuffMode=Add; }
-//			BuffArea = [4, 7, 2, 1]
-//			OperationalToggle = IsOperational
-//			Criteria
-//			{
-//				Rot = 0
-//				Left = 3
-//				Right = 0
-//			}
-//		}
+		BussardBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = HasBussard3
+			BuffAmount = { BaseValue=1; BuffType=HasBussard3; BuffMode=Add; }
+			BuffArea = [0, 7, 3, 1]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 3//need an offset?
+			}
+			ShowBuffRange = true
+		}
 		Graphics
 		{
 			Type = Graphics

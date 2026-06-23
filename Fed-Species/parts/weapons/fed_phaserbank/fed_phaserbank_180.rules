@@ -10,7 +10,7 @@ Components
 		//FireInterval = 2/30
 		FireInterval = { BaseValue=2.0; BuffType=PhaserExpoDebuff; BuffMode=Add; MaxValue=16; }
 		FiringArc = 180d
-		RotateSpeed = 360d
+		RotateSpeed = 45d
 		FireThresholdAngle = 0.25d
 		AIFirepowerRating = 400
 		FirePermissionToggle = FireModeToggle

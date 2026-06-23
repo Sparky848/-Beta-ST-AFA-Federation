@@ -1,4 +1,4 @@
-ID = "stafa.fed_phaser_lance"
+ID = "stafa.fed_phaser_lance2"
 Range = { BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=220; }
 IdealRange
 [
@@ -271,14 +271,6 @@ Components
 		}
 		FinishedPenetratingOperational = &PenetratingOperational
 		FinishedPenetratingStructural = &PenetratingStructural
-		FinishedPenetratingOperational
-		{
-			// No effect.
-		}
-		FinishedPenetratingStructural
-		{
-			// No effect.
-		}
 	}
 
 	// Sprite

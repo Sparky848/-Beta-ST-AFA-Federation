@@ -123,6 +123,12 @@ Parts
 							"<s20>Additionally doubling as a high fidelity <color r='10' g='168' b='28' a='255'>radar suite</color>, improved <color r='15' g='153' b='212' a='255'>shield enhancer</color> and efficient <color r='250' g='176' b='86' a='255'>heat disperser</color></s20>.\n"\
 							"<red>WARNING: This part is heavily WIP, expect changes!</red>\n"
 
+	Vengeance_Array = "Vengeance Array"
+	Vengeance_ArrayIcon = "Vengeance Array"
+	Vengeance_ArrayDesc = "An Advanced Phaser Array from an alternative timeline, the stolen schematic of which was apprehended by Starfleet Intelligence, and later leaked by unkown operatives."\
+						"\n\n<s20><color r='165' g='223' b='255' a='255'>Capable of firing a devastating nadion barrage, as well as launching a drone armed with photon torpedos</color></s20>"\
+						"\n<bad><s18>Drone currently not implemented\nPart WIP, buttons are placeholder</s18></bad>"  
+
 
     // Rooms
 	Captains_Room = "Captain's Ready Room"
@@ -299,17 +305,17 @@ Parts
 	Gen1BussardCollector1x1 = "TOS Bussard Collector 1x1"
 	Gen1BussardCollector1x1Icon = "TOS Bussard Collector 1x1"
 	Gen1BussardCollector1x1Desc = "TOS Bussard Collector 1x1\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	Gen1BussardCollector2x2 = "TOS Bussard Collector 2x2"
 	Gen1BussardCollector2x2Icon = "TOS Bussard Collector 2x2"
 	Gen1BussardCollector2x2Desc = "TOS Bussard Collector 2x2\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	Gen1BussardCollector3x3 = "TOS Bussard Collector 3x3"
 	Gen1BussardCollector3x3Icon = "TOS Bussard Collector 3x3"
 	Gen1BussardCollector3x3Desc = "TOS Bussard Collector 3x3\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	DuraniumArmour1x1BCCowling = "1x1 Bussard Cowling"
 	DuraniumArmour1x1BCCowlingIcon = "1x1 Bussard Cowling"
@@ -322,82 +328,82 @@ Parts
 	KelGen1BussardCollector1x1 = "Kelvin Bussard Collector 1x1"
 	KelGen1BussardCollector1x1Icon = "Kelvin Bussard Collector 1x1"
 	KelGen1BussardCollector1x1Desc = "Kelvin Bussard Collector 1x1\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	KelGen1BussardCollector2x2 = "Kelvin Bussard Collector 2x2"
 	KelGen1BussardCollector2x2Icon = "Kelvin Bussard Collector 2x2"
 	KelGen1BussardCollector2x2Desc = "Kelvin Bussard Collector 2x2\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	KelGen1BussardCollector3x3 = "Kelvin Bussard Collector 3x3"
 	KelGen1BussardCollector3x3Icon = "Kelvin Bussard Collector 3x3"
 	KelGen1BussardCollector3x3Desc = "Kelvin Bussard Collector 3x3\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	SovBussardCollector1x2 = "Sovereign Type Bussard Collector 1x2"
 	SovBussardCollector1x2Icon = "Sovereign Type Bussard Collector 1x2"
 	SovBussardCollector1x2Desc = "Sovereign Type Bussard Collector 1x2\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 	
 	SovBussardCollector2x4 = "Sovereign Type Bussard Collector 2x4"
 	SovBussardCollector2x4Icon = "Sovereign Type Bussard Collector 2x4"
 	SovBussardCollector2x4Desc = "Sovereign Type Bussard Collector 2x4\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	SovBussardCollector3x5 = "Sovereign Type Bussard Collector 3x5"
 	SovBussardCollector3x5Icon = "Sovereign Type Bussard Collector 3x5"
 	SovBussardCollector3x5Desc = "Sovereign Type Bussard Collector 3x5\n"\
-								"<s20><cyan>Currently only decorational</cyan></s20>"
+								"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 	
 	Gen1RefitBussardCollector1x1 = "TOS Refit Bussard Collector 1x1"
 	Gen1RefitBussardCollector1x1Icon = "TOS Refit Bussard Collector 1x1"
 	Gen1RefitBussardCollector1x1Desc = "TOS Refit Bussard Collector 1x1\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	Gen1RefitBussardCollector2x3 = "TOS Refit Bussard Collector 2x3"
 	Gen1RefitBussardCollector2x3Icon = "TOS Refit Bussard Collector 2x3"
 	Gen1RefitBussardCollector2x3Desc = "TOS Refit Bussard Collector 2x3\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	Gen1RefitBussardCollector3x4 = "TOS Refit Bussard Collector 3x4"
 	Gen1RefitBussardCollector3x4Icon = "TOS Refit Bussard Collector 3x4"
 	Gen1RefitBussardCollector3x4Desc = "TOS Refit Bussard Collector 3x4\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	GalaxyBussardCollector3x4 = "TNG Bussard Collector 3x4"
 	GalaxyBussardCollector3x4Icon = "TNG Bussard Collector 3x4"
 	GalaxyBussardCollector3x4Desc = "TNG Bussard Collector 3x4\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	GalaxyBussardCollector2x3 = "TNG Bussard Collector 2x3"
 	GalaxyBussardCollector2x3Icon = "TNG Bussard Collector 2x3"
 	GalaxyBussardCollector2x3Desc = "TNG Bussard Collector 2x3\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	GalaxyBussardCollector1x1 = "TNG Bussard Collector 1x1"
 	GalaxyBussardCollector1x1Icon = "TNG Bussard Collector 1x1"
 	GalaxyBussardCollector1x1Desc = "TNG Bussard Collector 1x1\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	GalaxyBussardCollector5x7 = "TNG Bussard Collector 5x7"
 	GalaxyBussardCollector5x7Icon = "TNG Bussard Collector 5x7"
 	GalaxyBussardCollector5x7Desc = "TNG Bussard Collector 5x7\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	AltVoyBussardCollector3x5 = "Alt Voyager-A Bussard 3x5"
 	AltVoyBussardCollector3x5Icon = "Alt Voyager-A Bussard 3x5"
 	AltVoyBussardCollector3x5Desc = "Alt Voyager-A Bussard 3x5\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	AltVoyBussardCollector2x4 = "Alt Voyager-A Bussard 2x4"
 	AltVoyBussardCollector2x4Icon = "Alt Voyager-A Bussard 2x4"
 	AltVoyBussardCollector2x4Desc = "Alt Voyager-A Bussard 2x4\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	AltVoyBussardCollector1x2 = "Alt Voyager-A Bussard 1x2"
 	AltVoyBussardCollector1x2Icon = "Alt Voyager-A Bussard 1x2"
 	AltVoyBussardCollector1x2Desc = "Alt Voyager-A Bussard 1x2\n"\
-									"<s20><cyan>Currently only decorational</cyan></s20>"
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 
 	Heavy_Dual_Phaser_Cannon = "Heavy Dual Phaser Cannon"
 	Heavy_Dual_Phaser_CannonIcon = "Heavy Dual Phaser Cannon"
@@ -714,11 +720,11 @@ STAFAShips = "ST-AFA Ships"
 STAFAShipsTT = "Federation Vessels"
 Stats
 {
-	WeaponBuffFmt = "<white>Weapon-Buff:</white> <good>+{0:0} %</good>"
-	BasePowerGenFmt = "<white>Base Power Generation:</white> <good>{0}</good>"
-	AntimatterPowerGenFmt = "<white>Antimatter Power Generation:</white> <good>{0}</good>"
-	TransferRateFmt = "<white>Energy Transfer Rate:</white> <good>{0}</good>"
-	HullPolariserBuffFmt = "<white>Hull Polariser Buff:</white> <good>{0}</good>"
+	WeaponBuffFmt = "<white>Weapon-Buff:</white> <good>+{0:0} %</good><gray>%</gray>"
+	BasePowerGenFmt = "<white>Base Power Generation:</white> <good>{0}</good><gray>/sec</gray>"
+	AntimatterPowerGenFmt = "<white>Antimatter Power Generation:</white> <good>{0}</good><gray>/sec</gray>"
+	TransferRateFmt = "<white>Energy Transfer Rate:</white> <good>{0}</good><gray>/sec</gray>"
+	HullPolariserBuffFmt = "<white>Hull Polariser Buff:</white> <good>{0}</good><gray>%</gray>"
 }
 
 TorpedoTypes

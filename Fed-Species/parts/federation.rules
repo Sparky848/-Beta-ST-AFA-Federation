@@ -71,7 +71,7 @@ Parts
 	&<engines/fed_impulse_deck_2x3/fed_impulse_deck_2x3.rules>/Part	
 
 	// Shields
-	&<shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part
+	&<shields/fed_shieldcore/fed_shieldcore.rules>/Part
 
 	//Armour
 	&<armour/duranium_armour/duranium_armour.rules>/Part

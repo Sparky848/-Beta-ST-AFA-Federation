@@ -322,6 +322,86 @@ PartToggles
 			}
 		]
 	}
+	// Shield Shunt
+	{
+		ToggleID = "CoreShield_Shunt"
+		Style = Popout
+		ShowInEditor = true
+		SortOrder = 3
+		Choices
+		[
+			{
+				ChoiceID = "NotShunted"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/NotShunted"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_XS.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "FrontShunt"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/FrontShunt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_S.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "LeftShunt"
+				Mode = 2
+				ButtonToolTipKey = "PartToggles/LeftShunt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_M.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "RightShunt"
+				Mode = 3
+				ButtonToolTipKey = "PartToggles/RightShunt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_L.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "BottomShunt"
+				Mode = 4
+				ButtonToolTipKey = "PartToggles/BottomShunt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_XL.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 	// Standard Phaser Bank Arc
 	{
 		ToggleID = "phaser_bank_arc"

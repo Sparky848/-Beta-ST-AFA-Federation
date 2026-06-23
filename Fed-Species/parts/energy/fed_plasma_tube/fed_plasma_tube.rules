@@ -63,7 +63,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			SuppliesResourcesToggle = PowerToggle
 			MinResourcesPickUp = 1000
 			MaxResourcesPickUp = 2000
-			IsIntermediateStorage = true
+			//IsIntermediateStorage = true  //removed to allow plasma tubes to auto supply capacitors
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 //		BatteryConsumer

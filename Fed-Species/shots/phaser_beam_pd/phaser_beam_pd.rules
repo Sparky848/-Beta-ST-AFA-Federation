@@ -1,9 +1,9 @@
 ID = "stafa.fed_phaser_beam_pd"
-Range = { BaseValue=180; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=220; }
+Range = { BaseValue=240; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=280; }
 IdealRange
 [
-	{ BaseValue=20; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=20; }
-	{ BaseValue=165; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=210; }
+	{ BaseValue=160; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=225; }
+	{ BaseValue=225; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=270; }
 ]
 Duration = 1
 HitInterval = .1
@@ -16,15 +16,15 @@ HitNothing
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 110//1000
-			Radius = 1
+			TotalDamage = 500//1000
+			Radius = 1.5
 			Slices = 1
 			Filter
 			{
 				Ships = false
 				Shields = false
 				Bullets = true
-				OnlyBulletCategories = [missile, mine, stafa_torpedo]
+				OnlyBulletCategories = [missile, mine, stafa_torpedo, bullet]
 			}
 		}
 	]
