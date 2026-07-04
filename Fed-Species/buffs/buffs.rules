@@ -236,7 +236,9 @@ WarpcoreSubstationBuffMed
 WarpcoreSubstationBuffSmall
 {
 	CombineMode = Add
-	BaseValue = 0.0075
+	BaseValue = 0%//0.0075
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
 }
 WarpcoreSubstationBuffVSmall
 {
@@ -458,3 +460,11 @@ DeflectorShieldBuff
 
 ShuntStateBuff {}
 ShuntToggleStateBuff {}
+
+ConnectedToSmallCoreBuff
+{
+	CombineMode = Max
+	BaseValue = 0%
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}

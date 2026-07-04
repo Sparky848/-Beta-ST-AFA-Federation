@@ -1,7 +1,7 @@
 ShieldInvisibleNoShunt
 {
 	// FRONT
-	ArcShield_XL_Front_NoShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -48,20 +48,20 @@ ShieldInvisibleNoShunt
 	}
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
-		ChainedTo = ArcShield_XL_Front_NoShunt
+		ChainedTo = ArcShield_XL_Front
 		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
 		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
-		ChainedTo = ArcShield_XL_Front_NoShunt
+		ChainedTo = ArcShield_XL_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XL, 0]
 		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
-	ArcShield_XL_Back_NoShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -121,7 +121,7 @@ ShieldInvisibleNoShunt
 	}
 	
 	// LEFT
-	ArcShield_XL_Left_NoShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -183,7 +183,7 @@ ShieldInvisibleNoShunt
 	
 	
 	// RIGHT
-	ArcShield_XL_Right_NoShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -246,7 +246,7 @@ ShieldInvisibleNoShunt
 ShieldInvisibleFrontShunt
 {
 	// FRONT
-	ArcShield_XL_Front_FrontShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -293,20 +293,20 @@ ShieldInvisibleFrontShunt
 	}
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
-		ChainedTo = ArcShield_XL_Front_FrontShunt
+		ChainedTo = ArcShield_XL_Front
 		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
 		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
-		ChainedTo = ArcShield_XL_Front_FrontShunt
+		ChainedTo = ArcShield_XL_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XL, 0]
 		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
-	ArcShield_XL_Back_FrontShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -366,7 +366,7 @@ ShieldInvisibleFrontShunt
 	}
 	
 	// LEFT
-	ArcShield_XL_Left_FrontShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -428,7 +428,7 @@ ShieldInvisibleFrontShunt
 	
 	
 	// RIGHT
-	ArcShield_XL_Right_FrontShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -492,7 +492,7 @@ ShieldInvisibleFrontShunt
 ShieldInvisibleLeftShunt
 {
 	// FRONT
-	ArcShield_XL_Front_LeftShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -539,20 +539,20 @@ ShieldInvisibleLeftShunt
 	}
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
-		ChainedTo = ArcShield_XL_Front_LeftShunt
+		ChainedTo = ArcShield_XL_Front
 		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
 		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
-		ChainedTo = ArcShield_XL_Front_LeftShunt
+		ChainedTo = ArcShield_XL_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XL, 0]
 		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
-	ArcShield_XL_Back_LeftShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -612,7 +612,7 @@ ShieldInvisibleLeftShunt
 	}
 	
 	// LEFT
-	ArcShield_XL_Left_LeftShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -674,7 +674,7 @@ ShieldInvisibleLeftShunt
 	
 	
 	// RIGHT
-	ArcShield_XL_Right_LeftShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -737,7 +737,7 @@ ShieldInvisibleLeftShunt
 ShieldInvisibleRightShunt
 {
 	// FRONT
-	ArcShield_XL_Front_RightShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -784,20 +784,20 @@ ShieldInvisibleRightShunt
 	}
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
-		ChainedTo = ArcShield_XL_Front_RightShunt
+		ChainedTo = ArcShield_XL_Front
 		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
 		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
-		ChainedTo = ArcShield_XL_Front_RightShunt
+		ChainedTo = ArcShield_XL_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XL, 0]
 		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
-	ArcShield_XL_Back_RightShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -857,7 +857,7 @@ ShieldInvisibleRightShunt
 	}
 	
 	// LEFT
-	ArcShield_XL_Left_RightShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -919,7 +919,7 @@ ShieldInvisibleRightShunt
 	
 	
 	// RIGHT
-	ArcShield_XL_Right_RightShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -983,7 +983,7 @@ ShieldInvisibleRightShunt
 ShieldInvisibleBackShunt
 {
 	// FRONT
-	ArcShield_XL_Front_BackShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -1030,20 +1030,20 @@ ShieldInvisibleBackShunt
 	}
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
-		ChainedTo = ArcShield_XL_Front_BackShunt
+		ChainedTo = ArcShield_XL_Front
 		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
 		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
-		ChainedTo = ArcShield_XL_Front_BackShunt
+		ChainedTo = ArcShield_XL_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XL, 0]
 		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
-	ArcShield_XL_Back_BackShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -1103,7 +1103,7 @@ ShieldInvisibleBackShunt
 	}
 	
 	// LEFT
-	ArcShield_XL_Left_BackShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
@@ -1165,7 +1165,7 @@ ShieldInvisibleBackShunt
 	
 	
 	// RIGHT
-	ArcShield_XL_Right_BackShunt : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	ArcShield_XL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d

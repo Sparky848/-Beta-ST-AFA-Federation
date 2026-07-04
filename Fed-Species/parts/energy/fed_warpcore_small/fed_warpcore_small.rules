@@ -86,6 +86,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ToggleProxy
 			ComponentID = PowerToggle
 		}
+		HasWarpcoreBuffSmall
+		{
+			Type = BuffToggle
+			BuffType = WarpcoreBuffSmall
+		}
+		HasWarpcoreSubstationBuffSmall
+		{
+			Type = BuffToggle
+			BuffType = WarpcoreSubstationBuffSmall
+		}
 		CommandConsumer
 		{
 			Type = CommandConsumer
@@ -136,6 +146,119 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			StartTrigger = WarpcoreEjectTimerTrigger
 			AutoStart = false
 		}
+		//Left
+		ConnectedToAuxInjectorLeft
+		{
+			Type = AreaBuffProvider
+			BuffArea = [-1, 0, 1, 4]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 0
+				Top = 0
+				Bottom = 4
+			}
+		}
+		ConnectedToAuxInjectorLeftFlipX
+		{
+			Type = AreaBuffProvider
+			BuffArea = [-1, 0, 1, 4]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 2
+				Top = 0
+				Bottom = 4
+				FlipX = true
+			}
+		}
+		//Top
+		ConnectedToAuxInjectorTop
+		{
+			Type = AreaBuffProvider
+			BuffArea = [0, -1, 4, 1]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 1
+				Left = 0
+				Right = 4
+			}
+		}
+		ConnectedToAuxInjectorTopFlipX
+		{
+			Type = AreaBuffProvider
+			BuffArea = [0, -1, 4, 1]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 1
+				Left = 0
+				Right = 4
+				FlipX = true
+			}
+		}
+		//Right
+		ConnectedToAuxInjectorRight
+		{
+			Type = AreaBuffProvider
+			BuffArea = [4, 0, 1, 4]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 2
+				Top = 0
+				Bottom = 4
+			}
+		}
+		ConnectedToAuxInjectorRightFlipX
+		{
+			Type = AreaBuffProvider
+			BuffArea = [4, 0, 1, 4]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 2
+				Top = 0
+				Bottom = 4
+				FlipX = true
+			}
+		}
+		//Bottom
+		ConnectedToAuxInjectorBottom
+		{
+			Type = AreaBuffProvider
+			BuffArea = [0, 4, 4, 1]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 3
+				Left = 0
+				Right = 4
+			}
+		}
+		ConnectedToAuxInjectorBottomFlipX
+		{
+			Type = AreaBuffProvider
+			BuffArea = [0, 4, 4, 1]
+			BuffType = ConnectedToSmallCoreBuff
+			ShowBuffRange = false
+			Criteria
+			{
+				Rot = 3
+				Left = 0
+				Right = 4
+				FlipX = true
+			}
+		}
+		//
 		WarpcoreActive
 		{
 			Type = ToggledComponents
@@ -159,6 +282,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
+					MinFromQuantityForConversion = 22
+					MinToQuantityForConversion = 473
 					From
 					[
 						{
@@ -168,7 +293,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					ToStorage = BatteryStorage
 					ToQuantity = 473
-					Interval = .075
+					Interval = { BaseValue=0.075; BuffType=WarpcoreBuffSmall; BuffMode=Subtract; MinValue=0.055; }
 				}
 				ConvertEffects
 				{
@@ -933,7 +1058,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		BasePowerGen = (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/Interval/BaseValue) / 1000
-		AntimatterPowerGen = (&BasePowerGen) + ((&~/Part/Components/WarpcoreActive/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/ResourceConverter/Interval) / 1000)
+		AntimatterPowerGen = (&BasePowerGen) + ((&~/Part/Components/WarpcoreActive/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/ResourceConverter/Interval/BaseValue) / 1000)
 		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
 		//TransferRate = ((&~/Part/Components/EnergySubstation/From/0/MinQuantityForConversion) / (&~/Part/Components/EnergySubstation/Interval/BaseValue)) / 1000

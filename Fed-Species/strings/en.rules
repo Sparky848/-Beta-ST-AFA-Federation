@@ -166,7 +166,7 @@ Parts
 	Aux_MA_Injector_Small = "Small Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_SmallIcon = "Small Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_SmallDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"\
-								"\n<red>Currently Non-Functional</red>"
+								"\n<red>Currently in testing, be sure to give feedback!</red>"
 	Aux_MA_Injector_Large = "Large Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_LargeIcon = "Large Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_LargeDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"\
@@ -736,6 +736,7 @@ Stats
 	AntimatterPowerGenFmt = "<white>Antimatter Power Generation:</white> <good>{0}</good><gray>/sec</gray>"
 	TransferRateFmt = "<white>Energy Transfer Rate:</white> <good>{0}</good><gray>/sec</gray>"
 	HullPolariserBuffFmt = "<white>Hull Polariser Buff:</white> <good>{0}</good><gray>%</gray>"
+	AuxInjectorBuffFmt = "<white>Auxiliary Injector Buff:</white> <good>{0}</good><gray>%</gray>"
 }
 
 TorpedoTypes

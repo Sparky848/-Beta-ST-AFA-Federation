@@ -3,10 +3,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Aux_MA_Injector_Small"
 	IconNameKey = "Parts/Aux_MA_Injector_SmallIcon"
 	ID = "stafa.aux_ma_injector_small"
-	OtherIDs = [aux_ma_injector_small]
 	EditorGroup = "StarfleetPower"
 	DescriptionKey = "Parts/Aux_MA_Injector_SmallDesc"
+	OtherIDs = [aux_ma_injector_small_L, aux_ma_injector_small_R, stafa.aux_ma_injector_small_L, stafa.aux_ma_injector_small_R]
+	FlipWhenLoadingIDs = [aux_ma_injector_small_R, stafa.aux_ma_injector_small_R]
 	IsBuildable = false
+	IsFlippable = true
 	Resources
 	[
 		[steel, 56]
@@ -18,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 4]
 	MaxHealth = 3500
 	TypeCategories = [storage]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ConnectedToSmallCoreBuff]
 	//IgnoreRotationForMirroredSelection = true
 	AllowedDoorLocations
 	[
@@ -49,8 +51,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceConverter
 			OperationalToggle = IsOperational
 			FromStorage = BatteryStorage
-			FromQuantity = 1000
-			MinFromQuantityForConversion = 1000
+			FromQuantity = 200
+			MinFromQuantityForConversion = 350
 			Interval = 1 
 		}
 		PowerToggle
@@ -60,49 +62,158 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		BuffProvider
+		CommandConsumer
 		{
-			Type = GridBuffProvider
+			Type = CommandConsumer
+			CommandPoints = 2
+		}
+		//Warpcore Buff Providers
+		BuffProviderOnLeft
+		{
+			Type = AreaBuffProvider
 			BuffType = WarpcoreBuffSmall
 			BuffAmount = 100%
-			GridDistance = 1
-			BuffArea = [1, 0, 0, 4]
-			PartCriteria
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
 			{
-				IDs = [stafa.fed_warpcore_small]
+				Rot = 0
+				Up = 0
+				Down = 4
 			}
-			OperationalToggle = CanBuff
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
 		}
-		BuffProvider2
+		BuffProviderOnTop
 		{
-			Type = GridBuffProvider
-			BuffType = WarpcoreSubstationBuffSmall
+			Type = AreaBuffProvider
+			BuffType = WarpcoreBuffSmall
 			BuffAmount = 100%
-			GridDistance = 1
-			BuffArea = [1, 0, 0, 4]
-			PartCriteria
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
 			{
-				IDs = [stafa.fed_warpcore_small]
+				Rot = 1
+				Up = 0
+				Down = 4
 			}
-			OperationalToggle = CanBuff
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
 		}
-		CanBuff
+		BuffProviderOnRight
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreBuffSmall
+			BuffAmount = 100%
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
+			{
+				Rot = 2
+				Up = 0
+				Down = 4
+			}
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
+		}
+		BuffProviderOnBottom
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreBuffSmall
+			BuffAmount = 100%
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
+			{
+				Rot = 3
+				Up = 0
+				Down = 4
+			}
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
+		}
+
+		//Substation Buff Providers 
+		SubstationBuffProviderOnLeft
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreSubstationBuffSmall
+			BuffAmount = 7.5%
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
+			{
+				Rot = 0
+				Up = 0
+				Down = 4
+			}
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
+		}
+		SubstationBuffProviderOnTop
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreSubstationBuffSmall
+			BuffAmount = 7.5%
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
+			{
+				Rot = 1
+				Up = 0
+				Down = 4
+			}
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
+		}
+		SubstationBuffProviderOnRight
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreSubstationBuffSmall
+			BuffAmount = 7.5%
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
+			{
+				Rot = 2
+				Up = 0
+				Down = 4
+			}
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
+		}
+		SubstationBuffProviderOnBottom
+		{
+			Type = AreaBuffProvider
+			BuffType = WarpcoreSubstationBuffSmall
+			BuffAmount = 7.5%
+			BuffArea = [1, 0, 1, 4]
+			
+			Criteria
+			{
+				Rot = 3
+				Up = 0
+				Down = 4
+			}
+			OperationalToggle = IsConnectedAndOperational
+			ShowBuffRange = true
+		}
+		IsConnectedAndOperational
 		{
 			Type = MultiToggle
-			Toggles = [IsConnected, IsOperational]
+			Toggles = [IsOperational, IsConnected]
 			Mode = All
 		}
 		IsConnected
 		{
-			Type = MultiToggle
-			Toggles = [Connectedtosmallcoreleft, Connectedtosmallcoreright, Connectedtosmallcoretop, Connectedtosmallcorebottom]
-			Mode = Any
+			Type = BuffToggle
+			BuffType = ConnectedToSmallCoreBuff
 		}
-
+		/*
 		Connectedtosmallcoreleft
 		{
 			Type = ToggleProxy
-			PartLocation = [1, 0]
+			PartLocation = [-1, 0]
 			ProxyableComponents
 			[
 				{
@@ -112,7 +223,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						IDs = [stafa.fed_warpcore_small]
 						Rot = 3
-						Left = 1
+						Down = 4
 					}
 				}
 			]
@@ -120,7 +231,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Connectedtosmallcoretop
 		{
 			Type = ToggleProxy
-			PartLocation = [1, 3]
+			PartLocation = [0, -1]
 			ProxyableComponents
 			[
 				{
@@ -128,8 +239,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						IDs = [stafa.fed_warpcore_small]
 						//Rot = 1
-						Right = 3
-						Top = 1
+						Right = 4
 					}
 					ComponentID = IsConnected
 					//PartLocation = [1, 3]
@@ -235,7 +345,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				}
 			]
-		}
+		}*/
 		//IsConnectedProxy
 		//{
 		//	Type = ToggleProxy
@@ -523,7 +633,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				}
 				//Not Connected
-				{
+				/*{
 					Toggle = IsConnected
 					ShowInBuildMode = true
 					AtlasSprite
@@ -531,7 +641,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						File = &/INDICATORS/MissingComponent
 						Size = [1, 1]
 					}
-				}
+				}*/
 				
 			]
 		}
@@ -547,5 +657,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity)  / (&~/Part/Components/PowerDrain/Interval) / 1000
+		AuxInjectorBuff = (&~/Part/Components/SubstationBuffProviderOnLeft/BuffAmount) * 100
 	}
 }

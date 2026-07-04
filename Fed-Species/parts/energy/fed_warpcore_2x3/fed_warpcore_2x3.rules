@@ -183,6 +183,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
+					MinFromQuantityForConversion = 10
+					MinToQuantityForConversion = 195
 					From
 					[
 						{

@@ -1,6 +1,6 @@
 ID = "st-afa.beta_federation"
 Name = "[Beta] ST-AFA - Federation"
-Version = "[Beta] 0.2.11"//look I always forget these so don't expect it to change :p
+Version = "[Beta] 0.2.11a"//look I always forget these so don't expect it to change :p
 Author = "ST-AFA Mod-Team"
 CompatibleGameVersions = ["0.30.4c"]
 ModifiesMultiplayer = true
@@ -138,6 +138,17 @@ Actions:
 			{
 				ID = HullPolariserBuff
 				FormatKey = "Stats/HullPolariserBuffFmt"
+			}
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./Data/gui/game/parts/part_stats.rules>/PartStats"
+		ManyToAdd
+		[
+			{
+				ID = AuxInjectorBuff
+				FormatKey = "Stats/AuxInjectorBuffFmt"
 			}
 		]
 	}
