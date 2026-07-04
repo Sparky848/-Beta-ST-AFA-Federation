@@ -7,10 +7,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Vengeance_ArrayDesc"
 	Resources
 	[
-		[steel, 88]
-		[tristeel, 12]
-		[coil, 30]
-		[coil2, 6]
+		[steel, 144]
+		[tristeel, 46]
+		[coil, 52]
+		[coil2, 32]
+		[processor, 2]//32,600
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
@@ -105,7 +106,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
-			CommandPoints = 2
+			CommandPoints = 15
 		}
 
 		FireModeToggle

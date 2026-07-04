@@ -28,6 +28,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Radius_L = 45
 	Radius_XL = 60
 	
+	XSFromToQuantity = 2800
+	XSInterval = .5
+
+	SFromToQuantity = 4182//4181.81818181818
+	SInterval = .5
+
+	MFromToQuantity = 4923//4923.07692307692
+	MInterval = .5
+
+	LFromToQuantity = 5125
+	LInterval = .5
+
+	XLFromToQuantity = 5000
+	XLInterval = .5
+
 	BlockedTravelCells
 	[
 		[1, 1]
@@ -67,10 +82,61 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, CombinedBatteryStorage, PartCrew, &~/Part/SHUNT_OPERATIONAL, &~/Part/SHUNT_FRONT_OPERATIONAL, &~/Part/SHUNT_BACK_OPERATIONAL, &~/Part/SHUNT_LEFT_OPERATIONAL, &~/Part/SHUNT_RIGHT_OPERATIONAL]//&~/Part/SHUNTTOGGLE_OPERATIONAL 
+			Toggles = [PowerToggle, PartCrew, &~/Part/SHUNT_OPERATIONAL, &~/Part/SHUNT_FRONT_OPERATIONAL, &~/Part/SHUNT_BACK_OPERATIONAL, &~/Part/SHUNT_LEFT_OPERATIONAL, &~/Part/SHUNT_RIGHT_OPERATIONAL]//&~/Part/SHUNTTOGGLE_OPERATIONAL 
 			Mode = All
 		}
-
+		//Operational Proxies
+		FrontIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = FrontIsOperational
+		}
+		LeftIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = LeftIsOperational
+		}
+		RightIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = RightIsOperational
+		}
+		BackIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = BackIsOperational
+		}//crashes might be due to these, might need one for each face
+		
+		//Battery Proxies
+		FrontBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = FrontBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		LeftBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = LeftBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		RightBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = RightBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		BackBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = BackBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		//--
 		PowerToggle
 		{
 			Type = UIToggle
@@ -86,25 +152,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			CommandPoints = 20
 		}
 		
-		ProgressBar
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = CombinedBatteryStorage
-			LowColor = [0, 0, 255]
-			HighColor = [0, 0, 255]
-			FullColor = [0, 0, 255]
-			Height = 10
-		}
-		
-		CombinedBatteryStorage
-		{
-			Type = MultiResourceStorage
-			ResourceType = battery
-			ResourceStorages = [FrontBatteryStorage, BackBatteryStorage, LeftBatteryStorage, RightBatteryStorage]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		
 		//
 		// BaseArcShield
 		//
@@ -113,10 +160,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ArcShield
 			Radius = 0.01
 			Arc = 0.01d
-			OperationalToggle = FrontIsOperational
+			OperationalToggle = IsOperational
 			PenetrationResistance = [75, 0]
-			DrainResourcesFrom = FrontBatteryStorage
-			ResourceDrainPerDamage = .4
+			//DrainResourcesFrom = FrontBatteryStorage
+			//ResourceDrainPerDamage = .4
 			Rotation = -90d
 			Location = [2, 2]
 			
@@ -200,10 +247,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
 					Sound = "shield_loop.wav"
-					Volume = .15
+					Volume = .075
 					Speed = .5
 					MaxConcurrent = 1
-					MaxConcurrentVolume = .3
+					MaxConcurrentVolume = .075
 					DynamicVolume : ^/0/DynamicVolume
 					{
 						MinDistance = .75
@@ -278,9 +325,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ContinuousEffects
 			ChainedTo = BaseArcShield
-			FactorMediaEffectsIntensityWith = FrontBatteryStorage
+			//FactorMediaEffectsIntensityWith = FrontBatteryStorage
 			Location = [2.2, 0]
-			OperationalToggle = FrontIsOperational
+			OperationalToggle = IsOperational
 			ParentToShip = true
 			MediaEffects
 			[
@@ -348,13 +395,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ToggleEffects
 			ChainedTo = BaseArcShield
 			Location = [&~/Part/Components/BaseArcShield/Radius, 0]
-			Toggle = FrontIsOperational
+			Toggle = IsOperational
 			ToggledOnMediaEffects
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "shieldraise.wav"
-					Volume = .5
+					Volume = .1
 					Speed = 1.5
 					IgnoreIntensity = true
 				}
@@ -364,7 +411,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "shieldlower.wav"
-					Volume = .5
+					Volume = .15
 					Speed = 1.5
 					IgnoreIntensity = true
 				}
@@ -591,27 +638,132 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ShieldToggleMOn
 		{
 			Type = MultiToggle
-			Toggles = [ShieldToggleM, ShieldVisibilityToggleOn]
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOn, NotShuntedToggle]
 			Mode = All
 		}
 		ShieldToggleMOff
 		{
 			Type = MultiToggle
-			Toggles = [ShieldToggleM, ShieldVisibilityToggleOff]
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOff, NotShuntedToggle]
 			Mode = All
 		}
+
+		ShieldToggleMOnFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOn, FrontShuntToggle]
+			Mode = All
+		}
+		ShieldToggleMOffFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOff, FrontShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleMOnLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOn, LeftShuntToggle]
+			Mode = All
+		}
+		ShieldToggleMOffLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOff, LeftShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleMOnRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOn, RightShuntToggle]
+			Mode = All
+		}
+		ShieldToggleMOffRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOff, RightShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleMOnBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOn, BackShuntToggle]
+			Mode = All
+		}
+		ShieldToggleMOffBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleM, ShieldVisibilityToggleOff, BackShuntToggle]
+			Mode = All
+		}
+
 
 		//L Toggles
 		ShieldToggleLOn
 		{
 			Type = MultiToggle
-			Toggles = [ShieldToggleL, ShieldVisibilityToggleOn]
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOn, NotShuntedToggle]
 			Mode = All
 		}
 		ShieldToggleLOff
 		{
 			Type = MultiToggle
-			Toggles = [ShieldToggleL, ShieldVisibilityToggleOff]
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOff, NotShuntedToggle]
+			Mode = All
+		}
+
+		ShieldToggleLOnFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOn, FrontShuntToggle]
+			Mode = All
+		}
+		ShieldToggleLOffFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOff, FrontShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleLOnLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOn, LeftShuntToggle]
+			Mode = All
+		}
+		ShieldToggleLOffLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOff, LeftShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleLOnRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOn, RightShuntToggle]
+			Mode = All
+		}
+		ShieldToggleLOffRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOff, RightShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleLOnBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOn, BackShuntToggle]
+			Mode = All
+		}
+		ShieldToggleLOffBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleL, ShieldVisibilityToggleOff, BackShuntToggle]
 			Mode = All
 		}
 
@@ -619,16 +771,69 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ShieldToggleXLOn
 		{
 			Type = MultiToggle
-			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn]
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, NotShuntedToggle]
 			Mode = All
 		}
 		ShieldToggleXLOff
 		{
 			Type = MultiToggle
-			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff]
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, NotShuntedToggle]
 			Mode = All
 		}
 
+		ShieldToggleXLOnFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, FrontShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, FrontShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXLOnLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, LeftShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, LeftShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXLOnRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, RightShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, RightShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXLOnBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, BackShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, BackShuntToggle]
+			Mode = All
+		}
+
+		//---
 		ShieldVisibilityToggle
 		{
 			Type = UIToggle
@@ -1262,6 +1467,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OffTrigger = ShuntToggleReset
 		}*/
 		//XS Shield Arcs
+		XSBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXS
+			Components = &<XS/Shield_XS_BatteryStorage.rules>/XSBatteryStorages
+		}
 		ToggledComponents_ArcShield_XS_On
 		{
 			Type = ToggledComponents
@@ -1338,6 +1549,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 
 		//S Shield Arcs
+		SBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleS
+			Components = &<S/Shield_S_BatteryStorage.rules>/SBatteryStorages
+		}
 		ToggledComponents_ArcShield_S_On
 		{
 			Type = ToggledComponents
@@ -1414,1692 +1631,253 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 
 		//M Shield Arcs
+		MBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleM
+			Components = &<M/Shield_M_BatteryStorage.rules>/MBatteryStorages
+		}
 		ToggledComponents_ArcShield_M_On
 		{
 			Type = ToggledComponents
 			Toggle = ShieldToggleMOn
 			IncludeInBlueprints = true
-			Components =
-			{
-				// FRONT
-				ArcShield_M_Front : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = -90d
-					OperationalToggle = FrontIsOperational
-					DrainResourcesFrom = FrontBatteryStorage
-					ResourceDrainPerDamage = .15
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				FrontEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Front
-					FactorMediaEffectsIntensityWith = FrontBatteryStorage
-					OperationalToggle = FrontIsOperational
-				}
-				FrontShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Front
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = FrontIsOperational
-				}
-				
-				// BACK
-				ArcShield_M_Back : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = 90d
-					OperationalToggle = BackIsOperational
-					DrainResourcesFrom = BackBatteryStorage
-					ResourceDrainPerDamage = .35
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				BackEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Back
-					FactorMediaEffectsIntensityWith = BackBatteryStorage
-					OperationalToggle = BackIsOperational
-				}
-				BackShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Back
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = BackIsOperational
-				}
-				
-				
-				// LEFT
-				ArcShield_M_Left : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = 180d
-					OperationalToggle = LeftIsOperational
-					DrainResourcesFrom = LeftBatteryStorage
-					ResourceDrainPerDamage = .25
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				LeftEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Left
-					FactorMediaEffectsIntensityWith = LeftBatteryStorage
-					OperationalToggle = LeftIsOperational
-				}
-				LeftShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Left
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = LeftIsOperational
-				}
-				
-				
-				// RIGHT
-				ArcShield_M_Right : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = 0d
-					OperationalToggle = RightIsOperational
-					DrainResourcesFrom = RightBatteryStorage
-					ResourceDrainPerDamage = .25
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				RightEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Right
-					FactorMediaEffectsIntensityWith = RightBatteryStorage
-					OperationalToggle = RightIsOperational
-				}
-				RightShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Right
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = RightIsOperational
-				}
-				
-			}
+			Components = &<M/Shield_M_On.rules>/ShieldVisibleNoShunt
 		}
-
 		ToggledComponents_ArcShield_M_Off
 		{
 			Type = ToggledComponents
 			Toggle = ShieldToggleMOff
 			IncludeInBlueprints = true
-			Components =
-			{
-				// FRONT
-				ArcShield_M_Front : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = -90d
-					OperationalToggle = FrontIsOperational
-					DrainResourcesFrom = FrontBatteryStorage
-					ResourceDrainPerDamage = .15
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				FrontEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Front
-					FactorMediaEffectsIntensityWith = FrontBatteryStorage
-					OperationalToggle = FrontIsOperational
-				}
-				FrontShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Front
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = FrontIsOperational
-				}
-				
-				// BACK
-				ArcShield_M_Back : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = 90d
-					OperationalToggle = BackIsOperational
-					DrainResourcesFrom = BackBatteryStorage
-					ResourceDrainPerDamage = .35
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				BackEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Back
-					FactorMediaEffectsIntensityWith = BackBatteryStorage
-					OperationalToggle = BackIsOperational
-				}
-				BackShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Back
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = BackIsOperational
-				}
-				
-				
-				// LEFT
-				ArcShield_M_Left : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = 180d
-					OperationalToggle = LeftIsOperational
-					DrainResourcesFrom = LeftBatteryStorage
-					ResourceDrainPerDamage = .25
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				LeftEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Left
-					FactorMediaEffectsIntensityWith = LeftBatteryStorage
-					OperationalToggle = LeftIsOperational
-				}
-				LeftShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Left
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = LeftIsOperational
-				}
-				
-				
-				// RIGHT
-				ArcShield_M_Right : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_M
-					Arc = 90d
-					Rotation = 0d
-					OperationalToggle = RightIsOperational
-					DrainResourcesFrom = RightBatteryStorage
-					ResourceDrainPerDamage = .25
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				RightEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_M_Right
-					FactorMediaEffectsIntensityWith = RightBatteryStorage
-					OperationalToggle = RightIsOperational
-				}
-				RightShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_M_Right
-					Location = [&~/Part/Radius_M, 0]
-					Toggle = RightIsOperational
-				}
-				
-			}
+			Components = &<M/Shield_M_Off.rules>/ShieldInvisibleNoShunt
+		}
+
+		ToggledComponents_ArcShield_M_On_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOnFrontShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_On.rules>/ShieldVisibleFrontShunt
+		}
+		ToggledComponents_ArcShield_M_Off_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOffFrontShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_Off.rules>/ShieldInvisibleFrontShunt
+		}
+
+		ToggledComponents_ArcShield_M_On_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOnLeftShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_On.rules>/ShieldVisibleLeftShunt
+		}
+		ToggledComponents_ArcShield_M_Off_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOffLeftShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_Off.rules>/ShieldInvisibleLeftShunt
+		}
+
+		ToggledComponents_ArcShield_M_On_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOnRightShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_On.rules>/ShieldVisibleRightShunt
+		}
+		ToggledComponents_ArcShield_M_Off_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOffRightShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_Off.rules>/ShieldInvisibleRightShunt
+		}
+
+		ToggledComponents_ArcShield_M_On_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOnBackShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_On.rules>/ShieldVisibleBackShunt
+		}
+		ToggledComponents_ArcShield_M_Off_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleMOffBackShunt
+			IncludeInBlueprints = true
+			Components = &<M/Shield_M_Off.rules>/ShieldInvisibleBackShunt
 		}
 
 
+		//Large Shield Arcs
+		LBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleL
+			Components = &<L/Shield_L_BatteryStorage.rules>/LBatteryStorages
+		}
 		ToggledComponents_ArcShield_L_On
 		{
 			Type = ToggledComponents
 			Toggle = ShieldToggleLOn
 			IncludeInBlueprints = true
-			Components =
-			{
-				// FRONT
-				ArcShield_L_Front : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = -90d
-					OperationalToggle = FrontIsOperational
-					DrainResourcesFrom = FrontBatteryStorage
-					ResourceDrainPerDamage = .1
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				FrontEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Front
-					FactorMediaEffectsIntensityWith = FrontBatteryStorage
-					OperationalToggle = FrontIsOperational
-				}
-				FrontShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Front
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = FrontIsOperational
-				}
-				
-				// BACK
-				ArcShield_L_Back : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = 90d
-					OperationalToggle = BackIsOperational
-					DrainResourcesFrom = BackBatteryStorage
-					ResourceDrainPerDamage = .3
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				BackEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Back
-					FactorMediaEffectsIntensityWith = BackBatteryStorage
-					OperationalToggle = BackIsOperational
-				}
-				BackShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Back
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = BackIsOperational
-				}
-				
-				
-				// LEFT
-				ArcShield_L_Left : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = 180d
-					OperationalToggle = LeftIsOperational
-					DrainResourcesFrom = LeftBatteryStorage
-					ResourceDrainPerDamage = .2
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				LeftEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Left
-					FactorMediaEffectsIntensityWith = LeftBatteryStorage
-					OperationalToggle = LeftIsOperational
-				}
-				LeftShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Left
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = LeftIsOperational
-				}
-				
-				
-				// RIGHT
-				ArcShield_L_Right : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = 0d
-					OperationalToggle = RightIsOperational
-					DrainResourcesFrom = RightBatteryStorage
-					ResourceDrainPerDamage = .2
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				RightEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Right
-					FactorMediaEffectsIntensityWith = RightBatteryStorage
-					OperationalToggle = RightIsOperational
-				}
-				RightShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Right
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = RightIsOperational
-				}
-				
-			}
+			Components = &<L/Shield_L_On.rules>/ShieldVisibleNoShunt
 		}
-
 		ToggledComponents_ArcShield_L_Off
 		{
 			Type = ToggledComponents
 			Toggle = ShieldToggleLOff
 			IncludeInBlueprints = true
-			Components =
-			{
-				// FRONT
-				ArcShield_L_Front : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = -90d
-					OperationalToggle = FrontIsOperational
-					DrainResourcesFrom = FrontBatteryStorage
-					ResourceDrainPerDamage = .1
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				FrontEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Front
-					FactorMediaEffectsIntensityWith = FrontBatteryStorage
-					OperationalToggle = FrontIsOperational
-				}
-				FrontShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Front
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = FrontIsOperational
-				}
-				
-				// BACK
-				ArcShield_L_Back : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = 90d
-					OperationalToggle = BackIsOperational
-					DrainResourcesFrom = BackBatteryStorage
-					ResourceDrainPerDamage = .3
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				BackEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Back
-					FactorMediaEffectsIntensityWith = BackBatteryStorage
-					OperationalToggle = BackIsOperational
-				}
-				BackShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Back
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = BackIsOperational
-				}
-				
-				
-				// LEFT
-				ArcShield_L_Left : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = 180d
-					OperationalToggle = LeftIsOperational
-					DrainResourcesFrom = LeftBatteryStorage
-					ResourceDrainPerDamage = .2
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				LeftEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Left
-					FactorMediaEffectsIntensityWith = LeftBatteryStorage
-					OperationalToggle = LeftIsOperational
-				}
-				LeftShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Left
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = LeftIsOperational
-				}
-				
-				
-				// RIGHT
-				ArcShield_L_Right : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_L
-					Arc = 90d
-					Rotation = 0d
-					OperationalToggle = RightIsOperational
-					DrainResourcesFrom = RightBatteryStorage
-					ResourceDrainPerDamage = .2
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				RightEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_L_Right
-					FactorMediaEffectsIntensityWith = RightBatteryStorage
-					OperationalToggle = RightIsOperational
-				}
-				RightShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_L_Right
-					Location = [&~/Part/Radius_L, 0]
-					Toggle = RightIsOperational
-				}
-				
-			}
+			Components = &<L/Shield_L_Off.rules>/ShieldInvisibleNoShunt
+		}
+
+		ToggledComponents_ArcShield_L_On_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOnFrontShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_On.rules>/ShieldVisibleFrontShunt
+		}
+		ToggledComponents_ArcShield_L_Off_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOffFrontShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_Off.rules>/ShieldInvisibleFrontShunt
+		}
+
+		ToggledComponents_ArcShield_L_On_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOnLeftShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_On.rules>/ShieldVisibleLeftShunt
+		}
+		ToggledComponents_ArcShield_L_Off_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOffLeftShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_Off.rules>/ShieldInvisibleLeftShunt
+		}
+
+		ToggledComponents_ArcShield_L_On_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOnRightShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_On.rules>/ShieldVisibleRightShunt
+		}
+		ToggledComponents_ArcShield_L_Off_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOffRightShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_Off.rules>/ShieldInvisibleRightShunt
+		}
+
+		ToggledComponents_ArcShield_L_On_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOnBackShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_On.rules>/ShieldVisibleBackShunt
+		}
+		ToggledComponents_ArcShield_L_Off_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleLOffBackShunt
+			IncludeInBlueprints = true
+			Components = &<L/Shield_L_Off.rules>/ShieldInvisibleBackShunt
 		}
 
 
-
+		//XL Shield Arcs
+		XLBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXL
+			Components = &<XL/Shield_XL_BatteryStorage.rules>/XLBatteryStorages
+		}
 		ToggledComponents_ArcShield_XL_On
 		{
 			Type = ToggledComponents
 			Toggle = ShieldToggleXLOn
 			IncludeInBlueprints = true
-			Components =
-			{
-				// FRONT
-				ArcShield_XL_Front : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = -90d
-					OperationalToggle = FrontIsOperational
-					DrainResourcesFrom = FrontBatteryStorage
-					ResourceDrainPerDamage = .05
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				FrontEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Front
-					FactorMediaEffectsIntensityWith = FrontBatteryStorage
-					OperationalToggle = FrontIsOperational
-				}
-				FrontShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Front
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = FrontIsOperational
-				}
-				
-				// BACK
-				ArcShield_XL_Back : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = 90d
-					OperationalToggle = BackIsOperational
-					DrainResourcesFrom = BackBatteryStorage
-					ResourceDrainPerDamage = .25
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				BackEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Back
-					FactorMediaEffectsIntensityWith = BackBatteryStorage
-					OperationalToggle = BackIsOperational
-				}
-				BackShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Back
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = BackIsOperational
-				}
-				
-				// LEFT
-				ArcShield_XL_Left : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = 180d
-					OperationalToggle = LeftIsOperational
-					DrainResourcesFrom = LeftBatteryStorage
-					ResourceDrainPerDamage = .15
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				LeftEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Left
-					FactorMediaEffectsIntensityWith = LeftBatteryStorage
-					Location = [2.2, 0]
-					OperationalToggle = LeftIsOperational
-				}
-				LeftShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Left
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = LeftIsOperational
-				}
-				
-				
-				// RIGHT
-				ArcShield_XL_Right : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = 0d
-					OperationalToggle = RightIsOperational
-					DrainResourcesFrom = RightBatteryStorage
-					ResourceDrainPerDamage = .15
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				RightEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Right
-					FactorMediaEffectsIntensityWith = RightBatteryStorage
-					OperationalToggle = RightIsOperational
-				}
-				RightShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Right
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = RightIsOperational
-				}
-				
-			}
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleNoShunt
 		}
-
-
 		ToggledComponents_ArcShield_XL_Off
 		{
 			Type = ToggledComponents
 			Toggle = ShieldToggleXLOff
 			IncludeInBlueprints = true
-			Components =
-			{
-				// FRONT
-				ArcShield_XL_Front : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = -90d
-					OperationalToggle = FrontIsOperational
-					DrainResourcesFrom = FrontBatteryStorage
-					ResourceDrainPerDamage = .05
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				FrontEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Front
-					FactorMediaEffectsIntensityWith = FrontBatteryStorage
-					OperationalToggle = FrontIsOperational
-				}
-				FrontShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Front
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = FrontIsOperational
-				}
-				
-				// BACK
-				ArcShield_XL_Back : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = 90d
-					OperationalToggle = BackIsOperational
-					DrainResourcesFrom = BackBatteryStorage
-					ResourceDrainPerDamage = .25
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				BackEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Back
-					FactorMediaEffectsIntensityWith = BackBatteryStorage
-					OperationalToggle = BackIsOperational
-				}
-				BackShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Back
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = BackIsOperational
-				}
-				
-				// LEFT
-				ArcShield_XL_Left : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = 180d
-					OperationalToggle = LeftIsOperational
-					DrainResourcesFrom = LeftBatteryStorage
-					ResourceDrainPerDamage = .15
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				LeftEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Left
-					FactorMediaEffectsIntensityWith = LeftBatteryStorage
-					Location = [2.2, 0]
-					OperationalToggle = LeftIsOperational
-				}
-				LeftShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Left
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = LeftIsOperational
-				}
-				
-				
-				// RIGHT
-				ArcShield_XL_Right : &~/Part/Components/BaseArcShield
-				{
-					Radius = &~/Part/Radius_XL
-					Arc = 90d
-					Rotation = 0d
-					OperationalToggle = RightIsOperational
-					DrainResourcesFrom = RightBatteryStorage
-					ResourceDrainPerDamage = .15
-					ShieldMediaEffects
-					[
-						{
-							Type = ArcShield
-							Radius = &../../Radius
-							Arc = &../../Arc
-							FadeInTime = .25
-							FadeOutTime = .25
-							FadeFromScale = .8
-							ArcSprite : ~/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
-							{
-								_fullPowerColor1 = [0, 0, 255, 0]
-								_lowPowerColor1 = [0, 0, 255, 0]
-								_fullPowerColor2 = [40, 150, 250, 0]
-								_lowPowerColor2 = [255, 100, 100, 0]
-							}
-							ArcSpriteSegments = 64
-							Bucket = Lower1
-						}
-					]
-					HitMediaEffects
-					[
-						{
-							Type = ArcShield
-							FadeInTime = 0.1
-							FadeOutTime = 0.5
-							Radius = &../../Radius
-							Arc = &../../Arc
-							ArcSprite : ~/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
-							{
-								
-							}
-							ArcSpriteSegments = 6
-							Bucket = Upper3
-						}
-					]
-				}
-				RightEmitterEffect : &~/Part/Components/BaseEmitterEffect
-				{
-					ChainedTo = ArcShield_XL_Right
-					FactorMediaEffectsIntensityWith = RightBatteryStorage
-					OperationalToggle = RightIsOperational
-				}
-				RightShieldOperationEffects : &~/Part/Components/BaseShieldOperationEffects
-				{
-					Type = ToggleEffects
-					ChainedTo = ArcShield_XL_Right
-					Location = [&~/Part/Radius_XL, 0]
-					Toggle = RightIsOperational
-				}
-				
-			}
-		}
-		
-		//
-		// Frontshield
-		//
-		FrontIsOperational
-		{
-			Type = MultiToggle
-			Toggles = [PowerToggle, FrontBatteryStorage, IsOperational]
-			Mode = All
-		}
-		FrontBatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 24000
-			ToggleOnResources = 23001
-			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		FrontInternalCapacity
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = FrontBatteryStorage
-			Invert = false
-			LowColor = [60, 143, 185]
-			HighColor = [120, 203, 245]
-			FullColor = [120, 203, 245]
-			Height = 5
-		}
-		RightInternalCapacity
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = RightBatteryStorage
-			Invert = false
-			LowColor = [173, 111, 124]
-			HighColor = [233, 171, 184]
-			FullColor = [233, 171, 184]
-			Height = 5
-		}
-		LeftInternalCapacity
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = LeftBatteryStorage
-			Invert = false
-			LowColor = [195, 195, 195]
-			HighColor = [255, 255, 255]
-			FullColor = [255, 255, 255]
-			Height = 5
-		}
-		BackInternalCapacity
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = BackBatteryStorage
-			Invert = false
-			LowColor = [173, 111, 124]
-			HighColor = [233, 171, 184]
-			FullColor = [233, 171, 184]
-			Height = 5
-		}
-		FullInternalCapacity
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = CombinedBatteryStorage
-			Invert = false
-			LowColor = [60, 143, 185]
-			HighColor = [120, 203, 245]
-			FullColor = [120, 203, 245]
-			Height = 5
-		}
-		FrontBatteryConsumer
-		{
-			Type = ResourceConsumer
-			ResourceType = battery
-			Storage = FrontBatteryStorage
-			DefaultPriority = &/PRIORITIES/Defense_Supply
-			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleNoShunt
 		}
 
-		FrontPowerDrain
+		ToggledComponents_ArcShield_XL_On_FrontShunt
 		{
-			Type = ResourceConverter
-			OperationalToggle = FrontIsOperational
-			FromStorage = FrontBatteryStorage
-			FromQuantity = 100
-			MinFromQuantityForConversion = 1
-			Interval = 1
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnFrontShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleFrontShunt
 		}
-		
-		//
-		// Backshield
-		//
-		BackIsOperational
+		ToggledComponents_ArcShield_XL_Off_FrontShunt
 		{
-			Type = MultiToggle
-			Toggles = [PowerToggle, BackBatteryStorage, IsOperational]
-			Mode = All
-		}
-		BackBatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 24000
-			ToggleOnResources = 23001
-			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		BackBatteryConsumer
-		{
-			Type = ResourceConsumer
-			ResourceType = battery
-			Storage = BackBatteryStorage
-			DefaultPriority = &/PRIORITIES/Defense_Supply
-			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffFrontShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleFrontShunt
 		}
 
-		BackPowerDrain
+		ToggledComponents_ArcShield_XL_On_LeftShunt
 		{
-			Type = ResourceConverter
-			OperationalToggle = BackIsOperational
-			FromStorage = BackBatteryStorage
-			FromQuantity = 100
-			MinFromQuantityForConversion = 1
-			Interval = 1
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnLeftShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleLeftShunt
 		}
-		
-		//
-		// Leftshield
-		//
-		LeftIsOperational
+		ToggledComponents_ArcShield_XL_Off_LeftShunt
 		{
-			Type = MultiToggle
-			Toggles = [PowerToggle, LeftBatteryStorage, IsOperational]
-			Mode = All
-		}
-		LeftBatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 24000
-			ToggleOnResources = 23001
-			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		LeftBatteryConsumer
-		{
-			Type = ResourceConsumer
-			ResourceType = battery
-			Storage = LeftBatteryStorage
-			DefaultPriority = &/PRIORITIES/Defense_Supply
-			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffLeftShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleLeftShunt
 		}
 
-		LeftPowerDrain
+		ToggledComponents_ArcShield_XL_On_RightShunt
 		{
-			Type = ResourceConverter
-			OperationalToggle = LeftIsOperational
-			FromStorage = LeftBatteryStorage
-			FromQuantity = 100
-			MinFromQuantityForConversion = 1
-			Interval = 1
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnRightShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleRightShunt
 		}
-		
-		//
-		// Rightshield
-		//
-		RightIsOperational
+		ToggledComponents_ArcShield_XL_Off_RightShunt
 		{
-			Type = MultiToggle
-			Toggles = [PowerToggle, RightBatteryStorage, IsOperational]
-			Mode = All
-		}
-		RightBatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 24000
-			ToggleOnResources = 23001
-			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		RightBatteryConsumer
-		{
-			Type = ResourceConsumer
-			ResourceType = battery
-			Storage = RightBatteryStorage
-			DefaultPriority = &/PRIORITIES/Defense_Supply
-			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffRightShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleRightShunt
 		}
 
-		RightPowerDrain
+		ToggledComponents_ArcShield_XL_On_BackShunt
 		{
-			Type = ResourceConverter
-			OperationalToggle = RightIsOperational
-			FromStorage = RightBatteryStorage
-			FromQuantity = 100
-			MinFromQuantityForConversion = 1
-			Interval = 1
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnBackShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleBackShunt
 		}
+		ToggledComponents_ArcShield_XL_Off_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffBackShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleBackShunt
+		}
+
 		
 		//
 		// Crew
@@ -3304,48 +2082,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
-		BatterySprites
-		{
-			Type = ResourceSprites
-			Location = [2, 2]
-			ResourceStorage = FrontBatteryStorage
-			Layer = "doodads_low"
-			ResourceLevels
-			[
-				{
-					File = "batteries1.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries2.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries3.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries4.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries5.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries6.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries7.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries8.png"
-					Size = [4, 4]
-				}
-			]
-		}
+		
 // Bis es neue gibts auskommentiert.		
 //		RoofBatterySprites
 //		{
@@ -3397,7 +2134,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 			Location = [2, 2]
 		}
-
+		MainShieldStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = MainShieldStorage
+			ResourceType = battery
+			IsDrainable = false
+		}
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -3417,7 +2160,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 				// Out of power.
 				{
-					Toggle = FrontBatteryStorage
+					Toggle = MainShieldStorageProxy
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -3446,12 +2189,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		ShieldHP = (&~/Part/Components/FrontBatteryStorage/MaxResources) / (&<BaseShield.rules>/Part/Components/BaseArcShield/ResourceDrainPerDamage)
+		//ShieldHP = (&~/Part/Components/MainShieldBatteryStorage/MaxResources) / (&<BaseShield.rules>/Part/Components/BaseArcShield/ResourceDrainPerDamage)
 		ShieldPenResist = &<BaseShield.rules>/Part/Components/BaseArcShield/PenetrationResistance/0
 		ShieldArc = deg(&<BaseShield.rules>/Part/Components/BaseArcShield/Arc)
 		ShieldDist = (&<BaseShield.rules>/Part/Components/BaseArcShield/Radius) - (&<BaseShield.rules>/Part/Components/BaseArcShield/Location/1)
-		PowerUsageContinuous = (&~/Part/Components/FrontPowerDrain/FromQuantity) / (&~/Part/Components/FrontPowerDrain/Interval) / 1000
-		PowerCapacity = (&~/Part/Components/FrontBatteryStorage/MaxResources) / 1000
+		PowerUsageContinuous = 0.4
+		//PowerCapacity = (&~/Part/Components/MainBatteryStorage/MaxResources) / 1000
 
 		RecPower = (&PowerUsageContinuous) + 0.5
 		RecCrew = (&RecPower) * 4

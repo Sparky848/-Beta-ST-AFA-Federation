@@ -242,6 +242,24 @@ Components
 						Friendlies = true
 					}
 				}
+				{ //Damage to asteroids
+					Type = ExplosiveDamage
+					TotalDamage = 800000
+					DamageType = salvage
+					Radius = 8
+					ExpandDuration = 1.2//.8
+					ExpandStartRadius = 2
+					ExpandLoss = 25%
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Slices = 1
+					SpawnUnderlying = false
+					Filter
+					{
+						OnlyPartCategories = [asteroid]
+						Shields = false
+					}
+				}
 			]
 
 			MediaEffects

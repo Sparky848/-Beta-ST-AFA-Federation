@@ -14,7 +14,7 @@ Components
 	Physics
 	{
 		Type = CirclePhysics
-		Radius = 0.1//0.2
+		Radius = 0.15//0.2
 		Density = 0.01
 	}
 
@@ -80,6 +80,17 @@ Components
 				{
 					Type = Impulse;
 					Impulse = 5;//10
+				}
+				{ //Damage to asteroids
+					Type = Damage
+					Damage = 10000//I think vanilla mining beam is 3200 per beam
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						OnlyPartCategories = [asteroid]
+						Shields = false
+					}
 				}
 			]
 
@@ -163,7 +174,7 @@ Components
 				SampleMode = Linear
 				MipLevels = max
 			}
-			Size = [2, 2]
+			Size = [2.5, 2.5]
 		}
 	}
 
@@ -181,7 +192,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [4, 4]
+			Size = [5, 5]
 			VertexColor = [255, 147, 15]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"

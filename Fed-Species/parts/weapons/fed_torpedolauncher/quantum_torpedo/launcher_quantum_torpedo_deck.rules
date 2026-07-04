@@ -41,7 +41,7 @@ Components
 		ResourceType = quantum_torpedo_part
 		Storage = CombinedMissileStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
-		OverridePriorityKey = MissileStorage
+		OverridePriorityKey = QuantumTorpedoComponents
 		OperationalToggle = PowerToggle
 		ConsumptionToggleButtonOffset = [0, -.4]
 	}

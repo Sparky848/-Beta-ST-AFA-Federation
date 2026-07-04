@@ -137,6 +137,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FirePermissionToggle = FireModeToggle
 			IgnoreSourceShipLowLOSChecks = true
 			IgnoreJunkLOSChecks = true
+			CanSalvage = true
 			Emitter = BeamEmitter
 			AlwaysShowCoverage = true
 

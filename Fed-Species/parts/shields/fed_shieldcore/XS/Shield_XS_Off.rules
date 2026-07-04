@@ -6,9 +6,9 @@ ShieldInvisibleNoShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = -90d
-		OperationalToggle = FrontIsOperational
-		DrainResourcesFrom = FrontBatteryStorage
-		ResourceDrainPerDamage = .3
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .35
 		ShieldMediaEffects
 		[
 			{
@@ -49,15 +49,15 @@ ShieldInvisibleNoShunt
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Front
-		FactorMediaEffectsIntensityWith = FrontBatteryStorage
-		OperationalToggle = FrontIsOperational
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = FrontIsOperational
+		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
@@ -66,9 +66,9 @@ ShieldInvisibleNoShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 90d
-		OperationalToggle = BackIsOperational
-		DrainResourcesFrom = BackBatteryStorage
-		ResourceDrainPerDamage = .3
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .35
 		ShieldMediaEffects
 		[
 			{
@@ -109,15 +109,15 @@ ShieldInvisibleNoShunt
 	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Back
-		FactorMediaEffectsIntensityWith = BackBatteryStorage
-		OperationalToggle = BackIsOperational
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
 	}
 	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Back
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = BackIsOperational
+		Toggle = BackIsOperationalProxy
 	}
 	
 	
@@ -127,9 +127,9 @@ ShieldInvisibleNoShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 180d
-		OperationalToggle = LeftIsOperational
-		DrainResourcesFrom = LeftBatteryStorage
-		ResourceDrainPerDamage = .3
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .35
 		ShieldMediaEffects
 		[
 			{
@@ -170,15 +170,15 @@ ShieldInvisibleNoShunt
 	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Left
-		FactorMediaEffectsIntensityWith = LeftBatteryStorage
-		OperationalToggle = LeftIsOperational
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		OperationalToggle = LeftIsOperationalProxy
 	}
 	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Left
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = LeftIsOperational
+		Toggle = LeftIsOperationalProxy
 	}
 	
 	
@@ -188,9 +188,9 @@ ShieldInvisibleNoShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 0d
-		OperationalToggle = RightIsOperational
-		DrainResourcesFrom = RightBatteryStorage
-		ResourceDrainPerDamage = .3
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .35
 		ShieldMediaEffects
 		[
 			{
@@ -231,15 +231,15 @@ ShieldInvisibleNoShunt
 	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Right
-		FactorMediaEffectsIntensityWith = RightBatteryStorage
-		OperationalToggle = RightIsOperational
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
 	}
 	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Right
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = RightIsOperational
+		Toggle = RightIsOperationalProxy
 	}
 }
 
@@ -252,9 +252,9 @@ ShieldInvisibleFrontShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = -90d
-		OperationalToggle = FrontIsOperational
-		DrainResourcesFrom = FrontBatteryStorage
-		ResourceDrainPerDamage = .15
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .175
 		ShieldMediaEffects
 		[
 			{
@@ -295,15 +295,15 @@ ShieldInvisibleFrontShunt
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Front
-		FactorMediaEffectsIntensityWith = FrontBatteryStorage
-		OperationalToggle = FrontIsOperational
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = FrontIsOperational
+		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
@@ -312,9 +312,9 @@ ShieldInvisibleFrontShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 90d
-		OperationalToggle = BackIsOperational
-		DrainResourcesFrom = BackBatteryStorage
-		ResourceDrainPerDamage = .6
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .7
 		ShieldMediaEffects
 		[
 			{
@@ -355,15 +355,15 @@ ShieldInvisibleFrontShunt
 	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Back
-		FactorMediaEffectsIntensityWith = BackBatteryStorage
-		OperationalToggle = BackIsOperational
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
 	}
 	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Back
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = BackIsOperational
+		Toggle = BackIsOperationalProxy
 	}
 	
 	
@@ -373,9 +373,9 @@ ShieldInvisibleFrontShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 180d
-		OperationalToggle = LeftIsOperational
-		DrainResourcesFrom = LeftBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -416,15 +416,15 @@ ShieldInvisibleFrontShunt
 	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Left
-		FactorMediaEffectsIntensityWith = LeftBatteryStorage
-		OperationalToggle = LeftIsOperational
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		OperationalToggle = LeftIsOperationalProxy
 	}
 	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Left
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = LeftIsOperational
+		Toggle = LeftIsOperationalProxy
 	}
 	
 	
@@ -434,9 +434,9 @@ ShieldInvisibleFrontShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 0d
-		OperationalToggle = RightIsOperational
-		DrainResourcesFrom = RightBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -477,15 +477,15 @@ ShieldInvisibleFrontShunt
 	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Right
-		FactorMediaEffectsIntensityWith = RightBatteryStorage
-		OperationalToggle = RightIsOperational
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
 	}
 	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Right
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = RightIsOperational
+		Toggle = RightIsOperationalProxy
 	}
 }
 
@@ -498,9 +498,9 @@ ShieldInvisibleLeftShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = -90d
-		OperationalToggle = FrontIsOperational
-		DrainResourcesFrom = FrontBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -541,15 +541,15 @@ ShieldInvisibleLeftShunt
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Front
-		FactorMediaEffectsIntensityWith = FrontBatteryStorage
-		OperationalToggle = FrontIsOperational
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = FrontIsOperational
+		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
@@ -558,9 +558,9 @@ ShieldInvisibleLeftShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 90d
-		OperationalToggle = BackIsOperational
-		DrainResourcesFrom = BackBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -601,15 +601,15 @@ ShieldInvisibleLeftShunt
 	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Back
-		FactorMediaEffectsIntensityWith = BackBatteryStorage
-		OperationalToggle = BackIsOperational
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
 	}
 	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Back
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = BackIsOperational
+		Toggle = BackIsOperationalProxy
 	}
 	
 	
@@ -619,9 +619,9 @@ ShieldInvisibleLeftShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 180d
-		OperationalToggle = LeftIsOperational
-		DrainResourcesFrom = LeftBatteryStorage
-		ResourceDrainPerDamage = .15
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .175
 		ShieldMediaEffects
 		[
 			{
@@ -662,15 +662,15 @@ ShieldInvisibleLeftShunt
 	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Left
-		FactorMediaEffectsIntensityWith = LeftBatteryStorage
-		OperationalToggle = LeftIsOperational
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		OperationalToggle = LeftIsOperationalProxy
 	}
 	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Left
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = LeftIsOperational
+		Toggle = LeftIsOperationalProxy
 	}
 	
 	
@@ -680,9 +680,9 @@ ShieldInvisibleLeftShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 0d
-		OperationalToggle = RightIsOperational
-		DrainResourcesFrom = RightBatteryStorage
-		ResourceDrainPerDamage = .6
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .7
 		ShieldMediaEffects
 		[
 			{
@@ -723,15 +723,15 @@ ShieldInvisibleLeftShunt
 	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Right
-		FactorMediaEffectsIntensityWith = RightBatteryStorage
-		OperationalToggle = RightIsOperational
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
 	}
 	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Right
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = RightIsOperational
+		Toggle = RightIsOperationalProxy
 	}
 }
 
@@ -744,9 +744,9 @@ ShieldInvisibleRightShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = -90d
-		OperationalToggle = FrontIsOperational
-		DrainResourcesFrom = FrontBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -787,15 +787,15 @@ ShieldInvisibleRightShunt
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Front
-		FactorMediaEffectsIntensityWith = FrontBatteryStorage
-		OperationalToggle = FrontIsOperational
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = FrontIsOperational
+		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
@@ -804,9 +804,9 @@ ShieldInvisibleRightShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 90d
-		OperationalToggle = BackIsOperational
-		DrainResourcesFrom = BackBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -847,15 +847,15 @@ ShieldInvisibleRightShunt
 	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Back
-		FactorMediaEffectsIntensityWith = BackBatteryStorage
-		OperationalToggle = BackIsOperational
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
 	}
 	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Back
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = BackIsOperational
+		Toggle = BackIsOperationalProxy
 	}
 	
 	
@@ -865,9 +865,9 @@ ShieldInvisibleRightShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 180d
-		OperationalToggle = LeftIsOperational
-		DrainResourcesFrom = LeftBatteryStorage
-		ResourceDrainPerDamage = .6
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .7
 		ShieldMediaEffects
 		[
 			{
@@ -908,15 +908,15 @@ ShieldInvisibleRightShunt
 	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Left
-		FactorMediaEffectsIntensityWith = LeftBatteryStorage
-		OperationalToggle = LeftIsOperational
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		OperationalToggle = LeftIsOperationalProxy
 	}
 	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Left
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = LeftIsOperational
+		Toggle = LeftIsOperationalProxy
 	}
 	
 	
@@ -926,9 +926,9 @@ ShieldInvisibleRightShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 0d
-		OperationalToggle = RightIsOperational
-		DrainResourcesFrom = RightBatteryStorage
-		ResourceDrainPerDamage = .15
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .175
 		ShieldMediaEffects
 		[
 			{
@@ -969,15 +969,15 @@ ShieldInvisibleRightShunt
 	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Right
-		FactorMediaEffectsIntensityWith = RightBatteryStorage
-		OperationalToggle = RightIsOperational
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
 	}
 	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Right
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = RightIsOperational
+		Toggle = RightIsOperationalProxy
 	}
 }
 
@@ -990,9 +990,9 @@ ShieldInvisibleBackShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = -90d
-		OperationalToggle = FrontIsOperational
-		DrainResourcesFrom = FrontBatteryStorage
-		ResourceDrainPerDamage = .6
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .7
 		ShieldMediaEffects
 		[
 			{
@@ -1033,15 +1033,15 @@ ShieldInvisibleBackShunt
 	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Front
-		FactorMediaEffectsIntensityWith = FrontBatteryStorage
-		OperationalToggle = FrontIsOperational
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
 	}
 	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Front
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = FrontIsOperational
+		Toggle = FrontIsOperationalProxy
 	}
 	
 	// BACK
@@ -1050,9 +1050,9 @@ ShieldInvisibleBackShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 90d
-		OperationalToggle = BackIsOperational
-		DrainResourcesFrom = BackBatteryStorage
-		ResourceDrainPerDamage = .15
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .175
 		ShieldMediaEffects
 		[
 			{
@@ -1093,15 +1093,15 @@ ShieldInvisibleBackShunt
 	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Back
-		FactorMediaEffectsIntensityWith = BackBatteryStorage
-		OperationalToggle = BackIsOperational
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
 	}
 	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Back
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = BackIsOperational
+		Toggle = BackIsOperationalProxy
 	}
 	
 	
@@ -1111,9 +1111,9 @@ ShieldInvisibleBackShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 180d
-		OperationalToggle = LeftIsOperational
-		DrainResourcesFrom = LeftBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -1154,15 +1154,15 @@ ShieldInvisibleBackShunt
 	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Left
-		FactorMediaEffectsIntensityWith = LeftBatteryStorage
-		OperationalToggle = LeftIsOperational
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		OperationalToggle = LeftIsOperationalProxy
 	}
 	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Left
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = LeftIsOperational
+		Toggle = LeftIsOperationalProxy
 	}
 	
 	
@@ -1172,9 +1172,9 @@ ShieldInvisibleBackShunt
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XS
 		Arc = 90d
 		Rotation = 0d
-		OperationalToggle = RightIsOperational
-		DrainResourcesFrom = RightBatteryStorage
-		ResourceDrainPerDamage = .4
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .4666666667
 		ShieldMediaEffects
 		[
 			{
@@ -1215,14 +1215,14 @@ ShieldInvisibleBackShunt
 	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
 	{
 		ChainedTo = ArcShield_XS_Right
-		FactorMediaEffectsIntensityWith = RightBatteryStorage
-		OperationalToggle = RightIsOperational
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
 	}
 	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
 	{
 		Type = ToggleEffects
 		ChainedTo = ArcShield_XS_Right
 		Location = [&<../fed_shieldcore.rules>/Part/Radius_XS, 0]
-		Toggle = RightIsOperational
+		Toggle = RightIsOperationalProxy
 	}
 }

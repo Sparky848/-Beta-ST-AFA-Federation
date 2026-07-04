@@ -39,6 +39,7 @@ Parts
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
 
 	// Energy
+	&<energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part
 	&<energy/fed_warpcore_small/fed_warpcore_small.rules>/Part
 	&<energy/fed_warpcore_small/fed_empty_warpcore_small.rules>/Part
 	&<energy/fed_warpcore_med/fed_warpcore_med.rules>/Part
@@ -48,7 +49,6 @@ Parts
 	&<energy/fed_plasma_tube/fed_plasma_tube.rules>/Part
 	&<energy/fed_aux_ma_injector_small/fed_aux_ma_injector_small.rules>/Part
 	&<energy/fed_aux_ma_injector_large/fed_aux_ma_injector_large.rules>/Part
-	&<energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part
 	&<energy/fed_warpcore_2x3/fed_empty_warpcore_fighter.rules>/Part
 
 	// Engines

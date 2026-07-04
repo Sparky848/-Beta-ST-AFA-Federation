@@ -328,6 +328,7 @@ PartToggles
 		Style = Popout
 		ShowInEditor = true
 		SortOrder = 3
+		ShowWithShipCommands = true
 		Choices
 		[
 			{
@@ -338,7 +339,7 @@ PartToggles
 				{
 					Texture
 					{
-						File = "shield_XS.png"
+						File = "shunt_off.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -352,7 +353,7 @@ PartToggles
 				{
 					Texture
 					{
-						File = "shield_S.png"
+						File = "shunt_front.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -366,7 +367,7 @@ PartToggles
 				{
 					Texture
 					{
-						File = "shield_M.png"
+						File = "shunt_left.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -380,21 +381,21 @@ PartToggles
 				{
 					Texture
 					{
-						File = "shield_L.png"
+						File = "shunt_right.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
 				}
 			}
 			{
-				ChoiceID = "BottomShunt"
+				ChoiceID = "BackShunt"
 				Mode = 4
-				ButtonToolTipKey = "PartToggles/BottomShunt"
+				ButtonToolTipKey = "PartToggles/BackShunt"
 				ButtonSprite
 				{
 					Texture
 					{
-						File = "shield_XL.png"
+						File = "shunt_down.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

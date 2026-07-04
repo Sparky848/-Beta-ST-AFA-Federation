@@ -136,24 +136,24 @@ Parts
 	Captains_Room_Desc = "Room used to buff projectile speed and weapon range on a starship"\
 						"\n<s14>The captain's ready room was a personal office reserved for the commanding officer of a starship and was typically accessed from the bridge.</s14>"
 	// Energy
-	Warpcore_small = "Small Warpcore"
-	Warpcore_small_Icon = "Small Warpcore"
+	Warpcore_small = "Medium Warpcore"
+	Warpcore_small_Icon = "Medium Warpcore"
 	Warpcore_small_Desc = "Provides enough energy to compatible systems in a huge radius for small ships and is able to provide warp speed."\
 						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	EmptyWarpcore_small = "Empty Small Warpcore"
 	EmptyWarpcore_small_Icon = "Empty Small Warpcore"
 	EmptyWarpcore_small_Desc = "Salvage/Destroy this and replace it with a normal warpcore to regain functionality"
 
-	Warpcore_med = "Medium Warpcore"
-	Warpcore_med_Icon = "Medium Warpcore"
+	Warpcore_med = "Large Warpcore"
+	Warpcore_med_Icon = "Large Warpcore"
 	Warpcore_med_Desc = "Provides enough energy to compatible systems in a huge radius for medium ships and is able to provide warp speed."\
 						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	EmptyWarpcore_med = "Empty Med Warpcore"
 	EmptyWarpcore_med_Icon = "Empty Med Warpcore"
 	EmptyWarpcore_med_Desc = "Salvage/Destroy this and replace it with a normal warpcore to regain functionality"
 
-	Warpcore_large = "Large Warpcore"
-	Warpcore_large_Icon = "Large Warpcore"
+	Warpcore_large = "Huge Warpcore"
+	Warpcore_large_Icon = "Huge Warpcore"
 	Warpcore_large_Desc = "Provides enough energy to compatible systems in a huge radius for huge ships and is able to provide warp speed."\
 						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
 	EmptyWarpcore_large = "Empty Large Warpcore"
@@ -171,8 +171,8 @@ Parts
 	Aux_MA_Injector_LargeIcon = "Large Auxiliary Matter/Antimatter Injector"
 	Aux_MA_Injector_LargeDesc = "Injects small quantities of matter/antimatter fuel directley into the warpcore providing a small boost in power generation"\
 								"\n<red>Currently Non-Functional</red>"
-	Warpcore_2x3 = "Fighter Warpcore"
-	Warpcore_2x3_Icon = "Fighter Warpcore"
+	Warpcore_2x3 = "Small Warpcore"
+	Warpcore_2x3_Icon = "Small Warpcore"
 	Warpcore_2x3_Desc = "A small warpcore useful for fighters"\
 						"\n<color r='165' g='223' b='255' a='255'><s18>Crew cannot pass across the warpcore to the other side of the part</s18></color>"\
 						"\n<s20><color r='165' g='223' b='255' a='255'>Has a small base power gen that can be boosted with antimatter</color></s20>"
@@ -420,6 +420,17 @@ Parts
 	Hull_Polariser_MedIcon = "Medium Hull Polariser"
 	Hull_Polariser_MedDesc = "Polarises armour providing an average amount of damage resistance."\
 							"\nHas diminishing benefits the more you use"
+
+	//Misc
+	Forcefield_Cent_Corridor_Off = "Centered Forcefield Corridor"
+	Forcefield_Cent_Corridor_Off_Icon = "Centered Forcefield Corridor"
+	Forcefield_Cent_Corridor_Off_Desc = "A toggleable forcefield corridor that can block fires and crew access when enabled"\
+										"\n<bad><s18>Due to the nature of this part, when on it will count as your ship being damaged, thus repairing will restore as an off forcefield, this is currently unavoidable.</s18></bad>"
+
+	Forcefield_Cent_Corridor_On = "Centered Forcefield Corridor (On)"
+	Forcefield_Cent_Corridor_On_Icon = "Centered Forcefield Corridor (On)"
+	Forcefield_Cent_Corridor_On_Desc = "A toggleable forcefield corridor that can block fires and crew access when enabled"\
+										"\n<bad><s18>Due to the nature of this part, when on it will count as your ship being damaged, thus repairing will restore as an off forcefield, this is currently unavoidable.</s18></bad>"
 }
 
 Inputs

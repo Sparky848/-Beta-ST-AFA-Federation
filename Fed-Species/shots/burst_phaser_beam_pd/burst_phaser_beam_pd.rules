@@ -29,6 +29,17 @@ HitNothing
 				//Crew = true 
 			}
 		}
+		{ //Damage to asteroids
+			Type = Damage
+			Damage = 1600//I think vanilla mining beam is 3200 per beam
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				OnlyPartCategories = [asteroid]
+				Shields = false
+			}
+		}
 	]
 }
 

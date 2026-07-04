@@ -7,10 +7,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Heavy_Phaser_Cannon_Desc"
 	Resources
 	[
-		[steel, 248]
-		[coil, 72]
-		[coil2, 24]
-		[tristeel, 48]
+		[steel, 96]
+		[coil, 34]
+		[coil2, 14]
+		[tristeel, 26]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
@@ -61,7 +61,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
-			CommandPoints = 8
+			CommandPoints = 6
 		}
 
 		FireModeToggle
@@ -164,11 +164,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [2, 2]
 					}
 					{
-						File = "floor_33.png"
+						File = "floor.png"
 						Size = [2, 2]
 					}
 					{
-						File = "floor_66.png"
+						File = "floor.png"
 						Size = [2, 2]
 					}
 				]
@@ -176,7 +176,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalDoodad
 			{
 				Layer = "doodads_low"
-				Offset = [0, 0]
+				Offset = [0, -4/64]
 				DamageLevels
 				[
 					{
@@ -267,7 +267,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [1, -2.3]
+			Location = [1, -1.8]
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
@@ -280,7 +280,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FirePermissionToggle = FireModeToggle
 			// AutoTargetCrewSafetyDist = 8
 			IgnoreJunkLOSChecks = true
-			HoldTargetWhileFiring = 0.5
+			CanSalvage = true
 			Emitter = BulletEmitter
 			
 				
@@ -319,14 +319,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			//FireInterval = 2/30
 			FireInterval = 15
-			FiringArc = 40d
-			RotateSpeed = 10d
-			FireThresholdAngle = 1d
-			AIFirepowerRating = 2000
+			FiringArc = 0d
+			RotateSpeed = 0d
+			FireThresholdAngle = 0d
+			AIFirepowerRating = 0
 			FirePermissionToggle = FireModeToggle
 			// AutoTargetCrewSafetyDist = 8
 			IgnoreJunkLOSChecks = true
-			HoldTargetWhileFiring = 0.5
 			// Emitter = BulletEmitter
 			
 				
@@ -370,7 +369,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [0.5, 0]
+			Location = [0, 0]
 			OperationalToggle = IsOperational
 			// Spread = [-1.5d, 1.5d]
 			FireDelay = 1
@@ -410,54 +409,26 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = Graphics
 			ChainedTo = Turret2
 			Rotation = 90d
-			OperationalToggle = IsOperational
+			//OperationalToggle = IsOperational
 			OperationalDoodad
 			{
 				Layer = "structure_construction"
 				DamageLevels
 				[
 					{
-						File = "turret_on.png"
+						File = "turret.png"
 						NormalsFile = "turret_normals.png"
 						Size = [2, 4]
-						Offset = [0, -0.5]
 					}
 					{
-						File = "turret_on.png"
+						File = "turret.png"
 						NormalsFile = "turret_normals.png"
 						Size = [2, 4]
-						Offset = [0, -0.5]
 					}
 					{
-						File = "turret_on.png"
+						File = "turret.png"
 						NormalsFile = "turret_normals.png"
 						Size = [2, 4]
-						Offset = [0, -0.5]
-					}
-				]
-			}
-			NonOperationalDoodad
-			{
-				Layer = "structure_construction"
-				DamageLevels
-				[
-					{
-						File = "turret_off.png"
-						NormalsFile = "turret_normals.png"
-						Size = [2, 4]
-						Offset = [0, -0.5]
-					}
-					{
-						File = "turret_off.png"
-						NormalsFile = "turret_normals.png"
-						Size = [2, 4]
-						Offset = [0, -0.5]
-					}
-					{
-						File = "turret_off.png"
-						NormalsFile = "turret_normals.png"
-						Size = [2, 4]
-						Offset = [0, -0.5]
 					}
 				]
 			}
@@ -550,8 +521,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [2, 5]
-			Offset = [0, -1.5]
+			Size = [2, 4]
+			//Offset = [0, -1.5]
 		}
 	}
 

@@ -1,14 +1,14 @@
 Part : <./Data/ships/terran/base_floor_part_terran.rules>/Part
 {
 	NameKey = "Parts/Forcefield_Cent_Corridor_Off"
-	IconNameKey = "Parts/Forcefield_Cent_Corridor_OffIcon"
+	IconNameKey = "Parts/Forcefield_Cent_Corridor_Off_Icon"
 	ID = stafa.fed_forcefield_corridor_centered_off
-	DescriptionKey = "Parts/Forcefield_Cent_Corridor_OffDesc"
+	DescriptionKey = "Parts/Forcefield_Cent_Corridor_Off_Desc"
 	EditorGroups = ["StarfleetUtilities"]
 	Resources
 	[
 		[steel, 4]
-		[coil2, 4]
+		[coil, 4]
 	]
 	AIValueFactor = 0
 	Size = [1, 1]

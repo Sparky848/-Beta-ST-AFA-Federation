@@ -1,14 +1,17 @@
 Part : &<fed_forcefield_corridor_centered_off.rules>/Part
 {
 	NameKey = "Parts/Forcefield_Cent_Corridor_On"
-	IconNameKey = "Parts/Forcefield_Cent_Corridor_OnIcon"
+	IconNameKey = "Parts/Forcefield_Cent_Corridor_On_Icon"
 	ID = stafa.fed_forcefield_corridor_centered_on
-	DescriptionKey = "Parts/Forcefield_Cent_Corridor_OnDesc"
+	DescriptionKey = "Parts/Forcefield_Cent_Corridor_On_Desc"
 	EditorGroups = []
 	EditorParentParts = [ "stafa.fed_forcefield_corridor_centered_off" ]
 	CrewSpeedFactor = 0
 	GeneratorRequiresDoor = false
 	IsWalled = true
+	IsBuildable = false
+	//CrewThrowSpeedWhenDestroyed = 100 //yes this is as funny as it sounds
+	IsSelfDestructible = true
 	Components : ^/0/Components
 	{
 		ForcefieldOn

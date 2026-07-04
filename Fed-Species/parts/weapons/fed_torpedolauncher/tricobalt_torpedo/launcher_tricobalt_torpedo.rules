@@ -41,6 +41,7 @@ Components
 		Storage = CombinedMissileStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
 		OperationalToggle = PowerToggle
+		OverridePriorityKey = TricobaltTorpedoComponents
 		ConsumptionToggleButtonOffset = [0, -.4]
 	}
 
@@ -485,6 +486,7 @@ WeaponBase
 	AllowFireWithBlockedLOS = true
 	AIFirepowerRating = 4800
 	FirePermissionToggle = FirePermissionToggle
+	CanSalvage = true
 
 	AutoTargets
 	[

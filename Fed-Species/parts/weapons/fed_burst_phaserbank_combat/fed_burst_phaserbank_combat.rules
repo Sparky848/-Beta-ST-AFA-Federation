@@ -402,6 +402,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AlwaysShowCoverage = true
 			CanBeGivenExplicitTarget = false
 			PreventOverlappingTargets = true
+			CanSalvage = true
 			
 
 			AutoTargets
@@ -450,6 +451,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AlwaysShowCoverage = true
 			CanBeGivenExplicitTarget = false
 			PreventOverlappingTargets = true
+			CanSalvage = true
 			
 			AutoTargets
 			[
@@ -497,6 +499,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AlwaysShowCoverage = true
 			CanBeGivenExplicitTarget = false
 			PreventOverlappingTargets = true
+			CanSalvage = true
 
 			AutoTargets
 			[
@@ -544,6 +547,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AlwaysShowCoverage = true
 			CanBeGivenExplicitTarget = false
 			PreventOverlappingTargets = true
+			CanSalvage = true
 			
 			AutoTargets
 			[

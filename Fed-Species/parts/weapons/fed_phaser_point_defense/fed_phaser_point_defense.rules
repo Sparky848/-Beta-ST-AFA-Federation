@@ -294,7 +294,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			CanBeGivenExplicitTarget = false
 //			EstimateFirepowerToggle = AttackToggle
-			FireInterval = 2.0
+			FireInterval = 1.25
 //			SpawnLoc = [0, 0]
 			FiringArc = 190d//180d
 			RotateSpeed = 120d//60d
@@ -302,6 +302,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			TargetSearchesPerSecond = 8 // Default is 2.
 		//	HoldTargetAfterCancel = 0.5
 			AIFirepowerRating = 400
+			CanSalvage = true
 			Emitter = BeamEmitter
 
 			AutoTargets

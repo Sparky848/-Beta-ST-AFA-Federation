@@ -5,7 +5,7 @@ IdealRange
 	{ BaseValue=160; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=225; }
 	{ BaseValue=225; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=270; }
 ]
-Duration = 1
+Duration = 1.5
 HitInterval = .1
 
 ClipRangeToTarget = true
@@ -16,7 +16,7 @@ HitNothing
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 500//1000
+			TotalDamage = 275//1000
 			Radius = 1.5
 			Slices = 1
 			Filter
@@ -25,6 +25,18 @@ HitNothing
 				Shields = false
 				Bullets = true
 				OnlyBulletCategories = [missile, mine, stafa_torpedo, bullet]
+			}
+		}
+		
+		{ //Damage to asteroids
+			Type = Damage
+			Damage = 1800//I think vanilla mining beam is 3200 per beam
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				OnlyPartCategories = [asteroid]
+				Shields = false
 			}
 		}
 	]

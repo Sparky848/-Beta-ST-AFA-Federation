@@ -113,6 +113,17 @@ HitOperational
 			Type = Damage
 			Damage = 110
 		}
+		{ //Damage to asteroids
+			Type = Damage
+			Damage = 1800//I think vanilla mining beam is 3200 per beam
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				OnlyPartCategories = [asteroid]
+				Shields = false
+			}
+		}
 	]
 
 	MediaEffects

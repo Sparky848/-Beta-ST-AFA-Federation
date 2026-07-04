@@ -42,7 +42,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [32, 64]
+		Size = [32, 72]
 	}
 	Components : ^/0/Components
 	{
@@ -185,6 +185,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 							"doodads_on6.png"
 							"doodads_on7.png"
 							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
 						]
 						Size = [2, 2]
 						AnimationInterval = 0.1
@@ -262,7 +266,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [1, 0.25]
+			Location = [1, -1.75]
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
@@ -277,6 +281,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IgnoreSourceShipLowLOSChecks = true
 			IgnoreJunkLOSChecks = true
 			//HoldTargetWhileFiring = 0.5
+			CanSalvage = true
 			Emitter = BulletEmitter
 
 			AutoTargets
@@ -311,14 +316,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ShowProgressFor = Turret
 			Invert = false
 		}
-
+		
 		BulletEmitter
 		{
 			Type = BulletEmitter
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, -0.15]//[1.5, 0]
+			Location = [0, -0.34375]//[1.5, 0]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 0.01
@@ -336,7 +341,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, 0.15]//[1.5, 0]
+			Location = [0, 0.34375]//[1.5, 0]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 0.01
@@ -355,7 +360,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, -0.15]
+			Location = [0, -0.34375]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 1.2
@@ -373,7 +378,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, 0.15]
+			Location = [0, 0.34375]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 1.2
@@ -392,7 +397,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, -0.15]
+			Location = [0, -0.34375]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 2.4
@@ -410,7 +415,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.5, 0.15]
+			Location = [0, 0.34375]
 			OperationalToggle = IsOperational
 			Spread = [0.1d, 0.1d]
 			FireDelay = 2.4
@@ -429,7 +434,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter
 			Trigger = BulletEmitter
-			Location = [0.5, 0]
+			Location = [0.1, 0]
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -451,7 +456,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter2
 			Trigger = BulletEmitter2
-			Location = [0.5, 0]
+			Location = [0.1, 0]
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -472,7 +477,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter3
 			Trigger = BulletEmitter3
-			Location = [0.5, 0]
+			Location = [0.1, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/dual_phaser_cannon_shoot.rules>
+				&<particles/dual_phaser_cannon_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shoot.wav"
+					Volume = .6
+					SpeedVariation = .25
+				}
+			]
+		}
+		FireEffecta
+		{
+			Type = TriggeredEffects
+			ChainedTo = BulletEmittera
+			Trigger = BulletEmittera
+			Location = [0.1, 0]
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -489,60 +515,97 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 		}
 
+		FireEffect2a
+		{
+			Type = TriggeredEffects
+			ChainedTo = BulletEmitter2a
+			Trigger = BulletEmitter2a
+			Location = [0.1, 0]
+			AnchorMediaEffects = true
 
-		TurretGraphics
+			MediaEffects
+			[
+				&<particles/dual_phaser_cannon_shoot.rules>
+				&<particles/dual_phaser_cannon_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shoot.wav"
+					Volume = .6
+					SpeedVariation = .25
+				}
+			]
+		}
+		FireEffect3a
+		{
+			Type = TriggeredEffects
+			ChainedTo = BulletEmitter3a
+			Trigger = BulletEmitter3a
+			Location = [0.1, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/dual_phaser_cannon_shoot.rules>
+				&<particles/dual_phaser_cannon_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shoot.wav"
+					Volume = .6
+					SpeedVariation = .25
+				}
+			]
+		}
+		PowercellGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
-			Rotation = 90d
-			OperationalToggle = IsOperational
+			Location = [1, 1]
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "doodads_low"
 				DamageLevels
 				[
 					{
-						File = "turret_on.png"
-						NormalsFile = "turret_normals.png"
-						Size = [1, 2.25]
-						Offset = [0, -0.75]
+						File = "power_cell.png"
+						Size = [2, 2]
 					}
 					{
-						File = "turret_on.png"
-						NormalsFile = "turret_normals.png"
-						Size = [1, 2.25]
-						Offset = [0, -0.75]
+						File = "power_cell.png"
+						Size = [2, 2]
 					}
 					{
-						File = "turret_on.png"
-						NormalsFile = "turret_normals.png"
-						Size = [1, 2.25]
-						Offset = [0, -0.75]
+						File = "power_cell.png"
+						Size = [2, 2]
 					}
 				]
 			}
-			NonOperationalDoodad
+		}
+		TurretGraphics
+		{
+			Type = Graphics
+			//ChainedTo = Turret
+			Location = [1, 0]
+			//OperationalToggle = IsOperational
+			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "structure_construction"
 				DamageLevels
 				[
 					{
-						File = "turret_off.png"
+						File = "turret.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2.25]
-						Offset = [0, -0.75]
+						Size = [2, 4]
 					}
 					{
-						File = "turret_off.png"
+						File = "turret.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2.25]
-						Offset = [0, -0.75]
+						Size = [2, 4]
 					}
 					{
-						File = "turret_off.png"
+						File = "turret.png"
 						NormalsFile = "turret_normals.png"
-						Size = [1, 2.25]
-						Offset = [0, -0.75]
+						Size = [2, 4]
 					}
 				]
 			}
@@ -635,8 +698,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [2, 3]
-			Offset = [0, -0.5]
+			Size = [2, 4]
+			//Offset = [0, -0.5]
 		}
 	}
 

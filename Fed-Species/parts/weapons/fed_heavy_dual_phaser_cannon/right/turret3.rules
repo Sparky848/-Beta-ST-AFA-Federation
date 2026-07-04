@@ -16,6 +16,7 @@ Components
 		FirePermissionToggle = FireModeToggle
 		IgnoreSourceShipLowLOSChecks = true
 		IgnoreJunkLOSChecks = true
+		CanSalvage = true
 		Emitter = BulletEmitterRight
 
 		AutoTargets

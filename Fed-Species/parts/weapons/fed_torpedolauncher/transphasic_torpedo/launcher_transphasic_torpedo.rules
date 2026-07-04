@@ -29,6 +29,7 @@ Components
 		Storage = MissileStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
 		OperationalToggle = PowerToggle
+		OverridePriorityKey = TransphasicTorpedoComponents
 		ConsumptionToggleButtonOffset = [0, -.4]
 	}
 	BatteryStorage

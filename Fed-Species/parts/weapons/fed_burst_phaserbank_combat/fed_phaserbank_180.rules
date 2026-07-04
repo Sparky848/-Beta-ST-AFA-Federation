@@ -19,6 +19,7 @@ Components
 		IgnoreJunkLOSChecks = true
 		//HoldTargetWhileFiring = 0.5
 		Emitter = BeamEmitter
+		CanSalvage = true
 		AlwaysShowCoverage = true
 
 		AutoTargets

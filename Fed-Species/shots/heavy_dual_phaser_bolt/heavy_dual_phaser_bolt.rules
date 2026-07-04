@@ -102,6 +102,17 @@ Components
 					Type = Impulse;
 					Impulse = 30;
 				}
+				{ //Damage to asteroids
+					Type = Damage
+					Damage = 14000//I think vanilla mining beam is 3200 per beam
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						OnlyPartCategories = [asteroid]
+						Shields = false
+					}
+				}
 			]
 			MediaEffectsScale = 1.5
 			MediaEffects

@@ -1,0 +1,329 @@
+MBatteryStorages
+{
+	BatterySprites
+	{
+		Type = ResourceSprites
+		Location = [2, 2]
+		ResourceStorage = MainShieldStorage
+		Layer = "doodads_low"
+		ResourceLevels
+		[
+			{
+				File = "../batteries1.png"
+				Size = [4, 4]
+			}
+			{
+				File = "../batteries2.png"
+				Size = [4, 4]
+			}
+			{
+				File = "../batteries3.png"
+				Size = [4, 4]
+			}
+			{
+				File = "../batteries4.png"
+				Size = [4, 4]
+			}
+			{
+				File = "../batteries5.png"
+				Size = [4, 4]
+			}
+			{
+				File = "../batteries6.png"
+				Size = [4, 4]
+			}
+			{
+				File = "../batteries7.png"
+				Size = [4, 4]
+			}
+			{
+				File = "../batteries8.png"
+				Size = [4, 4]
+			}
+		]
+	}
+	CombinedBatteryStorage
+	{
+		Type = MultiResourceStorage
+		ResourceType = battery
+		ResourceStorages = [FrontBatteryStorage, BackBatteryStorage, LeftBatteryStorage, RightBatteryStorage]
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+	MainShieldStorage
+	{
+		Type = ResourceStorage
+		ResourceType = battery
+		MaxResources = 128000
+		ToggleOnResources = 127001
+		DrainOnFtlJump = true
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+
+	MainBatteryConsumer
+	{
+		Type = ResourceConsumer
+		ResourceType = battery
+		Storage = MainShieldStorage
+		DefaultPriority = &/PRIORITIES/Defense_Supply
+		ResupplyThreshold = 500
+		OperationalToggle = PowerToggle
+	}
+
+	//Progress Bars
+	ProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = CombinedBatteryStorage
+		LowColor = [0, 0, 255]
+		HighColor = [0, 0, 255]
+		FullColor = [0, 0, 255]
+		Height = 10
+	}
+	
+	FullInternalCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = CombinedBatteryStorage
+		Invert = false
+		LowColor = [60, 143, 185]
+		HighColor = [120, 203, 245]
+		FullColor = [120, 203, 245]
+		Height = 5
+	}
+	FrontInternalCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = FrontBatteryStorage
+		Invert = false
+		LowColor = [60, 143, 185]
+		HighColor = [120, 203, 245]
+		FullColor = [120, 203, 245]
+		Height = 5
+	}
+	RightInternalCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = RightBatteryStorage
+		Invert = false
+		LowColor = [173, 111, 124]
+		HighColor = [233, 171, 184]
+		FullColor = [233, 171, 184]
+		Height = 5
+	}
+	LeftInternalCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = LeftBatteryStorage
+		Invert = false
+		LowColor = [195, 195, 195]
+		HighColor = [255, 255, 255]
+		FullColor = [255, 255, 255]
+		Height = 5
+	}
+	BackInternalCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = BackBatteryStorage
+		Invert = false
+		LowColor = [173, 111, 124]
+		HighColor = [233, 171, 184]
+		FullColor = [233, 171, 184]
+		Height = 5
+	}
+	
+	// Front Face
+	FrontIsOperational
+	{
+		Type = MultiToggle
+		Toggles = [PowerToggle, FrontBatteryStorage, IsOperational]
+		Mode = All
+	}
+	/*InlineFrontBatteryCharger
+	{
+		Type = InlineResourceConverter
+		ResourceType = battery
+		FromStorage = MainShieldStorage
+		FromQuantity = 2800
+		ToQuantity = 2800
+	}*/
+	FrontShieldBatteryRecharger
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsOperational
+		FromStorage = MainShieldStorage
+		ToStorage = FrontBatteryStorage
+		FromQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		ToQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		Interval = &<../fed_shieldcore.rules>/Part/MInterval
+		MinFromQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		MinToQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity //.01015625 @100
+		CheckResourceLimits = true
+	}//10 second regen rate. +1 every size up. XS=10, S=11, M=13, L=16, XL=20
+	FrontBatteryStorage
+	{
+		Type = ResourceStorage
+		ResourceType = battery
+		MaxResources = 128000
+		ToggleOnResources = 127001
+		AnticipateMoreResourcesFrom = ["MainShieldStorage"]
+		DrainOnFtlJump = true
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+	
+	FrontPowerDrain
+	{
+		Type = ResourceConverter
+		OperationalToggle = FrontIsOperational
+		FromStorage = FrontBatteryStorage
+		FromQuantity = 100
+		MinFromQuantityForConversion = 1
+		Interval = 1
+	}
+	
+	//Back Face
+	BackIsOperational
+	{
+		Type = MultiToggle
+		Toggles = [PowerToggle, BackBatteryStorage, IsOperational]
+		Mode = All
+	}
+	BackBatteryStorage
+	{
+		Type = ResourceStorage
+		ResourceType = battery
+		MaxResources = 128000
+		ToggleOnResources = 127001
+		DrainOnFtlJump = true
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+	BackPowerDrain
+	{
+		Type = ResourceConverter
+		OperationalToggle = BackIsOperational
+		FromStorage = BackBatteryStorage
+		FromQuantity = 100
+		MinFromQuantityForConversion = 1
+		Interval = 1
+	}
+	/*InlineBackBatteryCharger
+	{
+		Type = InlineResourceConverter
+		ResourceType = battery
+		FromStorage = MainShieldStorage
+		FromQuantity = 2800
+		ToQuantity = 2800
+	}*/
+	BackShieldBatteryRecharger
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsOperational
+		FromStorage = MainShieldStorage
+		ToStorage = BackBatteryStorage
+		FromQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		ToQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		Interval = &<../fed_shieldcore.rules>/Part/MInterval
+		MinFromQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		MinToQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		CheckResourceLimits = true
+	}
+
+	//Left Face
+	LeftIsOperational
+	{
+		Type = MultiToggle
+		Toggles = [PowerToggle, LeftBatteryStorage, IsOperational]
+		Mode = All
+	}
+	LeftBatteryStorage
+	{
+		Type = ResourceStorage
+		ResourceType = battery
+		MaxResources = 128000
+		ToggleOnResources = 127001
+		DrainOnFtlJump = true
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+	LeftPowerDrain
+	{
+		Type = ResourceConverter
+		OperationalToggle = LeftIsOperational
+		FromStorage = LeftBatteryStorage
+		FromQuantity = 100
+		MinFromQuantityForConversion = 1
+		Interval = 1
+	}
+	/*InlineLeftBatteryCharger
+	{
+		Type = InlineResourceConverter
+		ResourceType = battery
+		FromStorage = MainShieldStorage
+		FromQuantity = 2800
+		ToQuantity = 2800
+	}*/
+	LeftShieldBatteryRecharger
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsOperational
+		FromStorage = MainShieldStorage
+		ToStorage = LeftBatteryStorage
+		FromQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		ToQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		Interval = &<../fed_shieldcore.rules>/Part/MInterval
+		MinFromQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		MinToQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		CheckResourceLimits = true
+	}
+	
+	//Right Face
+	RightIsOperational
+	{
+		Type = MultiToggle
+		Toggles = [PowerToggle, RightBatteryStorage, IsOperational]
+		Mode = All
+	}
+	RightBatteryStorage
+	{
+		Type = ResourceStorage
+		ResourceType = battery
+		MaxResources = 128000
+		ToggleOnResources = 127001
+		DrainOnFtlJump = true
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+	RightPowerDrain
+	{
+		Type = ResourceConverter
+		OperationalToggle = RightIsOperational
+		FromStorage = RightBatteryStorage
+		FromQuantity = 100
+		MinFromQuantityForConversion = 1
+		Interval = 1
+	}
+	/*InlineRightBatteryCharger
+	{
+		Type = InlineResourceConverter
+		ResourceType = battery
+		FromStorage = MainShieldStorage
+		FromQuantity = 2800
+		ToQuantity = 2800
+	}*/
+	RightShieldBatteryRecharger
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsOperational
+		FromStorage = MainShieldStorage
+		ToStorage = RightBatteryStorage
+		FromQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		ToQuantity = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		Interval = &<../fed_shieldcore.rules>/Part/MInterval
+		MinFromQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		MinToQuantityForConversion = &<../fed_shieldcore.rules>/Part/MFromToQuantity
+		CheckResourceLimits = true
+	}
+}

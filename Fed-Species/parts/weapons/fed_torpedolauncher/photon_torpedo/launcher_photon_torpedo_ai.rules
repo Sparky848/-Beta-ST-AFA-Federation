@@ -32,7 +32,7 @@ Components
 		ResourceType = torpedo_part
 		Storage = CombinedMissileStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
-		OverridePriorityKey = MissileStorage
+		OverridePriorityKey = PhotonTorpedoComponents
 		OperationalToggle = PowerToggle
 		ConsumptionToggleButtonOffset = [0, -.4]
 	}

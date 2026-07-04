@@ -20,6 +20,7 @@ Components
 		//HoldTargetWhileFiring = 0.5
 		Emitter = BeamEmitter
 		AlwaysShowCoverage = true
+		CanSalvage = true
 
 		AutoTargets
 		[

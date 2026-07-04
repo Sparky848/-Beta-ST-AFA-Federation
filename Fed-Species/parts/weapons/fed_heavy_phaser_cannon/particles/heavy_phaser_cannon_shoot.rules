@@ -97,8 +97,8 @@ Def
 		UvRectIn = uv_rect
 		BaseSize
 		{
-			X = 3
-			Y = 3
+			X = 3.5//3
+			Y = 3.5//3
 		}
 		Name = ""
 	}
@@ -106,7 +106,7 @@ Def
 	{
 		Texture
 		{
-			File = heavy_phaser_cannon_shoot.png
+			File = dual_phaser_cannon_shoot.png
 			MipLevels = 8
 			SampleMode = Linear
 		}
