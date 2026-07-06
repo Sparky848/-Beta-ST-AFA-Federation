@@ -67,9 +67,9 @@ Components
 	Hit
 	{
 		Type = SimpleHit
-		SourceShipLowCollisions = false
 		HitCrew = &HitOperational
-
+		SourceShipLowCollisions = false
+		SourceShipHighCollisions = false
 		HitShield
 		{
 			ReduceEffectsByPenetration = true

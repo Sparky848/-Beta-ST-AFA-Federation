@@ -8,6 +8,7 @@ IdealRange
 IdealRadius = [5, 50]
 Speed = { BaseValue=35; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=40; }
 SourceShipLowCollisions = false
+SourceShipHighCollisions = false
 Components
 {
 	Physics
@@ -73,6 +74,7 @@ Components
 		SourcePartCollisionDelay = 1.5/30
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = false
+		SourceShipHighCollisions = false
 		FriendlyShipLowCollisions = false
 		CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational

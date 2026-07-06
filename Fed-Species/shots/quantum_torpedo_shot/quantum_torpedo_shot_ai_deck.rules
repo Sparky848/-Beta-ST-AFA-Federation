@@ -8,6 +8,7 @@ IdealRange
 IdealRadius = [5, 50]
 Speed = { BaseValue=100; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=140; }
 SourceShipLowCollisions = false
+SourceShipHighCollisions = false
 Components
 {
 	Physics
@@ -62,7 +63,7 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 3200
+		Health = 2800//3200
 		TargetCategory = "stafa_torpedo"
 		OnDeath = &../Hit/HitOperational
 	}
@@ -81,6 +82,7 @@ Components
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = false
+		SourceShipHighCollisions = false
 		FriendlyShipLowCollisions = false
 		//CrewCollisions = {Enemies=true; Junk=true}
 		//HitCrew = &HitOperational

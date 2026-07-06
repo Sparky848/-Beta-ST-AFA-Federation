@@ -188,7 +188,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					From
 					[
 						{
-							Storage = AntimatterSplitter
+							Storage = AntimatterSplitter //7500 from 1 antimatter, 1 Antimatter lasts 75 seconds
 							Quantity = 10//20
 						}
 					]

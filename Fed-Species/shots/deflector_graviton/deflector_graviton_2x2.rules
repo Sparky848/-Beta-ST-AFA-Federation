@@ -5,6 +5,7 @@ IdealRange
 	280
 	350
 ]
+SourceShipHighCollisions = false
 SourceShipLowCollisions = false
 ReceivableBuffs = [DeflectorDebuff]
 Speed = 300

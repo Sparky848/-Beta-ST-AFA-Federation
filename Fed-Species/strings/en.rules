@@ -128,6 +128,12 @@ Parts
 	Vengeance_ArrayDesc = "An Advanced Phaser Array from an alternative timeline, the stolen schematic of which was apprehended by Starfleet Intelligence, and later leaked by unkown operatives."\
 						"\n\n<s20><color r='165' g='223' b='255' a='255'>Capable of firing a devastating nadion barrage, as well as launching a drone armed with photon torpedos</color></s20>"\
 						"\n<bad><s18>Drone currently not implemented\nPart WIP, buttons are placeholder</s18></bad>"  
+	
+	Heavy_Dual_Phaser_Cannon = "Heavy Dual Phaser Cannon"
+	Heavy_Dual_Phaser_CannonIcon = "Heavy Dual Phaser Cannon"
+	Heavy_Dual_Phaser_CannonDesc = "Improving on earlier iterations, this weapon fires 3, 2 shot bursts of compressed nadions that rapidly diffuse into an enemies hull.\n"\
+								"<i>Initial impact causes a small explosion, followed by fires being set inside the enemy ship</i>\n"\
+								"<cyan>Longer barrels have slightly longer reload times and lower firing arc</cyan>"
 
 
     // Rooms
@@ -404,12 +410,8 @@ Parts
 	AltVoyBussardCollector1x2Icon = "Alt Voyager-A Bussard 1x2"
 	AltVoyBussardCollector1x2Desc = "Alt Voyager-A Bussard 1x2\n"\
 									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
-
-	Heavy_Dual_Phaser_Cannon = "Heavy Dual Phaser Cannon"
-	Heavy_Dual_Phaser_CannonIcon = "Heavy Dual Phaser Cannon"
-	Heavy_Dual_Phaser_CannonDesc = "Improving on earlier iterations, this weapon fires 3, 2 shot bursts of compressed nadions that rapidly diffuse into an enemies hull.\n"\
-								"<i>Initial impact causes a small explosion, followed by fires being set inside the enemy ship</i>\n"\
-								"<cyan>Longer barrels have slightly longer reload times</cyan>"
+	
+	//Accidentally put Heavy Dual Phaser Cannons entry here
 
 	Hull_Polariser_Small = "Small Hull Polariser"
 	Hull_Polariser_SmallIcon = "Small Hull Polariser"

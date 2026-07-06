@@ -8,6 +8,7 @@ IdealRange
 IdealRadius = [5, 50]
 Speed = { BaseValue=35; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=40; }
 SourceShipLowCollisions = false
+SourceShipHighCollisions = false
 Stage2 = &<spatial_torpedo2.rules>
 //Damage_Const = 500
 Components
@@ -89,6 +90,7 @@ Components
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = false
 		FriendlyShipLowCollisions = false
+		SourceShipHighCollisions = false
 		CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational
 

@@ -62,7 +62,7 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 3600
+		Health = 3200//3600
 		TargetCategory = "stafa_torpedo"
 		OnDeath = &../Hit/HitOperational
 	}

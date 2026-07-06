@@ -160,7 +160,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Bottom = 4
 			}
 		}
-		ConnectedToAuxInjectorLeftFlipX
+		ConnectedToAuxInjectorLeftFlipY
 		{
 			Type = AreaBuffProvider
 			BuffArea = [-1, 0, 1, 4]
@@ -171,7 +171,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Rot = 2
 				Top = 0
 				Bottom = 4
-				FlipX = true
+				FlipY = true
 			}
 		}
 		//Top
@@ -188,7 +188,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Right = 4
 			}
 		}
-		ConnectedToAuxInjectorTopFlipX
+		ConnectedToAuxInjectorTopFlipY
 		{
 			Type = AreaBuffProvider
 			BuffArea = [0, -1, 4, 1]
@@ -199,7 +199,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Rot = 1
 				Left = 0
 				Right = 4
-				FlipX = true
+				FlipY = true
 			}
 		}
 		//Right
@@ -216,7 +216,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Bottom = 4
 			}
 		}
-		ConnectedToAuxInjectorRightFlipX
+		ConnectedToAuxInjectorRightFlipY
 		{
 			Type = AreaBuffProvider
 			BuffArea = [4, 0, 1, 4]
@@ -227,7 +227,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Rot = 2
 				Top = 0
 				Bottom = 4
-				FlipX = true
+				FlipY = true
 			}
 		}
 		//Bottom
@@ -244,7 +244,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Right = 4
 			}
 		}
-		ConnectedToAuxInjectorBottomFlipX
+		ConnectedToAuxInjectorBottomFlipY
 		{
 			Type = AreaBuffProvider
 			BuffArea = [0, 4, 4, 1]
@@ -255,7 +255,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Rot = 3
 				Left = 0
 				Right = 4
-				FlipX = true
+				FlipY = true
 			}
 		}
 		//
@@ -287,8 +287,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					From
 					[
 						{
-							Storage = AntimatterSplitter
-							Quantity = 22//30
+							Storage = AntimatterSplitter //15,000 from 1 antimatter, 1 Antimatter lasts 51.13636...seconds
+							Quantity = 16//22 ¦ 1 Antimatter Lasts: 70s w/16.07142857143..
 						}
 					]
 					ToStorage = BatteryStorage

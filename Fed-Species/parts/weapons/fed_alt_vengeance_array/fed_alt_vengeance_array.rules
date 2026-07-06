@@ -837,6 +837,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AIFirepowerRating = 2500
 			FirePermissionToggle = FireModeToggle
 			IgnoreSourceShipLowLOSChecks = true
+			IgnoreSourceShipHighLOSChecks = true
 			IgnoreJunkLOSChecks = true
 			Emitter = BulletEmitter
 

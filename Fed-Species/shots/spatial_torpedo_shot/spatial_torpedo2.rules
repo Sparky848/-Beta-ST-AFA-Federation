@@ -7,6 +7,7 @@ IdealRange
 ]
 IdealRadius = [5, 50]
 SourceShipLowCollisions = false
+SourceShipHighCollisions = false
 Speed = 0
 Components
 {

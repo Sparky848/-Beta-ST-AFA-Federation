@@ -9,6 +9,7 @@ IdealRange
 Duration = 6
 HitInterval = .1
 Width = 1
+SourceShipHighCollisions = false
 SourceShipLowCollisions = false
 ReceivableBuffs = [DeflectorDebuff]
 BeamMediaEffects

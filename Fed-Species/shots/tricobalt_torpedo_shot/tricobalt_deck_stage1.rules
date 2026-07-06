@@ -9,7 +9,8 @@ IdealRadius = [5, 50]
 Speed = { BaseValue=20; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=40; }//{ BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }//{ BaseValue=70; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=90; }
 
 Stage2 = &<tricobalt_torpedo_shot_deck.rules>
-
+SourceShipHighCollisions = false
+SourceShipLowCollisions = false
 Components
 {
 	Physics
@@ -146,9 +147,9 @@ Components
 	Hit
 	{
 		Type = SimpleHit
-		SourceShipLowCollisions = false
 		HitCrew = &HitOperational
-
+		SourceShipLowCollisions = false
+		SourceShipHighCollisions = false
 		HitShield
 		{
 			ReduceEffectsByPenetration = true
