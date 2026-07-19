@@ -27,7 +27,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Radius_M = 35
 	Radius_L = 45
 	Radius_XL = 60
-	
+
+	PenetrationResistance_S = [125, 0]
+	PenetrationResistance_M = [175, 0]
+	PenetrationResistance_L = [225, 0]
+	PenetrationResistance_XL = [275, 0]
 	XSFromToQuantity = 2800
 	XSInterval = .5
 
@@ -2190,7 +2194,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		//ShieldHP = (&~/Part/Components/MainShieldBatteryStorage/MaxResources) / (&<BaseShield.rules>/Part/Components/BaseArcShield/ResourceDrainPerDamage)
-		ShieldPenResist = &<BaseShield.rules>/Part/Components/BaseArcShield/PenetrationResistance/0
+		ShieldPenResist = &~/Part/Components/BaseArcShield/PenetrationResistance/0
 		ShieldArc = deg(&<BaseShield.rules>/Part/Components/BaseArcShield/Arc)
 		ShieldDist = (&<BaseShield.rules>/Part/Components/BaseArcShield/Radius) - (&<BaseShield.rules>/Part/Components/BaseArcShield/Location/1)
 		PowerUsageContinuous = 0.4

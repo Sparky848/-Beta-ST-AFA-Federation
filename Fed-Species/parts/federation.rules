@@ -110,11 +110,17 @@ Parts
 	&<misc/fed_altvoybussard_collector_1x2/fed_altvoybussard_collector_1x2.rules>/Part
 	&<misc/fed_altvoybussard_collector_2x4/fed_altvoybussard_collector_2x4.rules>/Part
 	&<misc/fed_altvoybussard_collector_3x5/fed_altvoybussard_collector_3x5.rules>/Part
+	&<misc/fed_voybussard_collector_1x2/fed_voybussard_collector_1x2.rules>/Part
+	&<misc/fed_voybussard_collector_2x4/fed_voybussard_collector_2x4.rules>/Part
+	&<misc/fed_voybussard_collector_3x5/fed_voybussard_collector_3x5.rules>/Part
 	&<misc/fed_hull_polariser_small/fed_hull_polariser_small.rules>/Part
 	&<misc/fed_hull_polariser_med/fed_hull_polariser_med.rules>/Part
 	&<misc/fed_forcefield_corridor/centered/fed_forcefield_corridor_centered_off.rules>/Part
 	&<misc/fed_forcefield_corridor/centered/fed_forcefield_corridor_centered_on.rules>/Part
-	
+	&<misc/fed_gravplate/fed_gravplate.rules>/Part
+	&<misc/fed_gravplate/fed_gravplate2.rules>/Part
+	&<misc/fed_gravplate/fed_gravplate3.rules>/Part
+	&<misc/fed_gravplate/fed_gravplate4.rules>/Part
 	// AI Parts {Unused}
 	
 //	&<engines/fed_impulse_6x3/fed_impulse_6x3_ai.rules>/Part

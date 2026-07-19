@@ -49,11 +49,9 @@ Bullet : BASE
 		{
 			Type = PenetratingHit
 			FriendlyShipLowCollisions = false
-			Penetration = 1
+			Penetration = 30
 			PenetratesOperational = false
 			FactorEffectsWith = Targetable
-
-			CrewCollisions = {Enemies=true; Junk=true}
 			PenetratesCrew = true
 			HitCrew = &HitOperational
 
@@ -118,6 +116,36 @@ Bullet : BASE
 					//{
 					//	Delay = 2.5
 					//}
+					{
+						Type = ExplosiveResourceDrain
+						ResourceType = battery
+						TotalDrain = { BaseValue = 2000; EffectScaleExponent = 1 }
+						Radius = 3
+						Slices = 1
+						Filter
+						{
+							Ships = true
+							Shields = true
+							Friendlies = true
+						}
+						MediaEffectsOnDrainFactor = .0005
+						MediaEffectsOnDrain
+						[
+							&<particles2/disruptor_bolt_hit_bolts.rules>
+							&<particles2/disruptor_bolt_hit_lightning.rules>
+							&<particles2/disruptor_bolt_hit_sizzle.rules>
+
+							: /BASE_SOUNDS/AudioExterior
+							{
+								RandomSounds = ["./Data/shots/disruptor_bolt/sounds/disruptor_discharge_01.wav",
+												"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_02.wav",
+												"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_03.wav",
+												"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_04.wav"]
+								Volume = .5
+								SpeedVariation = .2
+							}
+						]
+					}
 				]
 
 				MediaEffects

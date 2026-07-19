@@ -320,7 +320,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 						Type = BuffRemap
 						BuffType = Overclock
 						RemapFrom = [0, 1]
-						RemapTo = [0, 4]//[1, 8]
+						RemapTo = [0, 1.5]//[0, 4]//[1, 8]
 						ModificationMode = Add
 					}
 				]

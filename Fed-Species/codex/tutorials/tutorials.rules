@@ -2,5 +2,7 @@ CodexPages
 [
 	// Context dependent:
 	&<warpcores/tutorial_warpcore.rules>
-
+	&<shieldcores/tutorial_shieldcore.rules>
+	&<deflector_dishes/tutorial_deflector_dishes.rules>
+	&<torpedo_launchers/tutorial_torpedo_launchers.rules>
 ]

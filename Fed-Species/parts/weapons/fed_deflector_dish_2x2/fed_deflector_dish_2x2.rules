@@ -14,7 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]//to be actually checked, and based on performance
 	Size = [2, 2]
 	MaxHealth = 4500//old warpcore health lol
-	TypeCategories = [weapon, turret, uses_power]
+	TypeCategories = [weapon, turret, uses_power, deflector_dish]
 	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorDebuff, DeflectorCounter]//small ship variant needs manual power
 	IsRotateable = true
 	IsFlippable = true

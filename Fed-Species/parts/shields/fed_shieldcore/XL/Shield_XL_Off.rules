@@ -5,6 +5,7 @@ ShieldInvisibleNoShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = -90d
 		OperationalToggle = FrontIsOperationalProxy
 		DrainResourcesFrom = FrontBatteryStorageProxy
@@ -65,6 +66,7 @@ ShieldInvisibleNoShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 90d
 		OperationalToggle = BackIsOperationalProxy
 		DrainResourcesFrom = BackBatteryStorageProxy
@@ -125,6 +127,7 @@ ShieldInvisibleNoShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 180d
 		OperationalToggle = LeftIsOperationalProxy
 		DrainResourcesFrom = LeftBatteryStorageProxy
@@ -187,6 +190,7 @@ ShieldInvisibleNoShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 0d
 		OperationalToggle = RightIsOperationalProxy
 		DrainResourcesFrom = RightBatteryStorageProxy
@@ -250,6 +254,7 @@ ShieldInvisibleFrontShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = -90d
 		OperationalToggle = FrontIsOperationalProxy
 		DrainResourcesFrom = FrontBatteryStorageProxy
@@ -310,6 +315,7 @@ ShieldInvisibleFrontShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 90d
 		OperationalToggle = BackIsOperationalProxy
 		DrainResourcesFrom = BackBatteryStorageProxy
@@ -370,6 +376,7 @@ ShieldInvisibleFrontShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 180d
 		OperationalToggle = LeftIsOperationalProxy
 		DrainResourcesFrom = LeftBatteryStorageProxy
@@ -432,6 +439,7 @@ ShieldInvisibleFrontShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 0d
 		OperationalToggle = RightIsOperationalProxy
 		DrainResourcesFrom = RightBatteryStorageProxy
@@ -496,6 +504,7 @@ ShieldInvisibleLeftShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = -90d
 		OperationalToggle = FrontIsOperationalProxy
 		DrainResourcesFrom = FrontBatteryStorageProxy
@@ -556,6 +565,7 @@ ShieldInvisibleLeftShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 90d
 		OperationalToggle = BackIsOperationalProxy
 		DrainResourcesFrom = BackBatteryStorageProxy
@@ -616,6 +626,7 @@ ShieldInvisibleLeftShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 180d
 		OperationalToggle = LeftIsOperationalProxy
 		DrainResourcesFrom = LeftBatteryStorageProxy
@@ -678,6 +689,7 @@ ShieldInvisibleLeftShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 0d
 		OperationalToggle = RightIsOperationalProxy
 		DrainResourcesFrom = RightBatteryStorageProxy
@@ -741,6 +753,7 @@ ShieldInvisibleRightShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = -90d
 		OperationalToggle = FrontIsOperationalProxy
 		DrainResourcesFrom = FrontBatteryStorageProxy
@@ -801,6 +814,7 @@ ShieldInvisibleRightShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 90d
 		OperationalToggle = BackIsOperationalProxy
 		DrainResourcesFrom = BackBatteryStorageProxy
@@ -861,6 +875,7 @@ ShieldInvisibleRightShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 180d
 		OperationalToggle = LeftIsOperationalProxy
 		DrainResourcesFrom = LeftBatteryStorageProxy
@@ -923,6 +938,7 @@ ShieldInvisibleRightShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 0d
 		OperationalToggle = RightIsOperationalProxy
 		DrainResourcesFrom = RightBatteryStorageProxy
@@ -987,6 +1003,7 @@ ShieldInvisibleBackShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = -90d
 		OperationalToggle = FrontIsOperationalProxy
 		DrainResourcesFrom = FrontBatteryStorageProxy
@@ -1047,6 +1064,7 @@ ShieldInvisibleBackShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 90d
 		OperationalToggle = BackIsOperationalProxy
 		DrainResourcesFrom = BackBatteryStorageProxy
@@ -1107,6 +1125,7 @@ ShieldInvisibleBackShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 180d
 		OperationalToggle = LeftIsOperationalProxy
 		DrainResourcesFrom = LeftBatteryStorageProxy
@@ -1169,6 +1188,7 @@ ShieldInvisibleBackShunt
 	{
 		Radius = &<../fed_shieldcore.rules>/Part/Radius_XL
 		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XL
 		Rotation = 0d
 		OperationalToggle = RightIsOperationalProxy
 		DrainResourcesFrom = RightBatteryStorageProxy

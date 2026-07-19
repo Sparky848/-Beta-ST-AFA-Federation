@@ -109,7 +109,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 45//25
+			Damage = 80//45//25
 		}
 		{
 			Type = Impulse

@@ -1,0 +1,29 @@
+ID = torpedo_launchers
+TitleKey = "Tutorials/TorpedoLaunchers/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('stafatorpedo_launcher') or (game.HasTechUnlocked('stafa.torpedolauncher_2x4') or game.HasTechUnlocked('stafa.torpedolauncher_deck_2x4') and game.Fame > 0)"
+Entries
+[
+	{
+		TextKey = "Tutorials/TorpedoLaunchers/Info"
+	}
+	{
+		Image { Texture { File="torpedo_launchers.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/TorpedoLaunchers/Photon"
+		Image { Texture { File="photon.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/TorpedoLaunchers/Quantum"
+		Image { Texture { File="quantum.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/TorpedoLaunchers/Tricobalt"
+		Image { Texture { File="tricobalt.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/TorpedoLaunchers/Transphasic"
+		Image { Texture { File="transphasic.png"; SampleMode=Linear; } }
+	}
+]

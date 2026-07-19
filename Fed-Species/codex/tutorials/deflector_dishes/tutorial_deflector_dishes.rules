@@ -1,0 +1,41 @@
+ID = deflector_dishes
+TitleKey = "Tutorials/DeflectorDishes/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('deflector_dish') or (game.HasTechUnlocked('stafa.fed_deflector_dish_2x2') or game.HasTechUnlocked('stafa.fed_deflector_dish_external_2x2') or game.HasTechUnlocked('stafa.fed_deflector_dish_4x3') or game.HasTechUnlocked('stafa.fed_deflector_dish_4x4_sovereign') or game.HasTechUnlocked('stafa.fed_deflector_dish_6x3_galaxy') and game.Fame > 0)"
+Entries
+[
+	{
+		TextKey = "Tutorials/DeflectorDishes/Info"
+	}
+	{
+		Image { Texture { File="deflector_dish.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/Sensor"
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/Radiator"
+		Image { Texture { File="radiator.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/ShieldBuff"
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/TitleBeamSystems"
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/BSInfo"
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/BSTachyon"
+		Image { Texture { File="tachyon.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/BSPolaron"
+		Image { Texture { File="polaron.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/DeflectorDishes/BSGraviton"
+		Image { Texture { File="graviton.png"; SampleMode=Linear; } }
+	}
+]

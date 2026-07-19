@@ -1,0 +1,28 @@
+ID = shieldcores
+TitleKey = "Tutorials/Shieldcore/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('shieldcore') or (game.HasTechUnlocked('stafa.fed_shieldcore'))"
+Entries
+[
+	{
+		TextKey = "Tutorials/Shieldcore/Info"
+	}
+	{
+		Image { Texture { File="shieldcore.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/Shieldcore/TitleButtons"
+	}
+	{
+		TextKey = "Tutorials/Shieldcore/ButtonVisibility"
+		Image { Texture { File="button_visibility.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/Shieldcore/ButtonSize"
+		Image { Texture { File="button_size.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/Shieldcore/ButtonShunt"
+		Image { Texture { File="button_shunt.png"; SampleMode=Linear; } }
+	}
+]

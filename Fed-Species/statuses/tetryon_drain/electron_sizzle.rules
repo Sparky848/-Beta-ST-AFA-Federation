@@ -70,7 +70,7 @@ Def
 					Af = 1
 				}
 				{
-					Rf = 152941176471
+					Rf = 0.152941176471
 					Gf = 0.188235294118
 					Bf = 0.960784313725
 					Af = 1
@@ -228,7 +228,7 @@ Def
 	{
 		Shader
 		{
-			File = ./Data/shots/disruptor_bolt/particles/particle_lightning.shader
+			File = ../../shots/phaser_bolt_deck/particles2/particle_lightning.shader
 		}
 		_centerColor
 		{

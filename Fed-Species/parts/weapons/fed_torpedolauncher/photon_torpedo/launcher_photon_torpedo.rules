@@ -66,6 +66,20 @@ Components
 		ShowProgressFor = CommonReloadTimerVeryShort
 		Invert = true
 	}
+	FireIntervalTimer
+	{
+		Type = Timer
+		Duration = 4
+		AutoStart = false
+		StartTrigger = WeaponA
+	}
+	FireIntervalProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = FireIntervalTimer
+		Invert = true
+	}
 
 	WeaponA : ~/WeaponBase
 	{

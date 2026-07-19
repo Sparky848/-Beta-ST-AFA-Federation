@@ -243,7 +243,7 @@ Parts
 	// Shields
 	ShieldCore = "Shieldcore"
 	ShieldCoreIcon = "Shieldcore"
-	ShieldCoreDesc = "Central shieldcore that consists of 4 separate shields, with the front being the strongest, followed by the sides then rear"\
+	ShieldCoreDesc = "Central shieldcore that consists of 4 separate shields faces. Has configurable size, visibility and shunting options."\
 					 "\n<color r='120' g='203' b='245' a='255'><s18> Forward Shield Health Bar</s18></color>"\
 					 "\n<color r='233' g='171' b='184' a='255'><s18> Starboard Shield Health Bar</s18></color>"\
 					 "\n<color r='255' g='255' b='255' a='255'><s18> Port Shield Health Bar</s18></color>"\
@@ -410,6 +410,21 @@ Parts
 	AltVoyBussardCollector1x2Icon = "Alt Voyager-A Bussard 1x2"
 	AltVoyBussardCollector1x2Desc = "Alt Voyager-A Bussard 1x2\n"\
 									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
+
+	VoyBussardCollector1x2 = "Intrepid Type Bussard 1x2"
+	VoyBussardCollector1x2Icon = "Intrepid Type Bussard 1x2"
+	VoyBussardCollector1x2Desc = "Intrepid Type Bussard 1x2\n"\
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
+
+	VoyBussardCollector2x4 = "Intrepid Type Bussard 2x4"
+	VoyBussardCollector2x4Icon = "Intrepid Type Bussard 2x4"
+	VoyBussardCollector2x4Desc = "Intrepid Type Bussard 2x4\n"\
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
+
+	VoyBussardCollector3x5 = "Intrepid Type Bussard 3x5"
+	VoyBussardCollector3x5Icon = "Intrepid Type Bussard 3x5"
+	VoyBussardCollector3x5Desc = "Intrepid Type Bussard 3x5\n"\
+									"<s20><cyan>Can be connected to the top of the respective sized Gas Fabricator to produce gas canisters in nebulae</cyan></s20>"
 	
 	//Accidentally put Heavy Dual Phaser Cannons entry here
 
@@ -433,6 +448,10 @@ Parts
 	Forcefield_Cent_Corridor_On_Icon = "Centered Forcefield Corridor (On)"
 	Forcefield_Cent_Corridor_On_Desc = "A toggleable forcefield corridor that can block fires and crew access when enabled"\
 										"\n<bad><s18>Due to the nature of this part, when on it will count as your ship being damaged, thus repairing will restore as an off forcefield, this is currently unavoidable.</s18></bad>"
+
+	Gravplate = "Gravplate"
+	GravplateIcon = "Gravplate"
+	GravplateDesc = "Gravitic Plate capable of locking two separate parts together across an empty space"
 }
 
 Inputs
@@ -792,5 +811,47 @@ Tutorials
 		Distribution = "You can tell whether or not a part can be wirelessly fueled because it will have a <good>blue lightning symbol</good>. The larger the warpcore, the larger the range of distribution."
 		Resources = "In order to keep a warpcore fuelled <good>you will need a large amount of antimatter</good>, otherwise they will output essentially <bad>no power</bad>"
 		NoAntimatter = "A Warpcore will display a <bad>red antimatter symbol</bad> when it is <bad>out of antimatter</bad>. At this point <bad>it will be producing almost no power</bad> and thus <good>should be refuelled promptly</good>"
+	}
+	Shieldcore
+	{
+		Title = "Shieldcore"
+		Info = "The Shieldcore <good>requires power and crew to function</good>, projecting 4 individual shield arcs in a circle around itself."\ 
+			"\nThese arcs cannot be directly powered, instead power from the shield is distributed to each face overtime, this has the effect of <bad>artificially limiting the maximum regeneration rate of the shield.</bad> In return, the shield faces have <good>much higher individual health pools</good> and <color r='230' g='255' b='0' a='255'>emp resistance</color> than generic shields."
+		TitleButtons = "The Shieldcore has 3 new buttons:"
+		ButtonVisibility = "\nCycles the visibility of the shield arcs"
+		ButtonSize = "Allows for the <good>selection of different shield sizes</good>, doing so however will require a <bad>full recharge of the shield.</bad>\n With larger shields requiring longer to recharge:"\
+					"\nXS=<good>10</good><gray>s</gray>, S=<good>11</good><gray>s</gray>, M=<good>13</good><gray>s</gray>, L=<good>16</good><gray>s</gray>, XL=<good>20</good><gray>s</gray>"
+		ButtonShunt = "Allows for the shield faces to be shunted, <good>doubling the faces effective HP</good> but <bad>reducing HP from the other faces.</bad> <color r='185' g='239' b='241' a='255'>25</color><gray>%</gray> for the adjacent faces and <color r='185' g='239' b='241' a='255'>50</color><gray>%</gray> from the opposite face."\
+					"\nShunting will <bad>temporarily disable the shield for 3 seconds</bad>"
+
+	}
+	DeflectorDishes
+	{
+		Title = "Deflector Dishes"
+		Info = "These are <good>multifunctional parts</good> that fire unique beams intended to provide a <good>single heavy advantage in combat.</good>"
+		Sensor = "Deflectors act as <color r='10' g='168' b='28' a='255'>sensor arrays</color> for your ship, with each size <good>gradually increasing in power</good>. Per tile they are <bad>slightly worse than the vanilla sensor array</bad>, but the largest arrays still boast a larger range."
+		Radiator = "Deflectors also act as a <color r='250' g='176' b='86' a='255'>radiator</color>, with multiple heat port connections and <good>higher efficiency than vanilla radiators</good>. "
+		ShieldBuff = "Finally, they provide a % buff to effective shield HP (this does not stack) <bad>Not Currently Implemented</bad>	"
+		TitleBeamSystems = "\n<s25><color r='185' g='239' b='241' a='255'>Beam Systems</color></s25>"
+		BSInfo = "Deflectors have different options for beam attacks, intended to provide <good>utility or large combat advantages</good>. However, this comes at the cost of a <bad>large charge-up period</bad> before firing, <bad>long reload,</bad> and <bad>high operational costs.</bad>"\
+				"\nLarger deflectors fire stronger beams that cost more to fire, but take longer to charge and reload. "
+		BSTachyon = "The Tachyon Beam does <good>heavy shield damage</good>, but <bad>0 damage to everything else</bad>. \nUseful to lower to shields of ships to get hits in at the start of a battle."
+		BSPolaron = "The Polaron Beam creates an <good>AOE energy drain on impact with parts.</good> \nIt is capable of disabling entire ships, but is <bad>completely blocked by shields</bad>"
+		BSGraviton = "The Graviton Beam <bad>deals 0 damage</bad> but has <good>large amounts of knockback on hit</good>. This can hit both parts and shields with equal effect"
+	}
+	TorpedoLaunchers
+	{
+		Title = "Torpedo Launchers"
+		Info = "Similar to normal Missile Launchers, these have multiple ammo options which changes the fired torpedo."\
+				"\nEach launcher <good>must be full</good> before being able to fire, and have a <bad>set cooldown to limit firerate</bad>."\
+				"\nEach launcher type has <good>different stats for fired torpedos</good>, with the Normal being the strongest, followed by Deck, then the Micro launcher. "
+		Photon = "<color r='225' g='50' b='50' a='255'>Photon</color>:\nBasic torpedo that explodes on impact with low HP, high turn rate and a small explosion"\
+				"\n<gray>- All Launchers</gray>"
+		Quantum = "<color r='72' g='175' b='255' a='255'>Quantum</color>:\nFaster, lower targeting torpedo that penetrates into ships which has a higher damage and HP than photons."\
+				"\n<gray>- All Launchers</gray>"
+		Tricobalt = "<color r='195' g='236' b='255' a='255'>Tricobalt</color>:\nNuke style firing with heavy damage on impact but a limited explosion radius. These double as mining charges, dealing huge damage to asteroids."\
+				"\n<gray>- Normal and Deck Launchers</gray>"
+		Transphasic = "<color r='225' g='194' b='64' a='255'>Transphasic</color>:\nAn incredibly dangerous torpedo to store and fire, this completely bypasses shields and deals a huge explosion on hit. Limited tracking, slow acceleration and additionally requires power to fire."\
+				"\n<gray>- Normal Launchers Only</gray>"
 	}
 }

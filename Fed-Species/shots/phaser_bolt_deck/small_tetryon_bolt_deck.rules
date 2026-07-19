@@ -2,9 +2,9 @@ BASE = &<phaser_bolt_deck.rules>
 
 SPEED = (&BASE/Speed/BaseValue) + 40
 RANGE = (&BASE/Range/BaseValue) + 50
-TOTAL_DRAIN = 3500
-TOTAL_SHIELD_DRAIN = 3500
-DRAIN_DURATION = 8
+TOTAL_DRAIN = 2000
+TOTAL_SHIELD_DRAIN = 2000
+DRAIN_DURATION = 4
 
 DRAIN_PER_SECOND = (&TOTAL_DRAIN) / (&DRAIN_DURATION)
 SHIELD_DRAIN_PER_SECOND = (&TOTAL_SHIELD_DRAIN) / (&DRAIN_DURATION)
@@ -22,9 +22,11 @@ Bullet : BASE
 	{
 		Hit : ^/0/Hit
 		{
+			Penetration = 100
 			PenetratesOperational = false
 			HitShield : ^/0/HitShield
 			{
+				ReduceEffectsByPenetration = true
 				HitEffects
 				[
 					: ../../HitOperational/HitEffects/0
@@ -34,34 +36,39 @@ Bullet : BASE
 					}
 					{
 						Type = StatusApplication
-						StatusType = cosmoteer.disruptor_drain
+						StatusType = stafa.tetryon_drain
 						StatusDuration = &~/DRAIN_DURATION
 						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
 					}
-				]
-				MediaEffects
-				[
-					&<particles2/disruptor_bolt_hit_lightning.rules>
-					&<particles2/disruptor_bolt_hit_orb.rules>
-					&<particles2/disruptor_bolt_hit_bolts.rules>
-					&<particles2/disruptor_bolt_flash.rules>
-					: /BASE_SOUNDS/AudioExterior
 					{
-						Sound = "disruptor_bolt_hit.wav"
-						Volume = .4
-						SpeedVariation = .4
-					}
-				]
-			}
-			HitOperational : ^/0/HitOperational
-			{
-				HitEffects : ^/0/HitEffects
-				[
-					{
-						Type = StatusApplication
-						StatusType = cosmoteer.disruptor_drain
-						StatusDuration = &~/DRAIN_DURATION
-						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+						Type = ExplosiveResourceDrain
+						ResourceType = battery
+						TotalDrain = { BaseValue = 1000; EffectScaleExponent = 1 }
+						Radius = 3
+						Slices = 1
+						Filter
+						{
+							Ships = true
+							Shields = true
+							Friendlies = true
+						}
+						MediaEffectsOnDrainFactor = .0005
+						MediaEffectsOnDrain
+						[
+							&<particles2/disruptor_bolt_hit_bolts.rules>
+							&<particles2/disruptor_bolt_hit_lightning.rules>
+							&<particles2/disruptor_bolt_hit_sizzle.rules>
+
+							: /BASE_SOUNDS/AudioExterior
+							{
+								RandomSounds = ["./Data/shots/disruptor_bolt/sounds/disruptor_discharge_01.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_02.wav",
+												"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_03.wav",
+												"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_04.wav"]
+								Volume = .5
+								SpeedVariation = .2
+							}
+						]
 					}
 				]
 				MediaEffects
@@ -79,8 +86,71 @@ Bullet : BASE
 				]
 				
 			}
+			HitOperational : ^/0/HitOperational
+			{
+				ReduceEffectsByPenetration = true
+				HitEffects : ^/0/HitEffects
+				[
+					{
+						Type = Damage
+						Damage = 25
+						DamagePool = DamagePool
+					}
+					{
+						Type = StatusApplication
+						StatusType = stafa.tetryon_drain
+						StatusDuration = &~/DRAIN_DURATION
+						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+					}
+					{
+						Type = ExplosiveResourceDrain
+						ResourceType = battery
+						TotalDrain = { BaseValue = 1000; EffectScaleExponent = 1 }
+						Radius = 3
+						Slices = 1
+						Filter
+						{
+							Ships = true
+							Shields = true
+							Friendlies = true
+						}
+						MediaEffectsOnDrainFactor = .0005
+						MediaEffectsOnDrain
+						[
+							&<particles2/disruptor_bolt_hit_bolts.rules>
+							&<particles2/disruptor_bolt_hit_lightning.rules>
+							&<particles2/disruptor_bolt_hit_sizzle.rules>
+
+							: /BASE_SOUNDS/AudioExterior
+							{
+								RandomSounds = ["./Data/shots/disruptor_bolt/sounds/disruptor_discharge_01.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_02.wav",
+												"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_03.wav",
+												"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_04.wav"]
+								Volume = .5
+								SpeedVariation = .2
+							}
+						]
+					}
+				]
+				MediaEffects
+				[
+					&<particles2/disruptor_bolt_hit_lightning.rules>
+					&<particles2/disruptor_bolt_hit_orb.rules>
+					&<particles2/disruptor_bolt_hit_bolts.rules>
+					&<particles2/disruptor_bolt_flash.rules>
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "disruptor_bolt_hit.wav"
+						Volume = .4
+						SpeedVariation = .4
+					}
+				]
+			
+			}
 			HitStructural : ^/0/HitStructural
 			{
+				ReduceEffectsByPenetration = true
 				MediaEffects
 				[
 					&<particles2/disruptor_bolt_hit_struct_lightning.rules>

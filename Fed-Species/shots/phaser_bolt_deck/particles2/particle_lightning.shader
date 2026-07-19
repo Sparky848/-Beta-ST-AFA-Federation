@@ -17,7 +17,7 @@ Alpha is used as a global brightness control.
 PIX_OUTPUT pix(in VERT_OUTPUT_PARTICLE input) : SV_TARGET
 {
 	float4 tex = _texture.Sample(_texture_SS, input.uv);
-	tex = pow(tex, float4(0.45, 0.45, 0.45, 0.45));
+	tex = pow(tex, float4(0.25, 0.45, 0.45, 0.45));
 	float baseMask = saturate(tex.a * 6);
 
 	float arc;

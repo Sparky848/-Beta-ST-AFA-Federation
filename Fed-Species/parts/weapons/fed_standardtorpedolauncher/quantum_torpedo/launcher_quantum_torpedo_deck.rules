@@ -269,6 +269,19 @@ Components
 				}
 			]
 		}
+		OperationalLighting
+		{
+			Layer = "lights_add"
+		//	Offset = [0, 1]
+			DamageLevels
+			[
+				{
+					File = "lights.png"
+					Offset = [0, 1]
+					Size = [1, 2]
+				}
+			]
+		}
 	}
 	Indicators
 	{
@@ -313,18 +326,7 @@ Components
 		]
 	}
 }
-OperationalLighting
-{
-	Layer = "lights_add"
-//	Offset = [0, 1]
-	DamageLevels
-	[
-		{
-			File = "lights.png"
-			Size = [1, 4]
-		}
-	]
-}
+
 MissileStorageBase
 {
 	Type = ResourceStorage
