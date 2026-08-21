@@ -8,9 +8,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/TorpedolauncherDeck_Desc"
 	Resources
 	[
-		[steel, 80]
+		[steel, 24]
+		[duranium_alloy, 24]
 		[coil2, 30]
-		[processor, 3]
+		[processor, 2]//18,500 > 17,960
 	]
 	Size = [2, 4]
 	//PhysicalRect = [0, 1, 2, 4]

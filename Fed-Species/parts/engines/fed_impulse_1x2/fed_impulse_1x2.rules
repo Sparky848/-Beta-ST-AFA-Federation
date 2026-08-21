@@ -7,8 +7,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Impulse_1x2_Desc"
 	Resources
 	[
-		[steel, 30]
-		[coil2, 8]
+		[duranium_alloy, 6]
+		[coil, 6]//was 3,150 - now 1540
+		[steel, 4]
 	]
 	//IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
 	TypeCategories = [thruster, uses_power, impulse, is_crewed]

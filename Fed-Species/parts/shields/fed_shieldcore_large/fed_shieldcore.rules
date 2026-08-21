@@ -1,0 +1,1409 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ShieldCoreLarge"
+	IconNameKey = "Parts/ShieldCoreIconLarge"
+	ID = "stafa.fed_shieldcore_large"
+	EditorParentParts = ["stafa.fed_shieldcore_small"]
+	DescriptionKey = "Parts/ShieldCoreDescLarge"
+	Resources
+	[
+		[duranium_alloy, 314]
+		[steel, 72]
+		[coil2, 182]
+		[diamond, 18]
+		[processor, 9]//194,860
+		/*[steel, 750]
+		[coil, 185]
+		[coil2, 112]
+		[tristeel, 150]
+		[processor, 9]
+		[diamond, 18]*/ //195,350
+	]
+	AIValueFactor = 15
+	Size = [6, 6]
+	SelectionPriority = 1
+	SelectionTypeID = "shield_gen"
+	SelectionTypeByRotation = true
+	MaxHealth = 9000
+	TypeCategories = [defense, uses_power, shieldcore, adapted]
+	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorShieldBuff, ShuntStateBuff]
+	PenetrationRectType = Normal
+	Radius_XL = 60
+	Radius_XXL = 80
+	Radius_G = 110
+
+	PenetrationResistance_XL = [275, 0]
+	PenetrationResistance_XXL = [325, 0]
+	PenetrationResistance_G = [375, 0]
+
+	XLFromToQuantity = 5000
+	XLInterval = .5
+
+	XXLFromToQuantity = 4720
+	XXLInterval = .5
+
+	GFromToQuantity = 4387//4387.09677419355
+	GInterval = .5
+	
+	BlockedTravelCells
+	[
+		[1, 2]
+		[2, 3]
+		[3, 2]
+		[3, 3]
+	]
+	ForceManhattanPathInPart = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[1, -1]
+		[4, -1]
+		[6, 1]
+		[6, 4]
+		[4, 6]
+		[1, 6]
+		[-1, 4]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [72, 72]
+	}
+	SHUNT_OPERATIONAL = ShuntReset
+	SHUNT_FRONT_OPERATIONAL = FrontShuntReset
+	SHUNT_BACK_OPERATIONAL = BackShuntReset
+	SHUNT_LEFT_OPERATIONAL = LeftShuntReset
+	SHUNT_RIGHT_OPERATIONAL = RightShuntReset
+	//SHUNTTOGGLE_OPERATIONAL = ShuntToggleReset
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew, &~/Part/SHUNT_OPERATIONAL, &~/Part/SHUNT_FRONT_OPERATIONAL, &~/Part/SHUNT_BACK_OPERATIONAL, &~/Part/SHUNT_LEFT_OPERATIONAL, &~/Part/SHUNT_RIGHT_OPERATIONAL]//&~/Part/SHUNTTOGGLE_OPERATIONAL 
+			Mode = All
+		}
+		//Operational Proxies
+		FrontIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = FrontIsOperational
+		}
+		LeftIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = LeftIsOperational
+		}
+		RightIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = RightIsOperational
+		}
+		BackIsOperationalProxy
+		{
+			Type = ToggleProxy
+			ComponentID = BackIsOperational
+		}//crashes might be due to these, might need one for each face
+		
+		//Battery Proxies
+		FrontBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = FrontBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		LeftBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = LeftBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		RightBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = RightBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		BackBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = BackBatteryStorage
+			ResourceType = battery
+			IsDrainable = true
+		}
+		//--
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 30
+		}
+		
+		//
+		// BaseArcShield
+		//
+		BaseArcShield
+		{
+			Type = ArcShield
+			Radius = 0.01
+			Arc = 0.01d
+			OperationalToggle = IsOperational
+			PenetrationResistance = [75, 0]
+			//DrainResourcesFrom = FrontBatteryStorage
+			//ResourceDrainPerDamage = .4
+			Rotation = -90d
+			Location = [3, 3]
+
+			BlueprintArcSprite
+			{
+				Texture
+				{
+					File = "shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [0, 0, 255, 127]
+			}
+			BlueprintArcSpriteSegments = 64
+
+			CoverageArcSprite
+			{
+				Texture
+				{
+					File = "shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [255, 255, 255, 127]
+			}
+			CoverageArcSpriteSegments = 64
+
+			ShieldMediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/BaseArcShield/Radius
+					Arc = &~/Part/Components/BaseArcShield/Arc
+					FadeInTime = .25
+					FadeOutTime = .25
+					FadeFromScale = .8
+
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_energy.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "shield.shader"
+						_waveTex
+						{
+							File = "shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 0, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .6
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 1.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "shield_loop.wav"
+					Volume = .075
+					Speed = .5
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .075
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						MinDistance = .75
+						MaxDistance = 1.5
+					}
+					IgnoreIntensity = true
+				}
+			]
+
+			HitMediaEffects
+			[
+				{
+					Type = ArcShield
+					FadeInTime = .1
+					FadeOutTime = .5
+					Radius = &~/Part/Components/BaseArcShield/Radius
+					Arc = 20d
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						Shader = "shield.shader"
+						_waveTex
+						{
+							File = "shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_waveSpeed = -2
+						_waveAlpha = .75
+						_waveCurveInterval = 1
+						_waveCurveMagnitude = .25
+						_waveCurveUOffsetPerSecond = 0
+						//TargetBlendMode = Add
+						_fullPowerColor1 = [0, 0, 255, 127]
+						_lowPowerColor1 = [255, 0, 0, 200]
+						_fullPowerColor2 = [154, 98, 238, 127]
+						_lowPowerColor2 = [236, 150, 234, 127]
+						_lowPowerThicknessExponent = .6
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 3]
+					}
+					ArcSpriteSegments = 6
+					Bucket = Upper3
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shield_hit.wav"
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+					SpeedVariation = .25
+					MaxConcurrent = 10
+				}
+			]
+		}
+		
+		BaseEmitterEffect
+		{
+			Type = ContinuousEffects
+			ChainedTo = BaseArcShield
+			//FactorMediaEffectsIntensityWith = FrontBatteryStorage
+			Location = [2.2, 0]
+			OperationalToggle = IsOperational
+			ParentToShip = true
+			MediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = 2.2
+					Arc = 90d
+					FadeInTime = .25
+					FadeOutTime = .25
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_energy.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						UVRect = [0, 1, 1, -1]
+						Shader = "shield.shader"
+						_waveTex
+						{
+							File = "shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = -1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 0, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .6
+						TargetBlendMode = Add
+						_xScale = 0.5
+						Size = [0, 1.0]
+					}
+					ArcSpriteSegments = 12
+					Bucket = Upper1
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "shield_emitter_loop.wav"
+					Volume = .2
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .4
+					IgnoreIntensity = true
+				}
+			]
+		}
+
+		BaseShieldOperationEffects
+		{
+			Type = ToggleEffects
+			ChainedTo = BaseArcShield
+			Location = [&~/Part/Components/BaseArcShield/Radius, 0]
+			Toggle = IsOperational
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shieldraise.wav"
+					Volume = .1
+					Speed = 1.5
+					IgnoreIntensity = true
+				}
+			]
+			ToggledOffMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shieldlower.wav"
+					Volume = .15
+					Speed = 1.5
+					IgnoreIntensity = true
+				}
+			]
+		}
+		
+		//
+		// Toggles
+		//
+		ShieldTypeToggle
+		{
+			Type = UIToggle
+			ToggleID = "CoreShield_Type_Large"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+		ShieldToggleXL
+		{
+			Type = ModeToggle
+			Mode = ShieldTypeToggle
+			OnMode = 0
+		}
+		ShieldToggleXXL
+		{
+			Type = ModeToggle
+			Mode = ShieldTypeToggle
+			OnMode = 1
+		}
+		ShieldToggleG
+		{
+			Type = ModeToggle
+			Mode = ShieldTypeToggle
+			OnMode = 2
+		}
+
+		ShuntToggle
+		{
+			Type = UIToggle
+			ToggleID = "CoreShield_Shunt"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+		NotShuntedToggle
+		{
+			Type = ModeToggle
+			Mode = ShuntToggle
+			OnMode = 0
+		}
+		FrontShuntToggle
+		{
+			Type = ModeToggle
+			Mode = ShuntToggle
+			OnMode = 1
+		}
+		LeftShuntToggle
+		{
+			Type = ModeToggle
+			Mode = ShuntToggle
+			OnMode = 2
+		}
+		RightShuntToggle
+		{
+			Type = ModeToggle
+			Mode = ShuntToggle
+			OnMode = 3
+		}
+		BackShuntToggle
+		{
+			Type = ModeToggle
+			Mode = ShuntToggle
+			OnMode = 4
+		}
+
+		IsShunted
+		{
+			Type = MultiToggle
+			Toggles = [FrontShuntToggle, LeftShuntToggle, RightShuntToggle, BackShuntToggle]
+			Mode = Any
+		}
+
+		//XL Toggles
+		ShieldToggleXLOn
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, NotShuntedToggle]
+			Mode = All
+		}
+		ShieldToggleXLOff
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, NotShuntedToggle]
+			Mode = All
+		}
+
+		ShieldToggleXLOnFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, FrontShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, FrontShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXLOnLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, LeftShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, LeftShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXLOnRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, RightShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, RightShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXLOnBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOn, BackShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXLOffBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXL, ShieldVisibilityToggleOff, BackShuntToggle]
+			Mode = All
+		}
+
+		//XXL Toggles
+		ShieldToggleXXLOn
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOn, NotShuntedToggle]
+			Mode = All
+		}
+		ShieldToggleXXLOff
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOff, NotShuntedToggle]
+			Mode = All
+		}
+
+		ShieldToggleXXLOnFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOn, FrontShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXXLOffFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOff, FrontShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXXLOnLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOn, LeftShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXXLOffLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOff, LeftShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXXLOnRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOn, RightShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXXLOffRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOff, RightShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleXXLOnBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOn, BackShuntToggle]
+			Mode = All
+		}
+		ShieldToggleXXLOffBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleXXL, ShieldVisibilityToggleOff, BackShuntToggle]
+			Mode = All
+		}
+
+		//G Toggles
+		ShieldToggleGOn
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOn, NotShuntedToggle]
+			Mode = All
+		}
+		ShieldToggleGOff
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOff, NotShuntedToggle]
+			Mode = All
+		}
+
+		ShieldToggleGOnFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOn, FrontShuntToggle]
+			Mode = All
+		}
+		ShieldToggleGOffFrontShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOff, FrontShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleGOnLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOn, LeftShuntToggle]
+			Mode = All
+		}
+		ShieldToggleGOffLeftShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOff, LeftShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleGOnRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOn, RightShuntToggle]
+			Mode = All
+		}
+		ShieldToggleGOffRightShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOff, RightShuntToggle]
+			Mode = All
+		}
+
+		ShieldToggleGOnBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOn, BackShuntToggle]
+			Mode = All
+		}
+		ShieldToggleGOffBackShunt
+		{
+			Type = MultiToggle
+			Toggles = [ShieldToggleG, ShieldVisibilityToggleOff, BackShuntToggle]
+			Mode = All
+		}
+
+		//---
+		ShieldVisibilityToggle
+		{
+			Type = UIToggle
+			ToggleID = "shield_visibility"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		ShieldVisibilityToggleOn
+		{
+			Type = ModeToggle
+			Mode = ShieldVisibilityToggle
+			OnMode = 0
+		}
+
+		ShieldVisibilityToggleOff
+		{
+			Type = ModeToggle
+			Mode = ShieldVisibilityToggle
+			OnMode = 1
+		}
+
+		IsShuntedToggle
+		{
+			Type = MultiToggle
+			Toggles = [NotShuntedToggle, FrontShuntToggle, LeftShuntToggle, RightShuntToggle, BackShuntToggle]
+			Mode = Any
+		}
+		/*IsOperationalShunted
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, IsShuntedState]
+			Mode = All
+		}*/
+		
+		//Shunt State Change Timer
+		//No Shunt
+		ShuntReset
+		{
+			Type = Timer
+			Duration = 3
+			StartExpired = true
+			StartTrigger = ShuntToggleTrigger
+			//StopTrigger = ShuntToggleTrigger
+			//ResetTrigger = ShuntToggleTrigger
+			DurationAfterResetTrigger = 0
+		}
+		ShuntResetProgress
+		{
+			Type = ProgressBar
+			OperationalToggle = ShuntReset
+			InvertOperationalToggle = true
+			ShowProgressFor = ShuntReset
+			LowColor = [25, 113, 255]
+			HighColor = &LowColor
+			FullColor = &LowColor
+			Height = 6
+		}
+		ShuntToggleTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = NotShuntedToggle
+			TriggerWhenOff = true
+			TriggerWhenOn = true
+		}
+
+		//Front Shunt
+		FrontShuntReset
+		{
+			Type = Timer
+			Duration = 3
+			StartExpired = true
+			StartTrigger = FrontShuntToggleTrigger
+			//StopTrigger = FrontShuntToggleTrigger
+			//ResetTrigger = FrontShuntToggleTrigger
+			DurationAfterResetTrigger = 0
+		}
+		FrontShuntResetProgress
+		{
+			Type = ProgressBar
+			OperationalToggle = FrontShuntReset
+			InvertOperationalToggle = true
+			ShowProgressFor = FrontShuntReset
+			LowColor = [25, 113, 255]
+			HighColor = &LowColor
+			FullColor = &LowColor
+			Height = 6
+		}
+		FrontShuntToggleTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = FrontShuntToggle
+			TriggerWhenOff = true
+			TriggerWhenOn = true
+		}
+
+		//Left Shunt
+		LeftShuntReset
+		{
+			Type = Timer
+			Duration = 3
+			StartExpired = true
+			StartTrigger = LeftShuntToggleTrigger
+			//StopTrigger = LeftShuntToggleTrigger
+			//ResetTrigger = LeftShuntToggleTrigger
+			DurationAfterResetTrigger = 0
+		}
+		LeftShuntResetProgress
+		{
+			Type = ProgressBar
+			OperationalToggle = LeftShuntReset
+			InvertOperationalToggle = true
+			ShowProgressFor = LeftShuntReset
+			LowColor = [25, 113, 255]
+			HighColor = &LowColor
+			FullColor = &LowColor
+			Height = 6
+		}
+		LeftShuntToggleTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = LeftShuntToggle
+			TriggerWhenOff = true
+			TriggerWhenOn = true
+		}
+		//Right Shunt
+		RightShuntReset
+		{
+			Type = Timer
+			Duration = 3
+			StartExpired = true
+			StartTrigger = RightShuntToggleTrigger
+			//StopTrigger = RightShuntToggleTrigger
+			//ResetTrigger = RightShuntToggleTrigger
+			DurationAfterResetTrigger = 0
+		}
+		RightShuntResetProgress
+		{
+			Type = ProgressBar
+			OperationalToggle = RightShuntReset
+			InvertOperationalToggle = true
+			ShowProgressFor = RightShuntReset
+			LowColor = [25, 113, 255]
+			HighColor = &LowColor
+			FullColor = &LowColor
+			Height = 6
+		}
+		RightShuntToggleTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = RightShuntToggle
+			TriggerWhenOff = true
+			TriggerWhenOn = true
+		}
+		//Back Shunt
+		BackShuntReset
+		{
+			Type = Timer
+			Duration = 3
+			StartExpired = true
+			StartTrigger = BackShuntToggleTrigger
+			//StopTrigger = BackShuntToggleTrigger
+			//ResetTrigger = BackShuntToggleTrigger
+			DurationAfterResetTrigger = 0
+		}
+		BackShuntResetProgress
+		{
+			Type = ProgressBar
+			OperationalToggle = BackShuntReset
+			InvertOperationalToggle = true
+			ShowProgressFor = BackShuntReset
+			LowColor = [25, 113, 255]
+			HighColor = &LowColor
+			FullColor = &LowColor
+			Height = 6
+		}
+		BackShuntToggleTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = BackShuntToggle
+			TriggerWhenOff = true
+			TriggerWhenOn = true
+		}
+		
+		//XL Shield Arcs
+		XLBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXL
+			Components = &<XL/Shield_XL_BatteryStorage.rules>/XLBatteryStorages
+		}
+		ToggledComponents_ArcShield_XL_On
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOn
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleNoShunt
+		}
+		ToggledComponents_ArcShield_XL_Off
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOff
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleNoShunt
+		}
+
+		ToggledComponents_ArcShield_XL_On_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnFrontShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleFrontShunt
+		}
+		ToggledComponents_ArcShield_XL_Off_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffFrontShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleFrontShunt
+		}
+
+		ToggledComponents_ArcShield_XL_On_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnLeftShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleLeftShunt
+		}
+		ToggledComponents_ArcShield_XL_Off_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffLeftShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleLeftShunt
+		}
+
+		ToggledComponents_ArcShield_XL_On_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnRightShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleRightShunt
+		}
+		ToggledComponents_ArcShield_XL_Off_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffRightShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleRightShunt
+		}
+
+		ToggledComponents_ArcShield_XL_On_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOnBackShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_On.rules>/ShieldVisibleBackShunt
+		}
+		ToggledComponents_ArcShield_XL_Off_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXLOffBackShunt
+			IncludeInBlueprints = true
+			Components = &<XL/Shield_XL_Off.rules>/ShieldInvisibleBackShunt
+		}
+
+		//XXL Shield Arcs
+		XXLBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXL
+			Components = &<XXL/Shield_XXL_BatteryStorage.rules>/XXLBatteryStorages
+		}
+		ToggledComponents_ArcShield_XXL_On
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOn
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_On.rules>/ShieldVisibleNoShunt
+		}
+		ToggledComponents_ArcShield_XXL_Off
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOff
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_Off.rules>/ShieldInvisibleNoShunt
+		}
+
+		ToggledComponents_ArcShield_XXL_On_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOnFrontShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_On.rules>/ShieldVisibleFrontShunt
+		}
+		ToggledComponents_ArcShield_XXL_Off_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOffFrontShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_Off.rules>/ShieldInvisibleFrontShunt
+		}
+
+		ToggledComponents_ArcShield_XXL_On_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOnLeftShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_On.rules>/ShieldVisibleLeftShunt
+		}
+		ToggledComponents_ArcShield_XXL_Off_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOffLeftShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_Off.rules>/ShieldInvisibleLeftShunt
+		}
+
+		ToggledComponents_ArcShield_XXL_On_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOnRightShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_On.rules>/ShieldVisibleRightShunt
+		}
+		ToggledComponents_ArcShield_XXL_Off_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOffRightShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_Off.rules>/ShieldInvisibleRightShunt
+		}
+
+		ToggledComponents_ArcShield_XXL_On_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOnBackShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_On.rules>/ShieldVisibleBackShunt
+		}
+		ToggledComponents_ArcShield_XXL_Off_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleXXLOffBackShunt
+			IncludeInBlueprints = true
+			Components = &<XXL/Shield_XXL_Off.rules>/ShieldInvisibleBackShunt
+		}
+
+		//G Shield Arcs
+		GBatteryStorageToggle
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleG
+			Components = &<G/Shield_G_BatteryStorage.rules>/GBatteryStorages
+		}
+		ToggledComponents_ArcShield_G_On
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOn
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_On.rules>/ShieldVisibleNoShunt
+		}
+		ToggledComponents_ArcShield_G_Off
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOff
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_Off.rules>/ShieldInvisibleNoShunt
+		}
+
+		ToggledComponents_ArcShield_G_On_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOnFrontShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_On.rules>/ShieldVisibleFrontShunt
+		}
+		ToggledComponents_ArcShield_G_Off_FrontShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOffFrontShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_Off.rules>/ShieldInvisibleFrontShunt
+		}
+
+		ToggledComponents_ArcShield_G_On_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOnLeftShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_On.rules>/ShieldVisibleLeftShunt
+		}
+		ToggledComponents_ArcShield_G_Off_LeftShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOffLeftShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_Off.rules>/ShieldInvisibleLeftShunt
+		}
+
+		ToggledComponents_ArcShield_G_On_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOnRightShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_On.rules>/ShieldVisibleRightShunt
+		}
+		ToggledComponents_ArcShield_G_Off_RightShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOffRightShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_Off.rules>/ShieldInvisibleRightShunt
+		}
+
+		ToggledComponents_ArcShield_G_On_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOnBackShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_On.rules>/ShieldVisibleBackShunt
+		}
+		ToggledComponents_ArcShield_G_Off_BackShunt
+		{
+			Type = ToggledComponents
+			Toggle = ShieldToggleGOffBackShunt
+			IncludeInBlueprints = true
+			Components = &<G/Shield_G_Off.rules>/ShieldInvisibleBackShunt
+		}
+
+		//
+		// Crew
+		//
+		
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [3, 1.4]
+			Rotation = 180d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [3, 4.6]
+			Rotation = 0d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [1.4, 3]
+			Rotation = 90d
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [4.6, 3]
+			Rotation = 270d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 3
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			CrewDestinations
+			[
+				[3, 1.2]
+				[3, 4.8]
+				[1.2, 3]
+				[4.8, 3]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+				CrewLocation4
+			]
+			SwitchLocationInterval = [5, 10]
+		}
+		
+		//
+		// Graphics
+		//
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [3, 3]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [6, 6]
+					}
+					{
+						File = "floor_33.png"
+						Size = [6, 6]
+					}
+					{
+						File = "floor_66.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
+							"doodads_on13.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [6, 6]
+					}
+					{
+						File = "walls_33.png"
+						Size = [6, 6]
+					}
+					{
+						File = "walls_66.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [6, 6]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [6, 6]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [6, 6]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [6, 6]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [7.5, 7.5]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [195*1.5, 60*1.5, 255*1.5]
+					}
+				]
+			}
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [3, 3]
+		}
+		MainShieldStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = MainShieldStorage
+			ResourceType = battery
+			IsDrainable = false
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [3, 3]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1.5, 1.5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = MainShieldStorageProxy
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1.5, 1.5]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1.5, 1.5]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [6, 6]
+		}
+	}
+
+	Stats
+	{
+		//ShieldHP = (&~/Part/Components/MainShieldBatteryStorage/MaxResources) / (&<BaseShield.rules>/Part/Components/BaseArcShield/ResourceDrainPerDamage)
+		ShieldPenResist = &~/Part/Components/BaseArcShield/PenetrationResistance/0
+		ShieldArc = deg(&<BaseShield.rules>/Part/Components/BaseArcShield/Arc)
+		ShieldDist = (&<BaseShield.rules>/Part/Components/BaseArcShield/Radius) - (&<BaseShield.rules>/Part/Components/BaseArcShield/Location/1)
+		PowerUsageContinuous = 0.4
+		//PowerCapacity = (&~/Part/Components/MainBatteryStorage/MaxResources) / 1000
+
+		RecPower = (&PowerUsageContinuous) + 0.5
+		RecCrew = (&RecPower) * 4
+	}
+}

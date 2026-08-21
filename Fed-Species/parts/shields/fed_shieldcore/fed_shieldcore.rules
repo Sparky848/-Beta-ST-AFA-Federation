@@ -3,15 +3,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/ShieldCore"
 	IconNameKey = "Parts/ShieldCoreIcon"
 	ID = "stafa.fed_shieldcore"
-	EditorGroup = "StarfleetDefences"
+	EditorGroups = ["Starfleet"]
 	DescriptionKey = "Parts/ShieldCoreDesc"
+	IsBuildable = false
 	Resources
 	[
-		[steel, 700]
+		[duranium_alloy, 235]
+		[steel, 42]
+		[coil2, 112]
+		[diamond, 12]//was 100 tristeel
+		[processor, 6]//130,550 Credits w/tri 130,100Credits w/duralloy adjusted cost
+		/*[steel, 700]
 		[coil2, 250]
 		[tristeel, 150]
 		[processor, 6]
-		[diamond, 17]
+		[diamond, 17]*/ //just over 205,500 Credits
 	]
 	AIValueFactor = 10
 	Size = [4, 4]
@@ -2145,6 +2151,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = battery
 			IsDrainable = false
 		}
+		/*InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = MainShieldStorageProxy
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 5
+		}*/ //Determined it would be better to have this per-file, soley so I can have the bar be at the bottom of the stack
 		Indicators
 		{
 			Type = IndicatorSprites

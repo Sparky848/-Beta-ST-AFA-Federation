@@ -165,15 +165,26 @@ Techs
 		Prerequisites = [stafa.fed_warpcore_large, stafa.fed_warpnacelle_3x6]
 	}
 	{
-		Name = fed_shieldcore
+		Name = fed_shieldcore_med
 		ID = stafa.fed_shieldcore
 		NameKey = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/NameKey
 		DescriptionKey = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/DescriptionKey
 		Icon = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/EditorIcon
-		EditorGroup = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/EditorGroup
+		EditorGroup = &<parts/shields/fed_shieldcore_small/fed_shieldcore.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/ID]
+		Cost = 750000
+		Prerequisites = [stafa.fed_warpcore_small]
+	}
+	{
+		Name = fed_shieldcore_large
+		ID = stafa.fed_shieldcore_large
+		NameKey = &<parts/shields/fed_shieldcore_large/fed_shieldcore.rules>/Part/NameKey
+		DescriptionKey = &<parts/shields/fed_shieldcore_large/fed_shieldcore.rules>/Part/DescriptionKey
+		Icon = &<parts/shields/fed_shieldcore_large/fed_shieldcore.rules>/Part/EditorIcon
+		EditorGroup = &<parts/shields/fed_shieldcore_small/fed_shieldcore.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/shields/fed_shieldcore_large/fed_shieldcore.rules>/Part/ID]
 		Cost = 150000
-		Prerequisites = [stafa.fed_warpcore_med]
+		Prerequisites = [stafa.fed_warpcore_large]
 	}
 	{
 		Name = fed_phaser_point_defense

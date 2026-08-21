@@ -7,14 +7,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Warpnacelle_3x6_Desc"
 	Resources
 	[
-		[steel, 756]
-		[coil2, 280]
-		[tristeel, 160]
-		[antimatter, 6]//should cost 146880, but the 80 isn't possible with standard consturction materials so rounded to 146900
-//		[steel, 480]
-//		[coil2, 120]
-//		[tristeel, 60]
-//		[antimatter, 6]
+		[steel, 200]
+		[duranium_alloy, 210]
+		[tristeel, 50]
+		[coil, 200]
+		[coil2, 235]
+		[antimatter, 6]//136,100
+
 	]
 	TypeCategories = [thruster, uses_power, nacelle]
 	Size = [3, 6]
@@ -38,6 +37,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[default, [-1, 9, 5, 200]]	// bottom
 	]
 	ThrusterForce = 27000
+	ThrusterForceTurn = 13500
+	ThrusterForceReverse = 9000
 	ThrustIncreaseTime = 5
 	ThrustRecoveryTime = 3
 	FuelUsage = 300
@@ -571,7 +572,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [3, 1.5] // Relative to upper-left corner of unrotated part.
 			Rotation = 0d // Relative to unrotated part.
 			OperationalToggle = IsOperational
-			Force = &../../ThrusterForce
+			Force = &../../ThrusterForceTurn
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=NacelleThrust; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
@@ -588,7 +589,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [3, 1.5] // Relative to upper-left corner of unrotated part.
 			Rotation = 180d // Relative to unrotated part.
 			OperationalToggle = IsOperational
-			Force = &../../ThrusterForce
+			Force = &../../ThrusterForceTurn
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=NacelleThrust; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
@@ -605,7 +606,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [1.5, 0] // Relative to upper-left corner of unrotated part.
 			Rotation = 270d // Relative to unrotated part.
 			OperationalToggle = IsOperational
-			Force = &../../ThrusterForce
+			Force = &../../ThrusterForceReverse
 			MinActivation = -0.05
 			MaxActivation = { BaseValue=1; BuffType=NacelleThrust; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation

@@ -7,9 +7,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/VoyBussardCollector2x4Desc"
 	Resources
 	[
-		[steel, 22]
-		[tristeel, 3]
-		[coil, 5]
+		[steel, 18]
+		[duranium_alloy, 5]
+		[coil, 5]//1,650
 	]
 	AIValueFactor = 0
 	Size = [2, 4]

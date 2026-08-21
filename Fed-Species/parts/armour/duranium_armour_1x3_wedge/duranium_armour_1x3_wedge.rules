@@ -11,7 +11,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	EditorReplacementPartID = ""
 	Resources
 	[
-		[tristeel, 12]
+		[duranium_alloy, 12]
 	]
 	AIValueFactor = 0
 	Size = [1, 3]

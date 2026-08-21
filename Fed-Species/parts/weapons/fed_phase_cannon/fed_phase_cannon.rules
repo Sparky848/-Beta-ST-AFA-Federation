@@ -6,9 +6,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	EditorGroup = "StarfleetWeapons"
 	DescriptionKey = "Parts/Phase_Cannon_Desc"
 	Resources
-	[
-		[steel, 32]
-		[coil, 6]
+	[	
+		[duranium_alloy, 5]
+		[steel, 4]
+		[coil, 6]//1,400
 	]
 	Size = [1, 2]
 	MaxHealth = 2000

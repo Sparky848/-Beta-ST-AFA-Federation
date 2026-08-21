@@ -1,0 +1,74 @@
+Part : <fed_gravplate.rules>/Part
+{
+	ID = stafa.fed_gravplate9	 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	NameKey = "Parts/Gravplate9"
+	IconNameKey = "Parts/Gravplate9Icon"
+	EditorGroups = []
+	EditorParentParts = [ "stafa.fed_gravplate" ]
+	Size = [1, 9]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "plate9/icon9.png"
+			SampleMode = Linear	
+		}
+		Size = [16, 80]//Size = [32, 160]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[0, 8.9375]
+				[1, 9]
+				[0, 9]
+				[1, 8.9375]
+			]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 4.5]
+			Floor // This is needed so that armour shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "plate9/floor9.png"
+						Size = [1, 9]
+					}
+					{
+						File = "plate9/floor9_33.png"
+						Size = [1, 9]
+					}
+					{
+						File = "plate9/floor9_66.png"
+						Size = [1, 9]
+					}
+				]
+			}
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, 8.95]
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "plate9/blueprints9.png"
+			Size = [1, 9]
+		}
+	}
+
+
+	Stats
+	{
+	}
+}

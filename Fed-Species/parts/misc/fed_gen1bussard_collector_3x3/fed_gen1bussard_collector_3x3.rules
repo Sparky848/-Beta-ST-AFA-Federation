@@ -7,9 +7,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Gen1BussardCollector3x3Desc"
 	Resources
 	[
-		[steel, 24]
-		[tristeel, 3]
-		[coil, 6]
+		[steel, 18]
+		[duranium_alloy, 6]
+		[coil, 6]//1,800 > 1,890
 	]
 	AIValueFactor = 0
 	Size = [3, 3]

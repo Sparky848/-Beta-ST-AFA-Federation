@@ -7,12 +7,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Warpcore_med_Desc"
 	Resources
 	[
-		[steel, 680]
+		[steel, 150]
+		[coil, 100]
 		[coil2, 220]
-		[tristeel, 170]
+		[duranium_alloy, 160]
+		[tristeel, 75]
 		[processor, 15]
 		[antimatter, 10]
-		[dilithium, 10]
+		[dilithium, 10]//was 158,500 - now 158,650
 //		[steel, 168]
 //		[coil2, 112]
 //		[tristeel, 56]
@@ -28,6 +30,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionPriority = 0
 	SelectionTypeID = "reactors"
 	MaxHealth = 4000 // Deliberately not increasing this for med/large reactors to make them extra-fragile.
+	CrewThrowSpeedWhenDestroyed = 100
 	AutoDoorMaxPathLength = 5
 	TypeCategories = [reactor, ftl, is_crewed, uses_antimatter, warpcore]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
@@ -1028,7 +1031,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		BasePowerGen = (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/Interval) / 1000
-		AntimatterPowerGen = (&BasePowerGen) + ((&~/Part/Components/WarpcoreActive/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/ResourceConverter/Interval) / 1000)
+		AntimatterPowerGen = ((&~/Part/Components/WarpcoreActive/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/ResourceConverter/Interval) / 1000)
 		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
 		//TransferRate = ((&~/Part/Components/EnergySubstation/From/0/MinQuantityForConversion) / (&~/Part/Components/EnergySubstation/Interval/BaseValue)) / 1000

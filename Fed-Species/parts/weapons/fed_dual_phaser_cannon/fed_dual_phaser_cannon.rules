@@ -7,9 +7,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Dual_Phaser_Cannon_Desc"
 	Resources
 	[
-		[steel, 88]
+		[duranium_alloy, 28]
+		[steel, 24]
 		[coil, 30]
-		[coil2, 6]
+		[coil2, 6]//9,400 > 9,520
 	]
 	IsBuildable = false
 	TypeCategories = [weapon, uses_power, is_crewed]

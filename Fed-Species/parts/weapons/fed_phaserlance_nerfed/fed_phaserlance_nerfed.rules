@@ -7,10 +7,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Phaser_Lance_Desc"
 	Resources
 	[
-		[steel, 480]
-		[coil2, 128]
-		[tristeel, 68]
+		[duranium_alloy, 132]
+		[coil2, 112]
+		[steel, 48]
+		[tristeel, 28]
 		[diamond, 16]
+		[processor, 4]//128,000 > 132,880 the larger increase was due to the burst the lance gained, and there being no other drawback at the time 
 	]
 	Size = [2, 10]
 	MaxHealth = 30000

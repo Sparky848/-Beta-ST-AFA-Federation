@@ -1,6 +1,8 @@
 Part : <fed_gravplate.rules>/Part
 {
 	ID = stafa.fed_gravplate3	 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	NameKey = "Parts/Gravplate3"
+	IconNameKey = "Parts/Gravplate3Icon"
 	EditorGroups = []
 	EditorParentParts = [ "stafa.fed_gravplate" ]
 	Size = [1, 3]

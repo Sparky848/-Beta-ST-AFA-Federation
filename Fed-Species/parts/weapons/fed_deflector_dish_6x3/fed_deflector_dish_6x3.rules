@@ -7,11 +7,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Deflector_Dish_6x3_GalaxyDesc"
 	Resources
 	[
-		[steel, 72]
+		[steel, 36]
+		[duranium_alloy, 30]
 		[coil2, 24]
-		[tristeel, 25]
-		[diamond, 5]
-	]//to be actually checked, and based on performance
+		[tristeel, 9]
+		[diamond, 5]//34,000 > 34,100
+	]
 	Size = [6, 3]
 	MaxHealth = 22500
 	TypeCategories = [weapon, turret, uses_power, deflector_dish]

@@ -242,7 +242,7 @@ PartToggles
 			}
 		]
 	}
-	// core shield type
+	//OG Shieldcore Selector, kept for compatibility
 	{
 		ToggleID = "CoreShield_type"
 		Style = Popout
@@ -315,6 +315,134 @@ PartToggles
 					Texture
 					{
 						File = "shield_XL.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Small Shieldcore
+	{
+		ToggleID = "CoreShield_Type_Small"
+		Style = Popout
+		ShowInEditor = true
+		SortOrder = 3
+		Choices
+		[
+			{
+				ChoiceID = "CoreShield_XS"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_XS"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_XS.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "CoreShield_S"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_S"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_S.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	//Medium Shieldcore
+	{
+		ToggleID = "CoreShield_Type_Med"
+		Style = Popout
+		ShowInEditor = true
+		SortOrder = 3
+		Choices
+		[
+			{
+				ChoiceID = "CoreShield_M"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_M"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_M.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "CoreShield_L"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_L"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_L.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	//Large Shieldcore
+	{
+		ToggleID = "CoreShield_Type_Large"
+		Style = Popout
+		ShowInEditor = true
+		SortOrder = 3
+		Choices
+		[
+			{
+				ChoiceID = "CoreShield_XL"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_XL"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_XL.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "CoreShield_XXL"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/CoreShield_XXL"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_XXL.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "CoreShield_G"
+				Mode = 2
+				ButtonToolTipKey = "PartToggles/CoreShield_G"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_G.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

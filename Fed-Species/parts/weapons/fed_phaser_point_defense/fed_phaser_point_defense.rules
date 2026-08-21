@@ -10,9 +10,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[steel, 8]
 		[coil, 8]
-		[diamond, 1]
+		[duranium_alloy, 2]
+		[diamond, 1]//5000 > 5,320
 	]
-	Cost = 5000
+	//Cost = 5000
 	AIValue = 5
 
 	TypeCategories = [weapon, uses_power, is_crewed, turret]
@@ -303,6 +304,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		//	HoldTargetAfterCancel = 0.5
 			AIFirepowerRating = 400
 			CanSalvage = true
+			FirePermissionToggle = FireModeToggle
 			Emitter = BeamEmitter
 
 			AutoTargets

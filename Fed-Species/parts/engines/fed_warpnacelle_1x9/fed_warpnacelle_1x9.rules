@@ -7,10 +7,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Warpnacelle_1x9_Desc"
 	Resources
 	[
-		[steel, 320]
-		[coil2, 90]
-		[tristeel, 50]
-		[antimatter, 3]
+		[steel, 72]
+		[duranium_alloy, 110]
+		[tristeel, 20]
+		[coil, 40]
+		[coil2 , 66]
+		[antimatter, 3]//45,600
 //		[steel, 480]
 //		[coil2, 120]
 //		[tristeel, 60]
@@ -42,6 +44,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[default, [-1, 12, 3, 200]]	// bottom
 	]
 	ThrusterForce = 9000
+	ThrusterForceTurn = 4500
+	ThrusterForceReverse = 3000
 	ThrustIncreaseTime = 4
 	ThrustRecoveryTime = 2
 	FuelUsage = 400
@@ -514,7 +518,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [1, 1.5] // Relative to upper-left corner of unrotated part.
 			Rotation = 0d // Relative to unrotated part.
 			OperationalToggle = IsOperational
-			Force = &../../ThrusterForce
+			Force = &../../ThrusterForceTurn
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
@@ -531,7 +535,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [0, 1.5] // Relative to upper-left corner of unrotated part.
 			Rotation = 180d // Relative to unrotated part.
 			OperationalToggle = IsOperational
-			Force = &../../ThrusterForce
+			Force = &../../ThrusterForceTurn
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
@@ -548,7 +552,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [0.5, 9] // Relative to upper-left corner of unrotated part.
 			Rotation = 270d // Relative to unrotated part.
 			OperationalToggle = IsOperational
-			Force = &../../ThrusterForce
+			Force = &../../ThrusterForceReverse
 			MinActivation = -0.05
 			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation

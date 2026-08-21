@@ -8,7 +8,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/GravplateDesc"
 	Resources
 	[
-		[steel, 4]
+		[duranium_alloy, 1]
 		[coil, 1]	
 	]
 	AIValueFactor = 0

@@ -7,10 +7,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Phaser_Bank_Desc_Med"
 	Resources
 	[
-		[steel, 32]
+		[steel, 24]
+		[duranium_alloy, 20]
 		[coil2, 5]
-		[tristeel, 16]
 		[diamond, 5]
+		[tristeel, 4]//25,500 > 25,700
 	]
 	PhaserCount = { BaseValue=0; BuffType=PhaserCounter; BuffMode=Add; }
 	PhaserDebuff = { BaseValue=0; BuffType=PhaserExpoDebuff; BuffMode=Add; }

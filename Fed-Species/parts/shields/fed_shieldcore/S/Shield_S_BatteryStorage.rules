@@ -70,7 +70,7 @@ SBatteryStorages
 	}
 
 	//Progress Bars
-	ProgressBar
+	/*ProgressBar
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
@@ -79,7 +79,7 @@ SBatteryStorages
 		HighColor = [0, 0, 255]
 		FullColor = [0, 0, 255]
 		Height = 10
-	}
+	}*/
 	
 	FullInternalCapacity
 	{
@@ -90,7 +90,7 @@ SBatteryStorages
 		LowColor = [60, 143, 185]
 		HighColor = [120, 203, 245]
 		FullColor = [120, 203, 245]
-		Height = 5
+		Height = 7
 	}
 	FrontInternalCapacity
 	{
@@ -98,9 +98,9 @@ SBatteryStorages
 		OperationalToggle = IsOperational
 		ShowProgressFor = FrontBatteryStorage
 		Invert = false
-		LowColor = [60, 143, 185]
-		HighColor = [120, 203, 245]
-		FullColor = [120, 203, 245]
+		LowColor = [173, 111, 124]
+		HighColor = [233, 171, 184]
+		FullColor = [233, 171, 184]
 		Height = 5
 	}
 	RightInternalCapacity
@@ -109,9 +109,9 @@ SBatteryStorages
 		OperationalToggle = IsOperational
 		ShowProgressFor = RightBatteryStorage
 		Invert = false
-		LowColor = [173, 111, 124]
-		HighColor = [233, 171, 184]
-		FullColor = [233, 171, 184]
+		LowColor = [195, 195, 195]
+		HighColor = [255, 255, 255]
+		FullColor = [255, 255, 255]
 		Height = 5
 	}
 	LeftInternalCapacity
@@ -120,9 +120,9 @@ SBatteryStorages
 		OperationalToggle = IsOperational
 		ShowProgressFor = LeftBatteryStorage
 		Invert = false
-		LowColor = [195, 195, 195]
-		HighColor = [255, 255, 255]
-		FullColor = [255, 255, 255]
+		LowColor = [173, 111, 124]
+		HighColor = [233, 171, 184]
+		FullColor = [233, 171, 184]
 		Height = 5
 	}
 	BackInternalCapacity
@@ -131,10 +131,21 @@ SBatteryStorages
 		OperationalToggle = IsOperational
 		ShowProgressFor = BackBatteryStorage
 		Invert = false
-		LowColor = [173, 111, 124]
-		HighColor = [233, 171, 184]
-		FullColor = [233, 171, 184]
+		LowColor = [60, 143, 185]
+		HighColor = [120, 203, 245]
+		FullColor = [120, 203, 245]
 		Height = 5
+	}
+	MainStorageCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = MainShieldStorage
+		Invert = false
+		LowColor = [208, 193, 56]
+		HighColor = [232, 222, 72]
+		FullColor = [249, 239, 84]
+		Height = 6
 	}
 	
 	// Front Face

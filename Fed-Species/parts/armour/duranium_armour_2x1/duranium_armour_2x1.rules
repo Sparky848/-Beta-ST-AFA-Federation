@@ -10,7 +10,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/DuraniumArmour2x1Desc"
 	Resources
 	[
-		[tristeel, 16]
+		[duranium_alloy, 16]
 	]
 	AIValueFactor = 0
 	Size = [2, 1]

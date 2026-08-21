@@ -8,7 +8,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/DuraniumArmourPlateWedgeDesc"
 	Resources
 	[
-		[tristeel, 1]
+		[duranium_alloy, 1]
 	]
 	AIValueFactor = 0
 	Size = [1, 1]

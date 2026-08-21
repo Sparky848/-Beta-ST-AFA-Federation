@@ -8,9 +8,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IsBuildable = false
 	Resources
 	[
-		[steel, 72]
-		[coil2, 48]
-		[tristeel, 24]
+		[steel, 50]
+		[coil, 55]
+		[coil2, 15]
+		[duranium_alloy, 35]
+		[tristeel, 25]
 		[processor, 3]
 	]
 	CrewSpeedFactor = .8

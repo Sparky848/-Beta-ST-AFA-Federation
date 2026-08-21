@@ -7,10 +7,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Heavy_Phaser_Cannon_Desc"
 	Resources
 	[
-		[steel, 96]
-		[coil, 34]
-		[coil2, 14]
-		[tristeel, 26]
+		[duranium_alloy, 36]
+		[steel, 22]
+		[coil, 26]
+		[coil2, 18]
+		[tristeel, 8]//15,200 > 15,190
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
@@ -176,7 +177,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalDoodad
 			{
 				Layer = "doodads_low"
-				Offset = [0, -4/64]
+				Offset = [0, 4/64]
 				DamageLevels
 				[
 					{

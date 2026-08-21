@@ -5,12 +5,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ID = "stafa.fed_heavy_dual_phaser_cannon"
 	EditorGroups = ["StarfleetWeapons"]
 	DescriptionKey = "Parts/Heavy_Dual_Phaser_CannonDesc"
+	OtherIDs = [heavy_dual_phaser_cannon_L, heavy_dual_phaser_cannon_R, stafa.fed_heavy_dual_phaser_cannon_L, stafa.fed_heavy_dual_phaser_cannon_R]
+	FlipWhenLoadingIDs = [heavy_dual_phaser_cannon_R, stafa.fed_heavy_dual_phaser_cannon_R]
 	Resources
 	[
-		[steel, 110]
-		[tristeel, 32]
-		[coil, 46]
-		[coil2, 18]
+		[duranium_alloy, 52]
+		[steel, 24]
+		[tristeel, 12]
+		[coil2, 24]
+		[coil, 18]//19,150 > 
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
@@ -21,6 +24,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	InitialPenetrationResistance = 3
 	SignificanceToggle = ScorchedToggle
 	PenetrationRectType = Normal
+	IsFlippable = true
 	//IsRotateable = false
 	AllowedDoorLocations
 	[

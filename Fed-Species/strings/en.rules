@@ -61,7 +61,7 @@ Parts
 	Phaser_Lance_Giga_Desc = "A Truly Ridiculous Phaser"
 	Heavy_Phaser_Cannon = "Heavy Phaser Cannon"
 	Heavy_Phaser_Cannon_Icon = "Heavy Phaser Cannon"
-	Heavy_Phaser_Cannon_Desc = "Heavy hitting Phaser Cannon that fires in 4 shot bursts"\
+	Heavy_Phaser_Cannon_Desc = "<color r='250' g='176' b='86' a='255'>Heat applying</color> support Phaser Cannon that fires in 4 shot bursts"\
 							"\nCan be placed behind 2 layers of armour, however 1 is ideal"
 	Def_Dual_Phaser_Cannon = "Defiant's Phaser Cannon"
 	Def_Dual_Phaser_Cannon_Icon = "Defiant's Phaser Cannon"
@@ -244,16 +244,51 @@ Parts
 	ShieldCore = "Shieldcore"
 	ShieldCoreIcon = "Shieldcore"
 	ShieldCoreDesc = "Central shieldcore that consists of 4 separate shields faces. Has configurable size, visibility and shunting options."\
-					 "\n<color r='120' g='203' b='245' a='255'><s18> Forward Shield Health Bar</s18></color>"\
-					 "\n<color r='233' g='171' b='184' a='255'><s18> Starboard Shield Health Bar</s18></color>"\
-					 "\n<color r='255' g='255' b='255' a='255'><s18> Port Shield Health Bar</s18></color>"\
-					 "\n<color r='233' g='171' b='184' a='255'><s18> Aft Shield Health Bar</s18></color>"\
-					 "\n<color r='120' g='203' b='245' a='255'><s18> Total Shield Health Bar</s18></color>"
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Total Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Forward Shield Health Bar</s18></color>"\
+					 "\n<color r='255' g='255' b='255' a='255'><s18> Starboard Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Port Shield Health Bar</s18></color>"\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Aft Shield Health Bar</s18></color>"\
+					 "\n<color r='249' g='239' b='84' a='255'><s18> Reserve Power Bar</s18></color>"\
+					 "\n<s14>^^Shield damage will draw from this first, thus this is your effective shield HP reserve</s14>"\
+					"<bad>Legacy Part</bad>"
+
+	ShieldCoreSmall = "Small Shieldcore"
+	ShieldCoreIconSmall = "Small Shieldcore"
+	ShieldCoreDescSmall = "Small central shieldcore that consists of 4 separate shields faces. Has configurable size, visibility and shunting options."\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Total Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Forward Shield Health Bar</s18></color>"\
+					 "\n<color r='255' g='255' b='255' a='255'><s18> Starboard Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Port Shield Health Bar</s18></color>"\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Aft Shield Health Bar</s18></color>"\
+					 "\n<color r='249' g='239' b='84' a='255'><s18> Reserve Power Bar</s18></color>"\
+					 "\n<s14>^^Shield damage will draw from this first, thus this is your effective shield HP reserve</s14>"
+	ShieldCoreMed = "Medium Shieldcore"
+	ShieldCoreIconMed = "Medium Shieldcore"
+	ShieldCoreDescMed = "Medium central shieldcore that consists of 4 separate shields faces. Has configurable size, visibility and shunting options."\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Total Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Forward Shield Health Bar</s18></color>"\
+					 "\n<color r='255' g='255' b='255' a='255'><s18> Starboard Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Port Shield Health Bar</s18></color>"\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Aft Shield Health Bar</s18></color>"\
+					 "\n<color r='249' g='239' b='84' a='255'><s18> Reserve Power Bar</s18></color>"\
+					 "\n<s14>^^Shield damage will draw from this first, thus this is your effective shield HP reserve</s14>"
+	ShieldCoreLarge = "Large Shieldcore"
+	ShieldCoreIconLarge = "Large Shieldcore"
+	ShieldCoreDescLarge = "Large central shieldcore that consists of 4 separate shields faces. Has configurable size, visibility and shunting options."\
+							"\n<red><s18>Temporary smaller surface shield arcs due to a bug</s18></red>"\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Total Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Forward Shield Health Bar</s18></color>"\
+					 "\n<color r='255' g='255' b='255' a='255'><s18> Starboard Shield Health Bar</s18></color>"\
+					 "\n<color r='233' g='171' b='184' a='255'><s18> Port Shield Health Bar</s18></color>"\
+					 "\n<color r='120' g='203' b='245' a='255'><s18> Aft Shield Health Bar</s18></color>"\
+					 "\n<color r='249' g='239' b='84' a='255'><s18> Reserve Power Bar</s18></color>"\
+					 "\n<s14>^^Shield damage will draw from this first, thus this is your effective shield HP reserve</s14>"
 	//Armour
 	DuraniumArmour = "Duranium Armour"
 	DuraniumArmourIcon = "Duranium Armour"
-	DuraniumArmourDesc = "Ship hull comprised of duranium alloy, significantly stronger than its steel counterpart"\
-						"\n<s20><bad>Currently uses tristeel as duranium hasn't been added yet</bad></s20>"
+	DuraniumArmourDesc = "Ship hull comprised of duranium alloy, significantly stronger than its steel counterpart"
+						//"\n<s20><bad>Currently uses tristeel as duranium hasn't been added yet</bad></s20>"
 
 	DuraniumArmour2x1 = "Duranium Armour 2x1"
 	DuraniumArmour2x1Icon = "Duranium Armour 2x1"
@@ -452,6 +487,33 @@ Parts
 	Gravplate = "Gravplate"
 	GravplateIcon = "Gravplate"
 	GravplateDesc = "Gravitic Plate capable of locking two separate parts together across an empty space"
+
+	Gravplate2 = "Gravplate [2]"
+	Gravplate2Icon = "Gravplate [2]"
+
+	Gravplate3 = "Gravplate [3]"
+	Gravplate3Icon = "Gravplate [3]"
+
+	Gravplate4 = "Gravplate [4]"
+	Gravplate4Icon = "Gravplate [4]"
+
+	Gravplate5 = "Gravplate [5]"
+	Gravplate5Icon = "Gravplate [5]"
+
+	Gravplate6 = "Gravplate [6]"
+	Gravplate6Icon = "Gravplate [6]"
+
+	Gravplate7 = "Gravplate [7]"
+	Gravplate7Icon = "Gravplate [7]"
+
+	Gravplate8 = "Gravplate [8]"
+	Gravplate8Icon = "Gravplate [8]"
+
+	Gravplate9 = "Gravplate [9]"
+	Gravplate9Icon = "Gravplate [9]"
+
+	Gravplate10 = "Gravplate [10]"
+	Gravplate10Icon = "Gravplate [10]"
 }
 
 Inputs
@@ -474,7 +536,7 @@ Inputs
 		cid_CoreShield_XS = "Defiant class shield"
 		cid_CoreShield_S = "Intrepid class shield"
 		cid_CoreShield_M = "Prometheus class shield"
-		cid_CoreShield_L = "Galaxy class shield"
+		cid_CoreShield_L = "Sovereign class shield"
 		cid_CoreShield_XL = "Odyssey class shield"
 		phaser_arc_180	= "180° Firearc"
 		phaser_arc_120	= "120° Firearc"
@@ -649,11 +711,13 @@ PartToggles
 						
 	TorpedoType_Mine = "Cloaked Mine Launcher"//I really need to do this at some point
 	
-	btt_CoreShield_XS = "Small shield that is best suited for ships such as Defiant classes"
+	btt_CoreShield_XS = "Tiny shield that is best suited for ships such as Defiant classes"
 	btt_CoreShield_S = "Small shield that is best suited for ships such as Intrepid classes"
 	btt_CoreShield_M = "Medium shield that is best suited for ships such as Prometheus classes"
-	btt_CoreShield_L = "Big shield that is best suited for ships such as Galaxy classes"
-	btt_CoreShield_XL = "Huge shield that is best suited for ships such as Sovereign classes"
+	btt_CoreShield_L = "Large shield that is best suited for ships such as Sovereign classes"
+	btt_CoreShield_XL = "Extra Large shield that is best suited for ships such as Odyssey classes"
+	CoreShield_XXL = "Huge shield that is best suited for small stations like Deep Space Nine"
+	CoreShield_G = "Massive shield that is best suited for large stations"
 //yet again thanks for your knowledge and big brain ideas Jani ^-^
 	Phaser_arc_180_Tooltip	= "The most versatile phaser option out there\n\n"\
 							  "<b>Standard 180° Phaser</b>\n"\

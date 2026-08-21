@@ -42,7 +42,7 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 100000
+					Amount = 1000000
 					TreatShieldAsPart = true
 				}
 			]

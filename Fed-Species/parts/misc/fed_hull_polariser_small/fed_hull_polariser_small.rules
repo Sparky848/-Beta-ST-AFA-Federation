@@ -7,9 +7,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Hull_Polariser_SmallDesc"
 	Resources
 	[
-		[steel, 24]
-		[coil, 6]
-		[tristeel, 4]
+		[duranium_alloy, 10]
+		[steel, 8]
+		[coil, 6]//2,000 > 2,200
 	]
 	AIValueFactor = 100
 	Size = [2, 1]

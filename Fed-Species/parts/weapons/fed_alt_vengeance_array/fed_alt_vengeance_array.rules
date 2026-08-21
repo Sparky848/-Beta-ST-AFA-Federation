@@ -7,11 +7,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Vengeance_ArrayDesc"
 	Resources
 	[
-		[steel, 144]
-		[tristeel, 46]
-		[coil, 52]
-		[coil2, 32]
-		[processor, 2]//32,600
+		[duranium_alloy, 52]
+		[steel, 48]
+		[tristeel, 12]
+		[coil2, 48]
+		[coil, 22]
+		[diamond, 2]
+		[processor, 2]//32,600 > 36,880
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
@@ -133,7 +135,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 16000
+			MaxResources = 24000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -889,7 +891,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/vengeance_bolt/vengeance_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 275
+			ResourcesUsed = 3000
 			MinResourcesUsed = 1
 		}
 
@@ -1005,8 +1007,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed/BaseValue
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
 				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
-				PowerPerSecond = (((&PowerPerShot) * 2) * (&~/Part/Components/BulletEmitter/Burst)) * 3 * (&ROF)
-				ShotPowerUsage = [(&../PowerPerShot) / 5, &../PowerPerSecond]
+				PowerPerSecond = (&PowerPerShot) * (&~/Part/Components/BulletEmitter/Burst) * (&ROF)
+				ShotPowerUsage = [(&../PowerPerShot) , &../PowerPerSecond]
 			}
 		}
 	]

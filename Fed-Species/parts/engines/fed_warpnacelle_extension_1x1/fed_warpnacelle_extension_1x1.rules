@@ -7,11 +7,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	EditorGroup = "StarfleetFlight"
 	Resources
 	[
-		[steel, 36]
+		[steel, 20]
 		[coil, 10]
 		[coil2, 11]
-		[tristeel, 6]
-		[antimatter, 1]
+		[duranium_alloy, 6]
+		[tristeel, 4]
+		[antimatter, 1]//was 6,600 - now 6,640
 	]
 	TypeCategories = [thruster, uses_power, nacelle]
 	Size = [1, 1]
@@ -40,6 +41,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	// 	[default, [-1, 12, 5, 1]]	// bottom
 	// ]
 	ThrusterForce = 833
+	ThrusterForceTurn = 417//416.5
+	ThrusterForceReverse = 278//277.666...
 	ThrustIncreaseTime = 2
 	ThrustRecoveryTime = 1
 	FuelUsage = 15

@@ -7,13 +7,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Deflector_Dish_External_2x2Desc"
 	Resources
 	[
-		[steel, 24]
+		[steel, 8]
+		[duranium_alloy, 14]
 		[coil2, 8]
-		[tristeel, 10]
-		[diamond, 2]
-	]//to be actually checked, and based on performance
+		[tristeel, 2]
+		[diamond, 2]//13,000 > 12,960
+	]
 	Size = [2, 2]
-	MaxHealth = 12000//old warpcore health lol
+	MaxHealth = 12000
 	TypeCategories = [weapon, turret, uses_power, deflector_dish]
 	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorDebuff, DeflectorCounter]//small ship variant needs manual power
 	IsRotateable = true

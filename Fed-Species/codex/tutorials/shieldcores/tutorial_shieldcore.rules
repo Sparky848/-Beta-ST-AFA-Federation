@@ -1,7 +1,7 @@
 ID = shieldcores
 TitleKey = "Tutorials/Shieldcore/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? game.HasPartCategoryInHand('shieldcore') or (game.HasTechUnlocked('stafa.fed_shieldcore'))"
+TempShowCondition = "? game.HasPartCategoryInHand('shieldcore') or (game.HasTechUnlocked('stafa.fed_shieldcore') and game.Fame > 0)"
 Entries
 [
 	{

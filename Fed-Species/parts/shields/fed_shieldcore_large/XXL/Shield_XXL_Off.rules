@@ -1,0 +1,1247 @@
+ShieldInvisibleNoShunt
+{
+	// FRONT
+	ArcShield_XXL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = -90d
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .3323943662
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Front
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
+	}
+	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Front
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = FrontIsOperationalProxy
+	}
+	
+	// BACK
+	ArcShield_XXL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 90d
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .3323943662
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Back
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
+	}
+	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Back
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = BackIsOperationalProxy
+	}
+	
+	// LEFT
+	ArcShield_XXL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 180d
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .3323943662
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Left
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		Location = [2.2, 0]
+		OperationalToggle = LeftIsOperationalProxy
+	}
+	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Left
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = LeftIsOperationalProxy
+	}
+	
+	
+	// RIGHT
+	ArcShield_XXL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 0d
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .3323943662
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Right
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
+	}
+	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Right
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = RightIsOperationalProxy
+	}
+}
+
+ShieldInvisibleFrontShunt
+{
+	// FRONT
+	ArcShield_XXL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = -90d
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .1661971831
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Front
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
+	}
+	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Front
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = FrontIsOperationalProxy
+	}
+	
+	// BACK
+	ArcShield_XXL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 90d
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .6647887324
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Back
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
+	}
+	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Back
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = BackIsOperationalProxy
+	}
+	
+	// LEFT
+	ArcShield_XXL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 180d
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Left
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		Location = [2.2, 0]
+		OperationalToggle = LeftIsOperationalProxy
+	}
+	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Left
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = LeftIsOperationalProxy
+	}
+	
+	
+	// RIGHT
+	ArcShield_XXL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 0d
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Right
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
+	}
+	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Right
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = RightIsOperationalProxy
+	}
+}
+
+
+ShieldInvisibleLeftShunt
+{
+	// FRONT
+	ArcShield_XXL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = -90d
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Front
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
+	}
+	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Front
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = FrontIsOperationalProxy
+	}
+	
+	// BACK
+	ArcShield_XXL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 90d
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Back
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
+	}
+	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Back
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = BackIsOperationalProxy
+	}
+	
+	// LEFT
+	ArcShield_XXL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 180d
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .1661971831
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Left
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		Location = [2.2, 0]
+		OperationalToggle = LeftIsOperationalProxy
+	}
+	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Left
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = LeftIsOperationalProxy
+	}
+	
+	
+	// RIGHT
+	ArcShield_XXL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 0d
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .6647887324
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Right
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
+	}
+	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Right
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = RightIsOperationalProxy
+	}
+}
+
+ShieldInvisibleRightShunt
+{
+	// FRONT
+	ArcShield_XXL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = -90d
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Front
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
+	}
+	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Front
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = FrontIsOperationalProxy
+	}
+	
+	// BACK
+	ArcShield_XXL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 90d
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Back
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
+	}
+	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Back
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = BackIsOperationalProxy
+	}
+	
+	// LEFT
+	ArcShield_XXL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 180d
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .6647887324
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Left
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		Location = [2.2, 0]
+		OperationalToggle = LeftIsOperationalProxy
+	}
+	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Left
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = LeftIsOperationalProxy
+	}
+	
+	
+	// RIGHT
+	ArcShield_XXL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 0d
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .1661971831
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Right
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
+	}
+	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Right
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = RightIsOperationalProxy
+	}
+}
+
+
+ShieldInvisibleBackShunt
+{
+	// FRONT
+	ArcShield_XXL_Front : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = -90d
+		OperationalToggle = FrontIsOperationalProxy
+		DrainResourcesFrom = FrontBatteryStorageProxy
+		ResourceDrainPerDamage = .6647887324
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	FrontEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Front
+		FactorMediaEffectsIntensityWith = FrontBatteryStorageProxy
+		OperationalToggle = FrontIsOperationalProxy
+	}
+	FrontShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Front
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = FrontIsOperationalProxy
+	}
+	
+	// BACK
+	ArcShield_XXL_Back : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 90d
+		OperationalToggle = BackIsOperationalProxy
+		DrainResourcesFrom = BackBatteryStorageProxy
+		ResourceDrainPerDamage = .1661971831
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	BackEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Back
+		FactorMediaEffectsIntensityWith = BackBatteryStorageProxy
+		OperationalToggle = BackIsOperationalProxy
+	}
+	BackShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Back
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = BackIsOperationalProxy
+	}
+	
+	// LEFT
+	ArcShield_XXL_Left : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 180d
+		OperationalToggle = LeftIsOperationalProxy
+		DrainResourcesFrom = LeftBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	LeftEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Left
+		FactorMediaEffectsIntensityWith = LeftBatteryStorageProxy
+		Location = [2.2, 0]
+		OperationalToggle = LeftIsOperationalProxy
+	}
+	LeftShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Left
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = LeftIsOperationalProxy
+	}
+	
+	
+	// RIGHT
+	ArcShield_XXL_Right : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield
+	{
+		Radius = &<../fed_shieldcore.rules>/Part/Radius_XXL
+		Arc = 90d
+		PenetrationResistance = &<../fed_shieldcore.rules>/Part/PenetrationResistance_XXL
+		Rotation = 0d
+		OperationalToggle = RightIsOperationalProxy
+		DrainResourcesFrom = RightBatteryStorageProxy
+		ResourceDrainPerDamage = .4431924883
+		ShieldMediaEffects
+		[
+			{
+				Type = ArcShield
+				Radius = &../../Radius
+				Arc = &../../Arc
+				FadeInTime = .25
+				FadeOutTime = .25
+				FadeFromScale = .8
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/ShieldMediaEffects/0/ArcSprite
+				{
+					_fullPowerColor1 = [0, 0, 255, 0]
+					_lowPowerColor1 = [0, 0, 255, 0]
+					_fullPowerColor2 = [40, 150, 250, 0]
+					_lowPowerColor2 = [255, 100, 100, 0]
+				}
+				ArcSpriteSegments = 64
+				Bucket = Lower1
+			}
+		]
+		HitMediaEffects
+		[
+			{
+				Type = ArcShield
+				FadeInTime = 0.1
+				FadeOutTime = 0.5
+				Radius = &../../Radius
+				Arc = &../../Arc
+				ArcSprite : &<../fed_shieldcore.rules>/Part/Components/BaseArcShield/HitMediaEffects/0/ArcSprite
+				{
+					
+				}
+				ArcSpriteSegments = 6
+				Bucket = Upper3
+			}
+		]
+	}
+	RightEmitterEffect : &<../fed_shieldcore.rules>/Part/Components/BaseEmitterEffect
+	{
+		ChainedTo = ArcShield_XXL_Right
+		FactorMediaEffectsIntensityWith = RightBatteryStorageProxy
+		OperationalToggle = RightIsOperationalProxy
+	}
+	RightShieldOperationEffects : &<../fed_shieldcore.rules>/Part/Components/BaseShieldOperationEffects
+	{
+		Type = ToggleEffects
+		ChainedTo = ArcShield_XXL_Right
+		Location = [&<../fed_shieldcore.rules>/Part/Radius_XXL, 0]
+		Toggle = RightIsOperationalProxy
+	}
+}
+

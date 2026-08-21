@@ -7,11 +7,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Deflector_Dish_4x3Desc"
 	Resources
 	[
-		[steel, 48]
+		[steel, 24]
+		[duranium_alloy, 22]
 		[coil2, 16]
-		[tristeel, 18]
-		[diamond, 3]
-	]//to be actually checked, and based on performance
+		[tristeel, 6]
+		[diamond, 3]//21,600 > 21,680
+	]
 	Size = [4, 3]
 	MaxHealth = 15000
 	TypeCategories = [weapon, turret, uses_power, deflector_dish]
