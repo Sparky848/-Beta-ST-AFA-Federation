@@ -47,7 +47,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	
 	BlockedTravelCells
 	[
-		[1, 2]
+		[2, 2]
 		[2, 3]
 		[3, 2]
 		[3, 3]
