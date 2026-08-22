@@ -27,7 +27,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 3000
 	TypeCategories = [defense, uses_power, shieldcore, adapted]
-	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorShieldBuff, ShuntStateBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorShieldBuff, ShuntStateBuff, ShieldcoreCounter, XSShieldcoreDebuff, SShieldcoreDebuff, MShieldcoreDebuff, LShieldcoreDebuff, XLShieldcoreDebuff, XXLShieldcoreDebuff, GShieldcoreDebuff]
 	PenetrationRectType = Normal
 	Radius_XS = 15
 	Radius_S = 25
@@ -131,6 +131,65 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			CommandPoints = 10
 		}
 		
+		ShieldcoreCounter
+		{
+			Type = CircleBuffProvider
+			BuffType = ShieldcoreCounter
+			BuffAmount = 1
+			BuffRadius = 100
+			//BuffCenter = [1, 1]
+			//Falloff = 10%
+			ShowBuffRange = true
+		}
+		XSShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = XSShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		SShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		MShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = MShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		LShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = LShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		XLShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = XLShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		XXLShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = XXLShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		GShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = GShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
 		//
 		// BaseArcShield
 		//

@@ -193,7 +193,7 @@ XSBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = FrontIsOperational
 		FromStorage = FrontBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=XSShieldcoreDebuff; BuffMode=Multiply; MaxValue=5000; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}
@@ -219,7 +219,7 @@ XSBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = BackIsOperational
 		FromStorage = BackBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=XSShieldcoreDebuff; BuffMode=Multiply; MaxValue=5000; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}
@@ -266,7 +266,7 @@ XSBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = LeftIsOperational
 		FromStorage = LeftBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=XSShieldcoreDebuff; BuffMode=Multiply; MaxValue=5000; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}
@@ -313,7 +313,7 @@ XSBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = RightIsOperational
 		FromStorage = RightBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=XSShieldcoreDebuff; BuffMode=Multiply; MaxValue=5000; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}

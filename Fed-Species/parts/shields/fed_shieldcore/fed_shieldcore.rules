@@ -26,7 +26,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
 	TypeCategories = [defense, uses_power, shieldcore, adapted]
-	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorShieldBuff, ShuntStateBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [DeflectorShieldBuff, ShuntStateBuff, ShieldcoreCounter, XSShieldcoreDebuff, SShieldcoreDebuff, MShieldcoreDebuff, LShieldcoreDebuff, XLShieldcoreDebuff, XXLShieldcoreDebuff, GShieldcoreDebuff]
 	PenetrationRectType = Normal
 	Radius_XS = 15
 	Radius_S = 25
@@ -39,19 +39,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	PenetrationResistance_L = [225, 0]
 	PenetrationResistance_XL = [275, 0]
 	XSFromToQuantity = 2800
-	XSInterval = .5
+	XSInterval = .5// 5.6/sec
 
 	SFromToQuantity = 4182//4181.81818181818
-	SInterval = .5
+	SInterval = .5// 8.364/sec
 
 	MFromToQuantity = 4923//4923.07692307692
-	MInterval = .5
+	MInterval = .5// 9.846/sec
 
 	LFromToQuantity = 5125
-	LInterval = .5
+	LInterval = .5// 10.25/sec
 
 	XLFromToQuantity = 5000
-	XLInterval = .5
+	XLInterval = .5// 10/sec
 
 	BlockedTravelCells
 	[
@@ -160,6 +160,66 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
 			CommandPoints = 20
+		}
+		
+		ShieldcoreCounter
+		{
+			Type = CircleBuffProvider
+			BuffType = ShieldcoreCounter
+			BuffAmount = 1
+			BuffRadius = 100
+			//BuffCenter = [1, 1]
+			//Falloff = 10%
+			ShowBuffRange = true
+		}
+		XSShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = XSShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		SShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		MShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = MShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		LShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = LShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		XLShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = XLShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		XXLShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = XXLShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
+		}
+		GShieldcoreDebuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = GShieldcoreDebuff
+			ChainsFromBuffType = ShieldcoreCounter
+			BuffAmount = { BaseValue=0; BuffType=ShieldcoreCounter; BuffMode=Add; }
 		}
 		
 		//

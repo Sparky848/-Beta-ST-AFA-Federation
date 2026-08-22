@@ -248,7 +248,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[
-				[1.484375, 1.96875]
+				[1.5, 3.3125]//[1.484375, 1.96875]
 			]
 			CrewLocations
 			[

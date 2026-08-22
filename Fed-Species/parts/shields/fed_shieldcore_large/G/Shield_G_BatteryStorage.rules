@@ -192,7 +192,7 @@ GBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = FrontIsOperational
 		FromStorage = FrontBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=GShieldcoreDebuff; BuffMode=Multiply; MaxValue=8800; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}
@@ -218,7 +218,7 @@ GBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = BackIsOperational
 		FromStorage = BackBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=GShieldcoreDebuff; BuffMode=Multiply; MaxValue=8800; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}
@@ -265,7 +265,7 @@ GBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = LeftIsOperational
 		FromStorage = LeftBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=GShieldcoreDebuff; BuffMode=Multiply; MaxValue=8800; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}
@@ -312,7 +312,7 @@ GBatteryStorages
 		Type = ResourceConverter
 		OperationalToggle = RightIsOperational
 		FromStorage = RightBatteryStorage
-		FromQuantity = 100
+		FromQuantity = { BaseValue=100; BuffType=GShieldcoreDebuff; BuffMode=Multiply; MaxValue=8800; }
 		MinFromQuantityForConversion = 1
 		Interval = 1
 	}
