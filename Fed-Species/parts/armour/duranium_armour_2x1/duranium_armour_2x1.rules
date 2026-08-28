@@ -27,7 +27,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	TypeCategories = [durarmour, non_flammable, armour]
 	Flammable = false
-	InitialPenetrationResistance = 14
+	InitialPenetrationResistance = 8
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CreatePartPerTileWhenGrabbed = ""
 	CrewSpeedFactor = 0

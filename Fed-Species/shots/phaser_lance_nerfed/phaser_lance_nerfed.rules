@@ -176,7 +176,7 @@ HitOperational
 		}
 		{ //Damage to asteroids
 			Type = ExplosiveDamage
-			TotalDamage = 50000//I think vanilla mining beam is 3200 per beam
+			TotalDamage = 75000//I think vanilla mining beam is 3200 per beam
 			Radius = 3
 			ExpandDuration = 0.01
 			ExpandStartRadius = 2

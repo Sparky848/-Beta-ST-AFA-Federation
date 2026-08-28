@@ -1,6 +1,6 @@
 ID = "st-afa.beta_federation"
 Name = "[Beta] ST-AFA - Federation"
-Version = "[Beta] 0.3.0.1"//look I always forget these so don't expect it to change :p
+Version = "[Beta] 0.3.0.2"//look I always forget these so don't expect it to change :p
 Author = "ST-AFA Mod-Team"
 CompatibleGameVersions = ["0.30.4c"]
 ModifiesMultiplayer = true
@@ -16,9 +16,10 @@ Description = "Adds STAR TREK stuff to the game \n\n"\
 StringsFolder = "strings"
 
 
-Actions:
-&<adaptations.rules>/Adaptations
 
+//&<adaptations.rules>/Adaptations
+//Moved to Core
+Actions
 [
 	//******************** FUNCTIONS ********************
 	{
@@ -36,6 +37,15 @@ Actions:
 		With = &<gui/menus.rules>/LogoShip
 	}
 	
+	//Makes Gravplate not impede Radiators
+	{
+		Action = Overrides
+		OverrideIn = "<ships/terran/radiator/radiator.rules>/Part/Components/DissipationScore/PartCategoryTileScores"
+		Overrides
+		{
+			gravplate = (&<./Data/ships/terran/radiator/radiator.rules>/Part/Components/DissipationScore/EmptyTileScore)
+		}
+	}
 	//******************** TUTORIALS ********************
 	{
 		Action = AddMany

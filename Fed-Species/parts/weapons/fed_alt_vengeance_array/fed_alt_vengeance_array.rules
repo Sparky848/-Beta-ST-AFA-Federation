@@ -16,7 +16,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[processor, 2]//32,600 > 36,880
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, VengeanceCapacitor, VengeanceArrayCounter, VengeanceCapacitorCounter, VengeanceArrayOperation]
 	Size = [3, 8]
 	PhysicalRect = [0, 1, 3, 7]
 	SaveRect = &PhysicalRect
@@ -92,7 +92,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, VengeanceArrayOperationBuffToggle]
 			Mode = All
 		}
 
@@ -103,7 +103,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-
+		VengeanceArrayOperationBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = VengeanceArrayOperation
+		}
 		CommandConsumer
 		{
 			Type = CommandConsumer
@@ -130,7 +134,82 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = FireModeToggle
 			OnMode = 2
 		}
-
+		VengeanceArrayCounter
+		{
+			Type = SelfBuffProvider
+			BuffType = VengeanceArrayCounter
+			BuffAmount = 1
+		}
+		CapacitorBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = VengeanceCapacitor
+			ChainsFromBuffType = VengeanceCapacitorCounter
+			BuffAmount = { BaseValue=0; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+		}
+		LeftHighlightOpsRoomBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = HighlightOpsRoom
+			BuffArea = [-1, 1, 1, 7]
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_dual_ops_room]
+					Rot = 1
+				}
+			]
+		}
+		RightHighlightOpsRoomBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = HighlightOpsRoom
+			BuffArea = [3, 1, 1, 7]
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_dual_ops_room]
+					Rot = 3
+				}
+			]
+		}
+		BottomHighlightOpsRoomBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = HighlightOpsRoom
+			BuffArea = [0, 8, 3, 1]
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_dual_ops_room]
+					Rot = 0
+				}
+			]
+		}
+		/*HasLessThan2ConnectedVengeanceArraysValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=VengeanceArrayCounter; BuffMode=Add; }
+		}
+		HasMoreThan2ConnectedVengeanceArraysTrigger
+		{
+			Type = ThresholdTrigger
+			AmountFrom = HasLessThan2ConnectedVengeanceArraysValue
+			MinAmount = 2//Triggers @2
+		}
+		Has1OrLessConnectedVengeanceArraysTrigger
+		{
+			Type = ThresholdTrigger
+			AmountFrom = HasLessThan2ConnectedVengeanceArraysValue
+			MinAmount = 0
+			MaxAmount = 1//Triggers @0-1
+		}
+		HasLessThan2ConnectedVengeanceArraysToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = Has1OrLessConnectedVengeanceArraysTrigger//On @0-1
+			OffTrigger = HasMoreThan2ConnectedVengeanceArraysTrigger//Off @2+
+		}*/
 		BatteryStorage
 		{
 			Type = ResourceStorage
@@ -891,7 +970,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				UseResourcePerShotInBurst = true
 			Bullet = &<../../../shots/vengeance_bolt/vengeance_bolt.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 3000
+			ResourcesUsed = { BaseValue=3000; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
 			MinResourcesUsed = 1
 		}
 
@@ -970,6 +1049,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [.5, .5]
 					}
 				}
+
+				//No Dual Ops Room
+				{
+					Toggle = VengeanceArrayOperationBuffToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [.5, .5]
+					}
+				}
 			]
 		}
 
@@ -997,7 +1087,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/PhaserBolt"
 			Stats
 			{
-				DamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage)
+				DamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue)
 				DamagePerSecond = (((&DamagePerShot) * 2) * (&~/Part/Components/BulletEmitter/Burst)) * 3 * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
@@ -1006,7 +1096,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
 				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed/BaseValue
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
-				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
+				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed/BaseValue) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&~/Part/Components/BulletEmitter/Burst) * (&ROF)
 				ShotPowerUsage = [(&../PowerPerShot) , &../PowerPerSecond]
 			}

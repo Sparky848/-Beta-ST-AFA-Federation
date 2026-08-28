@@ -281,7 +281,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = BuffToggle
 					BuffType = WarpcoreBuffSmall
 				}
-				ResourceConverter//322.5 power per antimatter
+				ResourceConverter//322.5 Batteries per antimatter
 				{
 					Type = ResourceConverter
 					OperationalToggle = IsOperational

@@ -1,0 +1,176 @@
+ID = "stafa.fed_phaser_beam_tos"
+Range = 260
+IdealRange
+[
+	90
+	260
+]
+HitInterval = 3 / (&/Simulation/PhysicsUpdatesPerSecond)//0.1
+Width = 0.1
+SourceShipLowCollisions = false
+ClipRangeToTarget = false
+
+BeamMediaEffects
+[
+	// The beam itself.
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			Texture2
+			{
+				File = ./Data/common_effects/particles/spark.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}	
+			_noiseTexture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "./Data/shots/ion_beam/ion_beam.shader"
+			_extraBeginLength = 0
+			_extraEndLength = 0.25
+			_sizePulseFactor = 1.2
+			_sizePulseInterval = .1
+			_sizePulseUOffsetFactor = -.03
+			_endCapSize = 4
+			Size = [100%, 1]
+			VertexColor = [49, 243, 288, 217]
+			_baseColor = [0.00784313725, 0.62352941176, 0.72941176471, 1]
+			_halfHighlightColor = [0.21176470588, 0.43921568627, 0.50196078431, 1]
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		FadeInTime = .05
+		FadeOutTime = .1
+		Bucket = Upper1
+	}
+
+	// Beam lighting.
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 0.8]
+			_extraBeginLength = (&Size/1) / 2
+			_extraEndLength = (&Size/1) / 2
+			VertexColor = [0, 212, 255, 255]
+			_z = 0.1
+			_litReflectiveStrength = 8
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.25
+			_nrmlStrengthLimit = 9.2
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper4
+		IsLight = true
+		FadeInTime = .25
+		FadeOutTime = .1
+	}
+]
+
+HitShield = &HitOperational
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 48
+		}
+		{ //Damage to asteroids
+			Type = Damage
+			Damage = 6000//I think vanilla mining beam is 3200 per beam
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				OnlyPartCategories = [asteroid]
+				Shields = false
+			}
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/phaser_beam_hit.rules>
+		&<particles/phaser_beam_hit_flash.rules>
+		&<particles/phaser_beam_hit_sparks.rules>
+		&<particles/phaser_beam_spikes.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
+
+HitStructuralOperationalFilter
+{
+	ExcludePartCategories = [ion_beam_prism]
+}
+HitStructural
+{
+	HitEffects
+	[
+		{
+			Type = Damage;
+			Damage = 125
+		}
+	]
+
+	MediaEffects
+	[
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.rules>
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_flash.rules>
+		&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_sparks_struct.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./Data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = .25
+			MaxConcurrent = 1
+			MaxConcurrentVolume = .5
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}

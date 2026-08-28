@@ -34,9 +34,12 @@ Parts
 	&<weapons/fed_deflector_dish_4x4/fed_deflector_dish_4x4.rules>/Part
 	&<weapons/fed_deflector_dish_6x3/fed_deflector_dish_6x3.rules>/Part
 	&<weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part
+	&<weapons/fed_vengeance_capacitor/fed_vengeance_capacitor.rules>/Part
+	&<weapons/fed_phaserbank_tos/fed_phaserbank_tos.rules>/Part
 
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
+	&<rooms/fed_dual_ops_room/fed_dual_ops_room.rules>/Part
 
 	// Energy
 	&<energy/fed_warpcore_2x3/fed_warpcore_2x3.rules>/Part

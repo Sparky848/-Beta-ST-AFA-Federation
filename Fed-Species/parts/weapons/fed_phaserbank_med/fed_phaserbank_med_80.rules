@@ -28,6 +28,10 @@ Components
 				TargetType = ShipParts
 				Toggle = AutoTargetToggle
 			}
+			{
+				TargetType = Salvage
+				Toggle = AutoTargetToggle
+			}
 		]
 
 		BlueprintArcSprite

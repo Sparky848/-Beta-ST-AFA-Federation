@@ -64,7 +64,13 @@ Components
 
 	Hit
 	{
-		Type = SimpleHit
+		Type = PenetratingHit
+		Penetration = 1
+		PartCategoryPenetrationFactors
+		{
+			asteroid = 0.0555
+		}
+		PenetrationSpeed = (&~/Speed/BaseValue)
 		SourcePartCollisionDelay = 1.5/30
 		// FactorEffectsWith = Targetable
 		// Penetration = 25
@@ -167,9 +173,9 @@ Components
 				}
 				{ //Damage to asteroids
 					Type = ExplosiveDamage
-					TotalDamage = 1000000
+					TotalDamage = 3000000
 					DamageType = salvage
-					Radius = 8
+					Radius = 20
 					ExpandDuration = 1.2//.8
 					ExpandStartRadius = 2
 					ExpandLoss = 25%
@@ -237,7 +243,27 @@ Components
 		// }
 		PenetratingOperational
 		{
-			// No effect.
+			HitEffects
+			[
+				{ //Damage to asteroids
+					Type = ExplosiveDamage
+					TotalDamage = 3000000
+					DamageType = salvage
+					Radius = 20
+					ExpandDuration = 1.2//.8
+					ExpandStartRadius = 2
+					ExpandLoss = 25%
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Slices = 1
+					SpawnUnderlying = false
+					Filter
+					{
+						OnlyPartCategories = [asteroid]
+						Shields = false
+					}
+				}
+			]
 		}
 		PenetratingStructural
 		{

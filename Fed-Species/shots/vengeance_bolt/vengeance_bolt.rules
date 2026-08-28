@@ -7,7 +7,7 @@ IdealRange
 ]
 //IdealRadius = [5, 50]
 Speed = { BaseValue=250; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=300; }
-
+ReceivableBuffs = [VengeanceCapacitor]
 Components
 {
 	Physics
@@ -37,10 +37,10 @@ Components
 		Penetration = 1
 		PartCategoryPenetrationFactors
 		{
-			armor = 10
-			durarmour = 20
+			armor = 0.0666
+			durarmour = 0.04545// Pen Value/Wanted Pen Value
 		}
-		PenetrationSpeed = (&~/Speed/BaseValue) * 0.5
+		PenetrationSpeed = (&~/Speed/BaseValue) //:) //thx
 		FactorEffectsWith = Targetable
 		SourceShipLowCollisions = false
 		SourceShipHighCollisions = false
@@ -50,9 +50,18 @@ Components
 			Offset = [15, 0]
 			HitEffects
 			[
-				: ../../HitOperational/HitEffects/0
+				//: ../../HitOperational/HitEffects/0
 				{
-					Amount = 16000//8750
+					Type = Damage
+					Damage = { BaseValue=16000; BuffType=VengeanceCapacitor; BuffMode=Multiply; }//8750
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=25000; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					Radius = { BaseValue=10; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					ExpandDuration = 1
+					Slices = 1
+					ExpandLoss = 25%
 				}
 			]
 			MediaEffects = &../HitOperational/MediaEffects
@@ -65,7 +74,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 9500
+					TotalDamage = { BaseValue=9500; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
 					//DamagePool = DamagePool
 					Radius = 6
 					ExpandDuration = 0.2
@@ -73,8 +82,8 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 25500
-					Radius = 4
+					TotalDamage = { BaseValue=25500; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					Radius = { BaseValue=4; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
 					Filter
 					{
 						OnlyPartCategories = [armor]
@@ -83,8 +92,8 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 47500
-					Radius = 4
+					TotalDamage = { BaseValue=47500; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					Radius = { BaseValue=4; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
 					Filter
 					{
 						OnlyPartCategories = [durarmour]
@@ -93,7 +102,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 550;
+					Impulse = { BaseValue=550; BuffType=VengeanceCapacitor; BuffMode=Multiply; };
 				}
 			]
 			MediaEffectsScale = 1.5
@@ -125,11 +134,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = (&~/Components/Hit/HitOperational/HitEffects/0/TotalDamage) / 2
+					Damage = (&~/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue) / 2
 				}
 				{
 					Type = Impulse;
-					Impulse = 225;
+					Impulse = { BaseValue=225; BuffType=VengeanceCapacitor; BuffMode=Multiply; };
 				}
 			]
 			
@@ -149,7 +158,37 @@ Components
 		}
 		PenetratingOperational
 		{
-			// No effect.
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=4750; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					//DamagePool = DamagePool
+					Radius = 3
+					ExpandDuration = 0.2
+					ExpandLoss = 25%
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=12750; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					Radius = { BaseValue=4; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					Filter
+					{
+						OnlyPartCategories = [armor]
+					}
+					ExpandDuration = 0.2
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=23750; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					Radius = { BaseValue=4; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
+					Filter
+					{
+						OnlyPartCategories = [durarmour]
+					}
+					ExpandDuration = 0.2
+				}
+			]
 		}
 		PenetratingStructural
 		{

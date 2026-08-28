@@ -643,3 +643,45 @@ GShieldcoreDebuff
 	}
 		IconPriority = 1 
 }
+
+VengeanceCapacitor
+{
+	CombineMode = Add
+	RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]
+	Exponent = 0.6
+	Multiplier = 15%
+	BaseValue = 100%
+
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
+}
+VengeanceArrayOperation
+{
+	CombineMode = Add
+	RectBorderColor = [11, 195, 212, 160]
+	RectFillColor = [11, 195, 212, 64]
+}
+HighlightOpsRoom
+{
+	CombineMode = Add
+	RectBorderColor = [11, 195, 212, 160]
+	RectFillColor = [11, 195, 212, 64]
+}
+VengeanceCapacitorCounter
+{
+	CombineMode = Add
+	BaseValue = 1
+	RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]
+}
+
+VengeanceArrayCounter
+{
+	CombineMode = Add
+	BaseValue = 1
+	/*RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]*/
+}

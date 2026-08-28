@@ -31,7 +31,7 @@ Components
 		RemoveMode = PrioritizeMostEmptyCapacity
 		ToggleOnResources = 16
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
-		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+		UITileRect = [1.75 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
 
 	Consumer
@@ -469,7 +469,7 @@ MissileStorageBase
 	ToggleOnResources = 8
 	ToggleOffResources = 7
 	DelayBeforeReadyToUse = .5
-	UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+	UITileRect = [.25 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
 	DropResourcesWhenDestroyed = true
 	DropResourcesWhenRemoved = true

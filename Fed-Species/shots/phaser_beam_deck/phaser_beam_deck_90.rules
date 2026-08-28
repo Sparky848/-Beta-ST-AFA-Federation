@@ -1,9 +1,9 @@
 ID = "stafa.fed_phaser_beam_deck_90"
-Range = { BaseValue=200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=220; }
+Range = { BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=280; }
 IdealRange
 [
-	{ BaseValue=180; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=200; }
-	{ BaseValue=200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=220; }
+	{ BaseValue=240; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=260; }
+	{ BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=280; }
 ]
 Duration = 1
 HitInterval = .1

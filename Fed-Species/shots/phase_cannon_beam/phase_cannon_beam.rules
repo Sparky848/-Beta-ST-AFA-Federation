@@ -1,9 +1,9 @@
 ID = "stafa.fed_phase_cannon_beam"
-Range = 260
+Range = 240
 IdealRange
 [
-	90
-	260
+	70
+	240
 ]
 Duration = 2
 HitInterval = .1

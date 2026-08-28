@@ -1,9 +1,9 @@
 ID = "stafa.fed_phaser_beam_med_80"
-Range = { BaseValue=220; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=280; }
+Range = { BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
 IdealRange
 [
-	{ BaseValue=180; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=200; }
-	{ BaseValue=220; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=280; }
+	{ BaseValue=220; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=240; }
+	{ BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
 ]
 Duration = 1.5
 HitInterval = .1

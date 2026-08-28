@@ -1,0 +1,276 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/DualOpsRoom"
+	IconNameKey = "Parts/DualOpsRoomIcon"
+	ID = "stafa.fed_dual_ops_room"
+	EditorGroup = "StarfleetUtilities"
+	EditorParentParts = ["stafa.fed_alt_vengeance_array"]
+	DescriptionKey = "Parts/DualOpsRoomDesc"
+	Resources
+	[
+		[duranium_alloy, 10]
+		[steel, 8]
+		[coil, 4]
+	]
+	Size = [2, 1]
+	MaxHealth = 4500
+	TypeCategories = [ops_room, operations_room]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, HighlightOpsRoom]
+	AllowedDoorLocations
+	[
+		[0, 1]
+		[1, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		VengeanceCapacitorCounterBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceArrayOperation
+			BuffArea = [0, -1, 2, 1]
+			OperationalToggle = IsOperational
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_alt_vengeance_array]
+				}
+			]
+			ShowBuffRange = true
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 250
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, .5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [.6, .6]
+			Rotation =-45d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [1.4, 0.6]
+			Rotation = 45d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 2
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				[.6, .6]
+				[1.4, 0.6]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, .5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [.5, .5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 1]
+		}
+	}
+	Stats
+	{
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / 1000
+	}
+}

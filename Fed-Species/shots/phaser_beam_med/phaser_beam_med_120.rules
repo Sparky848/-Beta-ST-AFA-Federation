@@ -1,9 +1,9 @@
 ID = "stafa.fed_phaser_beam_med_120"
-Range = { BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=300; }
+Range = { BaseValue=300; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=340; }
 IdealRange
 [
-	{ BaseValue=100; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=120; }
-	{ BaseValue=250; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=300; }
+	{ BaseValue=140; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=160; }
+	{ BaseValue=290; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=340; }
 ]
 Duration = 1.5
 HitInterval = .1
@@ -135,17 +135,6 @@ HitShield
 			Type = Damage
 			Damage = { BaseValue=1050; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 		}
-		{ //Damage to asteroids
-			Type = Damage
-			Damage = 5800//I think vanilla mining beam is 3200 per beam
-			DamageType = salvage
-			SpawnUnderlying = false
-			Filter
-			{
-				OnlyPartCategories = [asteroid]
-				Shields = false
-			}
-		}
 	]
 
 	MediaEffects
@@ -198,6 +187,17 @@ HitOperational
 		{
 			Type = Damage
 			Damage = { BaseValue=750; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=100; }
+		}
+		{ //Damage to asteroids
+			Type = Damage
+			Damage = 5800//I think vanilla mining beam is 3200 per beam
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				OnlyPartCategories = [asteroid]
+				Shields = false
+			}
 		}
 	]
 

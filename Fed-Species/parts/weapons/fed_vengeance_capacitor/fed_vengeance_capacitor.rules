@@ -1,0 +1,401 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Vengeance_Capacitor"
+	IconNameKey = "Parts/Vengeance_CapacitorIcon"
+	ID = "stafa.fed_vengeance_capacitor"
+	OtherIDs = [fed_vengeance_capacitor_L, fed_vengeance_capacitor_R, stafa.fed_vengeance_capacitor_L, stafa.fed_vengeance_capacitor_R]
+	FlipWhenLoadingIDs = [fed_vengeance_capacitor_R, stafa.fed_vengeance_capacitor_R]
+	//EditorGroup = "StarfleetWeapons"
+	EditorParentParts = ["stafa.fed_alt_vengeance_array"]
+	DescriptionKey = "Parts/Vengeance_CapacitorDesc"
+	Resources
+	[
+		[duranium_alloy, 10]
+		[steel, 8]
+		[coil2, 4]
+	]
+	Size = [1, 2]
+	SelectionTypeByRotation = true
+	MaxHealth = 6000
+	IsFlippable = true
+	TypeCategories = [vengeance_capacitor]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, VengeanceCapacitor, VengeanceCapacitorCounter, VengeanceArrayCounter]
+	AllowedDoorLocations
+	[
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+
+		RoofVisibilityToggle
+		{
+			Type = UIToggle
+			ToggleID = "roof_type_toggle_stafa"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		RoofVisibleMode
+		{
+			Type = ModeToggle
+			Mode = RoofVisibilityToggle
+			OnMode = 0
+		}
+
+		RoofHiddenMode
+		{
+			Type = ModeToggle
+			Mode = RoofVisibilityToggle
+			OnMode = 1
+		}
+/*		CapacitorConnectionProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitor
+			BuffArea = [1, 0, 1, 1]
+			ChainsFromBuffType = VengeanceCapacitor
+			BuffAmount = { BaseValue=0; BuffType=VengeanceCapacitorChain; BuffMode=Add; }
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_alt_vengeance_array, stafa.fed_vengeance_capacitor]
+					Rot = 0
+					Left = 1
+					Bottom = 2
+					FlipX = false
+				}
+//				{
+//					IDs = [stafa.fed_alt_vengeance_array]
+//					Rot = 2
+//					Right = 0
+//					Top = -1
+//				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor]
+					Rot = 2
+					Left = 1
+					Bottom = 1
+					FlipX = false
+				}
+
+				{
+					IDs = [stafa.fed_alt_vengeance_array, stafa.fed_vengeance_capacitor]
+					Rot = 0
+					Left = 1
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor]
+					Rot = 2
+					Left = 1
+					Bottom = 1
+					FlipX = true
+				}
+			]
+		
+			ShowBuffRange = true
+		}*/
+
+		VengeanceCapacitorCounterBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorCounter
+			BuffAmount = { BaseValue=1; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+			BuffArea = [1, 0, 1, 2]
+			OperationalToggle = IsOperational	
+			ChainsFromBuffType = VengeanceCapacitorCounter
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+			]
+			ShowBuffRange = true
+		}
+		VengeanceCapacitorCounterWeaponConnectorBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorCounter
+			BuffAmount = { BaseValue=1; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+			BuffArea = [1, 0, 1, 2]
+			OperationalToggle = IsOperational	
+			ChainsFromBuffType = VengeanceCapacitorCounter
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_alt_vengeance_array]
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_alt_vengeance_array]
+					FlipX = true
+				}
+			]
+			ShowBuffRange = true
+		}
+
+		VengeanceArrayCounter
+		{
+			Type = SelfBuffProvider
+			BuffType = VengeanceArrayCounter
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 6000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 250
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+		InternalCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"floor_doodads_on_1.png"
+							"floor_doodads_on_2.png"
+							"floor_doodads_on_3.png"
+							"floor_doodads_on_4.png"
+							"floor_doodads_on_5.png"
+							"floor_doodads_on_6.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "floor_doodads_off.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		RoofVisibleGraphics
+		{
+			Type = ToggledComponents
+			Toggle = RoofVisibleMode
+			Components
+			{
+				RoofGraphics
+				{
+					Type = Graphics
+					Location = [.5, 1]
+					Roof
+					{
+						Layer = "roofs"
+						DamageLevels
+						[
+							{
+								File = "roof.png"
+								NormalsFile = "roof_normals.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof_33.png"
+								NormalsFile = "roof_normals_33.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof_66.png"
+								NormalsFile = "roof_normals_66.png"
+								Size = [1, 2]
+							}
+						]
+					}
+				}
+			}
+		}
+		RoofHiddenGraphics
+		{
+			Type = ToggledComponents
+			Toggle = RoofHiddenMode
+			Components
+			{
+				Roof2Graphics
+				{
+					Type = Graphics
+					Location = [.5, 1]
+					Roof
+					{
+						Layer = "roofs"
+						DamageLevels
+						[
+							{
+								File = "roof2.png"
+								NormalsFile = "roof2_normals.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof2_33.png"
+								NormalsFile = "roof2_normals_33.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof2_66.png"
+								NormalsFile = "roof2_normals_66.png"
+								Size = [1, 2]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [.5, .5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 2]
+		}
+	}
+	Stats
+	{
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / 1000
+	}
+}

@@ -104,9 +104,27 @@ Components
 		[
 			: /BASE_SOUNDS/AudioExterior
 			{
-				Sound = "charge.wav"
-				Volume = .25
-				Speed = 1.5
+				Sound = "charge2.wav"
+				Volume = 1
+				Speed = .3333333333
+			}
+		]
+	}
+	FireEffect
+	{
+		Type = TriggeredEffects
+		ChainedTo = Weapon
+		Trigger = BeamEmitter
+		Location = [0.5, 3]
+		AnchorMediaEffects = true
+
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "fire.wav"
+				Volume = 2
+				Speed = 1
 			}
 		]
 	}

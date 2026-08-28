@@ -1,9 +1,9 @@
 ID = "stafa.fed_phaser_beam_deck_180"
-Range = 160
+Range = 280
 IdealRange
 [
-	140
-	200
+	160
+	220
 ]
 Duration = 0.75
 HitInterval = .1
@@ -151,11 +151,11 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=660; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
+			Damage = { BaseValue=550; BuffType=PhaserTinyExpoDebuff; BuffMode=Divide; MinValue=25; }
 		}
 		{ //Damage to asteroids
 			Type = Damage
-			Damage = 900//I think vanilla mining beam is 3200 per beam
+			Damage = 2800//I think vanilla mining beam is 3200 per beam
 			DamageType = salvage
 			SpawnUnderlying = false
 			Filter

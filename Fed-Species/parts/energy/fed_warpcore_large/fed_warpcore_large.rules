@@ -173,7 +173,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ToQuantity = { BaseValue=250; BuffType=WarpcoreBuffQuantityLarge; BuffMode=Add; MaxValue=375; }//was 100 and 200. trying to make shields and control rooms have less of an idle antimatter impact on larger ships
 					Interval = { BaseValue=0.5; BuffType=WarpcoreBuffLarge; BuffMode=Subtract; MinValue=0.25; } //small reactor gen rate when buffed (1.5/sec), 0.5/sec when not
 				}
-				ResourceConverter//467.64705882353 power per antimatter    total is roughly a 20% increase per core starting from the small
+				ResourceConverter//467.64705882353 Batteries per antimatter    total is roughly a 20% increase per core starting from the small
 				{
 					Type = ResourceConverter
 					OperationalToggle = IsOperational

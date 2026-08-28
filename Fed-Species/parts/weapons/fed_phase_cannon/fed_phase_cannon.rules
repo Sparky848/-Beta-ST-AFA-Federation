@@ -148,6 +148,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					TargetType = ShipParts
 					Toggle = AutoTargetToggle
 				}
+				{
+					TargetType = Salvage
+					Toggle = AutoTargetToggle
+				}
 			]
 
 			BlueprintArcSprite
@@ -1035,9 +1039,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/PhaseCannon"
 			Stats
 			{
-				ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
-				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
-				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
 				DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
 				BurstDuration = &~/Part/Components/BeamEmitter/Duration

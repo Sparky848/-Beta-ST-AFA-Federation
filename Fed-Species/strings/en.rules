@@ -129,18 +129,31 @@ Parts
 						"\n\n<s20><color r='165' g='223' b='255' a='255'>Capable of firing a devastating nadion barrage, as well as launching a drone armed with photon torpedos</color></s20>"\
 						"\n<bad><s18>Drone currently not implemented\nPart WIP, buttons are placeholder</s18></bad>"  
 	
+	Vengeance_Capacitor = "Vengeance Capacitor"
+	Vengeance_CapacitorIcon = "Vengeance Capacitor"
+	Vengeance_CapacitorDesc = "A Nadion condensing capacitor that increase the power of connected Vengeance Arrays."\
+						"\n<bad><s20>Requires a Dual Operations Room in order to function</s20></bad>"
+
 	Heavy_Dual_Phaser_Cannon = "Heavy Dual Phaser Cannon"
 	Heavy_Dual_Phaser_CannonIcon = "Heavy Dual Phaser Cannon"
 	Heavy_Dual_Phaser_CannonDesc = "Improving on earlier iterations, this weapon fires 3, 2 shot bursts of compressed nadions that rapidly diffuse into an enemies hull.\n"\
 								"<i>Initial impact causes a small explosion, followed by fires being set inside the enemy ship</i>\n"\
 								"<cyan>Longer barrels have slightly longer reload times and lower firing arc</cyan>"
 
+	PhaserbankTOS = "TOS Phaserbank"
+	PhaserbankTOSIcon = "TOS Phaserbank"
+	PhaserbankTOSDesc = "A step-up from the old phase-modulated designs, these dual banks can fire more concise and sustained beam of nadions, now in a stylish blue colour"
 
     // Rooms
 	Captains_Room = "Captain's Ready Room"
 	Captains_Room_Icon = "Ready Room"
 	Captains_Room_Desc = "Room used to buff projectile speed and weapon range on a starship"\
 						"\n<s14>The captain's ready room was a personal office reserved for the commanding officer of a starship and was typically accessed from the bridge.</s14>"
+	
+	DualOpsRoom = "Dual Operations Room"
+	DualOpsRoomIcon = "Dual Operations Room"
+	DualOpsRoomDesc = "A two person operational room, able to supplement the technical needs of select parts."\
+					"\n<good>Is required to make the Vengeance Array function</good>"
 	// Energy
 	Warpcore_small = "Medium Warpcore"
 	Warpcore_small_Icon = "Medium Warpcore"
@@ -592,7 +605,7 @@ PartToggles
 						"<white>Extra Armour Damage:</white> <good>13,000</good><gray>/shot</gray>\n"\
 						"<white>Extra Duranium Armour Damage:</white> <good>28,500</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>5</good><gray>metre radius</gray>\n"\
-						"<white>Max Shield Damage:</white> <good>25,000</good><gray>/shot</gray>\n"\
+						"<white>Max Shield Damage:</white> <good>17,000</good><gray>/shot</gray>\n"\
 						"<white>Penetration:</white> <good>8</good><gray>metres</gray>\n"\
 						"<white>Range:</white> <good>320</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>5</good><gray>seconds</gray>\n"\
@@ -600,7 +613,7 @@ PartToggles
 						"<white>Turn Velocity:</white> <good>90</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>90</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>10</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>3,600</good>\n"\
+						"<white>Health:</white> <good>3,200</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_DeckPhoton = "Simple, low cost torpedo\n\n"\
@@ -620,7 +633,7 @@ PartToggles
 
 	TorpedoType_DeckQuantum = "Highly penetrative torpedo\n\n"\
 						"<b>Deck Quantum Torpedo Launcher</b>\n\n"\
-						"<white>Damage Pool:</white> <good>14,000</good><gray>/shot</gray>\n"\
+						"<white>Damage Pool:</white> <good>12,500</good><gray>/shot</gray>\n"\
 						"<white>Max Damage:</white> <good>12,500</good><gray>/shot</gray>\n"\
 						"<white>Extra Armour Damage:</white> <good>6,000</good><gray>/shot</gray>\n"\
 						"<white>Extra Duranium Armour Damage:</white> <good>18,500</good><gray>/shot</gray>\n"\
@@ -633,7 +646,7 @@ PartToggles
 						"<white>Turn Velocity:</white> <good>80</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>80</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>10</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>3,200</good>\n"\
+						"<white>Health:</white> <good>2,800</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_DeckTricobalt = "Slow torpedo that deals highly localised damage\n\n"\
@@ -641,14 +654,18 @@ PartToggles
 						"<white>Max Component Damage:</white> <good>35,000</good><gray>/shot</gray>\n"\
 						"<white>Max Armour Damage:</white> <good>140,000</good><gray>/shot</gray>\n"\
 						"<white>Max Duranium Armour Damage:</white> <good>300,000</good><gray>/shot</gray>\n"\
+						"<white>Max Asteroid Damage:</white> <good>2,500,000</good><gray>/shot</gray>\n"\
 						"<white>Component Damage Area:</white> <good>3</good><gray>metre radius</gray>\n"\
 						"<white>Armour Damage Area:</white> <good>6</good><gray>metre radius</gray>\n"\
+						"<white>Asteroid Damage Area:</white> <good>20</good><gray>metre radius</gray>\n"\
 						"<white>Shield Damage:</white> <good>60,000</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>250</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
 						"<white>Shot Speed:</white> <good>20</good><gray>metres/sec</gray>\n"\
+						"<white>Initial Turn Velocity:</white> <good>360</good><gray>degrees/sec</gray>\n"\
 						"<white>Turn Velocity:</white> <good>35</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>10</good><gray>metres/sec²</gray>\n"\
+						"<white>Initial Lifetime:</white> <good>1.25</good><gray>seconds</gray>\n"\
 						"<white>Health:</white> <good>5,000</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
@@ -670,6 +687,7 @@ PartToggles
 						"<b>Micro Quantum Torpedo Launcher</b>\n\n"\
 						"<white>Damage Pool:</white> <good>8,000</good><gray>/shot</gray>\n"\
 						"<white>Max Damage:</white> <good>11,000</good><gray>/shot</gray>\n"\
+						"<white>Extra Armour Damage:</white> <good>5,500</good><gray>/shot</gray>\n"\
 						"<white>Damage Area:</white> <good>3</good><gray>metre radius</gray>\n"\
 						"<white>Max Shield Damage:</white> <good>20,000</good><gray>/shot</gray>\n"\
 						"<white>Penetration:</white> <good>4</good><gray>metres</gray>\n"\
@@ -679,7 +697,7 @@ PartToggles
 						"<white>Turn Velocity:</white> <good>45</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>70</good><gray>metres/sec²</gray>\n"\
 						"<white>Lifetime:</white> <good>10</good><gray>seconds</gray>\n"\
-						"<white>Health:</white> <good>2,800</good>\n"\
+						"<white>Health:</white> <good>2,400</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
 	TorpedoType_Tricobalt = "Slow torpedo that deals highly localised damage\n\n"\
@@ -687,15 +705,18 @@ PartToggles
 						"<white>Max Component Damage:</white> <good>45,000</good><gray>/shot</gray>\n"\
 						"<white>Max Armour Damage:</white> <good>180,000</good><gray>/shot</gray>\n"\
 						"<white>Max Duranium Armour Damage:</white> <good>380,000</good><gray>/shot</gray>\n"\
+						"<white>Max Asteroid Damage:</white> <good>3,000,000</good><gray>/shot</gray>\n"\
 						"<white>Component Damage Area:</white> <good>5</good><gray>metre radius</gray>\n"\
 						"<white>Armour Damage Area:</white> <good>6</good><gray>metre radius</gray>\n"\
+						"<white>Asteroid Damage Area:</white> <good>20</good><gray>metre radius</gray>\n"\
 						"<white>Shield Damage:</white> <good>95,000</good><gray>/shot</gray>\n"\
 						"<white>Range:</white> <good>280</good><gray>metres</gray>\n"\
 						"<white>Rate of Fire:</white> <good>10.0</good><gray>seconds</gray>\n"\
-						"<white>Shot Speed:</white> <good>70</good><gray>metres/sec</gray>\n"\
+						"<white>Shot Speed:</white> <good>30</good><gray>metres/sec</gray>\n"\
+						"<white>Initial Turn Velocity:</white> <good>360</good><gray>degrees/sec</gray>\n"\
 						"<white>Turn Velocity:</white> <good>40</good><gray>degrees/sec</gray>\n"\
 						"<white>Acceleration:</white> <good>15</good><gray>metres/sec²</gray>\n"\
-						"<white>Lifetime:</white> <good>15</good><gray>seconds</gray>\n"\
+						"<white>Initial Lifetime:</white> <good>1.25</good><gray>seconds</gray>\n"\
 						"<white>Health:</white> <good>6,000</good>\n"\
 						"<s18><gray>All stats represent base values, some can increase/decrease</gray></s18>\n"
 
@@ -820,6 +841,9 @@ PartToggles
 								"<red><s18>Does not damage shields</s18></red>"
 	DeflectorType_graviton = "Graviton Beam\n"\
 								"<s18>Pushes away objects</s18>"
+
+	RoofTypeVisible_STAFA = "Hide Roof"
+	RoofTypeHidden_STAFA = "Show Roof"
 }
 STAFAShips = "ST-AFA Ships"
 STAFAShipsTT = "Federation Vessels"
@@ -868,6 +892,7 @@ StatCategories
 	Phaser = "Phaser Beam"
 	PhaseCannon = "Phase Cannon"
 	SpatialTorpedo = "Spatial Torpedo"
+	PhaserBeamTOS = "TOS Phaser Beam<gray><s20>/per beam</s20></gray>"
 }
 
 Tutorials

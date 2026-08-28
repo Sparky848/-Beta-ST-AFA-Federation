@@ -1094,4 +1094,42 @@ PartToggles
 			}
 		]
 	}*/
+	//Roof Type Switch
+	{
+		ToggleID = "roof_type_toggle_stafa"
+		Style = CycledButton
+		ShowInBuildMode = true
+		Choices
+		[
+			{
+				ChoiceID = "roof_type_toggle_visible_stafa"
+				ButtonToolTipKey = "PartToggles/RoofTypeVisible_STAFA"
+				Mode = 0
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "roof_visible.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			{
+				ChoiceID = "roof_type_toggle_hidden_stafa"
+				ButtonToolTipKey = "PartToggles/RoofTypeHidden_STAFA"
+				Mode = 1
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "roof_hidden.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 ]

@@ -290,6 +290,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					TargetType = ShipParts
 					Toggle = AutoTargetToggle
 				}
+				{
+					TargetType = Salvage
+					Toggle = AutoTargetToggle
+				}
 			]
 
 			BlueprintArcSprite

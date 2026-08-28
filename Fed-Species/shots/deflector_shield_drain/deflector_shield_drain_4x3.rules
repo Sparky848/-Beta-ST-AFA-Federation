@@ -100,7 +100,7 @@ BeamMediaEffects
 		FadeOutTime = .1
 	}
 
-	: /BASE_SOUNDS/AudioExterior
+/*	: /BASE_SOUNDS/AudioExterior
 	{
 		Sound = "light_phasor_beam.wav"
 		Volume = 1
@@ -117,7 +117,7 @@ BeamMediaEffects
 		{
 			UseCustomShapeForDistance = true
 		}
-	}
+	}*/
 
 ]
 
