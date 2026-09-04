@@ -1,0 +1,352 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Phaser_Bank"
+	IconNameKey = "Parts/Phaser_Bank_Icon"
+	ID = "stafa.test_modular_bank"
+	EditorGroup = "StarfleetWeapons"
+	DescriptionKey = "Parts/Phaser_Bank_Desc"
+	IsBuildable = false
+	Resources
+	[
+		[steel, 12]
+		[duranium_alloy, 10]
+		[coil2, 2]
+		[diamond, 2]//10,100 > 10,300
+	]
+	Size = [1, 6]
+	MaxHealth = 5000
+	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsRotateable = true
+	IsFlippable = true
+	CrewSpeedFactor = 1
+	CrewCongestedSpeedFactor = .5	
+	SelectionPriority = 1
+	InitialPenetrationResistance = 3
+	PenetrationRectType = Normal
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [10.66, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = []
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = true
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+	/*	ChangingValueTween
+		{
+			Type = ValueTween
+			OnTweenDuration = 0.6
+			OffTweenDuration = 1.2
+			IsOnToggle = Turret
+		}
+		IsShellFullyOpen
+		{
+			Type = ThresholdToggle
+			ValueFrom = ShellChangingValueTween
+			MinAmount = 100%
+		}
+		IsShellFullyClosed
+		{
+			Type = ThresholdToggle
+			ValueFrom = ShellChangingValueTween
+			MaxAmount = 0%
+		}
+		IsShellNotFullyOpen
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = IsShellFullyOpen; Invert = true}]
+			Mode = All
+		}
+		TurretSlider
+		{
+			Type = TransformLerp
+			ValueFrom = ChangingValueTween
+			StartLocation = [0, .5]
+			EndLocation = [6, .5]
+		}*/
+		AimingTurretSlider
+		{
+			Type = TransformMatch
+			Location = [3, .5]
+			//ChainedTo = TurretSlider
+			Rotation = -90d // Relative to unrotated part.
+			MatchTransformOf = Turret
+			MatchRotationSpeed = 100d
+			ResetRotationSpeed = 120d
+			ClampRotationToArc = [-1d, 1d]
+			ToggleOnRotationThreshold = 2d
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			ChainedTo = AimingTurretSlider
+			Rotation = 0d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			//FireInterval = 2/30
+			FireInterval = 2
+			FiringArc = 300d
+			RotateSpeed = 45d
+			FireThresholdAngle = 0.25d
+			AIFirepowerRating = 400
+			FirePermissionToggle = FireModeToggle
+			AutoTargetCrewSafetyDist = 8
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			//HoldTargetWhileFiring = 0.5
+			Emitter = BeamEmitter
+			AlwaysShowCoverage = true
+			CanSalvage = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+				{
+					TargetType = Salvage
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Turret
+			Invert = false
+		}
+
+		BeamEmitter : &<../../../shots/phaser_beam_deck/phaser_beam_deck_180.rules>
+		{
+			Type = BeamEmitter
+			Location = [0.45, 0]
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = IsOperational
+			FireDelay = 0.49
+		}
+
+		ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Turret
+			Location = [0.5, 3]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "charge.wav"
+					Volume = .25
+					Speed = 1.5
+				}
+			]
+		}
+
+		WeaponSprite
+		{
+			Type = Sprite
+			//ChainedTo = Turret
+			OperationalToggle = IsOperational
+			Location = [0.5, 3]
+			Rotation = 0d
+			Layer = "roof_doodads"
+			ResetAnimationTrigger = Turret
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"animation/weapon01.png"
+					"animation/weapon02.png"
+					"animation/weapon03.png"
+					"animation/weapon04.png"
+					"animation/weapon05.png"
+					"animation/weapon06.png"
+					"animation/weapon07.png"
+					"animation/weapon08.png"
+					"animation/weapon09.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon10.png"
+					"animation/weapon11.png"
+					"animation/weapon11.png"
+					"animation/weaponX.png"
+				]
+				Size = [1, 6]
+				AnimationInterval = 0.035
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 3]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 6]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 6]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 6]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 6]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 6]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 6]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Location = [1, 1]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 6]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 6]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 6]
+					}
+				]
+			}
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, 3]
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 3]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 6]
+		}
+	}
+}
+

@@ -685,3 +685,64 @@ VengeanceArrayCounter
 	/*RectBorderColor = [233, 39, 6, 160]
 	RectFillColor = [233, 39, 6, 64]*/
 }
+
+ModeIsBurst
+{
+	CombineMode = Add
+	RectBorderColor = [11, 195, 212, 160]
+	RectFillColor = [11, 195, 212, 64]
+}
+
+
+ModeIsChaingun
+{
+	CombineMode = Add
+	RectBorderColor = [11, 195, 212, 160]
+	RectFillColor = [11, 195, 212, 64]
+}
+
+VengeanceCapacitorConnection
+{
+	RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]
+}
+
+VengeanceCapacitorVisual
+{
+	RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]
+}
+VengeanceCapacitorVisualBlue
+{
+	RectBorderColor = [11, 195, 212, 160]
+	RectFillColor = [11, 195, 212, 64]
+}
+
+GunIsFiringBuff
+{
+	CombineMode = Add
+	RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]
+}
+
+VisualVengeanceCapacitor
+{
+	CombineMode = Add
+	RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]
+	Exponent = 0.6
+	Multiplier = 15%
+	BaseValue = 100%
+
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
+}
+VisualVengeanceCapacitorCounter
+{
+	CombineMode = Add
+	BaseValue = 1
+	RectBorderColor = [233, 39, 6, 160]
+	RectFillColor = [233, 39, 6, 64]
+}

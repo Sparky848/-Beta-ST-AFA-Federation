@@ -1,0 +1,464 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Vengeance_Capacitor_Walkable"
+	IconNameKey = "Parts/Vengeance_Capacitor_WalkableIcon"
+	ID = "stafa.fed_vengeance_capacitor_walkable"
+	OtherIDs = [fed_vengeance_capacitor_walkable_L, fed_vengeance_capacitor_walkable_R, stafa.fed_vengeance_capacitor_walkable_L, stafa.fed_vengeance_capacitor_walkable_R]
+	FlipWhenLoadingIDs = [fed_vengeance_capacitor_walkable_R, stafa.fed_vengeance_capacitor_walkable_R]
+	//EditorGroup = "StarfleetWeapons"
+	EditorParentParts = ["stafa.fed_alt_vengeance_array"]
+	DescriptionKey = "Parts/Vengeance_Capacitor_WalkableDesc"
+	Resources
+	[
+		[duranium_alloy, 12]
+		[steel, 8]
+	]
+	Size = [1, 2]
+	SelectionTypeByRotation = true
+	MaxHealth = 6000
+	IsFlippable = true
+	TypeCategories = [vengeance_capacitor]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, VengeanceCapacitor, VengeanceCapacitorCounter, VengeanceArrayCounter, ModeIsBurst, ModeIsChaingun, VengeanceCapacitorConnection, GunIsFiringBuff, VengeanceCapacitorVisual, VisualVengeanceCapacitorCounter, VisualVengeanceCapacitor]
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[0, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			CommandPoints = 2
+		}
+
+		RoofVisibilityToggle
+		{
+			Type = UIToggle
+			ToggleID = "roof_type_toggle_stafa"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		RoofVisibleMode
+		{
+			Type = ModeToggle
+			Mode = RoofVisibilityToggle
+			OnMode = 0
+		}
+
+		RoofHiddenMode
+		{
+			Type = ModeToggle
+			Mode = RoofVisibilityToggle
+			OnMode = 1
+		}
+		HasModeIsBurst
+		{
+			Type = BuffToggle
+			BuffType = ModeIsBurst
+		}
+		HasModeIsChaingun
+		{
+			Type = BuffToggle
+			BuffType = ModeIsChaingun
+		}
+
+		BurstModeComponents
+		{
+			Type = ToggledComponents
+			Toggle = HasModeIsBurst
+			Components = &<capacitor_burst.rules>/Components
+		}
+/*		VisualBuffArea
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisual
+			BuffArea = [1, 0, 1, 2]
+			//ShowBuffRange = true
+		}
+		VisualBuffAreaBlue
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisualBlue
+			BuffArea = [-1, 0, 1, 2]
+			//ShowBuffRange = true
+		}*/
+		ContinueVengeanceCapacitorVisualBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisual
+			BuffArea = [-1, 0, 1, 2]	
+			ChainsFromBuffType = VengeanceCapacitorVisual
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+		}
+
+		VisualVengeanceCapacitorCounterBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VisualVengeanceCapacitorCounter
+			BuffArea = [1, 0, 1, 2]
+			BuffAmount = { BaseValue=0; BuffType=VisualVengeanceCapacitorCounter; BuffMode=Add; }
+			ChainsFromBuffType = VisualVengeanceCapacitorCounter
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+			ShowBuffRange = true
+		}
+		VisualVengeanceCapacitorCounterWeaponConnectorBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VisualVengeanceCapacitorCounter
+			BuffArea = [1, 0, 1, 2]	
+			BuffAmount = { BaseValue=0; BuffType=VisualVengeanceCapacitorCounter; BuffMode=Add; }
+			ChainsFromBuffType = VisualVengeanceCapacitorCounter
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_alt_vengeance_array]
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_alt_vengeance_array]
+					FlipX = true
+				}
+			]
+			ShowBuffRange = true
+		}
+
+		ChaingunModeComponents
+		{
+			Type = ToggledComponents
+			Toggle = HasModeIsChaingun
+			Components = &<capacitor_chaingun.rules>/Components
+		}
+		ContinueHasModeIsBurstBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = ModeIsBurst
+			BuffArea = [-1, 0, 1, 2]
+			OperationalToggle = HasModeIsBurst	
+			ChainsFromBuffType = ModeIsBurst
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+			ShowBuffRange = true
+		}
+		ContinueHasModeIsChaingunBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = ModeIsChaingun
+			BuffArea = [-1, 0, 1, 2]
+			OperationalToggle = HasModeIsChaingun	
+			ChainsFromBuffType = ModeIsChaingun
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+		}
+		ContinueGunIsFiringBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = GunIsFiringBuff
+			BuffArea = [-1, 0, 1, 2]	
+			ChainsFromBuffType = GunIsFiringBuff
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+		}
+
+		VengeanceArrayCounter
+		{
+			Type = SelfBuffProvider
+			BuffType = VengeanceArrayCounter
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "floor_doodads_off.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		RoofVisibleGraphics
+		{
+			Type = ToggledComponents
+			Toggle = RoofVisibleMode
+			Components
+			{
+				RoofGraphics
+				{
+					Type = Graphics
+					Location = [.5, 1]
+					Roof
+					{
+						Layer = "roofs"
+						DamageLevels
+						[
+							{
+								File = "roof.png"
+								NormalsFile = "roof_normals.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof_33.png"
+								NormalsFile = "roof_normals_33.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof_66.png"
+								NormalsFile = "roof_normals_66.png"
+								Size = [1, 2]
+							}
+						]
+					}
+				}
+			}
+		}
+		RoofHiddenGraphics
+		{
+			Type = ToggledComponents
+			Toggle = RoofHiddenMode
+			Components
+			{
+				Roof2Graphics
+				{
+					Type = Graphics
+					Location = [.5, 1]
+					Roof
+					{
+						Layer = "roofs"
+						DamageLevels
+						[
+							{
+								File = "roof2.png"
+								NormalsFile = "roof2_normals.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof2_33.png"
+								NormalsFile = "roof2_normals_33.png"
+								Size = [1, 2]
+							}
+							{
+								File = "roof2_66.png"
+								NormalsFile = "roof2_normals_66.png"
+								Size = [1, 2]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 2]
+		}
+	}
+	Stats
+	{
+	}
+}

@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Deflector_Dish_External_2x2"
 	IconNameKey = "Parts/Deflector_Dish_External_2x2Icon"
 	ID = "stafa.fed_deflector_dish_external_2x2"
-	EditorGroup = "StarfleetWeapons"
+	EditorGroups = ["StarfleetWeapons", "StarfleetUtilities"]
 	DescriptionKey = "Parts/Deflector_Dish_External_2x2Desc"
 	Resources
 	[

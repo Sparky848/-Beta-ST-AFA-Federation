@@ -1,0 +1,462 @@
+
+Components
+{
+	LeftModeIsChaingunBuffProvider
+	{
+		Type = AreaBuffProvider
+		BuffType = ModeIsChaingun
+		BuffArea = [-1, 1, 1, 7]
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+			}
+		]
+	}
+	RightModeIsChaingunBuffProvider
+	{
+		Type = AreaBuffProvider
+		BuffType = ModeIsChaingun
+		BuffArea = [3, 1, 1, 7]
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+			}
+		]
+	}
+	BottomModeIsChaingunBuffProvider
+	{
+		Type = AreaBuffProvider
+		BuffType = ModeIsChaingun
+		BuffArea = [0, 8, 3, 1]
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+			}
+		]
+	}
+
+	LeftGunIsFiringBuffProvider
+	{
+		Type = AreaBuffProvider
+		OperationalToggle = GunIsFiring
+		BuffType = GunIsFiringBuff
+		BuffArea = [-1, 1, 1, 7]
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+			}
+		]
+	}
+	RightGunIsFiringBuffProvider
+	{
+		Type = AreaBuffProvider
+		OperationalToggle = GunIsFiring
+		BuffType = GunIsFiringBuff
+		BuffArea = [3, 1, 1, 7]
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+			}
+		]
+	}
+	BottomGunIsFiringBuffProvider
+	{
+		Type = AreaBuffProvider
+		OperationalToggle = GunIsFiring
+		BuffType = GunIsFiringBuff
+		BuffArea = [0, 8, 3, 1]
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+			}
+		]
+	}
+
+
+	Turret
+	{
+		Type = TurretWeapon
+		Location = [1.5, 1.640625]
+		Rotation = -90d// Relative to unrotated part.
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = { BaseValue=4; BuffType=RateOfFire; BuffMode=Divide; }
+		FiringArc = 80d
+		RotateSpeed = 22.5d
+		FireThresholdAngle = 1d
+		AIFirepowerRating = 2500
+		FirePermissionToggle = FireModeToggle
+		IgnoreSourceShipLowLOSChecks = true
+		IgnoreSourceShipHighLOSChecks = true
+		IgnoreJunkLOSChecks = true
+		Emitter = BulletEmitter
+			AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+		]
+			BlueprintArcSprite
+		{
+			Texture = &/INDICATORS/WeaponArc
+			Size = [0, 1.5]
+			Color = [255, 0, 0, 63]
+		}
+		BlueprintArcRadius = 10
+		BlueprintArcSpriteSegments = 64
+			CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+	RateOfFireRampUpBuff
+	{
+		Type = SelfBuffProvider
+		BuffType = RateOfFire  //used as divide by the fixed weapon fire rate
+		BuffAmount = 1
+		BuffMultiplier = RampUpAccumulator
+	}
+	RampUpAccumulator
+	{
+		Type = ValueAccumulator
+		AccumulatingToggle = GunIsFiring
+		BASE_MAX_VALUE = 24 // 1 / (3/12) = 4 shots/sec where 3 is fire interval
+		BASE_RAMP_UP_TIME = 20//15
+		BASE_RAMP_DOWN_TIME = 5
+		BASE_RAMP_PER_SEC = ((&BASE_MAX_VALUE) - (&MinValue)) / (&BASE_RAMP_UP_TIME)
+		AccumulationRate = &BASE_RAMP_PER_SEC
+		DissipationRate = (&BASE_RAMP_PER_SEC) * 8 //cooldown is half the ramp up
+		BaseValue = &MinValue
+		MinValue = 1
+		MaxValue = (&BASE_MAX_VALUE)
+	}
+	IsOperationalToggleTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = IsOperational
+		TriggerWhenOff = true
+		TriggerWhenOn = false
+	}
+	BulletEmitterOrIsOperationalToggleTrigger
+	{
+		Type = MultiTrigger
+		Triggers = [BulletEmitter, IsOperationalToggleTrigger]
+	}
+	GunIsFiringTimer //Is on if we have fired a shot
+	{
+		Type = Timer
+		// Only count down while not reloading, unless the shell isn't fully open
+		//OperationalToggle = IsOperational
+		Duration = 4
+		StartTrigger = BulletEmitter
+		StopTrigger = IsOperationalToggleTrigger
+		ResetTrigger = BulletEmitterOrIsOperationalToggleTrigger
+		StartExpired = true
+		InvertToggle = true
+	}
+	GunIsFiring
+	{
+		Type = MultiToggle
+		Toggles = [GunIsFiringTimer, VengeanceBatteryStorage]
+		Mode = All
+	}
+	
+	BulletEmitterProxy
+	{
+		Type = BeamEmitterProxy
+		Location = &../BulletEmitter/Location
+		ChainedTo = &../BulletEmitter/ChainedTo
+		ComponentID = BulletEmitter
+	}
+	ReloadProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = Turret
+		Invert = false
+	}
+	BulletEmitter
+	{
+		Type = BulletEmitter
+		ChainedTo = Turret
+		FireTrigger = Turret
+		GetTargetFrom = Turret
+		Location = [1.5, -0.15]//[1.5, 0]
+		OperationalToggle = IsOperational
+		Burst = 1
+		Bullet = &<../../../shots/vengeance_bolt/vengeance_bolt.rules>
+		ResourceStorage = VengeanceBatteryStorage
+		ResourcesUsed = 3000//{ BaseValue = 1500; BuffType=RateOfFire; BuffMode=Multiply; }
+		Spread = [-2d, 2d]
+		MinResourcesUsed = 1
+	}
+	FireEffect
+	{
+		Type = TriggeredEffects
+		ChainedTo = BulletEmitter
+		Trigger = BulletEmitter
+		Location = [0.5, 0]
+		AnchorMediaEffects = true
+			MediaEffects
+		[
+			//&<particles/dual_phaser_cannon_shoot.rules>
+			//&<particles/dual_phaser_cannon_shoot_flash.rules>
+				: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "shoot2.wav"
+				Volume = 10
+				SpeedVariation = .25
+			}
+		]
+	}
+
+	WeaponIsTargeting
+	{
+		Type = MultiToggle
+		Toggles = [Turret]
+		Mode = Any
+	}
+	CrewLocation1
+	{
+		Type = CrewLocation
+		Location = [-0.32, 0]
+		ChainedTo = Turret
+		Rotation = 90d
+	}
+	PartCrew
+	{
+		Type = PartCrew
+		Crew = 1
+		DefaultPriority = &/PRIORITIES/Weapon_Crew
+		PrerequisitesBeforeCrewing = [PowerToggle]
+		HighPriorityPrerequisites = [BatteryStorage]
+		CrewDestinations
+		[
+			[1.5, 3.3125]//[1.484375, 1.96875]
+		]
+		CrewLocations
+		[
+			CrewLocation1
+		]
+	}
+	FloorDroneGraphics
+	{
+		Type = Graphics
+		Location = [0, 0]
+		OperationalToggle = DroneIsNotDeployed
+		ChainedTo = Turret
+		Rotation = 90d
+		Floor
+		{
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor_drone.png"
+					Size = [3, 3.21875]
+				}
+				{
+					File = "floor_drone_33.png"
+					Size = [3, 3.21875]
+				}
+				{
+					File = "floor_drone_66.png"
+					Size = [3, 3.21875]
+				}
+			]
+		}
+		OperationalDoodad
+		{
+			Layer = "doodads_low"
+			Offset = [0, 0]
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"floor_drone_doodads_on_1.png"
+						"floor_drone_doodads_on_2.png"
+						"floor_drone_doodads_on_3.png"
+						"floor_drone_doodads_on_4.png"
+						"floor_drone_doodads_on_5.png"
+						"floor_drone_doodads_on_6.png"
+						"floor_drone_doodads_on_7.png"
+						"floor_drone_doodads_on_8.png"
+						"floor_drone_doodads_on_9.png"
+						"floor_drone_doodads_on_10.png"
+						"floor_drone_doodads_on_11.png"
+						"floor_drone_doodads_on_12.png"
+						"floor_drone_doodads_on_13.png"
+						"floor_drone_doodads_on_14.png"
+						"floor_drone_doodads_on_15.png"
+					]
+					Size = [3, 3.21875]
+					AnimationInterval = 0.1
+				}
+			]
+		}
+		OperationalLighting
+		{
+			Layer = "lights_add"
+			Offset = [0, 2.5]
+			DamageLevels
+			[
+				{
+					File = "floor_drone_lighting.png"
+					Size = [3, 8]
+				}
+			]
+		}
+		/*Roof
+		{
+			Layer = "roofs"
+			Location = [1.5, 4]
+			DamageLevels
+			[
+				{
+					File = "roof.png"
+					NormalsFile = "roof_cover_normals.png"
+					Size = [3, 8]
+				}
+				{
+					File = "roof_cover_open_33.png"
+					NormalsFile = "roof_cover_normals_33.png"
+					Size = [3, 8]
+				}
+				{
+					File = "roof_cover_open_66.png"
+					NormalsFile = "roof_cover_normals_66.png"
+					Size = [3, 8]
+				}
+			]
+		}*/
+	}
+	RoofDroneGraphics
+	{
+		Type = Graphics
+		Location = [0, 0]
+		OperationalToggle = DroneIsNotDeployed
+		ChainedTo = Turret
+		Rotation = 90d
+		OperationalDoodad
+		{
+			Layer = "roofs_lower"
+			DamageLevels
+			[
+				{
+					File = "roof_drone.png"
+					NormalsFile = "roof_drone_normals.png"
+					Size = [3, 3.21875]
+				}
+				{
+					File = "roof_drone_33.png"
+					NormalsFile = "roof_drone_normals_33.png"
+					Size = [3, 3.21875]
+				}
+				{
+					File = "roof_drone_66.png"
+					NormalsFile = "roof_drone_normals_66.png"
+					Size = [3, 3.21875]
+				}
+			]
+		}
+		NonOperationalDoodad
+		{
+			Layer = "roofs_lower"
+			DamageLevels
+			[
+				{
+					File = "roof_drone.png"
+					NormalsFile = "roof_drone_normals.png"
+					Size = [3, 3.21875]
+				}
+				{
+					File = "roof_drone_33.png"
+					NormalsFile = "roof_drone_normals_33.png"
+					Size = [3, 3.21875]
+				}
+				{
+					File = "roof_drone_66.png"
+					NormalsFile = "roof_drone_normals_66.png"
+					Size = [3, 3.21875]
+				}
+			]
+		}
+	}
+	RoofDroneLights
+	{
+		Type = Graphics
+		Location = [0, 0]
+		ChainedTo = Turret
+		Rotation = 90d
+		OperationalToggle = DroneIsNotDeployed
+		OperationalDoodad
+		{
+			Layer = "roofs_lower_lights"
+			Offset = [0, 0]
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof_drone_doodads_on_1.png"
+						"roof_drone_doodads_on_2.png"
+						"roof_drone_doodads_on_3.png"
+						"roof_drone_doodads_on_4.png"
+						"roof_drone_doodads_on_5.png"
+						"roof_drone_doodads_on_6.png"
+						"roof_drone_doodads_on_7.png"
+						"roof_drone_doodads_on_8.png"
+						"roof_drone_doodads_on_9.png"
+						"roof_drone_doodads_on_10.png"
+						"roof_drone_doodads_on_11.png"
+						"roof_drone_doodads_on_12.png"
+						"roof_drone_doodads_on_13.png"
+						"roof_drone_doodads_on_14.png"
+						"roof_drone_doodads_on_15.png"
+					]
+					Size =	[3, 3.21875]//3.21875
+					AnimationInterval = 0.1
+				}
+			]
+		}
+		NonOperationalDoodad
+		{
+			Layer = "roofs_lower_lights"
+			DamageLevels
+			[
+				{
+					File = "roof_drone_doodads_off.png"
+					Size =	[3, 3.21875]
+				}
+			]
+		}
+	}
+	Indicators2
+	{
+		Type = IndicatorSprites
+		Location = [1.5, 4]
+		Layer = "indicators"
+		Indicators
+		[
+			// No crew.
+			{
+				Toggle = PartCrew
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoCrew
+					Size = [.5, .5]
+				}
+			}
+		]
+	}
+}

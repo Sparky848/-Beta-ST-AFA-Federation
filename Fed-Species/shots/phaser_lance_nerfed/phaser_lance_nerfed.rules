@@ -169,6 +169,10 @@ HitOperational
 			StatusValue = 1
 			StatusValueType = Interpolated
 			NDamage = 1000
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+			}
 		}
 		{
 			Type = Impulse;

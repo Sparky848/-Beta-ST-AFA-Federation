@@ -84,6 +84,10 @@ Components
 					TotalDamage = 2000//50000
 					DamagePool = DamagePool
 					Radius = 7//5
+					Filter
+					{
+						ExcludePartCategories = [asteroid]
+					}
 				}
 				{
 					Type = GridStatusApplication
@@ -103,6 +107,39 @@ Components
 				{
 					Type = Impulse;
 					Impulse = 50;
+				}
+				{ //Damage to junk
+					Type = ExplosiveDamage
+					TotalDamage = 8000
+					DamagePool = DamagePool
+					Radius = 7
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid, armor]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
+				}
+				{ //Damage to junk armor
+					Type = ExplosiveDamage
+					Damage = 16000
+					DamagePool = DamagePool
+					Radius = 7
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid]
+						OnlyPartCategories = [armor, durarmour]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
 				}
 				{ //Damage to asteroids
 					Type = ExplosiveDamage

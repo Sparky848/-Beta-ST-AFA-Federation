@@ -1,0 +1,63 @@
+Components
+{
+	VengeanceCapacitorCounterBuffProvider
+	{
+		Type = AreaBuffProvider
+		BuffType = VengeanceCapacitorCounter
+		BuffArea = [1, 0, 1, 2]
+		BuffAmount = { BaseValue=0; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+		ChainsFromBuffType = VengeanceCapacitorCounter
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipX = false
+			}
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipX = true
+			}
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipY = false
+			}
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipY = true
+			}
+		]
+		//ShowBuffRange = true
+	}
+	VengeanceCapacitorCounterWeaponConnectorBuffProvider
+	{
+		Type = AreaBuffProvider
+		BuffType = VengeanceCapacitorCounter
+		BuffArea = [1, 0, 1, 2]	
+		BuffAmount = { BaseValue=0; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+		ChainsFromBuffType = VengeanceCapacitorCounter
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_alt_vengeance_array]
+				FlipX = false
+			}
+			{
+				IDs = [stafa.fed_alt_vengeance_array]
+				FlipX = true
+			}
+		]
+		//ShowBuffRange = true
+	}
+}

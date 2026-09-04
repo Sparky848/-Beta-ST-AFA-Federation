@@ -112,6 +112,39 @@ HitOperational
 		{
 			Type = Damage
 			Damage = 110
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+			}
+		}
+		{ //Damage to junk
+			Type = Damage
+			Damage = 110
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				ExcludePartCategories = [asteroid, armor]
+				junk = true
+				Enemies = false
+				Friendlies = false
+				Neutrals = false
+			}
+		}
+		{ //Damage to junk armor
+			Type = Damage
+			Damage = 220
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+				OnlyPartCategories = [armor, durarmour]
+				junk = true
+				Enemies = false
+				Friendlies = false
+				Neutrals = false
+			}
 		}
 		{ //Damage to asteroids
 			Type = Damage

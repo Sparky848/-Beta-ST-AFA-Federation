@@ -1,5 +1,6 @@
 Parts
-[
+[	
+	&<weapons/test_modular_bank/test_modular_bank.rules>/Part
 	//********** Federation ********
 	// Weapons
 	&<weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part
@@ -35,6 +36,7 @@ Parts
 	&<weapons/fed_deflector_dish_6x3/fed_deflector_dish_6x3.rules>/Part
 	&<weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part
 	&<weapons/fed_vengeance_capacitor/fed_vengeance_capacitor.rules>/Part
+	&<weapons/fed_vengeance_capacitor_walkable/fed_vengeance_capacitor_walkable.rules>/Part
 	&<weapons/fed_phaserbank_tos/fed_phaserbank_tos.rules>/Part
 
 	// Rooms

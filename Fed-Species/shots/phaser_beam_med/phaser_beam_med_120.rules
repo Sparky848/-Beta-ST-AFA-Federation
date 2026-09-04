@@ -164,6 +164,10 @@ HitOperational
 			Radius = 1.5
 			TotalDamage = { BaseValue=2250; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }//{ BaseValue=4800; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 			Slices = 1
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+			}
 		}
 		{
 			Type = GridStatusApplication
@@ -187,6 +191,40 @@ HitOperational
 		{
 			Type = Damage
 			Damage = { BaseValue=750; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=100; }
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+			}
+		}
+		{ //Damage to junk
+			Type = ExplodsiveDamage
+			Radius = 1.5
+			TotalDamage = { BaseValue=2250; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				ExcludePartCategories = [asteroid, armor]
+				junk = true
+				Enemies = false
+				Friendlies = false
+				Neutrals = false
+			}
+		}
+		{ //Damage to junk armor
+			Type = Damage
+			Damage = { BaseValue=4500; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=800; }
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+				OnlyPartCategories = [armor, durarmour]
+				junk = true
+				Enemies = false
+				Friendlies = false
+				Neutrals = false
+			}
 		}
 		{ //Damage to asteroids
 			Type = Damage

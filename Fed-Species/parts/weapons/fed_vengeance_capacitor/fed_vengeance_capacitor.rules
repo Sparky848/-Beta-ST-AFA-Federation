@@ -18,8 +18,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
 	IsFlippable = true
-	TypeCategories = [vengeance_capacitor]
-	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, VengeanceCapacitor, VengeanceCapacitorCounter, VengeanceArrayCounter]
+	TypeCategories = [vengeance_capacitor, vengeance_battery_requester, vengeance_battery_supplier]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, VengeanceCapacitor, VengeanceCapacitorCounter, VengeanceArrayCounter, ModeIsBurst, ModeIsChaingun, VengeanceCapacitorConnection, GunIsFiringBuff, VengeanceCapacitorVisual, VisualVengeanceCapacitorCounter, VisualVengeanceCapacitor]
 	AllowedDoorLocations
 	[
 	]
@@ -37,10 +37,25 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorageProxyOrVengeanceBatteryStorageProxy]
 			Mode = All
 		}
-
+		VengeanceBatteryStorageProxy
+		{
+			Type = ToggleProxy
+			ComponentID = VengeanceBatteryStorage
+		}
+		BatteryStorageProxy
+		{
+			Type = ToggleProxy
+			ComponentID = BatteryStorage
+		}
+		BatteryStorageProxyOrVengeanceBatteryStorageProxy
+		{
+			Type = MultiToggle
+			Toggles = [BatteryStorageProxy, VengeanceBatteryStorageProxy]
+			Mode = Any
+		}
 		PowerToggle
 		{
 			Type = UIToggle
@@ -125,88 +140,269 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		
 			ShowBuffRange = true
 		}*/
-
-		VengeanceCapacitorCounterBuffProvider
+		VisualVengeanceCapacitorCounterBuffProvider
 		{
 			Type = AreaBuffProvider
-			BuffType = VengeanceCapacitorCounter
-			BuffAmount = { BaseValue=1; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+			BuffType = VisualVengeanceCapacitorCounter
+			BuffAmount = { BaseValue=1; BuffType=VisualVengeanceCapacitorCounter; BuffMode=Add; }
 			BuffArea = [1, 0, 1, 2]
 			OperationalToggle = IsOperational	
-			ChainsFromBuffType = VengeanceCapacitorCounter
+			ChainsFromBuffType = VisualVengeanceCapacitorCounter
 			Criterias
 			[
 				{
-					IDs = [stafa.fed_vengeance_capacitor]
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
 					Rot = 0
 					Top = 0
 					Bottom = 2
 					FlipX = false
 				}
 				{
-					IDs = [stafa.fed_vengeance_capacitor]
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
 					Rot = 0
 					Top = 0
 					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+			ShowBuffRange = true
+		}
+		VisualVengeanceCapacitorCounterWeaponConnectorBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VisualVengeanceCapacitorCounter
+			BuffAmount = { BaseValue=1; BuffType=VisualVengeanceCapacitorCounter; BuffMode=Add; }
+			BuffArea = [1, 0, 1, 2]
+			OperationalToggle = IsOperational	
+			ChainsFromBuffType = VisualVengeanceCapacitorCounter
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_alt_vengeance_array]
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_alt_vengeance_array]
 					FlipX = true
 				}
 			]
 			ShowBuffRange = true
 		}
-		VengeanceCapacitorCounterWeaponConnectorBuffProvider
+
+		HasModeIsBurst
+		{
+			Type = BuffToggle
+			BuffType = ModeIsBurst
+		}
+		HasModeIsChaingun
+		{
+			Type = BuffToggle
+			BuffType = ModeIsChaingun
+		}
+
+		BurstModeComponents
+		{
+			Type = ToggledComponents
+			Toggle = HasModeIsBurst
+			Components = &<capacitor_burst.rules>/Components
+		}
+
+		ChaingunModeComponents
+		{
+			Type = ToggledComponents
+			Toggle = HasModeIsChaingun
+			Components = &<capacitor_chaingun.rules>/Components
+		}
+	/*	VisualBuffArea
 		{
 			Type = AreaBuffProvider
-			BuffType = VengeanceCapacitorCounter
-			BuffAmount = { BaseValue=1; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+			BuffType = VengeanceCapacitorVisual
 			BuffArea = [1, 0, 1, 2]
-			OperationalToggle = IsOperational	
-			ChainsFromBuffType = VengeanceCapacitorCounter
+		//	ShowBuffRange = true
+		}
+		VisualBuffAreaBlue
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisualBlue
+			BuffArea = [-1, 0, 1, 2]
+		//	ShowBuffRange = true
+		}*/
+		ContinueHasModeIsBurstBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = ModeIsBurst
+			BuffArea = [-1, 0, 1, 2]
+			OperationalToggle = HasModeIsBurst	
+			ChainsFromBuffType = ModeIsBurst
 			Criterias
 			[
 				{
-					IDs = [stafa.fed_alt_vengeance_array]
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
 					FlipX = false
 				}
 				{
-					IDs = [stafa.fed_alt_vengeance_array]
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
 					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
 				}
 			]
 			ShowBuffRange = true
+		}
+		ContinueHasModeIsChaingunBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = ModeIsChaingun
+			BuffArea = [-1, 0, 1, 2]
+			OperationalToggle = HasModeIsChaingun	
+			ChainsFromBuffType = ModeIsChaingun
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+		}
+
+		ContinueGunIsFiringBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = GunIsFiringBuff
+			BuffArea = [-1, 0, 1, 2]	
+			ChainsFromBuffType = GunIsFiringBuff
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
+		}
+
+		ContinueVengeanceCapacitorVisualBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisual
+			BuffArea = [-1, 0, 1, 2]	
+			ChainsFromBuffType = VengeanceCapacitorVisual
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					Top = 0
+					Bottom = 2
+					FlipY = true
+				}
+			]
 		}
 
 		VengeanceArrayCounter
 		{
 			Type = SelfBuffProvider
 			BuffType = VengeanceArrayCounter
-		}
-
-		BatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 6000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		PowerDrain
-		{
-			Type = ResourceConverter
-			OperationalToggle = IsOperational
-			FromStorage = BatteryStorage
-			FromQuantity = 250
-			MinFromQuantityForConversion = 1
-			Interval = 1
-		}
-		InternalCapacity
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = BatteryStorage
-			Invert = false
-			LowColor = [170, 183, 0]
-			HighColor = [238, 255, 0]
-			FullColor = [238, 255, 0]
-			Height = 7
 		}
 		
 		Graphics
@@ -375,9 +571,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				}
 
-				// Out of power.
+				// No Power
 				{
-					Toggle = BatteryStorage
+					Toggle = BatteryStorageProxyOrVengeanceBatteryStorageProxy
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -396,6 +592,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Stats
 	{
-		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / 1000
+		PowerUsageContinuous = (&~/Part/Components/BurstModeComponents/Components/PowerDrain/FromQuantity) / 1000
 	}
 }

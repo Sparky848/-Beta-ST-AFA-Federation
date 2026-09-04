@@ -1,0 +1,121 @@
+Components
+{	
+	VengeanceCapacitorConnectionBuffProvider
+	{
+		Type = AreaBuffProvider
+		BuffType = VengeanceCapacitorConnection
+		BuffAmount = { BaseValue=1; BuffType=VengeanceCapacitorConnection; BuffMode=Add; }
+		BuffArea = [1, 0, 1, 2]	
+		ChainsFromBuffType = VengeanceCapacitorConnection
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipX = false
+			}
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipX = true
+			}
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipY = false
+			}
+			{
+				IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				FlipY = true
+			}
+		]
+	}
+	VengeanceCapacitorConnectionWeaponConnectorBuffProvider
+	{
+		Type = AreaBuffProvider
+		BuffType = VengeanceCapacitorConnection
+		BuffAmount = { BaseValue=1; BuffType=VengeanceCapacitorConnection; BuffMode=Add; }
+		BuffArea = [1, 0, 1, 2]
+		ChainsFromBuffType = VengeanceCapacitorConnection
+		Criterias
+		[
+			{
+				IDs = [stafa.fed_alt_vengeance_array]
+				FlipX = false
+			}
+			{
+				IDs = [stafa.fed_alt_vengeance_array]
+				FlipX = true
+			}
+		]
+	}
+	BatteryStorage
+	{
+		Type = ResourceStorage
+		ResourceType = battery
+		MaxResources = 6000
+	}
+	BatteryStorageToVengeanceBatteryStorage
+	{
+		Type = ResourceConverter
+		FromStorage = BatteryStorage
+		FromQuantity = 250
+		ToStorage = VengeanceBatteryStorage
+		ToQuantity = 250
+		Interval = 2
+	}
+	BatteryConsumer
+	{
+		Type = ResourceConsumer
+		ResourceType = battery
+		Storage = VengeanceBatteryStorage
+		DefaultPriority = &/PRIORITIES/Weapon_Supply
+		ConsumptionToggleButtonOffset = [0, .4]
+		OperationalToggle = CanFillBatteries
+	}
+	CanFillBatteries
+	{
+		Type = MultiToggle
+		Toggles = [GunIsFiring]
+		Mode = None
+	}
+	GunIsFiring
+	{
+		Type = BuffToggle
+		BuffType = GunIsFiringBuff
+	}
+	VengeanceBatteryStorage
+	{
+		Type = MultiResourceStorage
+		ResourceType = battery
+		MaxResources = 6000
+		StartingResources = 6000
+		ViaBuffs
+		{
+			OutgoingBuffProviders = [VengeanceCapacitorConnectionBuffProvider, VengeanceCapacitorConnectionWeaponConnectorBuffProvider]
+			ComponentID = VengeanceBatteryStorage
+		}
+		AddMode = DistributeProportionallyByCapacity
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+	InternalCapacity
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = VengeanceBatteryStorage
+		Invert = false
+		LowColor = [170, 183, 0]
+		HighColor = [238, 255, 0]
+		FullColor = [238, 255, 0]
+		Height = 7
+	}
+}

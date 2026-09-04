@@ -15,8 +15,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[diamond, 2]
 		[processor, 2]//32,600 > 36,880
 	]
-	TypeCategories = [weapon, uses_power, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, VengeanceCapacitor, VengeanceArrayCounter, VengeanceCapacitorCounter, VengeanceArrayOperation]
+	TypeCategories = [weapon, uses_power, is_crewed, vengeance_battery_requester]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, VengeanceCapacitor, VengeanceArrayCounter, VengeanceCapacitorCounter, VengeanceArrayOperation, RateOfFire, ModeIsBurst, ModeIsChaingun, VengeanceCapacitorConnection, GunIsFiringBuff, VengeanceCapacitorVisual, VisualVengeanceCapacitorCounter, VisualVengeanceCapacitor]
 	Size = [3, 8]
 	PhysicalRect = [0, 1, 3, 7]
 	SaveRect = &PhysicalRect
@@ -92,10 +92,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew, VengeanceArrayOperationBuffToggle]
+			Toggles = [PowerToggle, BatteryStorage, PartCrewToggleProxy, VengeanceArrayOperationBuffToggle, ChaingunCooldownTimer]
 			Mode = All
 		}
-
+		PartCrewToggleProxy
+		{
+			Type = ToggleProxy
+			ComponentID = PartCrew
+		}
 		PowerToggle
 		{
 			Type = UIToggle
@@ -134,6 +138,109 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = FireModeToggle
 			OnMode = 2
 		}
+
+		FireModeTypeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode_type_stafa"
+			Default = 0
+		}
+		FireModeBurstToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeTypeToggle
+			OnMode = 0
+		}
+		FireModeChaingunToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeTypeToggle
+			OnMode = 1
+		}
+		FireModeBurstComponents
+		{
+			Type = ToggledComponents
+			Toggle = FireModeBurstToggle
+			IncludeInBlueprints = true
+			Components = &<array_burst_mode.rules>/Components
+		}
+		FireModeChaingunComponents
+		{
+			Type = ToggledComponents
+			Toggle = FireModeChaingunToggle
+			IncludeInBlueprints = true
+			Components = &<array_chaingun_mode.rules>/Components
+		}
+		FireModeBurstToggleOrOutOfVengeancePower
+		{
+			Type = MultiToggle
+			Toggles = [FireModeBurstToggle, OutOfVengeancePower]
+			Mode = Any
+		}
+		NotOutOfVengeancePower
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = OutOfVengeancePower; Invert = true}]
+			Mode = Any
+		}
+		FireModeChaingunToggleAndNotOutOfVengeancePower
+		{
+			Type = MultiToggle
+			Toggles = [FireModeChaingunToggle, NotOutOfVengeancePower]
+			Mode = All
+		}
+		
+		ChaingunCooldownTimer
+		{
+			Type = Timer
+			Duration = 6
+			StartExpired = true
+			StartTrigger = OutOfVengeancePowerTrigger
+		}
+		ChaingunCooldownTimerProgress
+		{
+			Type = ProgressBar
+			//OperationalToggle = ChaingunCooldownTimer
+			ShowProgressFor = ChaingunCooldownTimer
+			LowColor = [255, 180, 15]
+			HighColor = &LowColor
+			FullColor = &LowColor
+			Height = 10
+		}
+		OutOfVengeancePowerTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = OutOfVengeancePower
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		OutOfVengeancePowerTriggerInvert
+		{
+			Type = ToggleTrigger
+			Toggle = OutOfVengeancePower
+			TriggerWhenOff = true
+			TriggerWhenOn = false
+		}
+
+		ChaingunCooldownTimerInvert
+		{
+			Type = MultiTrigger
+			Triggers = [ChaingunCooldownTimer]
+			Invert = true
+		}
+
+		ChaingunCooldownTimerToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = ChaingunCooldownTimer
+			OffTrigger = ChaingunCooldownTimerInvert
+		}
+		ChaingunCooldownTimerToggleNotActive
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = ChaingunCooldownTimerToggle; Invert = true}]
+			Mode = Any
+		}
 		VengeanceArrayCounter
 		{
 			Type = SelfBuffProvider
@@ -146,6 +253,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffType = VengeanceCapacitor
 			ChainsFromBuffType = VengeanceCapacitorCounter
 			BuffAmount = { BaseValue=0; BuffType=VengeanceCapacitorCounter; BuffMode=Add; }
+		}
+		VisualCapacitorBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = VisualVengeanceCapacitor
+			ChainsFromBuffType = VisualVengeanceCapacitorCounter
+			BuffAmount = { BaseValue=0; BuffType=VisualVengeanceCapacitorCounter; BuffMode=Add; }
 		}
 		LeftHighlightOpsRoomBuffProvider
 		{
@@ -186,6 +300,97 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
+
+		LeftHighlightCapacitorBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisual
+			BuffArea = [-1, 1, 1, 7]
+			ChainsFromBuffType = VengeanceCapacitorVisual
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					FlipY = true
+				}
+			]
+		}
+		RightHighlightCapacitorBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisual
+			BuffArea = [3, 1, 1, 7]
+			ChainsFromBuffType = VengeanceCapacitorVisual
+			Criterias
+			[
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 2
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 0
+					FlipY = true
+				}
+			]
+		}
+		BottomHighlightCapacitorBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = VengeanceCapacitorVisual
+			BuffArea = [0, 8, 3, 1]
+			ChainsFromBuffType = VengeanceCapacitorVisual
+			Criterias
+			[	
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 1
+					FlipX = true
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 3
+					FlipX = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 3
+					FlipY = false
+				}
+				{
+					IDs = [stafa.fed_vengeance_capacitor, stafa.fed_vengeance_capacitor_walkable]
+					Rot = 3
+					FlipY = true
+				}
+			]
+		}
 		/*HasLessThan2ConnectedVengeanceArraysValue
 		{
 			Type = BuffableValue
@@ -210,33 +415,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OnTrigger = Has1OrLessConnectedVengeanceArraysTrigger//On @0-1
 			OffTrigger = HasMoreThan2ConnectedVengeanceArraysTrigger//Off @2+
 		}*/
-		BatteryStorage
-		{
-			Type = ResourceStorage
-			ResourceType = battery
-			MaxResources = 24000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-		}
-		BatteryConsumer
-		{
-			Type = ResourceConsumer
-			ResourceType = battery
-			Storage = BatteryStorage
-			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			ResupplyThreshold = 0
-			OperationalToggle = PowerToggle
-		}
-		InternalCapacity
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = BatteryStorage
-			Invert = false
-			LowColor = [170, 183, 0]
-			HighColor = [238, 255, 0]
-			FullColor = [238, 255, 0]
-			Height = 7
-		}
+		
 
 		DroneDeployedMode
 		{
@@ -272,10 +451,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = All
 		}
 
-		CannonShouldOpen //Used by shell opening and closing
+		CoverShouldOpen //Used by shell opening and closing
 		{
 			Type = MultiToggle
-			Toggles = [PhaseCannonStatus]
+			Toggles = [VengeanceArrayDroneCoverToggle]
 			Mode = Any
 		}
 		CannonShouldClose //Used by shell opening and closing
@@ -285,24 +464,24 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = Any
 		}
 
-		PhaseCannonStatus
+		VengeanceArrayDroneCoverToggle
 		{
 			Type = UIToggle
-			ToggleID = "phase_cannon_status"
+			ToggleID = "vengeance_array_cover_toggle"
 			Default = 1
 			RememberValue = true
 		}
-		WeaponIsTargeting
-		{
-			Type = MultiToggle
-			Toggles = [Turret]
-			Mode = Any
-		}
+		
 		TargetingAndCanShoot
 		{
 			Type = MultiToggle
-			Toggles = [IsOperational, WeaponIsTargeting, HasPower]
+			Toggles = [IsOperational, WeaponIsTargetingProxy, HasPower]
 			Mode = All
+		}
+		WeaponIsTargetingProxy
+		{
+			Type = ToggleProxy
+			ComponentID = WeaponIsTargeting
 		}
 		HasPower
 		{
@@ -310,29 +489,70 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ValueFrom = BatteryStorage
 			MinAmount = 25%
 		}
-
-		CrewLocation1
+		
+		BatteryStorage	
 		{
-			Type = CrewLocation
-			Location = [-0.32, 0]
-			ChainedTo = Turret
-			Rotation = 90d
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 42000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-		PartCrew
+		InternalCapacity
 		{
-			Type = PartCrew
-			Crew = 1
-			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
-			HighPriorityPrerequisites = [BatteryStorage]
-			CrewDestinations
-			[
-				[1.5, 3.3125]//[1.484375, 1.96875]
-			]
-			CrewLocations
-			[
-				CrewLocation1
-			]
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			Invert = false
+			LowColor = [170, 183, 0]
+			HighColor = [238, 255, 0]
+			FullColor = [238, 255, 0]
+			Height = 7
+		}
+		BatteryStorageToVengeanceBatteryStorage
+		{
+			Type = ResourceConverter
+			FromStorage = BatteryStorage
+			FromQuantity = 1000
+			ToStorage = VengeanceBatteryStorage
+			ToQuantity = 1000
+			Interval = 2
+		}
+		VengeanceBatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 42000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		OutOfVengeancePower
+		{
+			Type = ThresholdToggle
+			ValueFrom = VengeanceBatteryStorage
+			MinAmount = 0%
+			MaxAmount = 0%
+		}
+		
+		InternalVengeanceCapacity
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = VengeanceBatteryStorage
+			Invert = false
+			LowColor = [170, 183, 50]
+			HighColor = [238, 255, 50]
+			FullColor = [238, 255, 50]
+			Height = 7
+		}
+		CanFillBatteries
+		{
+			Type = MultiToggle
+			Toggles = [GunIsFiringProxy]
+			Mode = None
+		}
+		GunIsFiringProxy
+		{
+			Type = ToggleProxy
+			ComponentID = GunIsFiring
 		}
 
 		Graphics
@@ -433,98 +653,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
-		FloorDroneGraphics
-		{
-			Type = Graphics
-			Location = [0, 0]
-			OperationalToggle = DroneIsNotDeployed
-			ChainedTo = Turret
-			Rotation = 90d
-			Floor
-			{
-				Layer = "floors"
-				DamageLevels
-				[
-					{
-						File = "floor_drone.png"
-						Size = [3, 3.21875]
-					}
-					{
-						File = "floor_drone_33.png"
-						Size = [3, 3.21875]
-					}
-					{
-						File = "floor_drone_66.png"
-						Size = [3, 3.21875]
-					}
-				]
-			}
-			OperationalDoodad
-			{
-				Layer = "doodads_low"
-				Offset = [0, 0]
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"floor_drone_doodads_on_1.png"
-							"floor_drone_doodads_on_2.png"
-							"floor_drone_doodads_on_3.png"
-							"floor_drone_doodads_on_4.png"
-							"floor_drone_doodads_on_5.png"
-							"floor_drone_doodads_on_6.png"
-							"floor_drone_doodads_on_7.png"
-							"floor_drone_doodads_on_8.png"
-							"floor_drone_doodads_on_9.png"
-							"floor_drone_doodads_on_10.png"
-							"floor_drone_doodads_on_11.png"
-							"floor_drone_doodads_on_12.png"
-							"floor_drone_doodads_on_13.png"
-							"floor_drone_doodads_on_14.png"
-							"floor_drone_doodads_on_15.png"
-						]
-						Size = [3, 3.21875]
-						AnimationInterval = 0.1
-					}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "lights_add"
-				Offset = [0, 2.5]
-				DamageLevels
-				[
-					{
-						File = "floor_drone_lighting.png"
-						Size = [3, 8]
-					}
-				]
-			}
-			/*Roof
-			{
-				Layer = "roofs"
-				Location = [1.5, 4]
-				DamageLevels
-				[
-					{
-						File = "roof.png"
-						NormalsFile = "roof_cover_normals.png"
-						Size = [3, 8]
-					}
-					{
-						File = "roof_cover_open_33.png"
-						NormalsFile = "roof_cover_normals_33.png"
-						Size = [3, 8]
-					}
-					{
-						File = "roof_cover_open_66.png"
-						NormalsFile = "roof_cover_normals_66.png"
-						Size = [3, 8]
-					}
-				]
-			}*/
-		}
+		
 		FloorHoleGraphics
 		{
 			Type = Graphics
@@ -549,113 +678,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
-		RoofDroneGraphics
-		{
-			Type = Graphics
-			Location = [0, 0]
-			OperationalToggle = DroneIsNotDeployed
-			ChainedTo = Turret
-			Rotation = 90d
-			OperationalDoodad
-			{
-				Layer = "roofs_lower"
-				DamageLevels
-				[
-					{
-						File = "roof_drone.png"
-						NormalsFile = "roof_drone_normals.png"
-						Size = [3, 3.21875]
-					}
-					{
-						File = "roof_drone_33.png"
-						NormalsFile = "roof_drone_normals_33.png"
-						Size = [3, 3.21875]
-					}
-					{
-						File = "roof_drone_66.png"
-						NormalsFile = "roof_drone_normals_66.png"
-						Size = [3, 3.21875]
-					}
-				]
-			}
-			NonOperationalDoodad
-			{
-				Layer = "roofs_lower"
-				DamageLevels
-				[
-					{
-						File = "roof_drone.png"
-						NormalsFile = "roof_drone_normals.png"
-						Size = [3, 3.21875]
-					}
-					{
-						File = "roof_drone_33.png"
-						NormalsFile = "roof_drone_normals_33.png"
-						Size = [3, 3.21875]
-					}
-					{
-						File = "roof_drone_66.png"
-						NormalsFile = "roof_drone_normals_66.png"
-						Size = [3, 3.21875]
-					}
-				]
-			}
-		}
-		RoofDroneLights
-		{
-			Type = Graphics
-			Location = [0, 0]
-			ChainedTo = Turret
-			Rotation = 90d
-			OperationalToggle = DroneIsNotDeployed
-			OperationalDoodad
-			{
-				Layer = "roofs_lower_lights"
-				Offset = [0, 0]
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"roof_drone_doodads_on_1.png"
-							"roof_drone_doodads_on_2.png"
-							"roof_drone_doodads_on_3.png"
-							"roof_drone_doodads_on_4.png"
-							"roof_drone_doodads_on_5.png"
-							"roof_drone_doodads_on_6.png"
-							"roof_drone_doodads_on_7.png"
-							"roof_drone_doodads_on_8.png"
-							"roof_drone_doodads_on_9.png"
-							"roof_drone_doodads_on_10.png"
-							"roof_drone_doodads_on_11.png"
-							"roof_drone_doodads_on_12.png"
-							"roof_drone_doodads_on_13.png"
-							"roof_drone_doodads_on_14.png"
-							"roof_drone_doodads_on_15.png"
-						]
-						Size =	[3, 3.21875]//3.21875
-						AnimationInterval = 0.1
-					}
-				]
-			}
-			NonOperationalDoodad
-			{
-				Layer = "roofs_lower_lights"
-				DamageLevels
-				[
-					{
-						File = "roof_drone_doodads_off.png"
-						Size =	[3, 3.21875]
-					}
-				]
-			}
-		}
+		
 		RoofRetractAnimation
 		{
 			Type = OpenCloseSprite
 			Location = [1.5, 4]
 			Layer = "roofs"
-			OperationalToggle = CannonShouldOpen
+			OperationalToggle = CoverShouldOpen
 			OpenDamageLevels
 			[
 				{
@@ -904,98 +933,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 		}
 
-		Turret
-		{
-			Type = TurretWeapon
-			Location = [1.5, 1.640625]
-			Rotation = -90d// Relative to unrotated part.
-			OperationalToggle = IsOperational
-			AutoFireToggle = AutoFireToggle
-			FireInterval = 6
-			FiringArc = 90d
-			RotateSpeed = 22.5d
-			FireThresholdAngle = 1d
-			AIFirepowerRating = 2500
-			FirePermissionToggle = FireModeToggle
-			IgnoreSourceShipLowLOSChecks = true
-			IgnoreSourceShipHighLOSChecks = true
-			IgnoreJunkLOSChecks = true
-			Emitter = BulletEmitter
-
-			AutoTargets
-			[
-				{
-					TargetType = ShipParts
-					Toggle = AutoTargetToggle
-				}
-			]
-
-			BlueprintArcSprite
-			{
-				Texture = &/INDICATORS/WeaponArc
-				Size = [0, 1.5]
-				Color = [255, 0, 0, 63]
-			}
-			BlueprintArcRadius = 10
-			BlueprintArcSpriteSegments = 64
-
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
-		}
-
-		ReloadProgressBar
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = Turret
-			Invert = false
-		}
-
-		BulletEmitter
-		{
-			Type = BulletEmitter
-			ChainedTo = Turret
-			FireTrigger = Turret
-			GetTargetFrom = Turret
-			Location = [1.5, -0.15]//[1.5, 0]
-			OperationalToggle = IsOperational
-			Spread = [0.1d, 0.1d]
-			FireDelay = 0.01
-			Burst = 4
-				BurstDelay = 0.2
-				UseResourcePerShotInBurst = true
-			Bullet = &<../../../shots/vengeance_bolt/vengeance_bolt.rules>
-			ResourceStorage = BatteryStorage
-			ResourcesUsed = { BaseValue=3000; BuffType=VengeanceCapacitor; BuffMode=Multiply; }
-			MinResourcesUsed = 1
-		}
-
-		FireEffect
-		{
-			Type = TriggeredEffects
-			ChainedTo = BulletEmitter
-			Trigger = BulletEmitter
-			Location = [0.5, 0]
-			AnchorMediaEffects = true
-
-			MediaEffects
-			[
-				//&<particles/dual_phaser_cannon_shoot.rules>
-				//&<particles/dual_phaser_cannon_shoot_flash.rules>
-
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "shoot2.wav"
-					Volume = 10
-					SpeedVariation = .25
-				}
-			]
-		}
-
 		OperationEffects
 		{
 			Type = ToggleEffects
@@ -1032,20 +969,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = (&~/Part/Components/Turret/FireInterval) * 5
+					Delay = (&~/Part/Components/FireModeBurstComponents/Components/Turret/FireInterval) * 5
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
-						Size = [.5, .5]
-					}
-				}
-				
-				// No crew.
-				{
-					Toggle = PartCrew
-					AtlasSprite
-					{
-						File = &/INDICATORS/NoCrew
 						Size = [.5, .5]
 					}
 				}
@@ -1073,7 +1000,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		CrewRequired = &~/Part/Components/PartCrew/Crew
+		CrewRequired = 1
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 200
 
 		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
@@ -1087,17 +1014,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/PhaserBolt"
 			Stats
 			{
-				DamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue)
-				DamagePerSecond = (((&DamagePerShot) * 2) * (&~/Part/Components/BulletEmitter/Burst)) * 3 * (&ROF)
+				DamagePerShot = (&~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue)
+				DamagePerSecond = (((&DamagePerShot) * 2) * (&~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/Burst)) * 3 * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
-				RangeLimited = [&~/Part/Components/BulletEmitter/Bullet/Range/BaseValue, &~/Part/Components/BulletEmitter/Bullet/Range/MaxValue]
-				Arc = deg(&~/Part/Components/Turret/FiringArc)
-				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed/BaseValue
-				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
-				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed/BaseValue) / 1000
-				PowerPerSecond = (&PowerPerShot) * (&~/Part/Components/BulletEmitter/Burst) * (&ROF)
+				ROF = 1 / (&~/Part/Components/FireModeBurstComponents/Components/Turret/FireInterval)
+				RangeLimited = [&~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/Bullet/Range/BaseValue, &~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/Bullet/Range/MaxValue]
+				Arc = deg(&~/Part/Components/FireModeBurstComponents/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/FireModeBurstComponents/Components/Turret/RotateSpeed)
+				ShotSpeed = &~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/Bullet/Speed/BaseValue
+				ShotHP = &~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/Bullet/Components/Targetable/Health
+				PowerPerShot = (&~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/ResourcesUsed/BaseValue) / 1000
+				PowerPerSecond = (&PowerPerShot) * (&~/Part/Components/FireModeBurstComponents/Components/BulletEmitter/Burst) * (&ROF)
 				ShotPowerUsage = [(&../PowerPerShot) , &../PowerPerSecond]
 			}
 		}

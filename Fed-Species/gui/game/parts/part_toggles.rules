@@ -792,6 +792,47 @@ PartToggles
 			}
 		]
 	}
+	// Open/Close Vengeance Array Drone Cover
+	{
+		ToggleID = "vengeance_array_cover_toggle"
+		Style = CycledButton
+		MultipleModesDisplayOrder = Last
+		SortOrder = 1
+		Choices
+		[
+			// Open
+			{
+				ChoiceID = "open_vengeance_array_cover"
+				ButtonToolTipKey = "PartToggles/OpenVengeanceArrayCover"
+				DefaultHotkey = [L]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "deploy_cannon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Close
+			{
+				ChoiceID = "close_vengeance_array_cover"
+				ButtonToolTipKey = "PartToggles/CloseVengeanceArrayCover"
+				DefaultHotkey = [L]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "retract_cannon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 	//Refit Bussard Colour Change
 	{
 		ToggleID = "refbussard_colour"
@@ -1125,6 +1166,45 @@ PartToggles
 					Texture
 					{
 						File = "roof_hidden.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	//Fire Mode Switch
+	{
+		ToggleID = "fire_mode_type_stafa"
+		Style = CycledButton
+		ShowInBuildMode = true
+		Choices
+		[
+			{
+				ChoiceID = "fire_mode_burst_stafa"
+				ButtonToolTipKey = "PartToggles/FireModeBurst_STAFA"
+				Mode = 0
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "fire_mode_burst.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			{
+				ChoiceID = "fire_mode_chaingun_stafa"
+				ButtonToolTipKey = "PartToggles/FireModeChaingun_STAFA"
+				Mode = 1
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "fire_mode_chaingun.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

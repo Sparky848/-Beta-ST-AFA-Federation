@@ -65,9 +65,9 @@ Components
 		Location = [1.6, 0]
 		OperationalToggle = IsOperational
 		Spread = [0.1d, 0.1d]
-		FireDelay = 0.01
+		FireDelay = 0
 		Burst = 2
-			BurstDelay = 0.5//0.2
+			BurstDelay = 0.25//0.5
 			UseResourcePerShotInBurst = true
 		Bullet = &<../../../../shots/heavy_dual_phaser_bolt/heavy_dual_phaser_bolt.rules>
 		ResourceStorage = BatteryStorage

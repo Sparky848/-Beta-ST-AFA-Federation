@@ -206,14 +206,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "roof.png"
+						NormalsFile = "roof_normals.png"
 						Size = [2, 1]
 					}
 					{
 						File = "roof.png"
+						NormalsFile = "roof_normals.png"
 						Size = [2, 1]
 					}
 					{
 						File = "roof.png"
+						NormalsFile = "roof_normals.png"
 						Size = [2, 1]
 					}
 				]
@@ -233,6 +236,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 400
 			IgnoreSourceShipLowLOSChecks = true
+			PreventOverlappingTargets = true
 
 			Emitter = BeamEmitter
 			AutoTargets
@@ -263,7 +267,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		BeamEmitter : &<../../../shots/phaser_beam_tos/phaser_beam_tos.rules>
 		{
 			Type = BeamEmitter
-			Location = [0.2, 0]
+			Location = [0.078125, 0]
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
@@ -317,6 +321,30 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
+			/*OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						VertexColor = [49*1.0, 243*1.0, 288*1.0]
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "turret_doodad_off.png"
+						Size = [1, 1]
+						VertexColor = [49*1.0, 243*1.0, 288*1.0]
+					}
+				]
+			}*/
 		}
 
 		Turret2 : Turret

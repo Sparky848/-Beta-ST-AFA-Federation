@@ -116,7 +116,7 @@ Components
 						OperationalHealth = true
 						StructuralHealth = false
 						Friendlies = true
-						ExcludePartCategories = [armor]
+						ExcludePartCategories = [armor, asteroid]
 					}
 				}
 				{
@@ -166,6 +166,7 @@ Components
 						OperationalHealth = false
 						StructuralHealth = true
 						Friendlies = true
+						ExcludePartCategories = [asteroid]
 					}
 				}
 				{ //Damage to asteroids

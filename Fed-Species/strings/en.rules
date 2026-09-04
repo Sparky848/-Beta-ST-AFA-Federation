@@ -127,12 +127,21 @@ Parts
 	Vengeance_ArrayIcon = "Vengeance Array"
 	Vengeance_ArrayDesc = "An Advanced Phaser Array from an alternative timeline, the stolen schematic of which was apprehended by Starfleet Intelligence, and later leaked by unkown operatives."\
 						"\n\n<s20><color r='165' g='223' b='255' a='255'>Capable of firing a devastating nadion barrage, as well as launching a drone armed with photon torpedos</color></s20>"\
-						"\n<bad><s18>Drone currently not implemented\nPart WIP, buttons are placeholder</s18></bad>"  
+						"\n\nThe array has two firing options: \n<s22>- Burst:</s22>\n<sup><gray>Capacitors will provide a boost to projectile stats, but increase power consumption.</gray></sup> \n<s22>- Chaingun:</s22>\n<sup><gray>Capacitors will provide extra power to the chaingun as it fires, if it runs out of power then the array will go on a 6 second cooldown.</gray></sup>"\
+						"\n<s20>Switching modes will require a full battery recharge.</s20>"\
+						"\n\n<bad><s20>Requires a Dual Operations Room in order to function</s20></bad>"\			
+						"\n<bad><s18>Drone currently not implemented\nPart WIP, most buttons are placeholder</s18></bad>"  
 	
 	Vengeance_Capacitor = "Vengeance Capacitor"
 	Vengeance_CapacitorIcon = "Vengeance Capacitor"
-	Vengeance_CapacitorDesc = "A Nadion condensing capacitor that increase the power of connected Vengeance Arrays."\
-						"\n<bad><s20>Requires a Dual Operations Room in order to function</s20></bad>"
+	Vengeance_CapacitorDesc = "A Nadion condensing capacitor that increase the power of connected Burst Vengeance Arrays, or provide extra power to Chaingun Vengeance Arrays"\
+						"\n<color r='233' g='39' b='6' a='255'>Red is Front,</color> <color r='1' g='195' b='212' a='255'>Blue is Back.</color>"\
+						"\n\n<bad><s20>Requires a Dual Operations Room in order to function</s20></bad>"
+
+	Vengeance_Capacitor_Walkable = "Vengeance Capacitor Walkthrough"
+	Vengeance_Capacitor_WalkableIcon = "Vengeance Capacitor Walkthrough"
+	Vengeance_Capacitor_WalkableDesc = "Allows crew to passthrough at the cost of no longer providing bonus stats or power"	\
+						"\n<color r='233' g='39' b='6' a='255'>Red is Front,</color> <color r='1' g='195' b='212' a='255'>Blue is Back.</color>"
 
 	Heavy_Dual_Phaser_Cannon = "Heavy Dual Phaser Cannon"
 	Heavy_Dual_Phaser_CannonIcon = "Heavy Dual Phaser Cannon"
@@ -844,6 +853,11 @@ PartToggles
 
 	RoofTypeVisible_STAFA = "Hide Roof"
 	RoofTypeHidden_STAFA = "Show Roof"
+
+	OpenVengeanceArrayCover = "Open Cover"
+	CloseVengeanceArrayCover = "Close Cover"
+	FireModeBurst_STAFA = "Burst Fire Mode"
+	FireModeChaingun_STAFA = "Chaingun Fire Mode"
 }
 STAFAShips = "ST-AFA Ships"
 STAFAShipsTT = "Federation Vessels"

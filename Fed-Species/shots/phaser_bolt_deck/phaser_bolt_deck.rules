@@ -78,10 +78,43 @@ Components
 					Type = Damage
 					Damage = 50
 					DamagePool = DamagePool
+					Filter
+					{
+						ExcludePartCategories = [asteroid]
+					}
 				}
 				{
 					Type = Impulse;
 					Impulse = 1;
+				}
+				{ //Damage to junk
+					Type = Damage
+					Damage = 50
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid, armor]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
+				}
+				{ //Damage to junk armor
+					Type = Damage
+					Damage = 100
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid]
+						OnlyPartCategories = [armor, durarmour]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
 				}
 				{ //Damage to asteroids
 					Type = Damage

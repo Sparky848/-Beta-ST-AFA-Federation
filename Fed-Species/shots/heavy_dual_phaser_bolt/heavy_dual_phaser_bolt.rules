@@ -69,10 +69,18 @@ Components
 					TotalDamage = 2000
 					//DamagePool = DamagePool
 					Radius = 2
+					Filter
+					{
+						ExcludePartCategories = [asteroid]
+					}
 				}
 				{
 					Type = Damage
 					Damage = 2500
+					Filter
+					{
+						ExcludePartCategories = [asteroid]
+					}
 				}
 				{
 					Type = ExplosiveDamage
@@ -101,6 +109,37 @@ Components
 				{
 					Type = Impulse;
 					Impulse = 30;
+				}
+				{ //Damage to junk
+					Type = ExplosiveDamage
+					TotalDamage = 4000
+					Radius = 2
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid, armor]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
+				}
+				{ //Damage to junk armor
+					Type = ExplosiveDamage
+					Damage = 8000
+					Radius = 2
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid]
+						OnlyPartCategories = [armor, durarmour]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
 				}
 				{ //Damage to asteroids
 					Type = Damage
