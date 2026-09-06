@@ -188,7 +188,7 @@ HitOperational
 			Impulse = 0.3;
 		}
 		{ //Damage to junk
-			Type = ExplodsiveDamage
+			Type = ExplosiveDamage
 			Radius = 3
 			TotalDamage = { BaseValue=4750; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 			DamageType = salvage

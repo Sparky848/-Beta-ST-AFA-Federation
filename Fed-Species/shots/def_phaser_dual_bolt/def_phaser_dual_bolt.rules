@@ -106,7 +106,7 @@ Components
 				}
 				{ //Damage to junk armor
 					Type = ExplosiveDamage
-					Damage = 4000
+					TotalDamage = 4000
 					Radius = 1.5
 					DamageType = salvage
 					SpawnUnderlying = false

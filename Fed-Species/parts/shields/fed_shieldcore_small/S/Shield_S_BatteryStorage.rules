@@ -54,7 +54,7 @@ SBatteryStorages
 		Type = ResourceStorage
 		ResourceType = battery
 		MaxResources = 92000
-		ToggleOnResources = 91001
+		ToggleOnResources = 87700//91001 this gets to 87822 from 0 and stops due to transferring to many batteries at once
 		DrainOnFtlJump = true
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}
@@ -181,7 +181,7 @@ SBatteryStorages
 		Type = ResourceStorage
 		ResourceType = battery
 		MaxResources = 92000
-		ToggleOnResources = 91001
+		ToggleOnResources = 87700//91001 this gets to 87822 from 0 and stops due to transferring to many batteries at once
 		AnticipateMoreResourcesFrom = ["MainShieldStorage"]
 		DrainOnFtlJump = true
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
@@ -209,7 +209,7 @@ SBatteryStorages
 		Type = ResourceStorage
 		ResourceType = battery
 		MaxResources = 92000
-		ToggleOnResources = 91001
+		ToggleOnResources = 87700//91001 this gets to 87822 from 0 and stops due to transferring to many batteries at once
 		DrainOnFtlJump = true
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}
@@ -256,7 +256,7 @@ SBatteryStorages
 		Type = ResourceStorage
 		ResourceType = battery
 		MaxResources = 92000
-		ToggleOnResources = 91001
+		ToggleOnResources = 87700//91001 this gets to 87822 from 0 and stops due to transferring to many batteries at once
 		DrainOnFtlJump = true
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}
@@ -303,7 +303,7 @@ SBatteryStorages
 		Type = ResourceStorage
 		ResourceType = battery
 		MaxResources = 92000
-		ToggleOnResources = 91001
+		ToggleOnResources = 87700//91001 this gets to 87822 from 0 and stops due to transferring to many batteries at once
 		DrainOnFtlJump = true
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}

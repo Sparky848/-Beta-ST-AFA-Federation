@@ -197,7 +197,7 @@ HitOperational
 			}
 		}
 		{ //Damage to junk
-			Type = ExplodsiveDamage
+			Type = ExplosiveDamage
 			Radius = 1.5
 			TotalDamage = { BaseValue=2250; BuffType=PhaserMainDebuff; BuffMode=Divide; MinValue=400; }
 			DamageType = salvage

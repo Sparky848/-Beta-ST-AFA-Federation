@@ -126,7 +126,7 @@ Components
 				}
 				{ //Damage to junk armor
 					Type = ExplosiveDamage
-					Damage = 16000
+					TotalDamage = 16000
 					DamagePool = DamagePool
 					Radius = 7
 					DamageType = salvage
