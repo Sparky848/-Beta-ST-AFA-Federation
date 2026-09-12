@@ -156,15 +156,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
 					ToStorage = BatteryStorage
-					ToQuantity = 225 //75
-					Interval = .5// 0.45/sec
+					ToQuantity = 495 //  Total of: 19.8/sec
+					Interval = .5// 0.99/sec
 				}
 				ResourceConverter//385.4545... Batteries per antimatter
 				{
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
-					MinFromQuantityForConversion = 55
-					MinToQuantityForConversion = 1060
+					MinFromQuantityForConversion = 15
+					MinToQuantityForConversion = 941
 					From
 					[
 						{
@@ -173,7 +173,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 					ToStorage = BatteryStorage
-					ToQuantity = 1060//805
+					ToQuantity = 941//1060  should be 940.5 gets a 0.01 power increase 941
 					Interval = .05
 				}
 				ConvertEffects

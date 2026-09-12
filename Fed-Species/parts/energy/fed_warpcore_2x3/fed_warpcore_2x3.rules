@@ -174,7 +174,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
 					ToStorage = BatteryStorage
-					ToQuantity = 175//25  (0.35/sec)
+					ToQuantity = 63//(0.125/sec) 5% of total production (2.5/sec)  should be 62.5 gains 0.001/sec @63
 					Interval = { BaseValue=0.5; BuffType=WarpcoreBuffVSmall; BuffMode=Subtract; MinValue=0.20; }
 				}
 				WarpcoreSmallBuffToggle
@@ -187,7 +187,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
 					MinFromQuantityForConversion = 10
-					MinToQuantityForConversion = 195
+					MinToQuantityForConversion = 238
 					From
 					[
 						{
@@ -196,7 +196,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 					ToStorage = BatteryStorage
-					ToQuantity = 195
+					ToQuantity = 238//225  should be 237.5 gains 0.005/sec @238
 					Interval = .1
 				}
 				FtlEnergySubstation

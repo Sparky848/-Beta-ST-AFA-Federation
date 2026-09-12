@@ -273,7 +273,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
 					ToStorage = BatteryStorage
-					ToQuantity = 200//50  (0.4/sec)
+					ToQuantity = 200//  (0.4/sec) Total of: 8/sec
 					Interval = { BaseValue=0.5; BuffType=WarpcoreBuffSmall; BuffMode=Subtract; MinValue=0.20; }//
 				}
 				WarpcoreSmallBuffToggle
@@ -285,8 +285,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
-					MinFromQuantityForConversion = 22
-					MinToQuantityForConversion = 473
+					MinFromQuantityForConversion = 16
+					MinToQuantityForConversion = 570
 					From
 					[
 						{
@@ -295,7 +295,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 					ToStorage = BatteryStorage
-					ToQuantity = 473
+					ToQuantity = 570//473
 					Interval = { BaseValue=0.075; BuffType=WarpcoreBuffSmall; BuffMode=Subtract; MinValue=0.055; }
 				}
 				ConvertEffects

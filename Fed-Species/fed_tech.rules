@@ -166,12 +166,12 @@ Techs
 	}
 	{
 		Name = fed_shieldcore_med
-		ID = stafa.fed_shieldcore
-		NameKey = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/NameKey
-		DescriptionKey = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/DescriptionKey
-		Icon = &<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/EditorIcon
+		ID = stafa.fed_shieldcore_med
+		NameKey = &<parts/shields/fed_shieldcore_med/fed_shieldcore.rules>/Part/NameKey
+		DescriptionKey = &<parts/shields/fed_shieldcore_med/fed_shieldcore.rules>/Part/DescriptionKey
+		Icon = &<parts/shields/fed_shieldcore_med/fed_shieldcore.rules>/Part/EditorIcon
 		EditorGroup = &<parts/shields/fed_shieldcore_small/fed_shieldcore.rules>/Part/EditorGroup
-		PartsUnlocked = [&<parts/shields/fed_shieldcore/fed_shieldcore.rules>/Part/ID]
+		PartsUnlocked = [&<parts/shields/fed_shieldcore_med/fed_shieldcore.rules>/Part/ID]
 		Cost = 750000
 		Prerequisites = [stafa.fed_warpcore_small]
 	}
@@ -184,7 +184,7 @@ Techs
 		EditorGroup = &<parts/shields/fed_shieldcore_small/fed_shieldcore.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/shields/fed_shieldcore_large/fed_shieldcore.rules>/Part/ID]
 		Cost = 150000
-		Prerequisites = [stafa.fed_warpcore_large]
+		Prerequisites = [stafa.fed_warpcore_large, stafa.fed_shieldcore_med]
 	}
 	{
 		Name = fed_phaser_point_defense
@@ -208,6 +208,16 @@ Techs
 		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_phaser_point_defense]
 	}
 	{
+		Name = phaserbank_tos
+		ID = stafa.phaserbank_tos
+		NameKey = &<parts/weapons/fed_phaserbank_tos/fed_phaserbank_tos.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_phaserbank_tos/fed_phaserbank_tos.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_phaserbank_tos/fed_phaserbank_tos.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_phaserbank_tos/fed_phaserbank_tos.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_phaserbank_tos/fed_phaserbank_tos.rules>/Part/ID]
+		Cost = 2500
+	}
+	{
 		Name = fed_phaser_cannon_deck
 		ID = stafa.fed_phaser_cannon_deck
 		NameKey = &<parts/weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part/NameKey
@@ -216,7 +226,7 @@ Techs
 		EditorGroups = &<parts/weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part/ID]
 		Cost = 6000
-		Prerequisites = [stafa.fed_warpcore_2x3, stafa.fed_phaser_tos]
+		Prerequisites = [stafa.fed_warpcore_2x3, stafa.phaserbank_tos]
 	}
 //	{
 //		Name = fed_dual_phaser_cannon
@@ -283,6 +293,28 @@ Techs
 		PartsUnlocked = [&<parts/weapons/fed_phaserlance_nerfed/fed_phaserlance_nerfed.rules>/Part/ID]
 		Cost = 1000000
 		Prerequisites = [sparky.burstphaserbankcom_floor, stafa.phaserbank_med]
+	}
+	{
+		Name = fed_vengeance_array
+		ID = stafa.fed_alt_vengeance_array
+		NameKey = &<parts/weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part/ID, &<parts/weapons/fed_vengeance_capacitor/fed_vengeance_capacitor.rules>/Part/ID, &<parts/weapons/fed_vengeance_capacitor_walkable/fed_vengeance_capacitor_walkable.rules>/Part/ID]
+		Cost = 20000
+		Prerequisites = [stafa.phaserbank_med, stafa.fed_warpcore_med]
+	}
+	{
+		Name = fed_vengeance_capacitor
+		ID = stafa.fed_vengeance_capacitor
+		NameKey = &<parts/weapons/fed_vengeance_capacitor/fed_vengeance_capacitor.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_vengeance_capacitor/fed_vengeance_capacitor.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_vengeance_capacitor/fed_vengeance_capacitor.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_alt_vengeance_array/fed_alt_vengeance_array.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_vengeance_capacitor/fed_vengeance_capacitor.rules>/Part/ID, &<parts/weapons/fed_vengeance_capacitor_walkable/fed_vengeance_capacitor_walkable.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [stafa.fed_alt_vengeance_array]
 	}
 	{
 		Name = fed_phaserbank_med

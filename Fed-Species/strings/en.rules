@@ -62,7 +62,7 @@ Parts
 	Heavy_Phaser_Cannon = "Heavy Phaser Cannon"
 	Heavy_Phaser_Cannon_Icon = "Heavy Phaser Cannon"
 	Heavy_Phaser_Cannon_Desc = "<color r='250' g='176' b='86' a='255'>Heat applying</color> support Phaser Cannon that fires in 4 shot bursts"\
-							"\nCan be placed behind 2 layers of armour, however 1 is ideal"
+							"\nCan be placed behind 1 layer of armour"
 	Def_Dual_Phaser_Cannon = "Defiant's Phaser Cannon"
 	Def_Dual_Phaser_Cannon_Icon = "Defiant's Phaser Cannon"
 	Def_Dual_Phaser_Cannon_Desc = "Defiant Class inspired dual cannons, fires rapid 4 shot bursts."\

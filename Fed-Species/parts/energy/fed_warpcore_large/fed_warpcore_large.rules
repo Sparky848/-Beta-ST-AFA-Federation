@@ -170,15 +170,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
 					ToStorage = BatteryStorage
-					ToQuantity = { BaseValue=250; BuffType=WarpcoreBuffQuantityLarge; BuffMode=Add; MaxValue=375; }//was 100 and 200. trying to make shields and control rooms have less of an idle antimatter impact on larger ships
-					Interval = { BaseValue=0.5; BuffType=WarpcoreBuffLarge; BuffMode=Subtract; MinValue=0.25; } //small reactor gen rate when buffed (1.5/sec), 0.5/sec when not
+					ToQuantity = 960// Total of: 38.4/sec
+					Interval = { BaseValue=0.5; BuffType=WarpcoreBuffLarge; BuffMode=Subtract; MinValue=0.4; } //1.92/sec
 				}
 				ResourceConverter//467.64705882353 Batteries per antimatter    total is roughly a 20% increase per core starting from the small
 				{
 					Type = ResourceConverter
 					OperationalToggle = IsOperational
-					MinFromQuantityForConversion = 85
-					MinToQuantityForConversion = 1590
+					MinFromQuantityForConversion = 20
+					MinToQuantityForConversion = 1824
 					From
 					[
 						{
@@ -187,7 +187,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 					ToStorage = BatteryStorage
-					ToQuantity = 1590
+					ToQuantity = 1824//1590 
 					Interval = .05
 				}
 				ConvertEffects
@@ -952,7 +952,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		BasePowerGen = (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/ToQuantity/BaseValue) / (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/Interval/BaseValue) / 1000
+		BasePowerGen = (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/Interval/BaseValue) / 1000
 		AntimatterPowerGen = ((&~/Part/Components/WarpcoreActive/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/ResourceConverter/Interval) / 1000)
 		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)

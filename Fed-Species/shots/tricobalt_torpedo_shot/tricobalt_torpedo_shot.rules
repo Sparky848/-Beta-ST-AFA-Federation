@@ -15,16 +15,16 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 40d//70d//140d
+		TurnVelocity = 100d//40d//70d//140d
 		Delay = .1
 		AvoidanceRaycastDistance = 250
-		VelocityCompensation = 30%//60%
+		VelocityCompensation = 55%//30%//60%
 	}
 
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 15//20
+		Acceleration = 25
 	}
 
 	NegativeAcceleration
