@@ -10,12 +10,12 @@ Parts
 	Dual_Phaser_Cannon = "Dual Impulse Phaser Cannons"
 	Dual_Phaser_Cannon_Icon = "Dual Impulse Phaser Cannons"
 	Dual_Phaser_Cannon_Desc = "Dual Impulse Phaser Cannons use a rapid succession of phaser pulses instead of a continuous phaser beam."
-	Torpedolauncher = "Burst Torpedo Launcher"
-	Torpedolauncher_Icon = "Burst Torpedo Launcher"
-	Torpedolauncher_Desc = "Launches different torpedo types in a burst that is capable of dealing devastating damage to an enemy."
-	TorpedolauncherDeck = "Deck Burst Torpedo Launcher"
-	TorpedolauncherDeck_Icon = "Deck Burst Torpedo Launcher"
-	TorpedolauncherDeck_Desc = "Launches different torpedo types in a burst that is capable of dealing devastating damage to an enemy."
+	STAFATorpedolauncher = "Burst Torpedo Launcher"
+	STAFATorpedolauncher_Icon = "Burst Torpedo Launcher"
+	STAFATorpedolauncher_Desc = "Launches different torpedo types in a burst that is capable of dealing devastating damage to an enemy."
+	STAFATorpedolauncherDeck = "Deck Burst Torpedo Launcher"
+	STAFATorpedolauncherDeck_Icon = "Deck Burst Torpedo Launcher"
+	STAFATorpedolauncherDeck_Desc = "Launches different torpedo types in a burst that is capable of dealing devastating damage to an enemy."
 	Phaser_Cannon_Deck = "Impulse Phaser Cannons"
 	Phaser_Cannon_Deck_Icon = "Impulse Phaser Cannons"
 	Phaser_Cannon_Deck_Desc = "Impulse Phaser Cannons use a rapid succession of phaser pulses instead of a continuous phaser beam. This is the deck version, which fires only single volleys."\
@@ -67,9 +67,9 @@ Parts
 	Def_Dual_Phaser_Cannon_Icon = "Defiant's Phaser Cannon"
 	Def_Dual_Phaser_Cannon_Desc = "Defiant Class inspired dual cannons, fires rapid 4 shot bursts."\
 								"\nCan be placed behind 1 layer of armour"
-	StandardTorpedolauncherDeck = "Micro Torpedo Launcher"
-	StandardTorpedolauncherDeck_Icon = "Micro Torpedo Launcher"
-	StandardTorpedolauncherDeck_Desc = "A Torpedo Launcher intended for use on shuttlecraft\n"\
+	STAFAStandardTorpedolauncherDeck = "Micro Torpedo Launcher"
+	STAFAStandardTorpedolauncherDeck_Icon = "Micro Torpedo Launcher"
+	STAFAStandardTorpedolauncherDeck_Desc = "A Torpedo Launcher intended for use on shuttlecraft\n"\
 										"Capable of firing approximately 1 torpedo every 2 seconds"
 	Phaser_Lance2 = "Phaser Lance 2"
 	Phaser_Lance2_Icon = "Phaser Lance 2"

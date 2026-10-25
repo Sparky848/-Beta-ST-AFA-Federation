@@ -1,11 +1,11 @@
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/Torpedolauncher"
-	IconNameKey = "Parts/Torpedolauncher_Icon"
+	NameKey = "Parts/STAFATorpedolauncher"
+	IconNameKey = "Parts/STAFATorpedolauncher_Icon"
 	ID = "stafa.torpedolauncher_2x4"
 //	OtherIDs = [torpedo_launcher]
 	EditorGroups = ["StarfleetWeapons"]
-	DescriptionKey = "Parts/Torpedolauncher_Desc"
+	DescriptionKey = "Parts/STAFATorpedolauncher_Desc"
 	Resources
 	[
 		[steel, 24]

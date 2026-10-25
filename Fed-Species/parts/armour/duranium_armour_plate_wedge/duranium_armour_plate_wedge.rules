@@ -154,7 +154,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "./data/ships/common/sounds/salvage_finish.wav"
+					Sound = "./data/ships/common/sounds/small_deconstruct.wav"
 					Volume = 0.75
 					SpeedVariation = .25
 				}

@@ -187,7 +187,7 @@ HitStructural
 	[
 		{
 			Type = Damage;
-			Damage = 125
+			Damage = 48
 		}
 	]
 

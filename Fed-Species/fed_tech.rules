@@ -172,7 +172,7 @@ Techs
 		Icon = &<parts/shields/fed_shieldcore_med/fed_shieldcore.rules>/Part/EditorIcon
 		EditorGroup = &<parts/shields/fed_shieldcore_small/fed_shieldcore.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/shields/fed_shieldcore_med/fed_shieldcore.rules>/Part/ID]
-		Cost = 750000
+		Cost = 150000
 		Prerequisites = [stafa.fed_warpcore_small]
 	}
 	{
@@ -183,7 +183,7 @@ Techs
 		Icon = &<parts/shields/fed_shieldcore_large/fed_shieldcore.rules>/Part/EditorIcon
 		EditorGroup = &<parts/shields/fed_shieldcore_small/fed_shieldcore.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/shields/fed_shieldcore_large/fed_shieldcore.rules>/Part/ID]
-		Cost = 150000
+		Cost = 500000
 		Prerequisites = [stafa.fed_warpcore_large, stafa.fed_shieldcore_med]
 	}
 	{

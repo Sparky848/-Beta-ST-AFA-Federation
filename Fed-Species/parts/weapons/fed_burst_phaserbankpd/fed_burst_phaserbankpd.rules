@@ -296,6 +296,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Toggle = AttackToggle
 					Overridable = true
 				}
+				{
+					TargetType = Crew
+					Toggle = AttackToggle
+					Overridable = true
+				}
 			]
 			BlueprintArcSprite
 			{

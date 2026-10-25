@@ -91,7 +91,8 @@ BeamMediaEffects
 		MaxConcurrentVolume = 1
 	}
 ]
-
+CrewCollisions = {Enemies=true; Junk=true}
+HitCrew = &HitOperational
 HitShield = &HitOperational
 HitOperational
 {
