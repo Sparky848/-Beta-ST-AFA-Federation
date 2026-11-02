@@ -101,6 +101,12 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 			Mode = FireModeToggle
 			OnModes = [1, 2]
 		}
+		AutoTargetToggleAndIsNotOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [AutoTargetToggle, IsOperationalNonOverclocked]
+			Mode = All
+		}
 		AutoFireToggle
 		{
 			Type = ModeToggle
@@ -346,7 +352,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 				}
 				{
 					TargetType = Salvage
-					Toggle = AutoTargetToggle
+					Toggle = AutoTargetToggleAndIsNotOverclocked
 				}
 			]
 

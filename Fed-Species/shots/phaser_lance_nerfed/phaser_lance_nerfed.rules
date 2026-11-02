@@ -172,11 +172,32 @@ HitOperational
 			Filter
 			{
 				ExcludePartCategories = [asteroid]
+				junk = false
 			}
 		}
 		{
 			Type = Impulse;
 			Impulse = 1;
+		}
+		//Damage to junk
+		{
+			Type = ExplosiveDamage
+			DamageType = salvage
+			TotalDamage = 25000
+			Radius = 2
+			ExpandDuration = 0.01
+			ExpandStartRadius = 1
+			ExpandLoss = 50%
+			StatusType = cosmoteer.fire
+			StatusChancePerNDamage = 25%
+			StatusValue = 1
+			StatusValueType = Interpolated
+			NDamage = 1000
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+				junk = true
+			}
 		}
 		{ //Damage to asteroids
 			Type = ExplosiveDamage

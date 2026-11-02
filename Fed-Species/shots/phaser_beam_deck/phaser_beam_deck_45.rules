@@ -167,6 +167,7 @@ HitOperational
 			Filter
 			{
 				ExcludePartCategories = [asteroid]
+				junk = false
 			}
 		}
 		{
@@ -183,6 +184,10 @@ HitOperational
 			EmptyTileCost = Infinity
 			ValueFalloff = 1
 			FalloffPadding = 1
+			Filter
+			{				
+				junk = false
+			}
 		}
 		{
 			Type = Impulse;

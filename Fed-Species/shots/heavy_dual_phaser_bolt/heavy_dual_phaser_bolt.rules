@@ -72,6 +72,7 @@ Components
 					Filter
 					{
 						ExcludePartCategories = [asteroid]
+						junk = false
 					}
 				}
 				{
@@ -80,6 +81,7 @@ Components
 					Filter
 					{
 						ExcludePartCategories = [asteroid]
+						junk = false
 					}
 				}
 				{
@@ -89,6 +91,7 @@ Components
 					Filter
 					{
 						OnlyPartCategories = [armor, durarmour]
+						junk = false
 					}
 				}
 				{
@@ -105,6 +108,10 @@ Components
 					EmptyTileCost = Infinity
 					ValueFalloff = 1
 					FalloffPadding = 1
+					Filter
+					{
+						junk = false					
+					}
 				}
 				{
 					Type = Impulse;

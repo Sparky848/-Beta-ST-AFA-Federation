@@ -155,6 +155,7 @@ HitOperational
 			Filter
 			{
 				ExcludePartCategories = [asteroid]
+				junk = false
 			}
 		}
 		{ //Damage to junk

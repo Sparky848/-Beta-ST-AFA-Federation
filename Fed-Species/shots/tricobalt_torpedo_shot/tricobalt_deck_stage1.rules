@@ -150,7 +150,7 @@ Components
 		Penetration = 1
 		PartCategoryPenetrationFactors
 		{
-			asteroid = 0.0555//< Pen Value/Wanted Pen Value    | 0.02
+			asteroid = 0.0286//0.0555//< Pen Value/Wanted Pen Value    | 0.02
 		}
 		PenetrationSpeed = (&~/Speed/BaseValue)
 		SourceShipLowCollisions = false

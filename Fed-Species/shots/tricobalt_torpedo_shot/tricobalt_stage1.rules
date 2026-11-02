@@ -68,7 +68,7 @@ Components
 		Penetration = 1
 		PartCategoryPenetrationFactors
 		{
-			asteroid = 0.0555
+			asteroid = 0.0286//0.0555
 		}
 		PenetrationSpeed = (&~/Speed/BaseValue)
 		SourcePartCollisionDelay = 1.5/30
