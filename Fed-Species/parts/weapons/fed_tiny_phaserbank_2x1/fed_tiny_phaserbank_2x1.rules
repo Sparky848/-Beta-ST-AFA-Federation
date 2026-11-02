@@ -385,46 +385,46 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 1]
 		}
-	}
-	Indicators
-	{
-		Type = IndicatorSprites
-		Location = [1, 3]
-		Layer = "indicators"
 		Indicators
-		[
-			// Turned off.
-			{
-				Toggle = PowerToggle
-				AtlasSprite
+		{
+			Type = IndicatorSprites
+			Location = [1, .5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
 				{
-					File = &/INDICATORS/PowerOff
-					Size = [.75, .75]
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [.5, .5]
+					}
 				}
-			}
 
-			// Out of power.
-			{
-				Toggle = BatteryStorage
-				Delay = &~/Part/Components/Turret/FireInterval
-				//Delay = 0.49
-				AtlasSprite
+				// Out of power.
 				{
-					File = &/INDICATORS/NoPower
-					Size = [.75, .75]
+					Toggle = BatteryStorage
+					//Delay = 0.49
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
+					}
 				}
-			}
-			// No crew.
-			{
-				Toggle = PartCrew
-				AtlasSprite
+				// No crew.
 				{
-					File = &/INDICATORS/NoCrew
-					Size = [2, 1]
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [.5, .5]
+					}
 				}
-			}
-		]
+			]
+		}
 	}
+	
 
 	Stats
 	{

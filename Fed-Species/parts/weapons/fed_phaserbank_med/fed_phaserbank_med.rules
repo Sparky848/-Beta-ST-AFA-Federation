@@ -385,7 +385,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoCrew
-						Size = [.5, .5]
+						Size = [1, 1]
 					}
 				}
 			]

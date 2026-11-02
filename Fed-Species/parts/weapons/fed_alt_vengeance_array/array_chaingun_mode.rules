@@ -454,7 +454,7 @@ Components
 				AtlasSprite
 				{
 					File = &/INDICATORS/NoCrew
-					Size = [.5, .5]
+					Size = [1, 1]
 				}
 			}
 		]
