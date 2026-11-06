@@ -84,9 +84,11 @@ Components
 		[
 			: /BASE_SOUNDS/AudioExterior
 			{
-				Sound = "charge.wav"
-				Volume = .25
-				Speed = 1.5
+				RandomSounds = ["altphaser_charge1.wav", "altphaser_charge2.wav"]
+				Volume = 1
+				Speed = 1
+				//RampUpTime = .5
+				RampDownTime = .7
 			}
 		]
 	}

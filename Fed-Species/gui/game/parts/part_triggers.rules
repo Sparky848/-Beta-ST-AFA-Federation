@@ -4,7 +4,7 @@ PartTriggers
 	{
 		TriggerID = "forcefield_trigger"
 		DefaultHotkey = [PlatformCmdCtrl, Shift, F]
-		ButtonToolTipKey = "PartTriggers/ForcefieldTrigger"
+		ButtonToolTipKey = "Inputs/PartTriggers/ForcefieldTrigger"
 		ButtonSprite
 		{
 			Texture

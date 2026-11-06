@@ -111,12 +111,12 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "light_phasor_beam.wav"
-		Volume = 1
+		RandomSounds = ["altphaser_fire1.wav", "phaser_fire2.wav"]
+		Volume = 1.5
 		Speed = 1
 		MaxConcurrent = 1
 		RampUpTime = .5
-		RampDownTime = .5
+		//RampDownTime = .8
 
 		DynamicVolume : ^/0/DynamicVolume
 		{

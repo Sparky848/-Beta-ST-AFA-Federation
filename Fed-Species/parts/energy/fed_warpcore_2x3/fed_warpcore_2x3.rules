@@ -732,14 +732,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ContinuousEffects
 			Location = [2, 2]
+			OperationalToggle = IsOperational
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "../../../sounds/tng_hum_clean.wav"
-					Volume = .5
-					Speed = .5
-					MaxConcurrent = 1
+					Sound = "smallcore_idle.wav"
+					Volume = .75
+					Speed = 1
+					//MaxConcurrent = 1
 					DynamicVolume : ^/0/DynamicVolume
 					{
 						ExteriorVolume = .5
@@ -827,6 +828,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
 		BasePowerGen = (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/BatteryProducer/Interval/BaseValue) / 1000
 		AntimatterPowerGen = ((&~/Part/Components/WarpcoreActive/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/WarpcoreActive/Components/ResourceConverter/Interval) / 1000)
 		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000

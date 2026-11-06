@@ -471,8 +471,8 @@ LaunchEffectBase
 
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "../../../../shots/photon_torpedo_shot/photon_torpedo_shot.wav"
-			SpeedVariation = .25
+			RandomSounds = ["../../../../shots/photon_torpedo_shot/photon_torpedo_shot_2.wav", "../../../../shots/photon_torpedo_shot/photon_torpedo_shot_3.wav"]
+			SpeedVariation = .05
 		}
 	]
 }

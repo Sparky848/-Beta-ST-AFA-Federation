@@ -546,7 +546,7 @@ Inputs
 {
 	PartTriggers
 	{
-		
+		ForcefieldTrigger = "Toggle Forcefield State"
 	}
 	PartToggles
 	{

@@ -39,6 +39,22 @@ Part : &<fed_forcefield_corridor_centered_off.rules>/Part
 			Mode = All
 			Invert = true
 		}
+		ForcefieldOffAudio : ForcefieldOnAudio
+		{
+			Type = ToggleEffects
+			Location = [.5, .5]
+			Toggle = EndForcefieldIdleAnim
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "../forcefield_off.wav"
+					Volume = 1
+					Speed = 2
+					IgnoreIntensity = true
+				}
+			]
+		}
 		ForcefieldActivationAnimation
 		{
 			Type = Graphics

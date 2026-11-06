@@ -322,8 +322,8 @@ LaunchEffectBase
 
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "../../../../shots/quantum_torpedo_shot/quantum_torpedo_shot.wav"
-			SpeedVariation = .25
+			RandomSounds = ["../../../../shots/quantum_torpedo_shot/quantum_torpedo_shot.wav", "../../../../shots/quantum_torpedo_shot/quantum_torpedo_shot_2.wav", "../../../../shots/quantum_torpedo_shot/quantum_torpedo_shot_3.wav"]
+			SpeedVariation = .1
 		}
 	]
 }

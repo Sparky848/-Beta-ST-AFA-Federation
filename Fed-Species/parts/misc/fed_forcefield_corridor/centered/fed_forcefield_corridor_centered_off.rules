@@ -118,7 +118,22 @@ Part : <./Data/ships/terran/base_floor_part_terran.rules>/Part
 			Type = TriggeredToggle
 			OnTrigger = ForcefieldTrigger
 		}
-
+		ForcefieldOnAudio
+		{
+			Type = ToggleEffects
+			Location = [.5, .5]
+			Toggle = StartForceFieldAnim
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "../forcefield_on.wav"
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+		}
 		ForcefieldActivationAnimation
 		{
 			Type = Graphics
